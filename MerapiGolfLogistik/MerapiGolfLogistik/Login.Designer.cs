@@ -41,36 +41,40 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 73);
+            this.label1.Location = new System.Drawing.Point(19, 58);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 20);
+            this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Username:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 115);
+            this.label2.Location = new System.Drawing.Point(19, 86);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(82, 20);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 1;
             this.label2.Text = "Password:";
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(28, 158);
+            this.linkLabel1.Location = new System.Drawing.Point(19, 114);
+            this.linkLabel1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(237, 20);
+            this.linkLabel1.Size = new System.Drawing.Size(158, 13);
             this.linkLabel1.TabIndex = 2;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Lupa username atau password?";
             // 
             // loginBtn
             // 
-            this.loginBtn.Location = new System.Drawing.Point(32, 198);
+            this.loginBtn.Location = new System.Drawing.Point(21, 140);
+            this.loginBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.loginBtn.Name = "loginBtn";
-            this.loginBtn.Size = new System.Drawing.Size(160, 45);
+            this.loginBtn.Size = new System.Drawing.Size(107, 29);
             this.loginBtn.TabIndex = 3;
             this.loginBtn.Text = "Masuk";
             this.loginBtn.UseVisualStyleBackColor = true;
@@ -78,9 +82,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(210, 198);
+            this.button2.Location = new System.Drawing.Point(140, 140);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(160, 45);
+            this.button2.Size = new System.Drawing.Size(107, 29);
             this.button2.TabIndex = 4;
             this.button2.Text = "Batal";
             this.button2.UseVisualStyleBackColor = true;
@@ -88,25 +93,28 @@
             // 
             // usernameTb
             // 
-            this.usernameTb.Location = new System.Drawing.Point(142, 73);
+            this.usernameTb.Location = new System.Drawing.Point(95, 58);
+            this.usernameTb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.usernameTb.Name = "usernameTb";
-            this.usernameTb.Size = new System.Drawing.Size(228, 26);
+            this.usernameTb.Size = new System.Drawing.Size(153, 20);
             this.usernameTb.TabIndex = 5;
             // 
             // passwordTb
             // 
-            this.passwordTb.Location = new System.Drawing.Point(142, 115);
+            this.passwordTb.Location = new System.Drawing.Point(95, 86);
+            this.passwordTb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.passwordTb.Name = "passwordTb";
             this.passwordTb.PasswordChar = '●';
-            this.passwordTb.Size = new System.Drawing.Size(228, 26);
+            this.passwordTb.Size = new System.Drawing.Size(153, 20);
             this.passwordTb.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(29, 15);
+            this.label3.Location = new System.Drawing.Point(19, 10);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(355, 55);
+            this.label3.Size = new System.Drawing.Size(237, 48);
             this.label3.TabIndex = 7;
             this.label3.Text = "Selamat datang di Merapi Golf Inventory. Masukkan username dan password Anda untu" +
     "k dapat mengakses aplikasi.";
@@ -114,9 +122,9 @@
             // Login
             // 
             this.AcceptButton = this.loginBtn;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(396, 273);
+            this.ClientSize = new System.Drawing.Size(264, 195);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.passwordTb);
             this.Controls.Add(this.usernameTb);
@@ -125,6 +133,7 @@
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Login";
