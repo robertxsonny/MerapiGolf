@@ -78,6 +78,7 @@
     <Compile Include="Category.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="Classes\FetchData.cs" />
     <Compile Include="Classes\Login.cs" />
     <Compile Include="Classes\MD5.cs" />
     <Compile Include="InputBarang.cs">
@@ -110,11 +111,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MerapiGolfEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Category.cs" />
     <Compile Include="PilihInputBarang.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PilihInputBarang.Designer.cs">
       <DependentUpon>PilihInputBarang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PilihKategori.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PilihKategori.Designer.cs">
+      <DependentUpon>PilihKategori.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +137,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PilihInputBarang.resx">
       <DependentUpon>PilihInputBarang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PilihKategori.resx">
+      <DependentUpon>PilihKategori.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -150,6 +161,7 @@
       <DependentUpon>MerapiGolfEntity.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Models.Category.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
