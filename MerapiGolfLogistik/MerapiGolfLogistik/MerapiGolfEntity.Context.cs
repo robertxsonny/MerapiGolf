@@ -25,8 +25,20 @@ namespace MerapiGolfLogistik
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Item> Items { get; set; }
+        public virtual DbSet<Aktiva> Aktiva { get; set; }
+        public virtual DbSet<Barang> Barang { get; set; }
+        public virtual DbSet<Kategori> Kategori { get; set; }
+        public virtual DbSet<Pembelian> Pembelian { get; set; }
+        public virtual DbSet<PembelianItem> PembelianItem { get; set; }
+        public virtual DbSet<Pengambilan> Pengambilan { get; set; }
+        public virtual DbSet<PengambilanItem> PengambilanItem { get; set; }
+        public virtual DbSet<Pengembalian> Pengembalian { get; set; }
+        public virtual DbSet<Supplier> Supplier { get; set; }
+        public virtual DbSet<User> User { get; set; }
+        public virtual DbSet<NotaPembelian> NotaPembelian { get; set; }
+        public virtual DbSet<NotaPengambilan> NotaPengambilan { get; set; }
+        public virtual DbSet<StokBarang> StokBarang { get; set; }
+        public virtual DbSet<StokBarangTotal> StokBarangTotal { get; set; }
+        public virtual DbSet<TotalPembelian> TotalPembelian { get; set; }
     }
 }

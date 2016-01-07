@@ -5,162 +5,949 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="MerapiGolfLogistikModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Categories">
-          <Key>
-            <PropertyRef Name="categoryid" />
-          </Key>
-          <Property Name="categoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="categoryname" Type="varchar" MaxLength="500" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Items">
-          <Key>
-            <PropertyRef Name="itemid" />
-          </Key>
-          <Property Name="itemid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="adminuserid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="itemname" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="stock" Type="int" Nullable="false" />
-          <Property Name="pcsname" Type="varchar" MaxLength="100" />
-          <Property Name="price" Type="int" Nullable="false" />
-          <Property Name="categoryid" Type="int" />
-        </EntityType>
-        <EntityType Name="Users">
+        <EntityType Name="mg_aktiva">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="password" Type="varchar" MaxLength="500" Nullable="false" />
-          <Property Name="role" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="nama_aktiva" Type="nvarchar(max)" />
+          <Property Name="keterangan_aktiva" Type="nvarchar(max)" />
         </EntityType>
-        <Association Name="FK_Items_Users">
-          <End Role="Categories" Type="Self.Categories" Multiplicity="0..1" />
-          <End Role="Items" Type="Self.Items" Multiplicity="*" />
+        <EntityType Name="mg_barang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="nama_barang" Type="nvarchar(max)" />
+          <Property Name="id_kategori" Type="uniqueidentifier" />
+          <Property Name="satuan" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="mg_kategori">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="nama_kategori" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="mg_pembelian">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="supplier_id" Type="uniqueidentifier" />
+          <Property Name="user_id" Type="uniqueidentifier" />
+          <Property Name="tanggal" Type="date" />
+          <Property Name="keterangan" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="mg_pembelian_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="no_nota" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="barang_id" Type="uniqueidentifier" />
+          <Property Name="banyak_barang" Type="float" />
+          <Property Name="harga_satuan" Type="float" />
+        </EntityType>
+        <EntityType Name="mg_pengambilan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="user_id" Type="uniqueidentifier" />
+          <Property Name="tanggal" Type="date" />
+          <Property Name="keterangan" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="mg_pengambilan_item">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="no_nota" Type="nvarchar" MaxLength="10" />
+          <Property Name="id_pembelian_barang" Type="uniqueidentifier" />
+          <Property Name="banyak_barang" Type="float" />
+          <Property Name="id_aktiva" Type="uniqueidentifier" />
+        </EntityType>
+        <EntityType Name="mg_pengembalian">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="user_id" Type="uniqueidentifier" />
+          <Property Name="id_pengambilan_barang" Type="uniqueidentifier" />
+          <Property Name="tanggal" Type="date" />
+          <Property Name="banyak_dikembalikan" Type="float" />
+          <Property Name="keterangan" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="mg_supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="nama_supplier" Type="nvarchar(max)" />
+          <Property Name="alamat_supplier" Type="nvarchar(max)" />
+          <Property Name="telepon_supplier" Type="nvarchar(max)" />
+          <Property Name="email_supplier" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="mg_user">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="username" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="nama_karyawan" Type="nvarchar(max)" />
+          <Property Name="alamat_karyawan" Type="nvarchar(max)" />
+          <Property Name="telepon_karyawan" Type="nvarchar(max)" />
+          <Property Name="email_karyawan" Type="nvarchar(max)" />
+          <Property Name="role" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MerapiGolfDb.dbo.mg_nota_pembelian' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="mg_nota_pembelian">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nama_karyawan" Type="nvarchar(max)" />
+          <Property Name="nama_supplier" Type="nvarchar(max)" />
+          <Property Name="tanggal" Type="date" />
+          <Property Name="total" Type="float" />
+          <Property Name="keterangan" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MerapiGolfDb.dbo.mg_nota_pengambilan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="mg_nota_pengambilan">
+          <Key>
+            <PropertyRef Name="no_nota" />
+          </Key>
+          <Property Name="no_nota" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nama_karyawan" Type="nvarchar(max)" />
+          <Property Name="tanggal" Type="date" />
+          <Property Name="total" Type="float" />
+          <Property Name="keterangan" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MerapiGolfDb.dbo.mg_stok_barang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="mg_stok_barang">
+          <Key>
+            <PropertyRef Name="id_barang" />
+          </Key>
+          <Property Name="id_barang" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="nama_barang" Type="nvarchar(max)" />
+          <Property Name="no_nota" Type="nvarchar" MaxLength="10" />
+          <Property Name="tanggal_masuk" Type="date" />
+          <Property Name="harga_satuan" Type="float" />
+          <Property Name="stok" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MerapiGolfDb.dbo.mg_stok_barang_total' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="mg_stok_barang_total">
+          <Key>
+            <PropertyRef Name="id_barang" />
+          </Key>
+          <Property Name="id_barang" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nama_barang" Type="nvarchar(max)" />
+          <Property Name="stok" Type="float" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pembelian' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="mg_total_pembelian">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="no_nota" />
+          </Key>
+          <Property Name="id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="no_nota" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="nama_barang" Type="nvarchar(max)" />
+          <Property Name="nama_kategori" Type="nvarchar(max)" />
+          <Property Name="banyak_barang" Type="int" />
+          <Property Name="harga_satuan" Type="int" />
+          <Property Name="total_harga" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="mg_total_pengambilan">
+          <Property Name="no_nota" Type="nvarchar" MaxLength="10" />
+          <Property Name="nama_barang" Type="nvarchar(max)" />
+          <Property Name="nama_kategori" Type="nvarchar(max)" />
+          <Property Name="satuan" Type="nvarchar" MaxLength="10" />
+          <Property Name="harga_satuan" Type="float" />
+          <Property Name="nama_aktiva" Type="nvarchar(max)" />
+          <Property Name="banyak_barang" Type="float" />
+          <Property Name="total_harga" Type="float" />
+        </EntityType>-->
+        <Association Name="FK_mg_barang_mg_kategori">
+          <End Role="mg_kategori" Type="Self.mg_kategori" Multiplicity="0..1" />
+          <End Role="mg_barang" Type="Self.mg_barang" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Categories">
-              <PropertyRef Name="categoryid" />
+            <Principal Role="mg_kategori">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Items">
-              <PropertyRef Name="categoryid" />
+            <Dependent Role="mg_barang">
+              <PropertyRef Name="id_kategori" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pembelian_item_mg_barang">
+          <End Role="mg_barang" Type="Self.mg_barang" Multiplicity="0..1" />
+          <End Role="mg_pembelian_item" Type="Self.mg_pembelian_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_barang">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pembelian_item">
+              <PropertyRef Name="barang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pembelian_item_mg_pembelian">
+          <End Role="mg_pembelian" Type="Self.mg_pembelian" Multiplicity="1" />
+          <End Role="mg_pembelian_item" Type="Self.mg_pembelian_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_pembelian">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pembelian_item">
+              <PropertyRef Name="no_nota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pembelian_mg_supplier">
+          <End Role="mg_supplier" Type="Self.mg_supplier" Multiplicity="0..1" />
+          <End Role="mg_pembelian" Type="Self.mg_pembelian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pembelian">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pembelian_mg_user">
+          <End Role="mg_user" Type="Self.mg_user" Multiplicity="0..1" />
+          <End Role="mg_pembelian" Type="Self.mg_pembelian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pembelian">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengambilan_item_mg_aktiva">
+          <End Role="mg_aktiva" Type="Self.mg_aktiva" Multiplicity="0..1" />
+          <End Role="mg_pengambilan_item" Type="Self.mg_pengambilan_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_aktiva">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengambilan_item">
+              <PropertyRef Name="id_aktiva" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengambilan_item_mg_pembelian_item">
+          <End Role="mg_pembelian_item" Type="Self.mg_pembelian_item" Multiplicity="0..1" />
+          <End Role="mg_pengambilan_item" Type="Self.mg_pengambilan_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_pembelian_item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengambilan_item">
+              <PropertyRef Name="id_pembelian_barang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengambilan_item_mg_pengambilan">
+          <End Role="mg_pengambilan" Type="Self.mg_pengambilan" Multiplicity="0..1" />
+          <End Role="mg_pengambilan_item" Type="Self.mg_pengambilan_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_pengambilan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengambilan_item">
+              <PropertyRef Name="no_nota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengambilan_mg_user">
+          <End Role="mg_user" Type="Self.mg_user" Multiplicity="0..1" />
+          <End Role="mg_pengambilan" Type="Self.mg_pengambilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengambilan">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengembalian_mg_pengambilan_item">
+          <End Role="mg_pengambilan_item" Type="Self.mg_pengambilan_item" Multiplicity="0..1" />
+          <End Role="mg_pengembalian" Type="Self.mg_pengembalian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_pengambilan_item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengembalian">
+              <PropertyRef Name="id_pengambilan_barang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengembalian_mg_user">
+          <End Role="mg_user" Type="Self.mg_user" Multiplicity="0..1" />
+          <End Role="mg_pengembalian" Type="Self.mg_pengembalian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengembalian">
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="MerapiGolfLogistikModelStoreContainer">
-          <EntitySet Name="Categories" EntityType="Self.Categories" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Items_Users" Association="Self.FK_Items_Users">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="Items" EntitySet="Items" />
+          <EntitySet Name="mg_aktiva" EntityType="Self.mg_aktiva" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_barang" EntityType="Self.mg_barang" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_kategori" EntityType="Self.mg_kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_pembelian" EntityType="Self.mg_pembelian" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_pembelian_item" EntityType="Self.mg_pembelian_item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_pengambilan" EntityType="Self.mg_pengambilan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_pengambilan_item" EntityType="Self.mg_pengambilan_item" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_pengembalian" EntityType="Self.mg_pengembalian" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_supplier" EntityType="Self.mg_supplier" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_user" EntityType="Self.mg_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_nota_pembelian" EntityType="Self.mg_nota_pembelian" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [mg_nota_pembelian].[id] AS [id], 
+    [mg_nota_pembelian].[nama_karyawan] AS [nama_karyawan], 
+    [mg_nota_pembelian].[nama_supplier] AS [nama_supplier], 
+    [mg_nota_pembelian].[tanggal] AS [tanggal], 
+    [mg_nota_pembelian].[total] AS [total], 
+    [mg_nota_pembelian].[keterangan] AS [keterangan]
+    FROM [dbo].[mg_nota_pembelian] AS [mg_nota_pembelian]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="mg_nota_pengambilan" EntityType="Self.mg_nota_pengambilan" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [mg_nota_pengambilan].[no_nota] AS [no_nota], 
+    [mg_nota_pengambilan].[nama_karyawan] AS [nama_karyawan], 
+    [mg_nota_pengambilan].[tanggal] AS [tanggal], 
+    [mg_nota_pengambilan].[total] AS [total], 
+    [mg_nota_pengambilan].[keterangan] AS [keterangan]
+    FROM [dbo].[mg_nota_pengambilan] AS [mg_nota_pengambilan]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="mg_stok_barang" EntityType="Self.mg_stok_barang" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [mg_stok_barang].[id_barang] AS [id_barang], 
+    [mg_stok_barang].[nama_barang] AS [nama_barang], 
+    [mg_stok_barang].[no_nota] AS [no_nota], 
+    [mg_stok_barang].[tanggal_masuk] AS [tanggal_masuk], 
+    [mg_stok_barang].[harga_satuan] AS [harga_satuan], 
+    [mg_stok_barang].[stok] AS [stok]
+    FROM [dbo].[mg_stok_barang] AS [mg_stok_barang]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="mg_stok_barang_total" EntityType="Self.mg_stok_barang_total" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [mg_stok_barang_total].[id_barang] AS [id_barang], 
+    [mg_stok_barang_total].[nama_barang] AS [nama_barang], 
+    [mg_stok_barang_total].[stok] AS [stok]
+    FROM [dbo].[mg_stok_barang_total] AS [mg_stok_barang_total]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="mg_total_pembelian" EntityType="Self.mg_total_pembelian" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [mg_total_pembelian].[id] AS [id], 
+    [mg_total_pembelian].[no_nota] AS [no_nota], 
+    [mg_total_pembelian].[nama_barang] AS [nama_barang], 
+    [mg_total_pembelian].[nama_kategori] AS [nama_kategori], 
+    [mg_total_pembelian].[banyak_barang] AS [banyak_barang], 
+    [mg_total_pembelian].[harga_satuan] AS [harga_satuan], 
+    [mg_total_pembelian].[total_harga] AS [total_harga]
+    FROM [dbo].[mg_total_pembelian] AS [mg_total_pembelian]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_mg_barang_mg_kategori" Association="Self.FK_mg_barang_mg_kategori">
+            <End Role="mg_kategori" EntitySet="mg_kategori" />
+            <End Role="mg_barang" EntitySet="mg_barang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pembelian_item_mg_barang" Association="Self.FK_mg_pembelian_item_mg_barang">
+            <End Role="mg_barang" EntitySet="mg_barang" />
+            <End Role="mg_pembelian_item" EntitySet="mg_pembelian_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pembelian_item_mg_pembelian" Association="Self.FK_mg_pembelian_item_mg_pembelian">
+            <End Role="mg_pembelian" EntitySet="mg_pembelian" />
+            <End Role="mg_pembelian_item" EntitySet="mg_pembelian_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pembelian_mg_supplier" Association="Self.FK_mg_pembelian_mg_supplier">
+            <End Role="mg_supplier" EntitySet="mg_supplier" />
+            <End Role="mg_pembelian" EntitySet="mg_pembelian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pembelian_mg_user" Association="Self.FK_mg_pembelian_mg_user">
+            <End Role="mg_user" EntitySet="mg_user" />
+            <End Role="mg_pembelian" EntitySet="mg_pembelian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengambilan_item_mg_aktiva" Association="Self.FK_mg_pengambilan_item_mg_aktiva">
+            <End Role="mg_aktiva" EntitySet="mg_aktiva" />
+            <End Role="mg_pengambilan_item" EntitySet="mg_pengambilan_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengambilan_item_mg_pembelian_item" Association="Self.FK_mg_pengambilan_item_mg_pembelian_item">
+            <End Role="mg_pembelian_item" EntitySet="mg_pembelian_item" />
+            <End Role="mg_pengambilan_item" EntitySet="mg_pengambilan_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengambilan_item_mg_pengambilan" Association="Self.FK_mg_pengambilan_item_mg_pengambilan">
+            <End Role="mg_pengambilan" EntitySet="mg_pengambilan" />
+            <End Role="mg_pengambilan_item" EntitySet="mg_pengambilan_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengambilan_mg_user" Association="Self.FK_mg_pengambilan_mg_user">
+            <End Role="mg_user" EntitySet="mg_user" />
+            <End Role="mg_pengambilan" EntitySet="mg_pengambilan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengembalian_mg_pengambilan_item" Association="Self.FK_mg_pengembalian_mg_pengambilan_item">
+            <End Role="mg_pengambilan_item" EntitySet="mg_pengambilan_item" />
+            <End Role="mg_pengembalian" EntitySet="mg_pengembalian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengembalian_mg_user" Association="Self.FK_mg_pengembalian_mg_user">
+            <End Role="mg_user" EntitySet="mg_user" />
+            <End Role="mg_pengembalian" EntitySet="mg_pengembalian" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="MerapiGolfLogistikModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="MerapiGolfLogistikEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="mg_aktiva" EntityType="MerapiGolfLogistikModel.Aktiva" />
+          <EntitySet Name="mg_barang" EntityType="MerapiGolfLogistikModel.Barang" />
+          <EntitySet Name="mg_kategori" EntityType="MerapiGolfLogistikModel.Kategori" />
+          <EntitySet Name="mg_pembelian" EntityType="MerapiGolfLogistikModel.Pembelian" />
+          <EntitySet Name="mg_pembelian_item" EntityType="MerapiGolfLogistikModel.PembelianItem" />
+          <EntitySet Name="mg_pengambilan" EntityType="MerapiGolfLogistikModel.Pengambilan" />
+          <EntitySet Name="mg_pengambilan_item" EntityType="MerapiGolfLogistikModel.PengambilanItem" />
+          <EntitySet Name="mg_pengembalian" EntityType="MerapiGolfLogistikModel.Pengembalian" />
+          <EntitySet Name="mg_supplier" EntityType="MerapiGolfLogistikModel.Supplier" />
+          <EntitySet Name="mg_user" EntityType="MerapiGolfLogistikModel.User" />
+          <EntitySet Name="mg_nota_pembelian" EntityType="MerapiGolfLogistikModel.NotaPembelian" />
+          <EntitySet Name="mg_nota_pengambilan" EntityType="MerapiGolfLogistikModel.NotaPengambilan" />
+          <EntitySet Name="mg_stok_barang" EntityType="MerapiGolfLogistikModel.StokBarang" />
+          <EntitySet Name="mg_stok_barang_total" EntityType="MerapiGolfLogistikModel.StokBarangTotal" />
+          <EntitySet Name="mg_total_pembelian" EntityType="MerapiGolfLogistikModel.TotalPembelian" />
+          <AssociationSet Name="FK_mg_pengambilan_item_mg_aktiva" Association="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_aktiva">
+            <End Role="mg_aktiva" EntitySet="mg_aktiva" />
+            <End Role="mg_pengambilan_item" EntitySet="mg_pengambilan_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_barang_mg_kategori" Association="MerapiGolfLogistikModel.FK_mg_barang_mg_kategori">
+            <End Role="mg_kategori" EntitySet="mg_kategori" />
+            <End Role="mg_barang" EntitySet="mg_barang" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pembelian_item_mg_barang" Association="MerapiGolfLogistikModel.FK_mg_pembelian_item_mg_barang">
+            <End Role="mg_barang" EntitySet="mg_barang" />
+            <End Role="mg_pembelian_item" EntitySet="mg_pembelian_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pembelian_item_mg_pembelian" Association="MerapiGolfLogistikModel.FK_mg_pembelian_item_mg_pembelian">
+            <End Role="mg_pembelian" EntitySet="mg_pembelian" />
+            <End Role="mg_pembelian_item" EntitySet="mg_pembelian_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pembelian_mg_supplier" Association="MerapiGolfLogistikModel.FK_mg_pembelian_mg_supplier">
+            <End Role="mg_supplier" EntitySet="mg_supplier" />
+            <End Role="mg_pembelian" EntitySet="mg_pembelian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pembelian_mg_user" Association="MerapiGolfLogistikModel.FK_mg_pembelian_mg_user">
+            <End Role="mg_user" EntitySet="mg_user" />
+            <End Role="mg_pembelian" EntitySet="mg_pembelian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengambilan_item_mg_pembelian_item" Association="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_pembelian_item">
+            <End Role="mg_pembelian_item" EntitySet="mg_pembelian_item" />
+            <End Role="mg_pengambilan_item" EntitySet="mg_pengambilan_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengambilan_item_mg_pengambilan" Association="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_pengambilan">
+            <End Role="mg_pengambilan" EntitySet="mg_pengambilan" />
+            <End Role="mg_pengambilan_item" EntitySet="mg_pengambilan_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengambilan_mg_user" Association="MerapiGolfLogistikModel.FK_mg_pengambilan_mg_user">
+            <End Role="mg_user" EntitySet="mg_user" />
+            <End Role="mg_pengambilan" EntitySet="mg_pengambilan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengembalian_mg_pengambilan_item" Association="MerapiGolfLogistikModel.FK_mg_pengembalian_mg_pengambilan_item">
+            <End Role="mg_pengambilan_item" EntitySet="mg_pengambilan_item" />
+            <End Role="mg_pengembalian" EntitySet="mg_pengembalian" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mg_pengembalian_mg_user" Association="MerapiGolfLogistikModel.FK_mg_pengembalian_mg_user">
+            <End Role="mg_user" EntitySet="mg_user" />
+            <End Role="mg_pengembalian" EntitySet="mg_pengembalian" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Aktiva">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="nama_aktiva" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="keterangan_aktiva" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="pengambilan_item" Relationship="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_aktiva" FromRole="mg_aktiva" ToRole="mg_pengambilan_item" />
+        </EntityType>
+        <EntityType Name="Barang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="nama_barang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id_kategori" Type="Guid" />
+          <Property Name="satuan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="kategori" Relationship="MerapiGolfLogistikModel.FK_mg_barang_mg_kategori" FromRole="mg_barang" ToRole="mg_kategori" />
+          <NavigationProperty Name="pembelian_item" Relationship="MerapiGolfLogistikModel.FK_mg_pembelian_item_mg_barang" FromRole="mg_barang" ToRole="mg_pembelian_item" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="nama_kategori" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="barang" Relationship="MerapiGolfLogistikModel.FK_mg_barang_mg_kategori" FromRole="mg_kategori" ToRole="mg_barang" />
+        </EntityType>
+        <EntityType Name="Pembelian">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="supplier_id" Type="Guid" />
+          <Property Name="user_id" Type="Guid" />
+          <Property Name="tanggal" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="pembelian_item" Relationship="MerapiGolfLogistikModel.FK_mg_pembelian_item_mg_pembelian" FromRole="mg_pembelian" ToRole="mg_pembelian_item" />
+          <NavigationProperty Name="supplier" Relationship="MerapiGolfLogistikModel.FK_mg_pembelian_mg_supplier" FromRole="mg_pembelian" ToRole="mg_supplier" />
+          <NavigationProperty Name="user" Relationship="MerapiGolfLogistikModel.FK_mg_pembelian_mg_user" FromRole="mg_pembelian" ToRole="mg_user" />
+        </EntityType>
+        <EntityType Name="PembelianItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="no_nota" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="barang_id" Type="Guid" />
+          <Property Name="banyak_barang" Type="Double" />
+          <Property Name="harga_satuan" Type="Double" />
+          <NavigationProperty Name="barang" Relationship="MerapiGolfLogistikModel.FK_mg_pembelian_item_mg_barang" FromRole="mg_pembelian_item" ToRole="mg_barang" />
+          <NavigationProperty Name="pembelian" Relationship="MerapiGolfLogistikModel.FK_mg_pembelian_item_mg_pembelian" FromRole="mg_pembelian_item" ToRole="mg_pembelian" />
+          <NavigationProperty Name="pengambilan_item" Relationship="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_pembelian_item" FromRole="mg_pembelian_item" ToRole="mg_pengambilan_item" />
+        </EntityType>
+        <EntityType Name="Pengambilan">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Guid" />
+          <Property Name="tanggal" Type="DateTime" Precision="0" />
+          <Property Name="keterangan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="pengambilan_item" Relationship="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_pengambilan" FromRole="mg_pengambilan" ToRole="mg_pengambilan_item" />
+          <NavigationProperty Name="user" Relationship="MerapiGolfLogistikModel.FK_mg_pengambilan_mg_user" FromRole="mg_pengambilan" ToRole="mg_user" />
+        </EntityType>
+        <EntityType Name="PengambilanItem">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="no_nota" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="id_pembelian_barang" Type="Guid" />
+          <Property Name="banyak_barang" Type="Double" />
+          <Property Name="id_aktiva" Type="Guid" />
+          <NavigationProperty Name="aktiva" Relationship="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_aktiva" FromRole="mg_pengambilan_item" ToRole="mg_aktiva" />
+          <NavigationProperty Name="pembelian_item" Relationship="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_pembelian_item" FromRole="mg_pengambilan_item" ToRole="mg_pembelian_item" />
+          <NavigationProperty Name="pengambilan" Relationship="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_pengambilan" FromRole="mg_pengambilan_item" ToRole="mg_pengambilan" />
+          <NavigationProperty Name="pengembalian" Relationship="MerapiGolfLogistikModel.FK_mg_pengembalian_mg_pengambilan_item" FromRole="mg_pengambilan_item" ToRole="mg_pengembalian" />
+        </EntityType>
+        <EntityType Name="Pengembalian">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="user_id" Type="Guid" />
+          <Property Name="id_pengambilan_barang" Type="Guid" />
+          <Property Name="tanggal" Type="DateTime" Precision="0" />
+          <Property Name="banyak_dikembalikan" Type="Double" />
+          <Property Name="keterangan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="pengambilan_item" Relationship="MerapiGolfLogistikModel.FK_mg_pengembalian_mg_pengambilan_item" FromRole="mg_pengembalian" ToRole="mg_pengambilan_item" />
+          <NavigationProperty Name="user" Relationship="MerapiGolfLogistikModel.FK_mg_pengembalian_mg_user" FromRole="mg_pengembalian" ToRole="mg_user" />
+        </EntityType>
+        <EntityType Name="Supplier">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="nama_supplier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="alamat_supplier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="telepon_supplier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email_supplier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="pembelian" Relationship="MerapiGolfLogistikModel.FK_mg_pembelian_mg_supplier" FromRole="mg_supplier" ToRole="mg_pembelian" />
+        </EntityType>
         <EntityType Name="User">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Guid" Nullable="false" />
-          <Property Name="username" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Items" Relationship="MerapiGolfLogistikModel.FK_Items_Users" FromRole="User" ToRole="Item" />
+          <Property Name="username" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nama_karyawan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="alamat_karyawan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="telepon_karyawan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="email_karyawan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="pembelian" Relationship="MerapiGolfLogistikModel.FK_mg_pembelian_mg_user" FromRole="mg_user" ToRole="mg_pembelian" />
+          <NavigationProperty Name="pengambilan" Relationship="MerapiGolfLogistikModel.FK_mg_pengambilan_mg_user" FromRole="mg_user" ToRole="mg_pengambilan" />
+          <NavigationProperty Name="pengembalian" Relationship="MerapiGolfLogistikModel.FK_mg_pengembalian_mg_user" FromRole="mg_user" ToRole="mg_pengembalian" />
         </EntityType>
-        <EntityContainer Name="MerapiGolfLogistikEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="Categories" EntityType="MerapiGolfLogistikModel.Category" />
-          <EntitySet Name="Items" EntityType="MerapiGolfLogistikModel.Item" />
-          <AssociationSet Name="FK_Items_Users" Association="MerapiGolfLogistikModel.FK_Items_Users">
-            <End Role="User" EntitySet="Users" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Items_Users1" Association="MerapiGolfLogistikModel.FK_Items_Users1">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Item" EntitySet="Items" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="Category">
+        <EntityType Name="NotaPembelian">
           <Key>
-            <PropertyRef Name="categoryid" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="categoryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="categoryname" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Items" Relationship="MerapiGolfLogistikModel.FK_Items_Users1" FromRole="Category" ToRole="Item" />
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="nama_karyawan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nama_supplier" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tanggal" Type="DateTime" Precision="0" />
+          <Property Name="total" Type="Double" />
+          <Property Name="keterangan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="Item">
+        <EntityType Name="NotaPengambilan">
           <Key>
-            <PropertyRef Name="itemid" />
+            <PropertyRef Name="no_nota" />
           </Key>
-          <Property Name="itemid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="adminuserid" Type="Guid" Nullable="false" />
-          <Property Name="itemname" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="stock" Type="Int32" Nullable="false" />
-          <Property Name="pcsname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="price" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="MerapiGolfLogistikModel.FK_Items_Users" FromRole="Item" ToRole="User" />
-          <Property Name="categoryid" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="MerapiGolfLogistikModel.FK_Items_Users1" FromRole="Item" ToRole="Category" />
+          <Property Name="no_nota" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="nama_karyawan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="tanggal" Type="DateTime" Precision="0" />
+          <Property Name="total" Type="Double" />
+          <Property Name="keterangan" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <Association Name="FK_Items_Users">
-          <End Type="MerapiGolfLogistikModel.User" Role="User" Multiplicity="1" />
-          <End Type="MerapiGolfLogistikModel.Item" Role="Item" Multiplicity="*" />
+        <EntityType Name="StokBarang">
+          <Key>
+            <PropertyRef Name="id_barang" />
+          </Key>
+          <Property Name="id_barang" Type="Guid" Nullable="false" />
+          <Property Name="nama_barang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="no_nota" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="tanggal_masuk" Type="DateTime" Precision="0" />
+          <Property Name="harga_satuan" Type="Double" />
+          <Property Name="stok" Type="Double" />
+        </EntityType>
+        <EntityType Name="StokBarangTotal">
+          <Key>
+            <PropertyRef Name="id_barang" />
+          </Key>
+          <Property Name="id_barang" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="nama_barang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="stok" Type="Double" />
+        </EntityType>
+        <EntityType Name="TotalPembelian">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="no_nota" />
+          </Key>
+          <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="no_nota" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="nama_barang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="nama_kategori" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="banyak_barang" Type="Int32" />
+          <Property Name="harga_satuan" Type="Int32" />
+          <Property Name="total_harga" Type="Int32" />
+        </EntityType>
+        <Association Name="FK_mg_pengambilan_item_mg_aktiva">
+          <End Type="MerapiGolfLogistikModel.Aktiva" Role="mg_aktiva" Multiplicity="0..1" />
+          <End Type="MerapiGolfLogistikModel.PengambilanItem" Role="mg_pengambilan_item" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="mg_aktiva">
               <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Item">
-              <PropertyRef Name="adminuserid" />
+            <Dependent Role="mg_pengambilan_item">
+              <PropertyRef Name="id_aktiva" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Items_Users1">
-          <End Type="MerapiGolfLogistikModel.Category" Role="Category" Multiplicity="0..1" />
-          <End Type="MerapiGolfLogistikModel.Item" Role="Item" Multiplicity="*" />
+        <Association Name="FK_mg_barang_mg_kategori">
+          <End Type="MerapiGolfLogistikModel.Kategori" Role="mg_kategori" Multiplicity="0..1" />
+          <End Type="MerapiGolfLogistikModel.Barang" Role="mg_barang" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="categoryid" />
+            <Principal Role="mg_kategori">
+              <PropertyRef Name="id" />
             </Principal>
-            <Dependent Role="Item">
-              <PropertyRef Name="categoryid" />
+            <Dependent Role="mg_barang">
+              <PropertyRef Name="id_kategori" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <Association Name="FK_mg_pembelian_item_mg_barang">
+          <End Type="MerapiGolfLogistikModel.Barang" Role="mg_barang" Multiplicity="0..1" />
+          <End Type="MerapiGolfLogistikModel.PembelianItem" Role="mg_pembelian_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_barang">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pembelian_item">
+              <PropertyRef Name="barang_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pembelian_item_mg_pembelian">
+          <End Type="MerapiGolfLogistikModel.Pembelian" Role="mg_pembelian" Multiplicity="1" />
+          <End Type="MerapiGolfLogistikModel.PembelianItem" Role="mg_pembelian_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_pembelian">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pembelian_item">
+              <PropertyRef Name="no_nota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pembelian_mg_supplier">
+          <End Type="MerapiGolfLogistikModel.Supplier" Role="mg_supplier" Multiplicity="0..1" />
+          <End Type="MerapiGolfLogistikModel.Pembelian" Role="mg_pembelian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_supplier">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pembelian">
+              <PropertyRef Name="supplier_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pembelian_mg_user">
+          <End Type="MerapiGolfLogistikModel.User" Role="mg_user" Multiplicity="0..1" />
+          <End Type="MerapiGolfLogistikModel.Pembelian" Role="mg_pembelian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pembelian">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengambilan_item_mg_pembelian_item">
+          <End Type="MerapiGolfLogistikModel.PembelianItem" Role="mg_pembelian_item" Multiplicity="0..1" />
+          <End Type="MerapiGolfLogistikModel.PengambilanItem" Role="mg_pengambilan_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_pembelian_item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengambilan_item">
+              <PropertyRef Name="id_pembelian_barang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengambilan_item_mg_pengambilan">
+          <End Type="MerapiGolfLogistikModel.Pengambilan" Role="mg_pengambilan" Multiplicity="0..1" />
+          <End Type="MerapiGolfLogistikModel.PengambilanItem" Role="mg_pengambilan_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_pengambilan">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengambilan_item">
+              <PropertyRef Name="no_nota" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengambilan_mg_user">
+          <End Type="MerapiGolfLogistikModel.User" Role="mg_user" Multiplicity="0..1" />
+          <End Type="MerapiGolfLogistikModel.Pengambilan" Role="mg_pengambilan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengambilan">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengembalian_mg_pengambilan_item">
+          <End Type="MerapiGolfLogistikModel.PengambilanItem" Role="mg_pengambilan_item" Multiplicity="0..1" />
+          <End Type="MerapiGolfLogistikModel.Pengembalian" Role="mg_pengembalian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_pengambilan_item">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengembalian">
+              <PropertyRef Name="id_pengambilan_barang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mg_pengembalian_mg_user">
+          <End Type="MerapiGolfLogistikModel.User" Role="mg_user" Multiplicity="0..1" />
+          <End Type="MerapiGolfLogistikModel.Pengembalian" Role="mg_pengembalian" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mg_user">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="mg_pengembalian">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="MerapiGolfLogistikModelStoreContainer" CdmEntityContainer="MerapiGolfLogistikEntities">
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.User">
-              <MappingFragment StoreEntitySet="Users">
+          <EntitySetMapping Name="mg_aktiva">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Aktiva">
+              <MappingFragment StoreEntitySet="mg_aktiva">
+                <ScalarProperty Name="keterangan_aktiva" ColumnName="keterangan_aktiva" />
+                <ScalarProperty Name="nama_aktiva" ColumnName="nama_aktiva" />
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="username" ColumnName="username" />
-                <ScalarProperty Name="password" ColumnName="password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_barang">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Barang">
+              <MappingFragment StoreEntitySet="mg_barang">
+                <ScalarProperty Name="satuan" ColumnName="satuan" />
+                <ScalarProperty Name="id_kategori" ColumnName="id_kategori" />
+                <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_kategori">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Kategori">
+              <MappingFragment StoreEntitySet="mg_kategori">
+                <ScalarProperty Name="nama_kategori" ColumnName="nama_kategori" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_pembelian">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Pembelian">
+              <MappingFragment StoreEntitySet="mg_pembelian">
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="supplier_id" ColumnName="supplier_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_pembelian_item">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.PembelianItem">
+              <MappingFragment StoreEntitySet="mg_pembelian_item">
+                <ScalarProperty Name="harga_satuan" ColumnName="harga_satuan" />
+                <ScalarProperty Name="banyak_barang" ColumnName="banyak_barang" />
+                <ScalarProperty Name="barang_id" ColumnName="barang_id" />
+                <ScalarProperty Name="no_nota" ColumnName="no_nota" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_pengambilan">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Pengambilan">
+              <MappingFragment StoreEntitySet="mg_pengambilan">
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_pengambilan_item">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.PengambilanItem">
+              <MappingFragment StoreEntitySet="mg_pengambilan_item">
+                <ScalarProperty Name="id_aktiva" ColumnName="id_aktiva" />
+                <ScalarProperty Name="banyak_barang" ColumnName="banyak_barang" />
+                <ScalarProperty Name="id_pembelian_barang" ColumnName="id_pembelian_barang" />
+                <ScalarProperty Name="no_nota" ColumnName="no_nota" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_pengembalian">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Pengembalian">
+              <MappingFragment StoreEntitySet="mg_pengembalian">
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="banyak_dikembalikan" ColumnName="banyak_dikembalikan" />
+                <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+                <ScalarProperty Name="id_pengambilan_barang" ColumnName="id_pengambilan_barang" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_supplier">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Supplier">
+              <MappingFragment StoreEntitySet="mg_supplier">
+                <ScalarProperty Name="email_supplier" ColumnName="email_supplier" />
+                <ScalarProperty Name="telepon_supplier" ColumnName="telepon_supplier" />
+                <ScalarProperty Name="alamat_supplier" ColumnName="alamat_supplier" />
+                <ScalarProperty Name="nama_supplier" ColumnName="nama_supplier" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_user">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.User">
+              <MappingFragment StoreEntitySet="mg_user">
                 <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="email_karyawan" ColumnName="email_karyawan" />
+                <ScalarProperty Name="telepon_karyawan" ColumnName="telepon_karyawan" />
+                <ScalarProperty Name="alamat_karyawan" ColumnName="alamat_karyawan" />
+                <ScalarProperty Name="nama_karyawan" ColumnName="nama_karyawan" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Category">
-              <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="categoryname" ColumnName="categoryname" />
-                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+          <EntitySetMapping Name="mg_nota_pembelian">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.NotaPembelian">
+              <MappingFragment StoreEntitySet="mg_nota_pembelian">
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+                <ScalarProperty Name="nama_supplier" ColumnName="nama_supplier" />
+                <ScalarProperty Name="nama_karyawan" ColumnName="nama_karyawan" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Items">
-            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Item">
-              <MappingFragment StoreEntitySet="Items">
-                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
-                <ScalarProperty Name="price" ColumnName="price" />
-                <ScalarProperty Name="pcsname" ColumnName="pcsname" />
-                <ScalarProperty Name="stock" ColumnName="stock" />
-                <ScalarProperty Name="itemname" ColumnName="itemname" />
-                <ScalarProperty Name="adminuserid" ColumnName="adminuserid" />
-                <ScalarProperty Name="itemid" ColumnName="itemid" />
+          <EntitySetMapping Name="mg_nota_pengambilan">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.NotaPengambilan">
+              <MappingFragment StoreEntitySet="mg_nota_pengambilan">
+                <ScalarProperty Name="keterangan" ColumnName="keterangan" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+                <ScalarProperty Name="nama_karyawan" ColumnName="nama_karyawan" />
+                <ScalarProperty Name="no_nota" ColumnName="no_nota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_stok_barang">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.StokBarang">
+              <MappingFragment StoreEntitySet="mg_stok_barang">
+                <ScalarProperty Name="stok" ColumnName="stok" />
+                <ScalarProperty Name="harga_satuan" ColumnName="harga_satuan" />
+                <ScalarProperty Name="tanggal_masuk" ColumnName="tanggal_masuk" />
+                <ScalarProperty Name="no_nota" ColumnName="no_nota" />
+                <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="id_barang" ColumnName="id_barang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_stok_barang_total">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.StokBarangTotal">
+              <MappingFragment StoreEntitySet="mg_stok_barang_total">
+                <ScalarProperty Name="stok" ColumnName="stok" />
+                <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="id_barang" ColumnName="id_barang" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mg_total_pembelian">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.TotalPembelian">
+              <MappingFragment StoreEntitySet="mg_total_pembelian">
+                <ScalarProperty Name="total_harga" ColumnName="total_harga" />
+                <ScalarProperty Name="harga_satuan" ColumnName="harga_satuan" />
+                <ScalarProperty Name="banyak_barang" ColumnName="banyak_barang" />
+                <ScalarProperty Name="nama_kategori" ColumnName="nama_kategori" />
+                <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="no_nota" ColumnName="no_nota" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -178,7 +965,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

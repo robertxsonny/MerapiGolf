@@ -38,7 +38,7 @@ namespace MerapiGolfLogistik
             {
                 using (dbContent = new MerapiGolfLogistikEntities())
                 {
-                    var cat = dbContent.Categories.Where(p => p.categoryid == kategoriform.selectedId).Single();
+                    var cat = dbContent.Kategori.Where(p => p.id == kategoriform.selectedId).Single();
                     kategoriTb.Text = cat.categoryid + " | " + cat.categoryname;
                 }
             }

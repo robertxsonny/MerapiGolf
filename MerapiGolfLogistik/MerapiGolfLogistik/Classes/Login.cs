@@ -14,7 +14,7 @@ namespace MerapiGolfLogistik.Classes
             using(dbContent = new MerapiGolfLogistikEntities())
             {
                 string md5 = MD5.Encrypt(password);
-                var users = dbContent.Users.Where(p => p.username.Equals(username) && p.password.Equals(md5));
+                var users = dbContent.User.Where(p => p.username.Equals(username) && p.password.Equals(md5));
                 if (users.Count() != 0)
                 {
                     return users.FirstOrDefault().role.ToLower();
@@ -35,7 +35,7 @@ namespace MerapiGolfLogistik.Classes
                     user.username = username;
                     user.password = md5;
                     user.role = role;
-                    dbContent.Users.Add(user);
+                    dbContent.ListUser.Add(user);
                     dbContent.SaveChanges();
                     return true;
                 }

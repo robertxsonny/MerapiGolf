@@ -17,15 +17,25 @@ namespace MerapiGolfLogistik
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.Items = new HashSet<Item>();
+            this.pembelian = new HashSet<Pembelian>();
+            this.pengambilan = new HashSet<Pengambilan>();
+            this.pengembalian = new HashSet<Pengembalian>();
         }
     
         public System.Guid id { get; set; }
         public string username { get; set; }
         public string password { get; set; }
+        public string nama_karyawan { get; set; }
+        public string alamat_karyawan { get; set; }
+        public string telepon_karyawan { get; set; }
+        public string email_karyawan { get; set; }
         public string role { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item> Items { get; set; }
+        public virtual ICollection<Pembelian> pembelian { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pengambilan> pengambilan { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Pengembalian> pengembalian { get; set; }
     }
 }

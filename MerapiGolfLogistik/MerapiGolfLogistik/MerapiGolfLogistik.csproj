@@ -75,7 +75,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs">
+    <Compile Include="Aktiva.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Barang.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Classes\FetchData.cs" />
@@ -87,7 +90,7 @@
     <Compile Include="InputBarang.Designer.cs">
       <DependentUpon>InputBarang.cs</DependentUpon>
     </Compile>
-    <Compile Include="Item.cs">
+    <Compile Include="Kategori.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
@@ -112,6 +115,27 @@
       <DependentUpon>MerapiGolfEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs" />
+    <Compile Include="NotaPembelian.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotaPengambilan.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pembelian.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PembelianItem.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pengambilan.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PengambilanItem.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pengembalian.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="PilihInputBarang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -126,6 +150,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StokBarang.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StokBarangTotal.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Supplier.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TotalPembelian.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
@@ -156,7 +192,9 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MerapiGolfEntity.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Databases\MerapiGolfDb_20160107_1818.bak" />
     <None Include="Databases\MerapiGolfLogistik_07012016.bak" />
+    <None Include="Databases\MerapiGolfDb_07012016_1043.bak" />
     <None Include="MerapiGolfEntity.edmx.diagram">
       <DependentUpon>MerapiGolfEntity.edmx</DependentUpon>
     </None>

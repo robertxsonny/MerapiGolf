@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MerapiGolfLogistik.Models
 {
-    public class CategoryView : MerapiGolfLogistik.Category
+    public class CategoryView : MerapiGolfLogistik.Kategori
     {
        public int stock { get; set; }
     }
