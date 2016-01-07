@@ -55,7 +55,7 @@
             this.tambahBarangBtn.Name = "tambahBarangBtn";
             this.tambahBarangBtn.Size = new System.Drawing.Size(425, 57);
             this.tambahBarangBtn.TabIndex = 1;
-            this.tambahBarangBtn.Text = "Tambah Jenis Barang Baru";
+            this.tambahBarangBtn.Text = "Tambah Jenis Barang Baru (F1)";
             this.tambahBarangBtn.UseVisualStyleBackColor = true;
             this.tambahBarangBtn.Click += new System.EventHandler(this.tambahBarangBtn_Click);
             // 
@@ -68,7 +68,7 @@
             this.tambahStokBtn.Name = "tambahStokBtn";
             this.tambahStokBtn.Size = new System.Drawing.Size(425, 54);
             this.tambahStokBtn.TabIndex = 2;
-            this.tambahStokBtn.Text = "Tambah Stok Barang";
+            this.tambahStokBtn.Text = "Tambah Stok Barang (F2)";
             this.tambahStokBtn.UseVisualStyleBackColor = true;
             this.tambahStokBtn.Click += new System.EventHandler(this.tambahStokBtn_Click);
             // 
@@ -109,6 +109,7 @@
             this.Text = "Pilih Jenis Input Barang";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PilihInputBarang_FormClosed);
             this.Load += new System.EventHandler(this.PilihInputBarang_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PilihInputBarang_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 

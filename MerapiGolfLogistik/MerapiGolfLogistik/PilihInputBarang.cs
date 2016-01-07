@@ -18,6 +18,7 @@ namespace MerapiGolfLogistik
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             this.user = loggedInUser;
+            this.KeyPreview = true;
         }
 
         private void PilihInputBarang_Load(object sender, EventArgs e)
@@ -26,6 +27,11 @@ namespace MerapiGolfLogistik
         }
 
         private void tambahBarangBtn_Click(object sender, EventArgs e)
+        {
+            OpenAddItems();
+        }
+
+        private static void OpenAddItems()
         {
             InputBarang inputform = new InputBarang();
             inputform.ShowDialog();
@@ -40,6 +46,12 @@ namespace MerapiGolfLogistik
         {
             Login login = new Login();
             login.Show();
+        }
+
+        private void PilihInputBarang_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+                OpenAddItems();
         }
     }
 }

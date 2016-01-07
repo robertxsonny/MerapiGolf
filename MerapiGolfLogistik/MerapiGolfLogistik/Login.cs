@@ -18,6 +18,8 @@ namespace MerapiGolfLogistik
         {
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
+            this.KeyPreview = true;
+            usernameTb.Focus();
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -40,6 +42,18 @@ namespace MerapiGolfLogistik
                     MessageBox.Show("Username atau password yang Anda masukkan salah!");
                     break;
             }
+        }
+
+        private void usernameTb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == Convert.ToChar(Keys.Enter))
+                passwordTb.Focus();
+        }
+
+        private void passwordTb_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+                loginBtn.Focus();
         }
 
         //private void button1_Click(object sender, EventArgs e)
