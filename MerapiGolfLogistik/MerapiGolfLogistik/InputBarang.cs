@@ -10,28 +10,18 @@ using System.Windows.Forms;
 
 namespace MerapiGolfLogistik
 {
-    public partial class Gudang : Form
+    public partial class InputBarang : Form
     {
-        //input
-        private static string user;
-        //output
-        public string id;
-        public Gudang(string loggedInUser)
+        
+        public InputBarang()
         {
             InitializeComponent();
-            user = loggedInUser;
             StartPosition = FormStartPosition.CenterScreen;
         }
 
         private void Gudang_Load(object sender, EventArgs e)
         {
-            MessageBox.Show("Akun yang login sekarang: " + user);
-        }
-
-        private void testBtn_Click(object sender, EventArgs e)
-        {
-            id = "[INI ID BARANG]";
-            this.DialogResult = DialogResult.OK;
+            //MessageBox.Show("Akun yang login sekarang: " + user);
         }
     }
 }

@@ -64,9 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gudang.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="Gudang.cs" />
     <Compile Include="Gudang.Designer.cs">
       <DependentUpon>Gudang.cs</DependentUpon>
     </Compile>
