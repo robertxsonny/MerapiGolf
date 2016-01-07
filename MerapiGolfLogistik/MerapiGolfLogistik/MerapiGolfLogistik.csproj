@@ -55,6 +55,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net.Http" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -64,15 +66,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Gudang.cs" />
-    <Compile Include="Gudang.Designer.cs">
-      <DependentUpon>Gudang.cs</DependentUpon>
+    <Compile Include="Category.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Classes\Login.cs" />
+    <Compile Include="Classes\MD5.cs" />
+    <Compile Include="InputBarang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Item.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Login.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Login.Designer.cs" />
+    <Compile Include="MerapiGolfEntity.Context.cs" />
+    <Compile Include="MerapiGolfEntity.Context1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MerapiGolfEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MerapiGolfEntity.cs" />
+    <Compile Include="MerapiGolfEntity.Designer.cs">
+      <DependentUpon>MerapiGolfEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MerapiGolfEntity1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MerapiGolfEntity1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MerapiGolfEntity.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="PilihInputBarang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PilihInputBarang.Designer.cs">
+      <DependentUpon>PilihInputBarang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Gudang.resx">
-      <DependentUpon>Gudang.cs</DependentUpon>
+    <Compile Include="User.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="InputBarang.resx">
+      <DependentUpon>InputBarang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -86,7 +127,16 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Assets\EULA.rtf" />
+    <None Include="Databases\MerapiGolfLogistik_07012016.bak" />
     <None Include="MerapiGolfDb_07012016_1043.bak" />
+    <EntityDeploy Include="MerapiGolfEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MerapiGolfEntity1.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="MerapiGolfEntity.edmx.diagram">
+      <DependentUpon>MerapiGolfEntity.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -114,6 +164,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Assets\logo.ico" />
+    <Content Include="MerapiGolfEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MerapiGolfEntity.Context1.cs</LastGenOutput>
+    </Content>
+    <Content Include="MerapiGolfEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MerapiGolfEntity1.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
