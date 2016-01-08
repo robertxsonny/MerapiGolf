@@ -35,7 +35,7 @@ namespace MerapiGolfLogistik.Classes
                     user.username = username;
                     user.password = md5;
                     user.role = role;
-                    dbContent.ListUser.Add(user);
+                    dbContent.User.Add(user);
                     dbContent.SaveChanges();
                     return true;
                 }
