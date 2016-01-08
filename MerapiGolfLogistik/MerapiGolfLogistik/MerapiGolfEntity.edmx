@@ -21,6 +21,7 @@
           <Property Name="nama_barang" Type="nvarchar(max)" />
           <Property Name="id_kategori" Type="uniqueidentifier" />
           <Property Name="satuan" Type="nvarchar" MaxLength="10" />
+          <Property Name="tanggalinput" Type="datetime" />
         </EntityType>
         <EntityType Name="mg_kategori">
           <Key>
@@ -516,6 +517,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
           <Property Name="satuan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="kategori" Relationship="MerapiGolfLogistikModel.FK_mg_barang_mg_kategori" FromRole="mg_barang" ToRole="mg_kategori" />
           <NavigationProperty Name="pembelian_item" Relationship="MerapiGolfLogistikModel.FK_mg_pembelian_item_mg_barang" FromRole="mg_barang" ToRole="mg_pembelian_item" />
+          <Property Name="tanggalinput" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Kategori">
           <Key>
@@ -835,6 +837,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
           <EntitySetMapping Name="mg_barang">
             <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Barang">
               <MappingFragment StoreEntitySet="mg_barang">
+                <ScalarProperty Name="tanggalinput" ColumnName="tanggalinput" />
                 <ScalarProperty Name="satuan" ColumnName="satuan" />
                 <ScalarProperty Name="id_kategori" ColumnName="id_kategori" />
                 <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />

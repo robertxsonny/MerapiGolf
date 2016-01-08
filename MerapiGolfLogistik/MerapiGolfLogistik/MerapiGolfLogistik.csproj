@@ -82,6 +82,7 @@
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Classes\FetchData.cs" />
+    <Compile Include="Classes\InsertData.cs" />
     <Compile Include="Classes\Login.cs" />
     <Compile Include="Classes\MD5.cs" />
     <Compile Include="Classes\Pembelian.cs" />
@@ -116,6 +117,7 @@
       <DependentUpon>MerapiGolfEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\ItemView.cs" />
     <Compile Include="Models\NotaPembelianDetail.cs" />
     <Compile Include="Models\NotaPengambilanDetail.cs" />
     <Compile Include="NotaPembelian.cs">
@@ -208,6 +210,7 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.Category.datasource" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Models.ItemView.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -237,6 +240,8 @@
     <Content Include="Assets\add.png" />
     <Content Include="Assets\add_64.png" />
     <Content Include="Assets\add_32.png" />
+    <Content Include="Assets\cancel_16.png" />
+    <Content Include="Assets\ok_16.png" />
     <Content Include="Assets\logo.ico" />
     <Content Include="Assets\search_16.png" />
     <Content Include="Assets\pencil_16.png" />
