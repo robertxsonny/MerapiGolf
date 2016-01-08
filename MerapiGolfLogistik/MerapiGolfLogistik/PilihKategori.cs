@@ -13,7 +13,7 @@ namespace MerapiGolfLogistik
 {
     public partial class PilihKategori : Form
     {
-        public int selectedId;
+        public Guid selectedId;
         public PilihKategori()
         {
             InitializeComponent();
@@ -33,7 +33,7 @@ namespace MerapiGolfLogistik
         private void ReturnToAddItems(int rowindex)
         {
             string idstr = categoriesView.Rows[rowindex].Cells[0].Value.ToString();
-            this.selectedId = Convert.ToInt32(idstr);
+            this.selectedId = Guid.Parse(idstr);
             this.DialogResult = DialogResult.OK;
         }
 

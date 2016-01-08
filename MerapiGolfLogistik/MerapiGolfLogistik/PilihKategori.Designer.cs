@@ -34,10 +34,11 @@
             this.catQuery = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.categoriesView = new System.Windows.Forms.DataGridView();
-            this.categoryidDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categorynameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nama_kategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -76,12 +77,14 @@
             // 
             this.categoriesView.AllowUserToAddRows = false;
             this.categoriesView.AllowUserToDeleteRows = false;
+            this.categoriesView.AllowUserToOrderColumns = true;
             this.categoriesView.AutoGenerateColumns = false;
             this.categoriesView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.categoriesView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.categoryidDataGridViewTextBoxColumn,
-            this.categorynameDataGridViewTextBoxColumn,
-            this.stockDataGridViewTextBoxColumn});
+            this.id,
+            this.index,
+            this.nama_kategori,
+            this.stock});
             this.categoriesView.DataSource = this.categoryBindingSource;
             this.categoriesView.Location = new System.Drawing.Point(16, 54);
             this.categoriesView.Name = "categoriesView";
@@ -90,35 +93,39 @@
             this.categoriesView.Size = new System.Drawing.Size(542, 386);
             this.categoriesView.TabIndex = 3;
             this.categoriesView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.categoriesView_CellMouseDoubleClick);
-     
-            // 
-            // categoryidDataGridViewTextBoxColumn
-            // 
-            this.categoryidDataGridViewTextBoxColumn.DataPropertyName = "categoryid";
-            this.categoryidDataGridViewTextBoxColumn.HeaderText = "Kode Kategori";
-            this.categoryidDataGridViewTextBoxColumn.Name = "categoryidDataGridViewTextBoxColumn";
-            this.categoryidDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categoryidDataGridViewTextBoxColumn.Width = 190;
-            // 
-            // categorynameDataGridViewTextBoxColumn
-            // 
-            this.categorynameDataGridViewTextBoxColumn.DataPropertyName = "categoryname";
-            this.categorynameDataGridViewTextBoxColumn.HeaderText = "Nama Kategori";
-            this.categorynameDataGridViewTextBoxColumn.Name = "categorynameDataGridViewTextBoxColumn";
-            this.categorynameDataGridViewTextBoxColumn.ReadOnly = true;
-            this.categorynameDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // stockDataGridViewTextBoxColumn
-            // 
-            this.stockDataGridViewTextBoxColumn.DataPropertyName = "stock";
-            this.stockDataGridViewTextBoxColumn.HeaderText = "Jumlah Barang di Kategori Ini";
-            this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
-            this.stockDataGridViewTextBoxColumn.ReadOnly = true;
-            this.stockDataGridViewTextBoxColumn.Width = 179;
             // 
             // categoryBindingSource
             // 
             this.categoryBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.CategoryView);
+            // 
+            // id
+            // 
+            this.id.DataPropertyName = "id";
+            this.id.HeaderText = "Kode";
+            this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Visible = false;
+            // 
+            // index
+            // 
+            this.index.DataPropertyName = "index";
+            this.index.HeaderText = "Kode";
+            this.index.Name = "index";
+            this.index.ReadOnly = true;
+            // 
+            // nama_kategori
+            // 
+            this.nama_kategori.DataPropertyName = "nama_kategori";
+            this.nama_kategori.HeaderText = "Nama Kategori";
+            this.nama_kategori.Name = "nama_kategori";
+            this.nama_kategori.ReadOnly = true;
+            // 
+            // stock
+            // 
+            this.stock.DataPropertyName = "stock";
+            this.stock.HeaderText = "Jumlah Barang di Kategori Ini";
+            this.stock.Name = "stock";
+            this.stock.ReadOnly = true;
             // 
             // PilihKategori
             // 
@@ -147,7 +154,10 @@
         private System.Windows.Forms.DataGridView categoriesView;
         private System.Windows.Forms.DataGridViewTextBoxColumn categoryidDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn categorynameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource categoryBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn index;
+        private System.Windows.Forms.DataGridViewTextBoxColumn nama_kategori;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stock;
     }
 }

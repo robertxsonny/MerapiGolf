@@ -28,6 +28,7 @@
           </Key>
           <Property Name="id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="nama_kategori" Type="nvarchar(max)" />
+          <Property Name="inputdate" Type="datetime" />
         </EntityType>
         <EntityType Name="mg_pembelian">
           <Key>
@@ -165,18 +166,6 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pembelian' does not have
           <Property Name="harga_satuan" Type="int" />
           <Property Name="total_harga" Type="int" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6013: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="mg_total_pengambilan">
-          <Property Name="no_nota" Type="nvarchar" MaxLength="10" />
-          <Property Name="nama_barang" Type="nvarchar(max)" />
-          <Property Name="nama_kategori" Type="nvarchar(max)" />
-          <Property Name="satuan" Type="nvarchar" MaxLength="10" />
-          <Property Name="harga_satuan" Type="float" />
-          <Property Name="nama_aktiva" Type="nvarchar(max)" />
-          <Property Name="banyak_barang" Type="float" />
-          <Property Name="total_harga" Type="float" />
-        </EntityType>-->
         <Association Name="FK_mg_barang_mg_kategori">
           <End Role="mg_kategori" Type="Self.mg_kategori" Multiplicity="0..1" />
           <End Role="mg_barang" Type="Self.mg_barang" Multiplicity="*" />
@@ -504,6 +493,7 @@ warning 6013: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
           <Property Name="id" Type="Guid" Nullable="false" />
           <Property Name="nama_kategori" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="barang" Relationship="MerapiGolfLogistikModel.FK_mg_barang_mg_kategori" FromRole="mg_kategori" ToRole="mg_barang" />
+          <Property Name="inputdate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="Pembelian">
           <Key>
@@ -809,6 +799,7 @@ warning 6013: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
           <EntitySetMapping Name="mg_kategori">
             <EntityTypeMapping TypeName="MerapiGolfLogistikModel.Kategori">
               <MappingFragment StoreEntitySet="mg_kategori">
+                <ScalarProperty Name="inputdate" ColumnName="inputdate" />
                 <ScalarProperty Name="nama_kategori" ColumnName="nama_kategori" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

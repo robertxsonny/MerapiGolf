@@ -8,6 +8,7 @@ namespace MerapiGolfLogistik.Models
 {
     public class CategoryView : MerapiGolfLogistik.Kategori
     {
-       public int stock { get; set; }
+        public int stock { get; set; }
+        public string index { get; set; }
     }
 }

@@ -25,20 +25,20 @@ namespace MerapiGolfLogistik
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Aktiva> Aktiva { get; set; }
-        public virtual DbSet<Barang> Barang { get; set; }
-        public virtual DbSet<Kategori> Kategori { get; set; }
-        public virtual DbSet<Pembelian> Pembelian { get; set; }
-        public virtual DbSet<PembelianItem> PembelianItem { get; set; }
-        public virtual DbSet<Pengambilan> Pengambilan { get; set; }
-        public virtual DbSet<PengambilanItem> PengambilanItem { get; set; }
-        public virtual DbSet<Pengembalian> Pengembalian { get; set; }
-        public virtual DbSet<Supplier> Supplier { get; set; }
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<NotaPembelian> NotaPembelian { get; set; }
-        public virtual DbSet<NotaPengambilan> NotaPengambilan { get; set; }
-        public virtual DbSet<StokBarang> StokBarang { get; set; }
-        public virtual DbSet<StokBarangTotal> StokBarangTotal { get; set; }
-        public virtual DbSet<TotalPembelian> TotalPembelian { get; set; }
+        public virtual DbSet<Aktiva> mg_aktiva { get; set; }
+        public virtual DbSet<Barang> mg_barang { get; set; }
+        public virtual DbSet<Kategori> mg_kategori { get; set; }
+        public virtual DbSet<Pembelian> mg_pembelian { get; set; }
+        public virtual DbSet<PembelianItem> mg_pembelian_item { get; set; }
+        public virtual DbSet<Pengambilan> mg_pengambilan { get; set; }
+        public virtual DbSet<PengambilanItem> mg_pengambilan_item { get; set; }
+        public virtual DbSet<Pengembalian> mg_pengembalian { get; set; }
+        public virtual DbSet<Supplier> mg_supplier { get; set; }
+        public virtual DbSet<User> mg_user { get; set; }
+        public virtual DbSet<NotaPembelian> mg_nota_pembelian { get; set; }
+        public virtual DbSet<NotaPengambilan> mg_nota_pengambilan { get; set; }
+        public virtual DbSet<StokBarang> mg_stok_barang { get; set; }
+        public virtual DbSet<StokBarangTotal> mg_stok_barang_total { get; set; }
+        public virtual DbSet<TotalPembelian> mg_total_pembelian { get; set; }
     }
 }

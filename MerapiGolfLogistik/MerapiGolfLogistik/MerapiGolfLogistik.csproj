@@ -192,6 +192,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MerapiGolfEntity.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Databases\MerapiGolfDb_08012016_0717.bak" />
     <None Include="Databases\MerapiGolfDb_20160107_1818.bak" />
     <None Include="Databases\MerapiGolfLogistik_07012016.bak" />
     <None Include="Databases\MerapiGolfDb_07012016_1043.bak" />
