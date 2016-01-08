@@ -11,10 +11,10 @@ namespace MerapiGolfLogistik.Classes
         private MerapiGolfLogistikEntities dbContent;
         internal string LoginRole(string username, string password)
         {
-            using(dbContent = new MerapiGolfLogistikEntities())
+            using (dbContent = new MerapiGolfLogistikEntities())
             {
                 string md5 = MD5.Encrypt(password);
-                var users = dbContent.User.Where(p => p.username.Equals(username) && p.password.Equals(md5));
+                var users = dbContent.mg_user.Where(p => p.username == username && p.password == md5);
                 if (users.Count() != 0)
                 {
                     return users.FirstOrDefault().role.ToLower();
@@ -35,7 +35,10 @@ namespace MerapiGolfLogistik.Classes
                     user.username = username;
                     user.password = md5;
                     user.role = role;
-                    dbContent.User.Add(user);
+                    user.nama_karyawan = "Admin Input";
+                    user.alamat_karyawan = "Jalan Default";
+
+                    dbContent.mg_user.Add(user);
                     dbContent.SaveChanges();
                     return true;
                 }

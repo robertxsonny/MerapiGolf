@@ -12,19 +12,16 @@ namespace MerapiGolfLogistik
     using System;
     using System.Collections.Generic;
     
-    public partial class Kategori
+    public partial class TotalPengambilan
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Kategori()
-        {
-            this.barang = new HashSet<Barang>();
-        }
-    
         public System.Guid id { get; set; }
+        public System.Guid no_nota { get; set; }
+        public string nama_barang { get; set; }
         public string nama_kategori { get; set; }
-        public Nullable<System.DateTime> inputdate { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Barang> barang { get; set; }
+        public string satuan { get; set; }
+        public Nullable<double> harga_satuan { get; set; }
+        public string nama_aktiva { get; set; }
+        public Nullable<double> banyak_barang { get; set; }
+        public Nullable<double> total_harga { get; set; }
     }
 }

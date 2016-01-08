@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,10 +26,8 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -165,6 +165,9 @@
     <Compile Include="TotalPembelian.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="TotalPengambilan.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
@@ -195,6 +198,8 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>MerapiGolfEntity.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="Databases\MerapiGolfDb_08012016_0717.bak" />
+    <None Include="Databases\MerapiGolfDb_08012016_0825.bak" />
     <None Include="Databases\MerapiGolfDb_20160107_1818.bak" />
     <None Include="Databases\MerapiGolfLogistik_07012016.bak" />
     <None Include="Databases\MerapiGolfDb_07012016_1043.bak" />

@@ -38,8 +38,8 @@ namespace MerapiGolfLogistik
             {
                 using (dbContent = new MerapiGolfLogistikEntities())
                 {
-                    var cat = dbContent.Kategori.Where(p => p.id == kategoriform.selectedId).Single();
-                    kategoriTb.Text = cat.categoryid + " | " + cat.categoryname;
+                    var cat = dbContent.mg_kategori.Where(p => p.id == kategoriform.selectedId).Single();
+                    kategoriTb.Text = cat.nama_kategori;
                 }
             }
         }
