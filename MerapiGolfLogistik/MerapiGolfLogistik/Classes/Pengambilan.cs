@@ -63,7 +63,7 @@ namespace MerapiGolfLogistik.Classes
             }
         }
 
-        public NotaPengambilanDetail GetNotaPembelian()
+        public NotaPengambilanDetail GetNotaPengambilan()
         {
             using (dbContent = new MerapiGolfLogistikEntities())
             {
