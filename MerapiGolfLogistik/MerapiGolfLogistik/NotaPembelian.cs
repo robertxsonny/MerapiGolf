@@ -14,11 +14,11 @@ namespace MerapiGolfLogistik
     
     public partial class NotaPembelian
     {
-        public string id { get; set; }
         public string nama_karyawan { get; set; }
         public string nama_supplier { get; set; }
         public Nullable<System.DateTime> tanggal { get; set; }
         public Nullable<double> total { get; set; }
         public string keterangan { get; set; }
+        public string no_nota { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace MerapiGolfLogistik.Models
 
         public NotaPembelianDetail(NotaPembelian nota, List<TotalPembelian> items)
         {
-            this.id = nota.id;
+            this.no_nota = nota.no_nota;
             this.nama_karyawan = nota.nama_karyawan;
             this.nama_supplier = nota.nama_supplier;
             this.tanggal = nota.tanggal;
@@ -26,7 +26,7 @@ namespace MerapiGolfLogistik.Models
             this.items = new List<TotalPembelian>();
             foreach (TotalPembelian item in items)
             {
-                if (item.no_nota == nota.id)
+                if (item.no_nota == nota.no_nota)
                     items.Add(item);
             }
         }

@@ -20,5 +20,6 @@ namespace MerapiGolfLogistik
         public Nullable<System.DateTime> tanggal_masuk { get; set; }
         public Nullable<double> harga_satuan { get; set; }
         public Nullable<double> stok { get; set; }
+        public Nullable<System.Guid> id { get; set; }
     }
 }
