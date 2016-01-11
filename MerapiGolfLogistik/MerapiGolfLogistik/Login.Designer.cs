@@ -131,6 +131,7 @@
             this.MinimizeBox = false;
             this.Name = "Login";
             this.Text = "Masuk ke Merapi Golf Inventory";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

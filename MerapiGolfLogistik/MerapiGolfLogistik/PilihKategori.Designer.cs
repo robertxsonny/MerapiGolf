@@ -34,11 +34,17 @@
             this.catQuery = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.categoriesView = new System.Windows.Forms.DataGridView();
-            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nama_kategori = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.indexDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.namakategoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.inputdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.barangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.categoriesView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -56,7 +62,7 @@
             // 
             this.catQuery.Location = new System.Drawing.Point(122, 9);
             this.catQuery.Name = "catQuery";
-            this.catQuery.Size = new System.Drawing.Size(355, 26);
+            this.catQuery.Size = new System.Drawing.Size(322, 26);
             this.catQuery.TabIndex = 1;
             this.catQuery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.catQuery_KeyDown);
             // 
@@ -64,11 +70,11 @@
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(483, 9);
+            this.button1.Location = new System.Drawing.Point(450, 9);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 29);
+            this.button1.Size = new System.Drawing.Size(108, 39);
             this.button1.TabIndex = 2;
-            this.button1.Text = "Cari";
+            this.button1.Text = "Cari (F2)";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -84,7 +90,13 @@
             this.id,
             this.index,
             this.nama_kategori,
-            this.stock});
+            this.stock,
+            this.stockDataGridViewTextBoxColumn,
+            this.indexDataGridViewTextBoxColumn,
+            this.idDataGridViewTextBoxColumn,
+            this.namakategoriDataGridViewTextBoxColumn,
+            this.inputdateDataGridViewTextBoxColumn,
+            this.barangDataGridViewTextBoxColumn});
             this.categoriesView.DataSource = this.categoryBindingSource;
             this.categoriesView.Location = new System.Drawing.Point(16, 54);
             this.categoriesView.Name = "categoriesView";
@@ -93,10 +105,6 @@
             this.categoriesView.Size = new System.Drawing.Size(542, 386);
             this.categoriesView.TabIndex = 3;
             this.categoriesView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.categoriesView_CellMouseDoubleClick);
-            // 
-            // categoryBindingSource
-            // 
-            this.categoryBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.CategoryView);
             // 
             // id
             // 
@@ -126,6 +134,52 @@
             this.stock.HeaderText = "Jumlah Barang di Kategori Ini";
             this.stock.Name = "stock";
             this.stock.ReadOnly = true;
+            // 
+            // stockDataGridViewTextBoxColumn
+            // 
+            this.stockDataGridViewTextBoxColumn.DataPropertyName = "stock";
+            this.stockDataGridViewTextBoxColumn.HeaderText = "stock";
+            this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
+            this.stockDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // indexDataGridViewTextBoxColumn
+            // 
+            this.indexDataGridViewTextBoxColumn.DataPropertyName = "index";
+            this.indexDataGridViewTextBoxColumn.HeaderText = "index";
+            this.indexDataGridViewTextBoxColumn.Name = "indexDataGridViewTextBoxColumn";
+            this.indexDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // namakategoriDataGridViewTextBoxColumn
+            // 
+            this.namakategoriDataGridViewTextBoxColumn.DataPropertyName = "nama_kategori";
+            this.namakategoriDataGridViewTextBoxColumn.HeaderText = "nama_kategori";
+            this.namakategoriDataGridViewTextBoxColumn.Name = "namakategoriDataGridViewTextBoxColumn";
+            this.namakategoriDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // inputdateDataGridViewTextBoxColumn
+            // 
+            this.inputdateDataGridViewTextBoxColumn.DataPropertyName = "inputdate";
+            this.inputdateDataGridViewTextBoxColumn.HeaderText = "inputdate";
+            this.inputdateDataGridViewTextBoxColumn.Name = "inputdateDataGridViewTextBoxColumn";
+            this.inputdateDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // barangDataGridViewTextBoxColumn
+            // 
+            this.barangDataGridViewTextBoxColumn.DataPropertyName = "barang";
+            this.barangDataGridViewTextBoxColumn.HeaderText = "barang";
+            this.barangDataGridViewTextBoxColumn.Name = "barangDataGridViewTextBoxColumn";
+            this.barangDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // categoryBindingSource
+            // 
+            this.categoryBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.CategoryView);
             // 
             // PilihKategori
             // 
@@ -159,5 +213,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn index;
         private System.Windows.Forms.DataGridViewTextBoxColumn nama_kategori;
         private System.Windows.Forms.DataGridViewTextBoxColumn stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn indexDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn namakategoriDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn inputdateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn barangDataGridViewTextBoxColumn;
     }
 }
