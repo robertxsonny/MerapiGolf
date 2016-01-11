@@ -18,7 +18,7 @@ namespace MerapiGolfLogistik.Classes
                 barang.nama_barang = itemname;
                 barang.satuan = pcs;
                 barang.id = Guid.NewGuid();
-                barang.tanggalinput = inputdate;
+                //barang.tanggalinput = inputdate;
                 dbContent.mg_barang.Add(barang);
                 await dbContent.SaveChangesAsync();
                 return barang;
