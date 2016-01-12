@@ -160,13 +160,14 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pembelian' does not have
             <PropertyRef Name="id" />
             <PropertyRef Name="no_nota" />
           </Key>
-          <Property Name="id" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="no_nota" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="nama_barang" Type="nvarchar(max)" />
           <Property Name="nama_kategori" Type="nvarchar(max)" />
-          <Property Name="banyak_barang" Type="int" />
-          <Property Name="harga_satuan" Type="int" />
-          <Property Name="total_harga" Type="int" />
+          <Property Name="banyak_barang" Type="float" />
+          <Property Name="harga_satuan" Type="float" />
+          <Property Name="total_harga" Type="float" />
+          <Property Name="satuan" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -373,7 +374,8 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
     [mg_total_pembelian].[nama_kategori] AS [nama_kategori], 
     [mg_total_pembelian].[banyak_barang] AS [banyak_barang], 
     [mg_total_pembelian].[harga_satuan] AS [harga_satuan], 
-    [mg_total_pembelian].[total_harga] AS [total_harga]
+    [mg_total_pembelian].[total_harga] AS [total_harga], 
+    [mg_total_pembelian].[satuan] AS [satuan]
     FROM [dbo].[mg_total_pembelian] AS [mg_total_pembelian]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="mg_total_pengambilan" EntityType="Self.mg_total_pengambilan" store:Type="Views" store:Schema="dbo">
@@ -667,13 +669,14 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
             <PropertyRef Name="id" />
             <PropertyRef Name="no_nota" />
           </Key>
-          <Property Name="id" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="String" Nullable="false" />
           <Property Name="no_nota" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="nama_barang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="nama_kategori" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="banyak_barang" Type="Int32" />
           <Property Name="harga_satuan" Type="Int32" />
           <Property Name="total_harga" Type="Int32" />
+          <Property Name="satuan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_mg_pengambilan_item_mg_aktiva">
           <End Type="MerapiGolfLogistikModel.Aktiva" Role="mg_aktiva" Multiplicity="0..1" />
@@ -985,6 +988,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
           <EntitySetMapping Name="mg_total_pembelian">
             <EntityTypeMapping TypeName="MerapiGolfLogistikModel.TotalPembelian">
               <MappingFragment StoreEntitySet="mg_total_pembelian">
+                <ScalarProperty Name="satuan" ColumnName="satuan" />
                 <ScalarProperty Name="total_harga" ColumnName="total_harga" />
                 <ScalarProperty Name="harga_satuan" ColumnName="harga_satuan" />
                 <ScalarProperty Name="banyak_barang" ColumnName="banyak_barang" />

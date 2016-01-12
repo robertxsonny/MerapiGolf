@@ -21,5 +21,6 @@ namespace MerapiGolfLogistik
         public Nullable<int> banyak_barang { get; set; }
         public Nullable<int> harga_satuan { get; set; }
         public Nullable<int> total_harga { get; set; }
+        public string satuan { get; set; }
     }
 }

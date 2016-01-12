@@ -148,7 +148,6 @@ namespace MerapiGolfLogistik
             selectedCat = Guid.Empty;
             kategoriTb.Text = string.Empty;
             tanggalInputTb.Text = string.Empty;
-            kodeBarangTb.Text = string.Empty;
             namaBarangTb.Text = string.Empty;
             satuanTb.Text = string.Empty;
             this.tooltipStatus.Text = "Masukkan kategori terlebih dahulu";

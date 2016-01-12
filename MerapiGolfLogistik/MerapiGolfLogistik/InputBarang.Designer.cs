@@ -34,10 +34,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tooltipStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.kategoriTb = new System.Windows.Forms.TextBox();
             this.pilihKategoriBtn = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.kodeBarangTb = new System.Windows.Forms.TextBox();
             this.namaBarangTb = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.satuanTb = new System.Windows.Forms.TextBox();
@@ -45,21 +45,19 @@
             this.label5 = new System.Windows.Forms.Label();
             this.tanggalInputTb = new System.Windows.Forms.DateTimePicker();
             this.itemsView = new System.Windows.Forms.DataGridView();
-            this.DeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.searchTb = new System.Windows.Forms.TextBox();
-            this.cariBtn = new System.Windows.Forms.Button();
-            this.simpanBtn = new System.Windows.Forms.Button();
-            this.cancelBtn = new System.Windows.Forms.Button();
-            this.tooltipStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.namabarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.satuanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemcountDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastcreateditemdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idkategoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.itemViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label6 = new System.Windows.Forms.Label();
+            this.searchTb = new System.Windows.Forms.TextBox();
+            this.cariBtn = new System.Windows.Forms.Button();
+            this.simpanBtn = new System.Windows.Forms.Button();
+            this.cancelBtn = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemsView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemViewBindingSource)).BeginInit();
@@ -92,6 +90,18 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(0, 25);
             // 
+            // tooltipStatus
+            // 
+            this.tooltipStatus.Name = "tooltipStatus";
+            this.tooltipStatus.Size = new System.Drawing.Size(60, 25);
+            this.tooltipStatus.Text = "Ready";
+            // 
+            // progressBar
+            // 
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(100, 24);
+            this.progressBar.Visible = false;
+            // 
             // kategoriTb
             // 
             this.kategoriTb.Enabled = false;
@@ -113,25 +123,9 @@
             this.pilihKategoriBtn.UseVisualStyleBackColor = true;
             this.pilihKategoriBtn.Click += new System.EventHandler(this.pilihKategoriBtn_Click);
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 106);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Kode Barang";
-            // 
-            // kodeBarangTb
-            // 
-            this.kodeBarangTb.Location = new System.Drawing.Point(177, 106);
-            this.kodeBarangTb.Name = "kodeBarangTb";
-            this.kodeBarangTb.Size = new System.Drawing.Size(550, 26);
-            this.kodeBarangTb.TabIndex = 4;
-            // 
             // namaBarangTb
             // 
-            this.namaBarangTb.Location = new System.Drawing.Point(177, 151);
+            this.namaBarangTb.Location = new System.Drawing.Point(177, 106);
             this.namaBarangTb.Name = "namaBarangTb";
             this.namaBarangTb.Size = new System.Drawing.Size(550, 26);
             this.namaBarangTb.TabIndex = 5;
@@ -139,7 +133,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 151);
+            this.label3.Location = new System.Drawing.Point(12, 106);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 20);
             this.label3.TabIndex = 6;
@@ -147,7 +141,7 @@
             // 
             // satuanTb
             // 
-            this.satuanTb.Location = new System.Drawing.Point(177, 196);
+            this.satuanTb.Location = new System.Drawing.Point(177, 151);
             this.satuanTb.Name = "satuanTb";
             this.satuanTb.Size = new System.Drawing.Size(550, 26);
             this.satuanTb.TabIndex = 6;
@@ -155,7 +149,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 196);
+            this.label4.Location = new System.Drawing.Point(12, 151);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(159, 20);
             this.label4.TabIndex = 8;
@@ -193,12 +187,20 @@
             this.lastcreateditemdateDataGridViewTextBoxColumn,
             this.idkategoriDataGridViewTextBoxColumn});
             this.itemsView.DataSource = this.itemViewBindingSource;
-            this.itemsView.Location = new System.Drawing.Point(16, 320);
+            this.itemsView.Location = new System.Drawing.Point(16, 282);
             this.itemsView.Name = "itemsView";
             this.itemsView.RowTemplate.Height = 28;
-            this.itemsView.Size = new System.Drawing.Size(917, 430);
+            this.itemsView.Size = new System.Drawing.Size(917, 468);
             this.itemsView.TabIndex = 12;
             this.itemsView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.itemsView_CellContentClick);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Kode";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // DeleteColumn
             // 
@@ -211,82 +213,6 @@
             this.DeleteColumn.Text = "X";
             this.DeleteColumn.UseColumnTextForButtonValue = true;
             this.DeleteColumn.Width = 50;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 286);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 20);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Cari Barang:";
-            // 
-            // searchTb
-            // 
-            this.searchTb.Location = new System.Drawing.Point(177, 286);
-            this.searchTb.Name = "searchTb";
-            this.searchTb.Size = new System.Drawing.Size(550, 26);
-            this.searchTb.TabIndex = 10;
-            this.searchTb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTb_KeyDown);
-            // 
-            // cariBtn
-            // 
-            this.cariBtn.Image = ((System.Drawing.Image)(resources.GetObject("cariBtn.Image")));
-            this.cariBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cariBtn.Location = new System.Drawing.Point(753, 275);
-            this.cariBtn.Name = "cariBtn";
-            this.cariBtn.Size = new System.Drawing.Size(180, 37);
-            this.cariBtn.TabIndex = 11;
-            this.cariBtn.Text = "Cari (F2)";
-            this.cariBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cariBtn.UseVisualStyleBackColor = true;
-            this.cariBtn.Click += new System.EventHandler(this.cariBtn_Click);
-            // 
-            // simpanBtn
-            // 
-            this.simpanBtn.Image = ((System.Drawing.Image)(resources.GetObject("simpanBtn.Image")));
-            this.simpanBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.simpanBtn.Location = new System.Drawing.Point(341, 239);
-            this.simpanBtn.Name = "simpanBtn";
-            this.simpanBtn.Size = new System.Drawing.Size(110, 30);
-            this.simpanBtn.TabIndex = 7;
-            this.simpanBtn.Text = "Simpan";
-            this.simpanBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.simpanBtn.UseVisualStyleBackColor = true;
-            this.simpanBtn.Click += new System.EventHandler(this.simpanBtn_Click);
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.Image = ((System.Drawing.Image)(resources.GetObject("cancelBtn.Image")));
-            this.cancelBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cancelBtn.Location = new System.Drawing.Point(457, 239);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(110, 30);
-            this.cancelBtn.TabIndex = 8;
-            this.cancelBtn.Text = "Batal";
-            this.cancelBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cancelBtn.UseVisualStyleBackColor = true;
-            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
-            // 
-            // tooltipStatus
-            // 
-            this.tooltipStatus.Name = "tooltipStatus";
-            this.tooltipStatus.Size = new System.Drawing.Size(60, 25);
-            this.tooltipStatus.Text = "Ready";
-            // 
-            // progressBar
-            // 
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(100, 24);
-            this.progressBar.Visible = false;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Kode";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
             // 
             // namabarangDataGridViewTextBoxColumn
             // 
@@ -327,6 +253,62 @@
             // 
             this.itemViewBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.ItemView);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 239);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(97, 20);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "Cari Barang:";
+            // 
+            // searchTb
+            // 
+            this.searchTb.Location = new System.Drawing.Point(177, 239);
+            this.searchTb.Name = "searchTb";
+            this.searchTb.Size = new System.Drawing.Size(550, 26);
+            this.searchTb.TabIndex = 10;
+            this.searchTb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTb_KeyDown);
+            // 
+            // cariBtn
+            // 
+            this.cariBtn.Image = ((System.Drawing.Image)(resources.GetObject("cariBtn.Image")));
+            this.cariBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cariBtn.Location = new System.Drawing.Point(753, 239);
+            this.cariBtn.Name = "cariBtn";
+            this.cariBtn.Size = new System.Drawing.Size(180, 37);
+            this.cariBtn.TabIndex = 11;
+            this.cariBtn.Text = "Cari (F2)";
+            this.cariBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cariBtn.UseVisualStyleBackColor = true;
+            this.cariBtn.Click += new System.EventHandler(this.cariBtn_Click);
+            // 
+            // simpanBtn
+            // 
+            this.simpanBtn.Image = ((System.Drawing.Image)(resources.GetObject("simpanBtn.Image")));
+            this.simpanBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.simpanBtn.Location = new System.Drawing.Point(341, 196);
+            this.simpanBtn.Name = "simpanBtn";
+            this.simpanBtn.Size = new System.Drawing.Size(110, 30);
+            this.simpanBtn.TabIndex = 7;
+            this.simpanBtn.Text = "Simpan";
+            this.simpanBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.simpanBtn.UseVisualStyleBackColor = true;
+            this.simpanBtn.Click += new System.EventHandler(this.simpanBtn_Click);
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.Image = ((System.Drawing.Image)(resources.GetObject("cancelBtn.Image")));
+            this.cancelBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cancelBtn.Location = new System.Drawing.Point(457, 196);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(110, 30);
+            this.cancelBtn.TabIndex = 8;
+            this.cancelBtn.Text = "Batal";
+            this.cancelBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
+            // 
             // InputBarang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -344,8 +326,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.namaBarangTb);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.kodeBarangTb);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.pilihKategoriBtn);
             this.Controls.Add(this.kategoriTb);
             this.Controls.Add(this.statusStrip1);
@@ -371,8 +351,6 @@
         private System.Windows.Forms.ToolStripStatusLabel statusLabel;
         private System.Windows.Forms.TextBox kategoriTb;
         private System.Windows.Forms.Button pilihKategoriBtn;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox kodeBarangTb;
         private System.Windows.Forms.TextBox namaBarangTb;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox satuanTb;
