@@ -193,6 +193,7 @@
             this.Name = "PilihKategori";
             this.Text = "Pilih Kategori";
             this.Load += new System.EventHandler(this.PilihKategori_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PilihKategori_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.categoriesView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).EndInit();
             this.ResumeLayout(false);

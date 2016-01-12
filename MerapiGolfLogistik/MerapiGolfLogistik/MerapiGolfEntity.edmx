@@ -142,6 +142,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_stok_barang' does not have a p
           <Property Name="tanggal_masuk" Type="date" />
           <Property Name="harga_satuan" Type="float" />
           <Property Name="stok" Type="float" />
+          <Property Name="satuan" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MerapiGolfDb.dbo.mg_stok_barang_total' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -149,9 +150,10 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_stok_barang_total' does not ha
           <Key>
             <PropertyRef Name="id_barang" />
           </Key>
-          <Property Name="id_barang" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="id_barang" Type="uniqueidentifier" Nullable="false" />
           <Property Name="nama_barang" Type="nvarchar(max)" />
           <Property Name="stok" Type="float" />
+          <Property Name="satuan" Type="nvarchar" MaxLength="10" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pembelian' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -356,14 +358,16 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
     [mg_stok_barang].[no_nota] AS [no_nota], 
     [mg_stok_barang].[tanggal_masuk] AS [tanggal_masuk], 
     [mg_stok_barang].[harga_satuan] AS [harga_satuan], 
-    [mg_stok_barang].[stok] AS [stok]
+    [mg_stok_barang].[stok] AS [stok], 
+    [mg_stok_barang].[satuan] AS [satuan]
     FROM [dbo].[mg_stok_barang] AS [mg_stok_barang]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="mg_stok_barang_total" EntityType="Self.mg_stok_barang_total" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [mg_stok_barang_total].[id_barang] AS [id_barang], 
     [mg_stok_barang_total].[nama_barang] AS [nama_barang], 
-    [mg_stok_barang_total].[stok] AS [stok]
+    [mg_stok_barang_total].[stok] AS [stok], 
+    [mg_stok_barang_total].[satuan] AS [satuan]
     FROM [dbo].[mg_stok_barang_total] AS [mg_stok_barang_total]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="mg_total_pembelian" EntityType="Self.mg_total_pembelian" store:Type="Views" store:Schema="dbo">
@@ -655,21 +659,23 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
           <Property Name="harga_satuan" Type="Double" />
           <Property Name="stok" Type="Double" />
           <Property Name="id" Type="Guid" />
+          <Property Name="satuan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="StokBarangTotal">
           <Key>
             <PropertyRef Name="id_barang" />
           </Key>
-          <Property Name="id_barang" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="id_barang" Type="Guid" Nullable="false" />
           <Property Name="nama_barang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="stok" Type="Double" />
+          <Property Name="satuan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TotalPembelian">
           <Key>
             <PropertyRef Name="id" />
             <PropertyRef Name="no_nota" />
           </Key>
-          <Property Name="id" Type="String" Nullable="false" />
+          <Property Name="id" Type="Guid" Nullable="false" />
           <Property Name="no_nota" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="nama_barang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="nama_kategori" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -966,6 +972,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
           <EntitySetMapping Name="mg_stok_barang">
             <EntityTypeMapping TypeName="MerapiGolfLogistikModel.StokBarang">
               <MappingFragment StoreEntitySet="mg_stok_barang">
+                <ScalarProperty Name="satuan" ColumnName="satuan" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="stok" ColumnName="stok" />
                 <ScalarProperty Name="harga_satuan" ColumnName="harga_satuan" />
@@ -979,6 +986,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
           <EntitySetMapping Name="mg_stok_barang_total">
             <EntityTypeMapping TypeName="MerapiGolfLogistikModel.StokBarangTotal">
               <MappingFragment StoreEntitySet="mg_stok_barang_total">
+                <ScalarProperty Name="satuan" ColumnName="satuan" />
                 <ScalarProperty Name="stok" ColumnName="stok" />
                 <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
                 <ScalarProperty Name="id_barang" ColumnName="id_barang" />

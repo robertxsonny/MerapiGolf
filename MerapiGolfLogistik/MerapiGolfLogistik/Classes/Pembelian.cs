@@ -13,7 +13,7 @@ namespace MerapiGolfLogistik.Classes
 
         private Pembelian nota;
 
-        private List<PembelianItem> items;
+        public List<PembelianItem> items;
 
         public void AddPembelian(string nomorNota, DateTime tanggal, string keterangan, Guid userId, Guid supplierId)
         {

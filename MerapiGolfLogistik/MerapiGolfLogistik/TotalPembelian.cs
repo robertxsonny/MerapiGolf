@@ -14,7 +14,7 @@ namespace MerapiGolfLogistik
     
     public partial class TotalPembelian
     {
-        public string id { get; set; }
+        public System.Guid id { get; set; }
         public string no_nota { get; set; }
         public string nama_barang { get; set; }
         public string nama_kategori { get; set; }

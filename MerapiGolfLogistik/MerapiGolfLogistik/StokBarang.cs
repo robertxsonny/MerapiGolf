@@ -21,5 +21,6 @@ namespace MerapiGolfLogistik
         public Nullable<double> harga_satuan { get; set; }
         public Nullable<double> stok { get; set; }
         public Nullable<System.Guid> id { get; set; }
+        public string satuan { get; set; }
     }
 }
