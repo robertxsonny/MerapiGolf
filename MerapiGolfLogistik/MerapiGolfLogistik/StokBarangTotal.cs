@@ -14,8 +14,9 @@ namespace MerapiGolfLogistik
     
     public partial class StokBarangTotal
     {
-        public string id_barang { get; set; }
+        public System.Guid id_barang { get; set; }
         public string nama_barang { get; set; }
         public Nullable<double> stok { get; set; }
+        public string satuan { get; set; }
     }
 }

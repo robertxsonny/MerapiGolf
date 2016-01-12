@@ -9,7 +9,7 @@ namespace MerapiGolfLogistik.Classes
     public class InsertData
     {
         private MerapiGolfLogistikEntities dbContent;
-        public Barang InsertItem(Guid catid, string itemname, string pcs, DateTime inputdate)
+        public async Task<Barang> InsertItem(Guid catid, string itemname, string pcs, DateTime inputdate)
         {
             using(dbContent = new MerapiGolfLogistikEntities())
             {
@@ -18,9 +18,9 @@ namespace MerapiGolfLogistik.Classes
                 barang.nama_barang = itemname;
                 barang.satuan = pcs;
                 barang.id = Guid.NewGuid();
-                barang.tanggalinput = inputdate;
+                //barang.tanggalinput = inputdate;
                 dbContent.mg_barang.Add(barang);
-                dbContent.SaveChanges();
+                await dbContent.SaveChangesAsync();
                 return barang;
             }
         }

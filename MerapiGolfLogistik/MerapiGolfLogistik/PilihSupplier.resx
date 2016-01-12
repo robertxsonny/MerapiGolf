@@ -117,25 +117,8 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="pilihKategoriBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAJlJREFUOE+d
-        k4ENgzAMBDMSIzAKI7BJ2aDdgBHKCN2kbAB/QamSQOWYk17EOP84AoKDQfpKXaycYN6kRXKHJDNXcIXU
-        Ztck/8ypTiGXWOa6LrA213WBtbmuC66aq3TbnGP1Y/N9LE+Y5l5iA+M+uZFhmmGUeKd8FHlIkxle0nQs
-        fyEcp8kMH2mWHlIyNpuBJxLCJBzH8aeFsANNuUPaKn8Z+wAAAABJRU5ErkJggg==
-</value>
-  </data>
-  <metadata name="DeleteColumn.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
-  <metadata name="itemViewBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>175, 17</value>
-  </metadata>
-  <data name="cariBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="searchBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAALZJREFUOE+l
         km0RwjAMhithEpAwB0MCDpiDTQISkIADJAwHmyN4n3784BrWrjx3712aJWnSzBWYpVV6R2FfpSKdRPBL
@@ -144,22 +127,7 @@
         EaXrAAAAAElFTkSuQmCC
 </value>
   </data>
-  <data name="simpanBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAK5JREFUOE/F
-        klsRwjAQRSMBKUiohEpAAg6Kg9YBOAAJOKAOqIPiAM7NsJ1kJwPNB8OdOR953M3uZsM/NEAPm7iq1AGe
-        b25QFaQFMxt3WKUtzOADXOGrlKbS9eYJlhL0whm6uMp1AW9+gDxRPr0jWGR1PDUaDSxSNH9BKe/dnrGD
-        TGpE6WKJExSlg5IhRb34qHRIPCOsGhrV583qUdXE6Vessdl31Ugm1azx/aVCeAFiNFdo7BpXEAAAAABJ
-        RU5ErkJggg==
-</value>
-  </data>
-  <data name="cancelBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAAMRJREFUOE+V
-        kwENQjEMRCcBCUhAAhKQgAQk4AAk4AApSEACOIC+Zrfs93cLXPKS/q53IWMtnQ7G3dj5V66tcTGYXehs
-        fCovIwuhx5nmjobraqgpYkg0Cw+JTaGQTa2zGUh/gcD4CL2em+GiyAZmNLP0T8jKLJ2MzNAzNCMu7Glk
-        RuCMmVQczC5MMLMK+dUsFiEz8zvpCZ69a3RxmHlI+1pnM/4SWYx4ILNEnYW0GZLUjGYphrRlkmjwH7Oy
-        IxHC06/rXMoXENuehN5/n3wAAAAASUVORK5CYII=
-</value>
-  </data>
+  <metadata name="supplierBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>

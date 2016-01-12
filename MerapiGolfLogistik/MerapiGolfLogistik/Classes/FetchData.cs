@@ -21,7 +21,7 @@ namespace MerapiGolfLogistik.Classes
                 else
                 {
                     string queryLower = query.ToLower();
-                    categories = dbContent.mg_kategori.Where(p => p.nama_kategori.Contains(queryLower)).ToList();
+                    categories = dbContent.mg_kategori.Where(p => p.nama_kategori.ToLower().Contains(queryLower)).ToList();
                 }
                 int index = 1;
                 categories = categories.OrderBy(p => p.inputdate).ToList();

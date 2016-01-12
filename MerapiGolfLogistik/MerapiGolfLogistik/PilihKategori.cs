@@ -17,12 +17,26 @@ namespace MerapiGolfLogistik
         public PilihKategori()
         {
             InitializeComponent();
+            this.categoriesView.KeyDown += CategoriesView_KeyDown;
+        }
+
+        private void CategoriesView_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                int index = categoriesView.SelectedCells[0].RowIndex;
+                ReturnToAddItems(index);
+            }
+            else if (e.KeyCode == Keys.F2)
+                catQuery.Focus();
+
         }
 
         private void PilihKategori_Load(object sender, EventArgs e)
         {
             FetchData data = new FetchData();
             categoriesView.DataSource = data.GetCategory(catQuery.Text);
+            this.ActiveControl = this.categoriesView;
         }
 
         private void categoriesView_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -45,7 +59,17 @@ namespace MerapiGolfLogistik
         private void catQuery_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 PilihKategori_Load(sender, e);
+                this.categoriesView.Focus();
+            }
+            
+        }
+
+        private void PilihKategori_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Escape)
+                this.DialogResult = DialogResult.Cancel;
         }
     }
 }

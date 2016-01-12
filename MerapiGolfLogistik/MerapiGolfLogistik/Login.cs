@@ -19,7 +19,6 @@ namespace MerapiGolfLogistik
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             this.KeyPreview = true;
-            usernameTb.Focus();
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
@@ -55,6 +54,11 @@ namespace MerapiGolfLogistik
         {
             if (e.KeyChar == Convert.ToChar(Keys.Enter))
                 loginBtn.Focus();
+        }
+
+        private void Login_Load(object sender, EventArgs e)
+        {
+            this.ActiveControl = this.usernameTb;
         }
 
         //private void button1_Click(object sender, EventArgs e)

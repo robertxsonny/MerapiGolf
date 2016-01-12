@@ -106,7 +106,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PilihInputBarang";
-            this.Text = "Pilih Jenis Input Barang";
+            this.Text = "Pilih Jenis Input Barang - Merapi Golf Inventory";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.PilihInputBarang_FormClosed);
             this.Load += new System.EventHandler(this.PilihInputBarang_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PilihInputBarang_KeyDown);

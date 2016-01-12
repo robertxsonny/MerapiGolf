@@ -20,12 +20,17 @@ namespace MerapiGolfLogistik
             InitializeComponent();
             StartPosition = FormStartPosition.CenterScreen;
             this.KeyPreview = true;
+            this.progressBar.Visible = true;
+            this.progressBar.Value = 50;
             ReadItems();
+            this.progressBar.Value = 100;
+            this.progressBar.Visible = false;
+            this.tooltipStatus.Text = "Masukkan kategori terlebih dahulu";
         }
 
         private void Gudang_Load(object sender, EventArgs e)
         {
-            //MessageBox.Show("Akun yang login sekarang: " + user);
+            this.ActiveControl = this.pilihKategoriBtn;
         }
 
         private void pilihKategoriBtn_Click(object sender, EventArgs e)
@@ -44,6 +49,8 @@ namespace MerapiGolfLogistik
                     var cat = dbContent.mg_kategori.Where(p => p.id == kategoriform.selectedId).Single();
                     kategoriTb.Text = cat.nama_kategori;
                     selectedCat = cat.id;
+                    this.tanggalInputTb.Focus();
+                    this.tooltipStatus.Text = "Siap memasukkan barang";
                 }
             }
         }
@@ -72,10 +79,14 @@ namespace MerapiGolfLogistik
         private void searchTb_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
+            {
                 ReadItems();
+                this.itemsView.Focus();
+            }
+
         }
 
-        private void itemsView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void itemsView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 1) //if delete
             {
@@ -83,29 +94,44 @@ namespace MerapiGolfLogistik
                 var dialogresult = MessageBox.Show("Apakah yakin Anda akan menghapus barang " + namabarang + "?", "Konfirmasi Hapus Barang", MessageBoxButtons.YesNo);
                 if (dialogresult == DialogResult.Yes)
                 {
+                    this.progressBar.Visible = true;
+                    this.progressBar.Value = 50;
+                    this.tooltipStatus.Text = "Menghapus...";
                     var id = Guid.Parse(itemsView.Rows[e.RowIndex].Cells[0].Value.ToString());
                     using (dbContent = new MerapiGolfLogistikEntities())
                     {
                         var item = dbContent.mg_barang.Where(p => p.id == id).Single();
                         dbContent.mg_barang.Remove(item);
-                        dbContent.SaveChanges();
+                        await dbContent.SaveChangesAsync();
                         ReadItems();
+                        this.progressBar.Value = 100;
+                        this.progressBar.Visible = false;
+                        if (selectedCat != Guid.Empty)
+                            this.tooltipStatus.Text = "Siap memasukkan barang";
+                        else
+                            this.tooltipStatus.Text = "Masukkan kategori terlebih dahulu";
                     }
                 }
 
             }
         }
 
-        private void simpanBtn_Click(object sender, EventArgs e)
+        private async void simpanBtn_Click(object sender, EventArgs e)
         {
             DateTime date = Convert.ToDateTime(tanggalInputTb.Text);
             if (selectedCat != Guid.Empty)
             {
+                this.progressBar.Visible = true;
+                this.progressBar.Value = 50;
+                this.tooltipStatus.Text = "Menyimpan...";
                 InsertData insert = new InsertData();
-                insert.InsertItem(selectedCat, namaBarangTb.Text, satuanTb.Text,
+                await insert.InsertItem(selectedCat, namaBarangTb.Text, satuanTb.Text,
                     date);
                 ReadItems();
                 ClearField();
+                this.progressBar.Visible = false;
+                this.progressBar.Value = 100;
+                this.tooltipStatus.Text = "Masukkan kategori terlebih dahulu";
             }
             else
                 MessageBox.Show("Pilih kategori terlebih dahulu!");
@@ -122,9 +148,9 @@ namespace MerapiGolfLogistik
             selectedCat = Guid.Empty;
             kategoriTb.Text = string.Empty;
             tanggalInputTb.Text = string.Empty;
-            kodeBarangTb.Text = string.Empty;
             namaBarangTb.Text = string.Empty;
             satuanTb.Text = string.Empty;
+            this.tooltipStatus.Text = "Masukkan kategori terlebih dahulu";
         }
     }
 }

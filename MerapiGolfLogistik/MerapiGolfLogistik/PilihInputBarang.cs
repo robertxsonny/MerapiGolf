@@ -37,9 +37,15 @@ namespace MerapiGolfLogistik
             inputform.ShowDialog();
         }
 
+        private static void OpenAddStockItems()
+        {
+            PembelianBarang pembelianform = new PembelianBarang();
+            pembelianform.ShowDialog();
+        }
+
         private void tambahStokBtn_Click(object sender, EventArgs e)
         {
-
+            OpenAddStockItems();
         }
 
         private void PilihInputBarang_FormClosed(object sender, FormClosedEventArgs e)
@@ -52,6 +58,8 @@ namespace MerapiGolfLogistik
         {
             if (e.KeyCode == Keys.F1)
                 OpenAddItems();
+            else if (e.KeyCode == Keys.F2)
+                OpenAddStockItems();
         }
     }
 }
