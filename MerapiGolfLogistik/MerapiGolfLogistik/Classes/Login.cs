@@ -9,6 +9,7 @@ namespace MerapiGolfLogistik.Classes
     public class Login
     {
         private MerapiGolfLogistikEntities dbContent;
+        public static Guid currentUser;
         internal string LoginRole(string username, string password)
         {
             using (dbContent = new MerapiGolfLogistikEntities())
@@ -17,6 +18,7 @@ namespace MerapiGolfLogistik.Classes
                 var users = dbContent.mg_user.Where(p => p.username == username && p.password == md5);
                 if (users.Count() != 0)
                 {
+                    currentUser = users.FirstOrDefault().id;
                     return users.FirstOrDefault().role.ToLower();
                 }
                 else return "failed";

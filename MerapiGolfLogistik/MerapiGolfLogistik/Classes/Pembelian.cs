@@ -33,12 +33,13 @@ namespace MerapiGolfLogistik.Classes
             item.barang_id = barangId;
             item.harga_satuan = harga;
             item.banyak_barang = jumlah;
+            item.id = Guid.NewGuid();
             if (items == null)
                 items = new List<PembelianItem>();
             items.Add(item);
         }
 
-        public void StorePembelian()
+        public async Task StorePembelian()
         {
             using (dbContent = new MerapiGolfLogistikEntities())
             {
@@ -48,7 +49,7 @@ namespace MerapiGolfLogistik.Classes
                     item.no_nota = nota.id;
                     dbContent.mg_pembelian_item.Add(item);
                 }
-                dbContent.SaveChanges();
+                await dbContent.SaveChangesAsync();
             }
         }
 
@@ -57,8 +58,13 @@ namespace MerapiGolfLogistik.Classes
             using (dbContent = new MerapiGolfLogistikEntities())
             {
                 NotaPembelian notaview = dbContent.mg_nota_pembelian.Where(n => n.no_nota == nota.id).FirstOrDefault();
-                List<TotalPembelian> notadetailview = dbContent.mg_total_pembelian.Where(t => t.no_nota == nota.id).ToList();
-                return new NotaPembelianDetail(notaview, notadetailview);
+                if (notaview != null)
+                {
+                    List<TotalPembelian> notadetailview = dbContent.mg_total_pembelian.Where(t => t.no_nota == nota.id).ToList();
+                    return new NotaPembelianDetail(notaview, notadetailview);
+                }
+                else
+                    return new NotaPembelianDetail();
             }
                 
         }

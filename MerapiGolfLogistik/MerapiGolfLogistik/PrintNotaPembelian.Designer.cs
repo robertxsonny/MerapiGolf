@@ -49,15 +49,15 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.mainLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.itemLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.totalValueLabel = new System.Windows.Forms.Label();
             this.totalLabel = new System.Windows.Forms.Label();
+            this.totalValueLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
+            this.mainLayoutPanel.SuspendLayout();
             this.itemLayoutPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -306,37 +306,37 @@
             this.label17.Text = "JALAN GOLF NO. 1 KEPUH HARJO, CANGKRINGAN, SLEMAN";
             this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel3
+            // mainLayoutPanel
             // 
-            this.tableLayoutPanel3.AutoSize = true;
-            this.tableLayoutPanel3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.tableLayoutPanel3.ColumnCount = 1;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Controls.Add(this.label27, 0, 9);
-            this.tableLayoutPanel3.Controls.Add(this.label26, 0, 8);
-            this.tableLayoutPanel3.Controls.Add(this.label16, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.label17, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.label15, 0, 6);
-            this.tableLayoutPanel3.Controls.Add(this.label2, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.label14, 0, 5);
-            this.tableLayoutPanel3.Controls.Add(this.label1, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 0, 4);
-            this.tableLayoutPanel3.Controls.Add(this.itemLayoutPanel, 0, 7);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(4, 8);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 10;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(276, 307);
-            this.tableLayoutPanel3.TabIndex = 10;
+            this.mainLayoutPanel.AutoSize = true;
+            this.mainLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.mainLayoutPanel.ColumnCount = 1;
+            this.mainLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.mainLayoutPanel.Controls.Add(this.label27, 0, 9);
+            this.mainLayoutPanel.Controls.Add(this.label26, 0, 8);
+            this.mainLayoutPanel.Controls.Add(this.label16, 0, 0);
+            this.mainLayoutPanel.Controls.Add(this.label17, 0, 1);
+            this.mainLayoutPanel.Controls.Add(this.label15, 0, 6);
+            this.mainLayoutPanel.Controls.Add(this.label2, 0, 2);
+            this.mainLayoutPanel.Controls.Add(this.label14, 0, 5);
+            this.mainLayoutPanel.Controls.Add(this.label1, 0, 3);
+            this.mainLayoutPanel.Controls.Add(this.tableLayoutPanel1, 0, 4);
+            this.mainLayoutPanel.Controls.Add(this.itemLayoutPanel, 0, 7);
+            this.mainLayoutPanel.Location = new System.Drawing.Point(4, 8);
+            this.mainLayoutPanel.Name = "mainLayoutPanel";
+            this.mainLayoutPanel.RowCount = 10;
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.mainLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.mainLayoutPanel.Size = new System.Drawing.Size(276, 307);
+            this.mainLayoutPanel.TabIndex = 10;
             // 
             // label27
             // 
@@ -380,8 +380,8 @@
             this.itemLayoutPanel.AutoSize = true;
             this.itemLayoutPanel.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.itemLayoutPanel.ColumnCount = 2;
-            this.itemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 150F));
-            this.itemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
+            this.itemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
+            this.itemLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
             this.itemLayoutPanel.Controls.Add(this.totalLabel, 0, 0);
             this.itemLayoutPanel.Controls.Add(this.totalValueLabel, 1, 0);
             this.itemLayoutPanel.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -389,22 +389,8 @@
             this.itemLayoutPanel.Name = "itemLayoutPanel";
             this.itemLayoutPanel.RowCount = 1;
             this.itemLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.itemLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.itemLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
-            this.itemLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.itemLayoutPanel.Size = new System.Drawing.Size(270, 28);
             this.itemLayoutPanel.TabIndex = 9;
-            // 
-            // totalValueLabel
-            // 
-            this.totalValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.totalValueLabel.AutoSize = true;
-            this.totalValueLabel.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalValueLabel.Location = new System.Drawing.Point(197, 14);
-            this.totalValueLabel.Name = "totalValueLabel";
-            this.totalValueLabel.Size = new System.Drawing.Size(70, 14);
-            this.totalValueLabel.TabIndex = 16;
-            this.totalValueLabel.Text = "Rp 730000";
             // 
             // totalLabel
             // 
@@ -416,6 +402,17 @@
             this.totalLabel.TabIndex = 15;
             this.totalLabel.Text = "\r\nTOTAL PEMBELIAN";
             // 
+            // totalValueLabel
+            // 
+            this.totalValueLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.totalValueLabel.AutoSize = true;
+            this.totalValueLabel.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalValueLabel.Location = new System.Drawing.Point(148, 14);
+            this.totalValueLabel.Name = "totalValueLabel";
+            this.totalValueLabel.Size = new System.Drawing.Size(119, 14);
+            this.totalValueLabel.TabIndex = 16;
+            this.totalValueLabel.Text = "Rp 73.000.000,00";
+            // 
             // PrintNotaPembelian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -424,13 +421,13 @@
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(284, 559);
-            this.Controls.Add(this.tableLayoutPanel3);
+            this.Controls.Add(this.mainLayoutPanel);
             this.Name = "PrintNotaPembelian";
             this.Text = "PrintNotaPembelian";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.tableLayoutPanel3.PerformLayout();
+            this.mainLayoutPanel.ResumeLayout(false);
+            this.mainLayoutPanel.PerformLayout();
             this.itemLayoutPanel.ResumeLayout(false);
             this.itemLayoutPanel.PerformLayout();
             this.ResumeLayout(false);
@@ -460,7 +457,7 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel mainLayoutPanel;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TableLayoutPanel itemLayoutPanel;
         private System.Windows.Forms.Label label26;
