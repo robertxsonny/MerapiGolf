@@ -135,9 +135,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 106);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 20);
+            this.label3.Size = new System.Drawing.Size(113, 20);
             this.label3.TabIndex = 6;
-            this.label3.Text = "Nama Barang";
+            this.label3.Text = "Nama Barang*";
             // 
             // satuanTb
             // 
@@ -151,9 +151,9 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(12, 151);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(159, 20);
+            this.label4.Size = new System.Drawing.Size(165, 20);
             this.label4.TabIndex = 8;
-            this.label4.Text = "Satuan (cth: pcs/liter)";
+            this.label4.Text = "Satuan (cth: pcs/liter)*";
             // 
             // label5
             // 

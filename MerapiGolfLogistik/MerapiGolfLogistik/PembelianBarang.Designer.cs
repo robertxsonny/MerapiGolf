@@ -42,7 +42,12 @@
             this.itemList = new System.Windows.Forms.DataGridView();
             this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.namabarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.hargasatuanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.banyakbarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.harga_satuan = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalhargaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalPembelianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.tambahBarangBtn = new System.Windows.Forms.Button();
@@ -51,15 +56,10 @@
             this.resetBtn = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.totalHargaText = new System.Windows.Forms.Label();
-            this.namabarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.hargasatuanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.banyakbarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalhargaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalPembelianBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemList)).BeginInit();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.totalPembelianBindingSource)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // noNotaTb
@@ -108,11 +108,11 @@
             // 
             this.buatSupplierBtn.Image = ((System.Drawing.Image)(resources.GetObject("buatSupplierBtn.Image")));
             this.buatSupplierBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.buatSupplierBtn.Location = new System.Drawing.Point(758, 55);
+            this.buatSupplierBtn.Location = new System.Drawing.Point(731, 54);
             this.buatSupplierBtn.Name = "buatSupplierBtn";
-            this.buatSupplierBtn.Size = new System.Drawing.Size(140, 39);
+            this.buatSupplierBtn.Size = new System.Drawing.Size(169, 39);
             this.buatSupplierBtn.TabIndex = 7;
-            this.buatSupplierBtn.Text = "Daftar Baru";
+            this.buatSupplierBtn.Text = "Daftar Baru/Ubah";
             this.buatSupplierBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.buatSupplierBtn.UseVisualStyleBackColor = true;
             this.buatSupplierBtn.Click += new System.EventHandler(this.buatSupplierBtn_Click);
@@ -121,7 +121,7 @@
             // 
             this.selectedSupplierTb.AutoSize = true;
             this.selectedSupplierTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.selectedSupplierTb.Location = new System.Drawing.Point(591, 25);
+            this.selectedSupplierTb.Location = new System.Drawing.Point(564, 24);
             this.selectedSupplierTb.Name = "selectedSupplierTb";
             this.selectedSupplierTb.Size = new System.Drawing.Size(223, 20);
             this.selectedSupplierTb.TabIndex = 6;
@@ -131,7 +131,7 @@
             // 
             this.pilihSupplierBtn.Image = ((System.Drawing.Image)(resources.GetObject("pilihSupplierBtn.Image")));
             this.pilihSupplierBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.pilihSupplierBtn.Location = new System.Drawing.Point(595, 55);
+            this.pilihSupplierBtn.Location = new System.Drawing.Point(568, 54);
             this.pilihSupplierBtn.Name = "pilihSupplierBtn";
             this.pilihSupplierBtn.Size = new System.Drawing.Size(157, 39);
             this.pilihSupplierBtn.TabIndex = 4;
@@ -143,7 +143,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(518, 25);
+            this.label1.Location = new System.Drawing.Point(491, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 20);
             this.label1.TabIndex = 3;
@@ -193,12 +193,44 @@
             this.Column1.Name = "Column1";
             this.Column1.Visible = false;
             // 
+            // namabarangDataGridViewTextBoxColumn
+            // 
+            this.namabarangDataGridViewTextBoxColumn.DataPropertyName = "nama_barang";
+            this.namabarangDataGridViewTextBoxColumn.HeaderText = "Nama Barang";
+            this.namabarangDataGridViewTextBoxColumn.Name = "namabarangDataGridViewTextBoxColumn";
+            this.namabarangDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // hargasatuanDataGridViewTextBoxColumn
+            // 
+            this.hargasatuanDataGridViewTextBoxColumn.DataPropertyName = "harga_satuan";
+            this.hargasatuanDataGridViewTextBoxColumn.HeaderText = "Harga Satuan";
+            this.hargasatuanDataGridViewTextBoxColumn.Name = "hargasatuanDataGridViewTextBoxColumn";
+            this.hargasatuanDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // banyakbarangDataGridViewTextBoxColumn
+            // 
+            this.banyakbarangDataGridViewTextBoxColumn.DataPropertyName = "banyak_barang";
+            this.banyakbarangDataGridViewTextBoxColumn.HeaderText = "Banyak";
+            this.banyakbarangDataGridViewTextBoxColumn.Name = "banyakbarangDataGridViewTextBoxColumn";
+            this.banyakbarangDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
             // harga_satuan
             // 
             this.harga_satuan.DataPropertyName = "satuan";
             this.harga_satuan.HeaderText = "Satuan";
             this.harga_satuan.Name = "harga_satuan";
             this.harga_satuan.ReadOnly = true;
+            // 
+            // totalhargaDataGridViewTextBoxColumn
+            // 
+            this.totalhargaDataGridViewTextBoxColumn.DataPropertyName = "total_harga";
+            this.totalhargaDataGridViewTextBoxColumn.HeaderText = "Total Harga";
+            this.totalhargaDataGridViewTextBoxColumn.Name = "totalhargaDataGridViewTextBoxColumn";
+            this.totalhargaDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // totalPembelianBindingSource
+            // 
+            this.totalPembelianBindingSource.DataSource = typeof(MerapiGolfLogistik.TotalPembelian);
             // 
             // statusStrip1
             // 
@@ -241,6 +273,7 @@
             this.simpanBtn.Text = "Simpan (F3)";
             this.simpanBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.simpanBtn.UseVisualStyleBackColor = true;
+            this.simpanBtn.Click += new System.EventHandler(this.simpanBtn_Click);
             // 
             // printBtn
             // 
@@ -285,38 +318,6 @@
             this.totalHargaText.TabIndex = 11;
             this.totalHargaText.Text = "label4";
             // 
-            // namabarangDataGridViewTextBoxColumn
-            // 
-            this.namabarangDataGridViewTextBoxColumn.DataPropertyName = "nama_barang";
-            this.namabarangDataGridViewTextBoxColumn.HeaderText = "Nama Barang";
-            this.namabarangDataGridViewTextBoxColumn.Name = "namabarangDataGridViewTextBoxColumn";
-            this.namabarangDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // hargasatuanDataGridViewTextBoxColumn
-            // 
-            this.hargasatuanDataGridViewTextBoxColumn.DataPropertyName = "harga_satuan";
-            this.hargasatuanDataGridViewTextBoxColumn.HeaderText = "Harga Satuan";
-            this.hargasatuanDataGridViewTextBoxColumn.Name = "hargasatuanDataGridViewTextBoxColumn";
-            this.hargasatuanDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // banyakbarangDataGridViewTextBoxColumn
-            // 
-            this.banyakbarangDataGridViewTextBoxColumn.DataPropertyName = "banyak_barang";
-            this.banyakbarangDataGridViewTextBoxColumn.HeaderText = "Banyak";
-            this.banyakbarangDataGridViewTextBoxColumn.Name = "banyakbarangDataGridViewTextBoxColumn";
-            this.banyakbarangDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalhargaDataGridViewTextBoxColumn
-            // 
-            this.totalhargaDataGridViewTextBoxColumn.DataPropertyName = "total_harga";
-            this.totalhargaDataGridViewTextBoxColumn.HeaderText = "Total Harga";
-            this.totalhargaDataGridViewTextBoxColumn.Name = "totalhargaDataGridViewTextBoxColumn";
-            this.totalhargaDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // totalPembelianBindingSource
-            // 
-            this.totalPembelianBindingSource.DataSource = typeof(MerapiGolfLogistik.TotalPembelian);
-            // 
             // PembelianBarang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -337,9 +338,9 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemList)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.totalPembelianBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.totalPembelianBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

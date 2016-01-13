@@ -42,6 +42,7 @@ namespace MerapiGolfLogistik.Classes
                     item.id_pembelian_barang = barang[i].id;
                     item.banyak_barang = Math.Min(num, (barang[i].stok.HasValue ? barang[i].stok.Value : 0));
                     items.Add(item);
+                    i++;
                     num -= (item.banyak_barang.HasValue ? item.banyak_barang.Value : 0);
                 }
 

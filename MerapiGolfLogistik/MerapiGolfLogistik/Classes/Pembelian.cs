@@ -63,5 +63,23 @@ namespace MerapiGolfLogistik.Classes
                 
         }
 
+        public string GenerateNoNota(string nonota)
+        {
+            nonota = nonota.ToLower();
+            char alpha = nonota.Substring(0, 1).ToCharArray()[0];
+            int num = Convert.ToInt32(nonota.Substring(1, 6));
+            if (num == 999999) //next alphabet
+            {
+                if (alpha == 'z')
+                    alpha = 'a';
+                else
+                    alpha = Convert.ToChar(Convert.ToInt32(alpha) + 1);
+                num = 1;
+            }
+            else
+                num++;
+            return alpha.ToString().ToUpper() + num.ToString().PadLeft(6, '0');
+        }
+
     }
 }

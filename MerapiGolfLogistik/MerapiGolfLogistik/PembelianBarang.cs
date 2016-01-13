@@ -126,8 +126,13 @@ namespace MerapiGolfLogistik
 
         private void buatSupplierBtn_Click(object sender, EventArgs e)
         {
-
+            TambahSupplier tambahsupplierform = new TambahSupplier();
+            tambahsupplierform.ShowDialog();
         }
 
+        private void simpanBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

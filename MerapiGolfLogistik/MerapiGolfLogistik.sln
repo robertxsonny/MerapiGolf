@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerapiGolfLogistik", "Merap
 EndProject
 Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "MerapiGolfSetup", "MerapiGolfSetup\MerapiGolfSetup.isproj", "{8A101A55-DE82-4909-945F-150CB4F67FC9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MerapiGolfLogistikTestProject", "MerapiGolfLogistikTestProject\MerapiGolfLogistikTestProject.csproj", "{211A8BDD-487F-45A8-A78C-95AE23F067BF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		CD_ROM|Any CPU = CD_ROM|Any CPU
@@ -36,6 +38,16 @@ Global
 		{8A101A55-DE82-4909-945F-150CB4F67FC9}.Release|Any CPU.Build.0 = SingleImage
 		{8A101A55-DE82-4909-945F-150CB4F67FC9}.SingleImage|Any CPU.ActiveCfg = SingleImage
 		{8A101A55-DE82-4909-945F-150CB4F67FC9}.SingleImage|Any CPU.Build.0 = SingleImage
+		{211A8BDD-487F-45A8-A78C-95AE23F067BF}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{211A8BDD-487F-45A8-A78C-95AE23F067BF}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{211A8BDD-487F-45A8-A78C-95AE23F067BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{211A8BDD-487F-45A8-A78C-95AE23F067BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{211A8BDD-487F-45A8-A78C-95AE23F067BF}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{211A8BDD-487F-45A8-A78C-95AE23F067BF}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{211A8BDD-487F-45A8-A78C-95AE23F067BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{211A8BDD-487F-45A8-A78C-95AE23F067BF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{211A8BDD-487F-45A8-A78C-95AE23F067BF}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{211A8BDD-487F-45A8-A78C-95AE23F067BF}.SingleImage|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

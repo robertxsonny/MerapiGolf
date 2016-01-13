@@ -34,12 +34,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.searchBtn = new System.Windows.Forms.Button();
             this.supplierList = new System.Windows.Forms.DataGridView();
+            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namasupplierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.alamatsupplierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.teleponsupplierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.emailsupplierDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.supplierBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.supplierList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.supplierBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -92,6 +92,10 @@
             this.supplierList.TabIndex = 3;
             this.supplierList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierList_CellDoubleClick);
             // 
+            // supplierBindingSource
+            // 
+            this.supplierBindingSource.DataSource = typeof(MerapiGolfLogistik.Supplier);
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -117,7 +121,7 @@
             // teleponsupplierDataGridViewTextBoxColumn
             // 
             this.teleponsupplierDataGridViewTextBoxColumn.DataPropertyName = "telepon_supplier";
-            this.teleponsupplierDataGridViewTextBoxColumn.HeaderText = "Telepon";
+            this.teleponsupplierDataGridViewTextBoxColumn.HeaderText = "No. Telepon";
             this.teleponsupplierDataGridViewTextBoxColumn.Name = "teleponsupplierDataGridViewTextBoxColumn";
             this.teleponsupplierDataGridViewTextBoxColumn.ReadOnly = true;
             // 
@@ -127,10 +131,6 @@
             this.emailsupplierDataGridViewTextBoxColumn.HeaderText = "Email";
             this.emailsupplierDataGridViewTextBoxColumn.Name = "emailsupplierDataGridViewTextBoxColumn";
             this.emailsupplierDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // supplierBindingSource
-            // 
-            this.supplierBindingSource.DataSource = typeof(MerapiGolfLogistik.Supplier);
             // 
             // PilihSupplier
             // 
