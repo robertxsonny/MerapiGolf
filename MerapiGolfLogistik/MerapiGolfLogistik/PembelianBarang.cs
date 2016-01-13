@@ -28,6 +28,24 @@ namespace MerapiGolfLogistik
             this.itemList.Columns[6].DefaultCellStyle.Format = "C";
             this.itemList.Columns[6].DefaultCellStyle.FormatProvider = new CultureInfo("id-ID");
             CalculateTotalPrice();
+            ReadNota();
+        }
+
+        private void ReadNota()
+        {
+            dbContent = new MerapiGolfLogistikEntities();
+            var pembelians = dbContent.mg_pembelian.OrderByDescending(p => p.id).ToList();
+            if (pembelians.Count != 0)
+            {
+                string lastnota = pembelians.First().id;
+                string notanow = pembelian.GenerateNoNota(lastnota);
+                noNotaTb.Text = notanow;
+            }
+            else
+            {
+                MessageBox.Show("Terjadi kesalahan dalam format nota! Hubungi administrator untuk keterangan lebih lanjut.");
+                this.Dispose();
+            }
         }
 
         private void SelectItem()
@@ -46,7 +64,7 @@ namespace MerapiGolfLogistik
                 total.harga_satuan = barangform.hargasatuan;
                 total.total_harga = total.banyak_barang * total.harga_satuan;
                 total.no_nota = noNotaTb.Text;
-                total.id = Guid.NewGuid();
+                total.id = barang.id;
                 this.listitems.Add(total);
                 itemList.DataSource = null;
                 itemList.DataSource = this.listitems;
@@ -88,13 +106,20 @@ namespace MerapiGolfLogistik
             totalHargaText.Text = totalprice.ToString("C", new CultureInfo("id-ID"));
         }
 
-        private void PembelianBarang_KeyDown(object sender, KeyEventArgs e)
+        private async void PembelianBarang_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
                 SelectSupplier();
             else if (e.KeyCode == Keys.F2)
                 SelectItem();
-
+            else if (e.KeyCode == Keys.F5)
+            {
+                var msgbox = MessageBox.Show("Yakin akan mengulangi pembelian barang? Seluruh data yang sudah diisikan akan terhapus.", "Konfirmasi Pengulangan", MessageBoxButtons.YesNo);
+                if (msgbox == DialogResult.Yes)
+                    ClearField();
+            }
+            else if (e.KeyCode == Keys.F3)
+                await SaveData();
         }
 
         private void pilihSupplierBtn_Click(object sender, EventArgs e)
@@ -130,9 +155,58 @@ namespace MerapiGolfLogistik
             tambahsupplierform.ShowDialog();
         }
 
-        private void simpanBtn_Click(object sender, EventArgs e)
+        private bool Validation()
         {
+            return this.listitems.Count != 0 && this.selectedSupplierId != Guid.Empty;
+        }
 
+        private async void simpanBtn_Click(object sender, EventArgs e)
+        {
+            await SaveData();
+        }
+
+        private async Task SaveData()
+        {
+            if (Validation())
+            {
+                statusLabel.Text = "Menyimpan...";
+                progressBar.Value = 50;
+                progressBar.Visible = true;
+                pembelian.AddPembelian(noNotaTb.Text, DateTime.Now, keteranganTb.Text, Classes.Login.currentUser,
+                    this.selectedSupplierId);
+                foreach (DataGridViewRow item in itemList.Rows)
+                {
+                    Guid idbarang = Guid.Parse(item.Cells[1].Value.ToString());
+                    string namabarang = item.Cells[2].Value.ToString();
+                    int hargasatuan = Convert.ToInt32(item.Cells[3].Value.ToString(), new CultureInfo("id-ID"));
+                    int jumlah = Convert.ToInt32(item.Cells[4].Value.ToString(), new CultureInfo("id-ID"));
+                    pembelian.AddBarang(idbarang, hargasatuan, jumlah);
+                }
+                await pembelian.StorePembelian();
+                ClearField();
+                ReadNota();
+            }
+            else
+                MessageBox.Show("Pastikan barang-barang sudah dimasukkan dan Anda sudah memilih supplier!");
+        }
+
+        private void ClearField()
+        {
+            this.selectedSupplierId = Guid.Empty;
+            selectedSupplierTb.Text = "[Belum ada supplier dipilih]";
+            keteranganTb.Text = string.Empty;
+            this.listitems.Clear();
+            itemList.DataSource = null;
+            statusLabel.Text = "Pilih supplier terlebih dahulu";
+            progressBar.Visible = false;
+            CalculateTotalPrice();
+        }
+
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            var msgbox = MessageBox.Show("Yakin akan mengulangi pembelian barang? Seluruh data yang sudah diisikan akan terhapus.", "Konfirmasi Pengulangan", MessageBoxButtons.YesNo);
+            if (msgbox == DialogResult.Yes)
+                ClearField();
         }
     }
 }

@@ -11,9 +11,10 @@ namespace MerapiGolfLogistikTestProject
         public void GenerateNotaTest()
         {
             PembelianBarang pembelian = new PembelianBarang();
-            string current = "T999998";
+            string current = "A000004";
             string result = pembelian.GenerateNoNota(current);
-            Assert.AreEqual("T999999", result);
+            Assert.AreEqual("A000005", result);
         }
+
     }
 }

@@ -33,12 +33,13 @@ namespace MerapiGolfLogistik.Classes
             item.barang_id = barangId;
             item.harga_satuan = harga;
             item.banyak_barang = jumlah;
+            item.id = Guid.NewGuid();
             if (items == null)
                 items = new List<PembelianItem>();
             items.Add(item);
         }
 
-        public void StorePembelian()
+        public async Task StorePembelian()
         {
             using (dbContent = new MerapiGolfLogistikEntities())
             {
@@ -48,7 +49,7 @@ namespace MerapiGolfLogistik.Classes
                     item.no_nota = nota.id;
                     dbContent.mg_pembelian_item.Add(item);
                 }
-                dbContent.SaveChanges();
+                await dbContent.SaveChangesAsync();
             }
         }
 
