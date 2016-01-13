@@ -8,25 +8,25 @@ namespace MerapiGolfLogistik.Models
 {
     public class NotaPengambilanDetail : NotaPengambilan
     {
-        public List<TotalPengambilan> items { get; set; }
+        public List<PengambilanPerBarang> items { get; set; }
 
         public NotaPengambilanDetail()
         {
 
         }
 
-        public NotaPengambilanDetail(NotaPengambilan nota, List<TotalPengambilan> items)
+        public NotaPengambilanDetail(NotaPengambilan nota, List<PengambilanPerBarang> items)
         {
             this.no_nota = nota.no_nota;
             this.nama_karyawan = nota.nama_karyawan;
             this.tanggal = nota.tanggal;
             this.keterangan = nota.keterangan;
             this.total = nota.total;
-            this.items = new List<TotalPengambilan>();
-            foreach (TotalPengambilan item in items)
+            this.items = new List<PengambilanPerBarang>();
+            foreach (PengambilanPerBarang item in items)
             {
                 if (item.no_nota == nota.no_nota)
-                    items.Add(item);
+                    this.items.Add(item);
             }
         }
     }

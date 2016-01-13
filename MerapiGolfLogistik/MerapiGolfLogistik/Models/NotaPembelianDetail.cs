@@ -27,7 +27,7 @@ namespace MerapiGolfLogistik.Models
             foreach (TotalPembelian item in items)
             {
                 if (item.no_nota == nota.no_nota)
-                    items.Add(item);
+                    this.items.Add(item);
             }
         }
     }

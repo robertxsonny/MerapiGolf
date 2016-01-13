@@ -41,5 +41,6 @@ namespace MerapiGolfLogistik
         public virtual DbSet<StokBarangTotal> mg_stok_barang_total { get; set; }
         public virtual DbSet<TotalPembelian> mg_total_pembelian { get; set; }
         public virtual DbSet<TotalPengambilan> mg_total_pengambilan { get; set; }
+        public virtual DbSet<PengambilanPerBarang> mg_pengambilan_per_barang { get; set; }
     }
 }

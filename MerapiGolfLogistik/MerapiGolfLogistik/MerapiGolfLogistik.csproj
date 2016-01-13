@@ -92,6 +92,7 @@
     <Compile Include="Classes\MD5.cs" />
     <Compile Include="Classes\Pembelian.cs" />
     <Compile Include="Classes\Pengambilan.cs" />
+    <Compile Include="Classes\Pengembalian.cs" />
     <Compile Include="InputBarang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +149,9 @@
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="PengambilanItem.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PengambilanPerBarang.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Pengembalian.cs">

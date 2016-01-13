@@ -69,7 +69,7 @@ namespace MerapiGolfLogistik.Classes
             using (dbContent = new MerapiGolfLogistikEntities())
             {
                 NotaPengambilan notaview = dbContent.mg_nota_pengambilan.Where(n => n.no_nota == nota.id).FirstOrDefault();
-                List<TotalPengambilan> notadetailview = dbContent.mg_total_pengambilan.Where(t => t.no_nota == nota.id).ToList();
+                List<PengambilanPerBarang> notadetailview = dbContent.mg_pengambilan_per_barang.Where(t => t.no_nota == nota.id).ToList();
                 return new NotaPengambilanDetail(notaview, notadetailview);
             }
 
