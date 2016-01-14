@@ -127,6 +127,7 @@
     <Compile Include="Models\ItemView.cs" />
     <Compile Include="Models\NotaPembelianDetail.cs" />
     <Compile Include="Models\NotaPengambilanDetail.cs" />
+    <Compile Include="Models\PengambilanItemExtended.cs" />
     <Compile Include="Models\NotaPengembalianDetail.cs" />
     <Compile Include="NotaPembelian.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
@@ -152,6 +153,12 @@
     <Compile Include="Pengambilan.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="PengambilanBarang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PengambilanBarang.Designer.cs">
+      <DependentUpon>PengambilanBarang.cs</DependentUpon>
+    </Compile>
     <Compile Include="PengambilanItem.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
@@ -167,11 +174,23 @@
     <Compile Include="PengembalianPerBarang.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="PilihBarangWithAktiva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PilihBarangWithAktiva.Designer.cs">
+      <DependentUpon>PilihBarangWithAktiva.cs</DependentUpon>
+    </Compile>
     <Compile Include="PilihInputBarang.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PilihInputBarang.Designer.cs">
       <DependentUpon>PilihInputBarang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PilihAktiva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PilihAktiva.Designer.cs">
+      <DependentUpon>PilihAktiva.cs</DependentUpon>
     </Compile>
     <Compile Include="PilihKategori.cs">
       <SubType>Form</SubType>
@@ -247,8 +266,17 @@
     <EmbeddedResource Include="PembelianBarang.resx">
       <DependentUpon>PembelianBarang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PengambilanBarang.resx">
+      <DependentUpon>PengambilanBarang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PilihBarangWithAktiva.resx">
+      <DependentUpon>PilihBarangWithAktiva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PilihInputBarang.resx">
       <DependentUpon>PilihInputBarang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PilihAktiva.resx">
+      <DependentUpon>PilihAktiva.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PilihKategori.resx">
       <DependentUpon>PilihKategori.cs</DependentUpon>
@@ -301,8 +329,10 @@
       <DependentUpon>MerapiGolfEntity.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\Aktiva.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.Category.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.ItemView.datasource" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PengambilanItemExtended.datasource" />
     <None Include="Properties\DataSources\PembelianItem.datasource" />
     <None Include="Properties\DataSources\StokBarangTotal.datasource" />
     <None Include="Properties\DataSources\Supplier.datasource" />
@@ -340,6 +370,8 @@
     <Content Include="Assets\add_64.png" />
     <Content Include="Assets\add_32.png" />
     <Content Include="Assets\cancel_16.png" />
+    <Content Include="Assets\document_32.png" />
+    <Content Include="Assets\aktiva_16.png" />
     <Content Include="Assets\logo.png" />
     <Content Include="Assets\ok_16.png" />
     <Content Include="Assets\logo.ico" />

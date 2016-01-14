@@ -44,8 +44,7 @@ namespace MerapiGolfLogistik
             }
             else
             {
-                MessageBox.Show("Terjadi kesalahan dalam format nota! Hubungi administrator untuk keterangan lebih lanjut.");
-                this.Dispose();
+                noNotaTb.Text = "A000001";
             }
         }
 
@@ -66,6 +65,11 @@ namespace MerapiGolfLogistik
                 total.total_harga = total.banyak_barang * total.harga_satuan;
                 total.no_nota = noNotaTb.Text;
                 total.id = barang.id;
+                if(this.listitems.Where(p => p.id == total.id).ToList().Count > 0)
+                {
+                    MessageBox.Show("Anda sudah menambah barang ini sebelumnya!");
+                    return;
+                }
                 this.listitems.Add(total);
                 itemList.DataSource = null;
                 itemList.DataSource = this.listitems;
@@ -121,6 +125,8 @@ namespace MerapiGolfLogistik
             }
             else if (e.KeyCode == Keys.F3)
                 await SaveData();
+            else if(e.KeyCode == Keys.F4)
+                await PrintData();
         }
 
         private void pilihSupplierBtn_Click(object sender, EventArgs e)
@@ -212,6 +218,11 @@ namespace MerapiGolfLogistik
 
         private async void printBtn_Click(object sender, EventArgs e)
         {
+            await PrintData();
+        }
+
+        private async Task PrintData()
+        {
             var msgbox = MessageBox.Show("Untuk dapat mencetak nota, Anda perlu menyimpan pembelian terlebih dahulu. Simpan sekarang?", "Konfirmasi Pengulangan", MessageBoxButtons.YesNo);
             if (msgbox == DialogResult.Yes)
             {
@@ -220,7 +231,6 @@ namespace MerapiGolfLogistik
                 PrintNotaPembelian print = new PrintNotaPembelian(nota);
                 print.ShowDialog();
             }
-                
         }
     }
 }
