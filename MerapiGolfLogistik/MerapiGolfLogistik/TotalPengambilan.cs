@@ -15,6 +15,7 @@ namespace MerapiGolfLogistik
     public partial class TotalPengambilan
     {
         public System.Guid id { get; set; }
+        public System.Guid id_barang { get; set; }
         public string no_nota { get; set; }
         public string nama_barang { get; set; }
         public string nama_kategori { get; set; }
@@ -23,5 +24,6 @@ namespace MerapiGolfLogistik
         public string nama_aktiva { get; set; }
         public Nullable<double> banyak_barang { get; set; }
         public Nullable<double> total_harga { get; set; }
+        public Nullable<System.DateTime> tanggal_masuk { get; set; }
     }
 }

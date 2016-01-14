@@ -14,14 +14,19 @@ namespace MerapiGolfLogistik
     
     public partial class Pengembalian
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Pengembalian()
+        {
+            this.pengembalian_item = new HashSet<PengembalianItem>();
+        }
+    
         public string id { get; set; }
         public Nullable<System.Guid> user_id { get; set; }
-        public Nullable<System.Guid> id_pengambilan_barang { get; set; }
         public Nullable<System.DateTime> tanggal { get; set; }
-        public Nullable<double> banyak_dikembalikan { get; set; }
         public string keterangan { get; set; }
     
-        public virtual PengambilanItem pengambilan_item { get; set; }
         public virtual User user { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PengembalianItem> pengembalian_item { get; set; }
     }
 }

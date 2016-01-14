@@ -127,10 +127,14 @@
     <Compile Include="Models\ItemView.cs" />
     <Compile Include="Models\NotaPembelianDetail.cs" />
     <Compile Include="Models\NotaPengambilanDetail.cs" />
+    <Compile Include="Models\NotaPengembalianDetail.cs" />
     <Compile Include="NotaPembelian.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="NotaPengambilan.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NotaPengembalian.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Pembelian.cs">
@@ -157,6 +161,12 @@
     <Compile Include="Pengembalian.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="PengembalianItem.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PengembalianPerBarang.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="PilihInputBarang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,6 +190,18 @@
     </Compile>
     <Compile Include="PilihSupplier.Designer.cs">
       <DependentUpon>PilihSupplier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintNotaPengembalian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintNotaPengembalian.Designer.cs">
+      <DependentUpon>PrintNotaPengembalian.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintNotaPengambilan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PrintNotaPengambilan.Designer.cs">
+      <DependentUpon>PrintNotaPengambilan.cs</DependentUpon>
     </Compile>
     <Compile Include="PrintNotaPembelian.cs">
       <SubType>Form</SubType>
@@ -210,6 +232,9 @@
     <Compile Include="TotalPengambilan.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="TotalPengembalian.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="User.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
@@ -227,6 +252,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PilihKategori.resx">
       <DependentUpon>PilihKategori.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintNotaPengembalian.resx">
+      <DependentUpon>PrintNotaPengembalian.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PrintNotaPengambilan.resx">
+      <DependentUpon>PrintNotaPengambilan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintNotaPembelian.resx">
       <DependentUpon>PrintNotaPembelian.cs</DependentUpon>
@@ -262,6 +293,7 @@
     <None Include="Databases\MerapiGolfDb_12012016_1729.bak" />
     <None Include="Databases\MerapiGolfDb_13012016_2245.bak" />
     <None Include="Databases\MerapiGolfDb_14012016_0009.bak" />
+    <None Include="Databases\MerapiGolfDb_14012016_2240.bak" />
     <None Include="Databases\MerapiGolfDb_20160107_1818.bak" />
     <None Include="Databases\MerapiGolfLogistik_07012016.bak" />
     <None Include="Databases\MerapiGolfDb_07012016_1043.bak" />

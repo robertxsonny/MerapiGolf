@@ -29,10 +29,15 @@
         <AssociationConnector Association="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_pembelian_item" />
         <AssociationConnector Association="MerapiGolfLogistikModel.FK_mg_pengambilan_item_mg_pengambilan" />
         <AssociationConnector Association="MerapiGolfLogistikModel.FK_mg_pengambilan_mg_user" />
-        <AssociationConnector Association="MerapiGolfLogistikModel.FK_mg_pengembalian_mg_pengambilan_item" />
         <AssociationConnector Association="MerapiGolfLogistikModel.FK_mg_pengembalian_mg_user" />
-        <EntityTypeShape EntityType="MerapiGolfLogistikModel.TotalPengambilan" Width="1.5" PointX="12.375" PointY="4.75" />
         <EntityTypeShape EntityType="MerapiGolfLogistikModel.PengambilanPerBarang" Width="1.5" PointX="12.375" PointY="8.75" />
+        <EntityTypeShape EntityType="MerapiGolfLogistikModel.PengembalianPerBarang" Width="1.5" PointX="8.375" PointY="12.75" />
+        <EntityTypeShape EntityType="MerapiGolfLogistikModel.TotalPengembalian" Width="1.5" PointX="10.375" PointY="12.75" />
+        <EntityTypeShape EntityType="MerapiGolfLogistikModel.PengembalianItem" Width="1.5" PointX="14" PointY="1.125" />
+        <AssociationConnector Association="MerapiGolfLogistikModel.FK_mg_pengembalian_item_mg_pengambilan_item" />
+        <AssociationConnector Association="MerapiGolfLogistikModel.FK_mg_pengembalian_item_mg_pengembalian" />
+        <EntityTypeShape EntityType="MerapiGolfLogistikModel.NotaPengembalian" Width="1.5" PointX="12.375" PointY="12.75" />
+        <EntityTypeShape EntityType="MerapiGolfLogistikModel.TotalPengambilan" Width="1.5" PointX="12.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

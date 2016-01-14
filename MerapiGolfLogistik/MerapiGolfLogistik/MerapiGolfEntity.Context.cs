@@ -40,7 +40,11 @@ namespace MerapiGolfLogistik
         public virtual DbSet<StokBarang> mg_stok_barang { get; set; }
         public virtual DbSet<StokBarangTotal> mg_stok_barang_total { get; set; }
         public virtual DbSet<TotalPembelian> mg_total_pembelian { get; set; }
-        public virtual DbSet<TotalPengambilan> mg_total_pengambilan { get; set; }
         public virtual DbSet<PengambilanPerBarang> mg_pengambilan_per_barang { get; set; }
+        public virtual DbSet<PengembalianPerBarang> mg_pengembalian_per_barang { get; set; }
+        public virtual DbSet<TotalPengembalian> mg_total_pengembalian { get; set; }
+        public virtual DbSet<PengembalianItem> mg_pengembalian_item { get; set; }
+        public virtual DbSet<NotaPengembalian> mg_nota_pengembalian { get; set; }
+        public virtual DbSet<TotalPengambilan> mg_total_pengambilan { get; set; }
     }
 }

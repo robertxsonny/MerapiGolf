@@ -14,12 +14,6 @@ namespace MerapiGolfLogistik
     
     public partial class PengambilanItem
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PengambilanItem()
-        {
-            this.pengembalian = new HashSet<Pengembalian>();
-        }
-    
         public System.Guid id { get; set; }
         public string no_nota { get; set; }
         public Nullable<System.Guid> id_pembelian_barang { get; set; }
@@ -29,7 +23,5 @@ namespace MerapiGolfLogistik
         public virtual Aktiva aktiva { get; set; }
         public virtual PembelianItem pembelian_item { get; set; }
         public virtual Pengambilan pengambilan { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Pengembalian> pengembalian { get; set; }
     }
 }
