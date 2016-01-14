@@ -15,10 +15,12 @@ namespace MerapiGolfLogistik
     {
         private List<PengambilanItemExtended> listBarang;
         private MerapiGolfLogistikEntities dbContent;
+        private Classes.PengambilanBarang pengambilan;
         public PengambilanBarang()
         {
             InitializeComponent();
             dbContent = new MerapiGolfLogistikEntities();
+            pengambilan = new Classes.PengambilanBarang();
             this.listBarang = new List<PengambilanItemExtended>();
             this.KeyPreview = true;
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -70,6 +72,27 @@ namespace MerapiGolfLogistik
             }
         }
 
+        private bool Validation()
+        {
+            return this.listBarang.Count > 0;
+        }
+
+        private void SaveData()
+        {
+            if (Validation())
+            {
+                pengambilan.AddPengambilan(noNotaTb.Text, DateTime.Now, keteranganTb.Text,
+               Classes.Login.currentUser);
+                foreach (var item in this.listBarang)
+                {
+                    pengambilan.AddItem(item.id, item.jumlah, item.id_aktiva);
+                }
+                pengambilan.StorePengambilan();
+            }
+            else
+                MessageBox.Show("Masukkan barang terlebih dahulu!");
+        }
+
         private void tambahBarangBtn_Click(object sender, EventArgs e)
         {
             AddItem();
@@ -79,6 +102,8 @@ namespace MerapiGolfLogistik
         {
             if (e.KeyCode == Keys.F2)
                 AddItem();
+            else if (e.KeyCode == Keys.F3)
+                SaveData();
         }
 
         private void itemView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -94,6 +119,11 @@ namespace MerapiGolfLogistik
                     itemView.DataSource = this.listBarang;
                 }
             }
+        }
+
+        private void simpanBtn_Click(object sender, EventArgs e)
+        {
+            SaveData();
         }
     }
 }

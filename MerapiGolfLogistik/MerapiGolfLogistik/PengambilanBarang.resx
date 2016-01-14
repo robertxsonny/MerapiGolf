@@ -185,4 +185,14 @@
   <metadata name="statusStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <data name="ulangiBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAOtJREFUWEft
+        lu0NAiEMhm8ER3AUN9dNdAQ30Jbcawp54QocEj+e5EmOUnq9H1aWAifxKj461Rpaq5qbyAq2qE1Ug8O9
+        NNf5NzC9gd9hr997ra/5cF8DMwzzgW2M8CIeVvUZ8ShppEcR6DPiUdJI9cvBlAbOor5Y1WfEo6QZ0uA7
+        pUFrL6ymlQatvbCaVhq0ArZnzcFyrTRoBWzPmoPlWjdHcS+sJtRrX/hDKN3/emE1VX1n8bKKRGAPewTp
+        2k2ukFeQrt00H0z4ngaw9grStZtcIa8gXbtpPpjwuQ3seVkNE6+WrQnptTDxluUJncIKH2/mLDgAAAAA
+        SUVORK5CYII=
+</value>
+  </data>
 </root>

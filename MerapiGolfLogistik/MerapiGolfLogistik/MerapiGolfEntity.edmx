@@ -180,8 +180,9 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_stok_barang' does not have a p
         <EntityType Name="mg_stok_barang">
           <Key>
             <PropertyRef Name="id_barang" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="uniqueidentifier" />
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="id_barang" Type="uniqueidentifier" Nullable="false" />
           <Property Name="nama_barang" Type="nvarchar(max)" />
           <Property Name="no_nota" Type="nvarchar" MaxLength="10" />
@@ -785,6 +786,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
         <EntityType Name="StokBarang">
           <Key>
             <PropertyRef Name="id_barang" />
+            <PropertyRef Name="id" />
           </Key>
           <Property Name="id_barang" Type="Guid" Nullable="false" />
           <Property Name="nama_barang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
@@ -792,7 +794,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
           <Property Name="tanggal_masuk" Type="DateTime" Precision="0" />
           <Property Name="harga_satuan" Type="Double" />
           <Property Name="stok" Type="Double" />
-          <Property Name="id" Type="Guid" />
+          <Property Name="id" Type="Guid" Nullable="false" />
           <Property Name="satuan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="StokBarangTotal">
