@@ -39,7 +39,7 @@ namespace MerapiGolfLogistik
                 Label nameLabel = new Label();
                 nameLabel.Name = "nameLabel_" + item.id.ToString();
                 nameLabel.Text = item.nama_barang.ToUpper() + Environment.NewLine 
-                    + (item.banyak_barang.HasValue ? item.banyak_barang.Value : 0) + " x " + item.harga_satuan;
+                    + " " + (item.banyak_barang.HasValue ? item.banyak_barang.Value : 0) + " x " + item.harga_satuan;
                 nameLabel.Anchor = (AnchorStyles.Top | AnchorStyles.Left);
                 nameLabel.AutoSize = true;
                 itemLayoutPanel.Controls.Add(nameLabel, 0, i);
