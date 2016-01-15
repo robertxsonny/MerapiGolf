@@ -35,16 +35,18 @@ namespace MerapiGolfLogistik
                 case ("input"):
                     PilihInputBarang inputform = new PilihInputBarang(username);
                     inputform.Show();
+                    this.Hide();
                     break;
                 case ("pengambilan"):
                     PengambilanBarang ambilform = new PengambilanBarang();
                     ambilform.Show();
+                    this.Hide();
                     break;
                 default:
                     MessageBox.Show("Username atau password yang Anda masukkan salah!");
                     break;
             }
-            this.Hide();
+            
         }
 
         private void usernameTb_KeyPress(object sender, KeyPressEventArgs e)

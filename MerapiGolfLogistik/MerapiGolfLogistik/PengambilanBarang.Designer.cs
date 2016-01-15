@@ -45,13 +45,14 @@
             this.jumlah = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.ulangiBtn = new System.Windows.Forms.Button();
+            this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namabarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.satuanDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idaktivaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namaaktivaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pengambilanItemExtendedBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.ulangiBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemView)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -149,6 +150,7 @@
             this.printBtn.Text = "Cetak (F4)";
             this.printBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.printBtn.UseVisualStyleBackColor = true;
+            this.printBtn.Click += new System.EventHandler(this.printBtn_Click);
             // 
             // button1
             // 
@@ -218,7 +220,8 @@
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.statusLabel});
+            this.statusLabel,
+            this.progressBar});
             this.statusStrip1.Location = new System.Drawing.Point(0, 769);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 16, 0);
@@ -231,6 +234,26 @@
             this.statusLabel.Name = "statusLabel";
             this.statusLabel.Size = new System.Drawing.Size(60, 25);
             this.statusLabel.Text = "Ready";
+            // 
+            // ulangiBtn
+            // 
+            this.ulangiBtn.Image = ((System.Drawing.Image)(resources.GetObject("ulangiBtn.Image")));
+            this.ulangiBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.ulangiBtn.Location = new System.Drawing.Point(504, 107);
+            this.ulangiBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.ulangiBtn.Name = "ulangiBtn";
+            this.ulangiBtn.Size = new System.Drawing.Size(136, 89);
+            this.ulangiBtn.TabIndex = 16;
+            this.ulangiBtn.Text = "Ulangi (F5)";
+            this.ulangiBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.ulangiBtn.UseVisualStyleBackColor = true;
+            this.ulangiBtn.Click += new System.EventHandler(this.ulangiBtn_Click);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(100, 24);
+            this.progressBar.Visible = false;
             // 
             // idDataGridViewTextBoxColumn
             // 
@@ -272,19 +295,6 @@
             // pengambilanItemExtendedBindingSource
             // 
             this.pengambilanItemExtendedBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.PengambilanItemExtended);
-            // 
-            // ulangiBtn
-            // 
-            this.ulangiBtn.Image = ((System.Drawing.Image)(resources.GetObject("ulangiBtn.Image")));
-            this.ulangiBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ulangiBtn.Location = new System.Drawing.Point(504, 107);
-            this.ulangiBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.ulangiBtn.Name = "ulangiBtn";
-            this.ulangiBtn.Size = new System.Drawing.Size(136, 89);
-            this.ulangiBtn.TabIndex = 16;
-            this.ulangiBtn.Text = "Ulangi (F5)";
-            this.ulangiBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.ulangiBtn.UseVisualStyleBackColor = true;
             // 
             // PengambilanBarang
             // 
@@ -339,5 +349,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idaktivaDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn namaaktivaDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button ulangiBtn;
+        private System.Windows.Forms.ToolStripProgressBar progressBar;
     }
 }

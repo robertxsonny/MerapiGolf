@@ -28,7 +28,7 @@ namespace MerapiGolfLogistik.Classes
         public void AddItem(Guid barangId, double jumlah, Guid aktivaId)
         {
             List<StokBarang> barang = dbContent.mg_stok_barang.Where(p => p.id_barang == barangId).OrderBy(p => p.no_nota).ToList();
-            barang  = barang.Distinct().ToList();
+            barang = barang.Distinct().ToList();
             double num = jumlah;
             int i = 0;
             if (items == null)
@@ -44,34 +44,28 @@ namespace MerapiGolfLogistik.Classes
                 i++;
                 num -= (item.banyak_barang.HasValue ? item.banyak_barang.Value : 0);
             }
-
-
-
         }
 
-        public void StorePengambilan()
+        public async Task StorePengambilan()
         {
-            using (dbContent = new MerapiGolfLogistikEntities())
+            dbContent.mg_pengambilan.Add(nota);
+            foreach (PengambilanItem item in items)
             {
-                dbContent.mg_pengambilan.Add(nota);
-                foreach (PengambilanItem item in items)
-                {
-                    item.id = Guid.NewGuid();
-                    item.no_nota = nota.id;
-                    dbContent.mg_pengambilan_item.Add(item);
-                }
-                dbContent.SaveChanges();
+                item.id = Guid.NewGuid();
+                item.no_nota = nota.id;
+                dbContent.mg_pengambilan_item.Add(item);
             }
+            await dbContent.SaveChangesAsync();
+
         }
 
         public NotaPengambilanDetail GetNotaPengambilan()
         {
-            using (dbContent = new MerapiGolfLogistikEntities())
-            {
-                NotaPengambilan notaview = dbContent.mg_nota_pengambilan.Where(n => n.no_nota == nota.id).FirstOrDefault();
-                List<PengambilanPerBarang> notadetailview = dbContent.mg_pengambilan_per_barang.Where(t => t.no_nota == nota.id).ToList();
-                return new NotaPengambilanDetail(notaview, notadetailview);
-            }
+            dbContent = new MerapiGolfLogistikEntities();
+            NotaPengambilan notaview = dbContent.mg_nota_pengambilan.ToList().Where(n => n.no_nota == nota.id).FirstOrDefault();
+            List<PengambilanPerBarang> notadetailview = dbContent.mg_pengambilan_per_barang.ToList().Where(t => t.no_nota == nota.id).ToList();
+            return new NotaPengambilanDetail(notaview, notadetailview);
+
 
         }
     }
