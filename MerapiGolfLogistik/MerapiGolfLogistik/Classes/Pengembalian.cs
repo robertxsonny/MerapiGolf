@@ -15,19 +15,20 @@ namespace MerapiGolfLogistik.Classes
 
         private List<PengembalianItem> items;
 
-        public void AddPengembalian(Guid userId, DateTime tanggal, string keterangan)
+        public void AddPengembalian(string no_nota, Guid userId, DateTime tanggal, string keterangan)
         {
             retur = new Pengembalian();
+            retur.id = no_nota;
             retur.user_id = userId;
             retur.tanggal = tanggal;
             retur.keterangan = keterangan;
         }
 
-        public void AddItem(Guid barangId, string nomorNotaPengambilan, double banyakDikembalikan)
+        public void AddItem(Guid barangId, string notaPengambilan, double banyakDikembalikan)
         {
             using (dbContent = new MerapiGolfLogistikEntities())
             {
-                List<TotalPengambilan> pengambilan = dbContent.mg_total_pengambilan.Where(p => p.no_nota == nomorNotaPengambilan && p.id_barang == barangId)
+                List<TotalPengambilan> pengambilan = dbContent.mg_total_pengambilan.Where(p => p.no_nota == notaPengambilan && p.id_barang == barangId)
                     .OrderByDescending(p => p.tanggal_masuk).ToList();
                 double num = banyakDikembalikan;
                 int i = 0;
@@ -47,24 +48,26 @@ namespace MerapiGolfLogistik.Classes
             }
         }
 
-        public void StorePengembalian()
+        public async Task StorePengembalian()
         {
             using (dbContent = new MerapiGolfLogistikEntities())
             {
                 dbContent.mg_pengembalian.Add(retur);
                 foreach (PengembalianItem item in items)
                 {
+                    item.id = Guid.NewGuid();
                     item.no_nota = retur.id;
                     dbContent.mg_pengembalian_item.Add(item);
                 }
-                dbContent.SaveChanges();
+                await dbContent.SaveChangesAsync();
             }
         }
 
-        public NotaPengembalianDetail GenerateNotaPengembalian(NotaPengembalian nota, List<PengembalianPerBarang> items)
+        public NotaPengembalianDetail GetNotaPengembalian()
         {
-            NotaPengembalian notaview = dbContent.mg_nota_pengembalian.Where(n => n.no_nota == nota.no_nota).FirstOrDefault();
-            List<PengembalianPerBarang> notadetailview = dbContent.mg_pengembalian_per_barang.Where(t => t.no_nota == nota.no_nota).ToList();
+            dbContent = new MerapiGolfLogistikEntities();
+            NotaPengembalian notaview = dbContent.mg_nota_pengembalian.Where(n => n.no_nota == retur.id).FirstOrDefault();
+            List<PengembalianPerBarang> notadetailview = dbContent.mg_pengembalian_per_barang.Where(t => t.no_nota == retur.id).ToList();
             return new NotaPengembalianDetail(notaview, notadetailview);
         }
     }

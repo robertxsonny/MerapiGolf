@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace MerapiGolfLogistik.Models
 {
-    public class PengambilanItemExtended : Barang
+    public class PengembalianItemExtended : Barang
     {
-        public string nama_aktiva { get; set; }
-        public Guid id_aktiva { get; set; }
         public double jumlah { get; set; }
     }
 }
