@@ -10,20 +10,19 @@
 namespace MerapiGolfLogistik
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class StokBarang
+    public partial class LaporanGudangFilter_Result
     {
-        public System.Guid id_barang { get; set; }
-        public string nama_barang { get; set; }
-        public string no_nota { get; set; }
-        public Nullable<System.DateTime> tanggal_masuk { get; set; }
-        public Nullable<double> harga_satuan { get; set; }
-        public Nullable<double> stok { get; set; }
+        public Nullable<System.Guid> idkategori { get; set; }
+        public string nama_kategori { get; set; }
         public System.Guid id { get; set; }
+        public string nama_barang { get; set; }
+        public Nullable<double> stoksaldo { get; set; }
+        public Nullable<double> stokmasuk { get; set; }
+        public Nullable<double> stokkeluar { get; set; }
+        public Nullable<double> jumlahhrgbeli { get; set; }
+        public Nullable<double> jumlahhrgpakai { get; set; }
+        public Nullable<double> saldo { get; set; }
         public string satuan { get; set; }
-        public Nullable<double> test { get; set; }
-        public Nullable<double> test2 { get; set; }
-        public Nullable<double> test3 { get; set; }
     }
 }

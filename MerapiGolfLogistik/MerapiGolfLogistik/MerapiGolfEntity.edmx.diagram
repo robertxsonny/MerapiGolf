@@ -38,6 +38,7 @@
         <AssociationConnector Association="MerapiGolfLogistikModel.FK_mg_pengembalian_item_mg_pengembalian" />
         <EntityTypeShape EntityType="MerapiGolfLogistikModel.NotaPengembalian" Width="1.5" PointX="12.375" PointY="12.75" />
         <EntityTypeShape EntityType="MerapiGolfLogistikModel.TotalPengambilan" Width="1.5" PointX="12.375" PointY="4.75" />
+        <EntityTypeShape EntityType="MerapiGolfLogistikModel.mg_laporan_gudang" Width="1.5" PointX="0.75" PointY="14.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,6 +12,8 @@ namespace MerapiGolfLogistik
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class MerapiGolfLogistikEntities : DbContext
     {
@@ -46,5 +48,20 @@ namespace MerapiGolfLogistik
         public virtual DbSet<PengembalianItem> mg_pengembalian_item { get; set; }
         public virtual DbSet<NotaPengembalian> mg_nota_pengembalian { get; set; }
         public virtual DbSet<TotalPengambilan> mg_total_pengambilan { get; set; }
+        public virtual DbSet<mg_laporan_gudang> mg_laporan_gudang { get; set; }
+    
+        [DbFunction("MerapiGolfLogistikEntities", "LaporanGudangFilter")]
+        public virtual IQueryable<LaporanGudangFilter_Result> LaporanGudangFilter(Nullable<System.DateTime> tanggalmulai, Nullable<System.DateTime> tanggalselesai)
+        {
+            var tanggalmulaiParameter = tanggalmulai.HasValue ?
+                new ObjectParameter("tanggalmulai", tanggalmulai) :
+                new ObjectParameter("tanggalmulai", typeof(System.DateTime));
+    
+            var tanggalselesaiParameter = tanggalselesai.HasValue ?
+                new ObjectParameter("tanggalselesai", tanggalselesai) :
+                new ObjectParameter("tanggalselesai", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<LaporanGudangFilter_Result>("[MerapiGolfLogistikEntities].[LaporanGudangFilter](@tanggalmulai, @tanggalselesai)", tanggalmulaiParameter, tanggalselesaiParameter);
+        }
     }
 }

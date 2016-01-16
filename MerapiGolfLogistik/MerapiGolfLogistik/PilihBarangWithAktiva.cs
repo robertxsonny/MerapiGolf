@@ -15,6 +15,7 @@ namespace MerapiGolfLogistik
     {
         public Guid selectedId = Guid.Empty;
         public int jumlah;
+        private int jumlahlimit;
         public Guid selectedAktiva = Guid.Empty;
         private MerapiGolfLogistikEntities dbContent = new MerapiGolfLogistikEntities();
         public PilihBarangWithAktiva()
@@ -39,13 +40,15 @@ namespace MerapiGolfLogistik
                 var barang = dbContent.mg_barang.Where(p => p.id == this.selectedId).Single();
                 namaBarangTb.Text = barang.nama_barang;
                 satuanLabel.Text = barang.satuan;
+                this.jumlahlimit = Convert.ToInt32
+                    (dbContent.mg_stok_barang_total.Where(p => p.id_barang == barang.id).Single().stok.Value);
                 jumlahTb.Focus();
             }
             else if (e.KeyCode == Keys.F2)
                 queryTb.Focus();
             else if (e.KeyCode == Keys.F3)
                 GetAktiva();
-            else if(e.KeyCode == Keys.F5)
+            else if (e.KeyCode == Keys.F5)
             {
                 if (this.selectedId != Guid.Empty && this.jumlah != 0 &&
                this.selectedAktiva != Guid.Empty)
@@ -59,7 +62,7 @@ namespace MerapiGolfLogistik
         {
             PilihAktiva pilihaktivaform = new PilihAktiva();
             var dialogres = pilihaktivaform.ShowDialog();
-            if(dialogres == DialogResult.OK)
+            if (dialogres == DialogResult.OK)
             {
                 this.selectedAktiva = pilihaktivaform.selectedId;
                 var aktiva = dbContent.mg_aktiva.Where(p => p.id == this.selectedAktiva).Single();
@@ -108,6 +111,8 @@ namespace MerapiGolfLogistik
             var barang = dbContent.mg_barang.Where(p => p.id == this.selectedId).Single();
             namaBarangTb.Text = barang.nama_barang;
             satuanLabel.Text = barang.satuan;
+            this.jumlahlimit = Convert.ToInt32
+                     (dbContent.mg_stok_barang_total.Where(p => p.id_barang == barang.id).Single().stok.Value);
             jumlahTb.Focus();
         }
 
@@ -132,6 +137,13 @@ namespace MerapiGolfLogistik
 
         private void AddBarangToForm()
         {
+            if (this.jumlah > this.jumlahlimit)
+            {
+                MessageBox.Show("Jumlah barang tidak dapat melebihi stok!");
+                return;
+            }
+
+
             if (this.selectedId != Guid.Empty && this.jumlah != 0 &&
                 this.selectedAktiva != Guid.Empty)
                 this.DialogResult = DialogResult.OK;

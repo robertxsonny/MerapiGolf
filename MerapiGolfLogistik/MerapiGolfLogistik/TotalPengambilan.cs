@@ -25,5 +25,6 @@ namespace MerapiGolfLogistik
         public Nullable<double> banyak_barang { get; set; }
         public Nullable<double> total_harga { get; set; }
         public Nullable<System.DateTime> tanggal_masuk { get; set; }
+        public Nullable<System.Guid> id_pembelian_barang { get; set; }
     }
 }
