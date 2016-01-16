@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BukaPembelian));
             this.label1 = new System.Windows.Forms.Label();
             this.filterCari = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,13 +37,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.sampaiTanggalTb = new System.Windows.Forms.DateTimePicker();
             this.pembelianView = new System.Windows.Forms.DataGridView();
-            this.semuaPembelianCb = new System.Windows.Forms.CheckBox();
-            this.pembelianExtendedBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.useridDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tanggalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.keteranganDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.isFinishedDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.pembelianExtendedBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.semuaPembelianCb = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pembelianView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pembelianExtendedBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -121,21 +122,6 @@
             this.pembelianView.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.pembelianView_CellContentDoubleClick);
             this.pembelianView.KeyDown += new System.Windows.Forms.KeyEventHandler(this.pembelianView_KeyDown);
             // 
-            // semuaPembelianCb
-            // 
-            this.semuaPembelianCb.AutoSize = true;
-            this.semuaPembelianCb.Location = new System.Drawing.Point(153, 138);
-            this.semuaPembelianCb.Name = "semuaPembelianCb";
-            this.semuaPembelianCb.Size = new System.Drawing.Size(343, 24);
-            this.semuaPembelianCb.TabIndex = 7;
-            this.semuaPembelianCb.Text = "Tampilkan Pembelian Tak Terbatas Tanggal";
-            this.semuaPembelianCb.UseVisualStyleBackColor = true;
-            this.semuaPembelianCb.CheckedChanged += new System.EventHandler(this.semuaPembelianCb_CheckedChanged);
-            // 
-            // pembelianExtendedBindingSource
-            // 
-            this.pembelianExtendedBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.PembelianExtended);
-            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -171,6 +157,21 @@
             this.isFinishedDataGridViewCheckBoxColumn.Name = "isFinishedDataGridViewCheckBoxColumn";
             this.isFinishedDataGridViewCheckBoxColumn.ReadOnly = true;
             // 
+            // pembelianExtendedBindingSource
+            // 
+            this.pembelianExtendedBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.PembelianExtended);
+            // 
+            // semuaPembelianCb
+            // 
+            this.semuaPembelianCb.AutoSize = true;
+            this.semuaPembelianCb.Location = new System.Drawing.Point(153, 138);
+            this.semuaPembelianCb.Name = "semuaPembelianCb";
+            this.semuaPembelianCb.Size = new System.Drawing.Size(343, 24);
+            this.semuaPembelianCb.TabIndex = 7;
+            this.semuaPembelianCb.Text = "Tampilkan Pembelian Tak Terbatas Tanggal";
+            this.semuaPembelianCb.UseVisualStyleBackColor = true;
+            this.semuaPembelianCb.CheckedChanged += new System.EventHandler(this.semuaPembelianCb_CheckedChanged);
+            // 
             // BukaPembelian
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -184,6 +185,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.filterCari);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "BukaPembelian";
             this.Text = "Buka Pembelian - Merapi Golf Inventory";
             this.Load += new System.EventHandler(this.BukaPembelian_Load);

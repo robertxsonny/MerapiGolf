@@ -52,18 +52,18 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 7);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(94, 17);
+            this.label1.Size = new System.Drawing.Size(104, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Cari Kategori:";
             // 
             // catQuery
             // 
-            this.catQuery.Location = new System.Drawing.Point(108, 7);
+            this.catQuery.Location = new System.Drawing.Point(122, 9);
             this.catQuery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.catQuery.Name = "catQuery";
-            this.catQuery.Size = new System.Drawing.Size(287, 22);
+            this.catQuery.Size = new System.Drawing.Size(322, 26);
             this.catQuery.TabIndex = 1;
             this.catQuery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.catQuery_KeyDown);
             // 
@@ -71,10 +71,10 @@
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(400, 7);
+            this.button1.Location = new System.Drawing.Point(450, 9);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 31);
+            this.button1.Size = new System.Drawing.Size(108, 39);
             this.button1.TabIndex = 2;
             this.button1.Text = "Cari (F2)";
             this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -100,12 +100,12 @@
             this.inputdateDataGridViewTextBoxColumn,
             this.barangDataGridViewTextBoxColumn});
             this.categoriesView.DataSource = this.categoryBindingSource;
-            this.categoriesView.Location = new System.Drawing.Point(14, 43);
+            this.categoriesView.Location = new System.Drawing.Point(16, 54);
             this.categoriesView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.categoriesView.Name = "categoriesView";
             this.categoriesView.ReadOnly = true;
             this.categoriesView.RowTemplate.Height = 28;
-            this.categoriesView.Size = new System.Drawing.Size(482, 309);
+            this.categoriesView.Size = new System.Drawing.Size(542, 386);
             this.categoriesView.TabIndex = 3;
             this.categoriesView.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.categoriesView_CellMouseDoubleClick);
             // 
@@ -186,13 +186,14 @@
             // 
             // PilihKategori
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 362);
+            this.ClientSize = new System.Drawing.Size(570, 452);
             this.Controls.Add(this.categoriesView);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.catQuery);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "PilihKategori";
             this.Text = "Pilih Kategori - Merapi Golf Inventory";

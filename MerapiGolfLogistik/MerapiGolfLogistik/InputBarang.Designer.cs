@@ -330,6 +330,7 @@
             this.Controls.Add(this.kategoriTb);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "InputBarang";
             this.ShowInTaskbar = false;
             this.Text = "Input Jenis Barang - Merapi Golf Inventory";
