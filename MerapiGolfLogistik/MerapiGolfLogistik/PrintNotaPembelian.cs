@@ -35,7 +35,7 @@ namespace MerapiGolfLogistik
 
             foreach (TotalPembelian item in nota.items)
             {
-                int i = nota.items.IndexOf(item);
+                int i = nota.items.IndexOf(item); 
                 Label nameLabel = new Label();
                 nameLabel.Name = "nameLabel_" + item.id.ToString();
                 nameLabel.Text = item.nama_barang.ToUpper() + Environment.NewLine 

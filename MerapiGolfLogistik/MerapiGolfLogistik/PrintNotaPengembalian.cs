@@ -32,9 +32,6 @@ namespace MerapiGolfLogistik
             tanggalLabel.Text = (nota.tanggal.HasValue ? nota.tanggal.Value.ToString("dd MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")) : "-").ToUpper();
             keteranganLabel.Text = nota.keterangan.ToUpper();
             
-            string currentAktiva = "";
-            int aktivaCount = 0;
-
             foreach (PengembalianPerBarang item in nota.items)
             {
                 int i = nota.items.IndexOf(item);

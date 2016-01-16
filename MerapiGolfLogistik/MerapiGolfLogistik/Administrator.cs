@@ -54,6 +54,7 @@ namespace MerapiGolfLogistik
             LaporanGudang laporanform = new LaporanGudang();
             laporanform.ShowDialog();
         }
+        
 
         private void tambahBarangBtn_Click(object sender, EventArgs e)
         {
