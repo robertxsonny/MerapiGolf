@@ -28,6 +28,8 @@ namespace MerapiGolfLogistik
             else if (e.KeyCode == Keys.F3)
                 OpenGetItems();
             else if (e.KeyCode == Keys.F4)
+                OpenReturnItems();
+            else if (e.KeyCode == Keys.F5)
                 OpenInventoryReport();
         }
 
@@ -47,6 +49,12 @@ namespace MerapiGolfLogistik
         {
             PengambilanBarang pengambilan = new PengambilanBarang();
             pengambilan.ShowDialog();
+        }
+
+        private static void OpenReturnItems()
+        {
+            PengembalianBarang pengembalian = new PengembalianBarang();
+            pengembalian.ShowDialog();
         }
 
         private static void OpenInventoryReport()
@@ -69,6 +77,11 @@ namespace MerapiGolfLogistik
         private void pengambilanBarangBtn_Click(object sender, EventArgs e)
         {
             OpenGetItems();
+        }
+
+        private void pengembalianBarangBtn_Click(object sender, EventArgs e)
+        {
+            OpenReturnItems();
         }
 
         private void laporanGudangBtn_Click(object sender, EventArgs e)
