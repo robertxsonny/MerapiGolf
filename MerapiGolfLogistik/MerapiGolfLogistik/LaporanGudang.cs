@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MerapiGolfLogistik.Models;
+using System.IO;
+using System.Globalization;
+using OfficeOpenXml;
 
 namespace MerapiGolfLogistik
 {
@@ -82,6 +85,66 @@ namespace MerapiGolfLogistik
             }
             reportView.DataSource = null;
             reportView.DataSource = result;
+            reportView.DefaultCellStyle.FormatProvider = new CultureInfo("id-ID");
+        }
+
+        private void PrintToExcel()
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel File (*.xlsx)|*.xlsx";
+            sfd.FileName = "Laporan Gudang " + dariTanggalTb.Value.ToString("ddMMyyyy", new CultureInfo("id-ID")) + " - " + sampaiTanggalTb.Value.ToString("ddMMyyyy", new CultureInfo("id-ID")) + ".xlsx";
+            sfd.FilterIndex = 1;
+            var result = sfd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    FileInfo file = new FileInfo(sfd.FileName);
+                    if (file.Exists)
+                    {
+                        file.Delete();
+                    }
+
+                    using (ExcelPackage excelFile = new ExcelPackage())
+                    {
+                        ExcelWorksheet sheet1 = excelFile.Workbook.Worksheets.Add("Laporan Gudang");
+
+                        sheet1.Cells["A1"].Value = "LAPORAN INVENTORI GUDANG MERAPI GOLF";
+                        sheet1.Cells[1, 1, 1, reportView.ColumnCount - 2].Merge = true;
+                        sheet1.Cells["A2"].Value = dariTanggalTb.Value.ToString("dd MMMM yyyy", new CultureInfo("id-ID")) + " - " + sampaiTanggalTb.Value.ToString("dd MMMM yyyy", new CultureInfo("id-ID"));
+                        sheet1.Cells[2, 1, 2, reportView.ColumnCount - 2].Merge = true;
+
+                        ExcelRange range1 = sheet1.Cells["A1:A2"];
+                        range1.Style.Font.Bold = true;
+
+                        //sheet1.Cells["A4"].LoadFromCollection((List<LaporanBarangExtended>)reportView.DataSource, true);
+
+                        for (int j = 2; j < reportView.ColumnCount; j++)
+                        {
+                            sheet1.Cells[4, j - 1].Value = reportView.Columns[j].HeaderText;
+                            for (int i = 0; i < reportView.RowCount; i++)
+                            {
+                                sheet1.Cells[i + 5, j - 1].Value = reportView[j, i].Value;
+                            }
+                            sheet1.Column(j - 1).AutoFit();
+                        }                        
+
+                        ExcelRange headerRange = sheet1.Cells[4, 1, 4, reportView.ColumnCount];
+                        headerRange.Style.Font.Bold = true;
+
+                        excelFile.SaveAs(file);
+                        //excelFile.File.Open(FileMode.Open);
+
+                        MessageBox.Show("Berhasil menyimpan laporan ke dalam format Excel. Silakan lakukan pencetakan dari file Excel tersebut.");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Gagal melakukan penyimpanan dan pencetakan. Silakan ulangi lagi.");
+                }
+            }
+            else
+                MessageBox.Show("Gagal melakukan penyimpanan dan pencetakan. Silakan ulangi lagi.");
         }
 
         private void pilihKategoriBtn_Click(object sender, EventArgs e)
@@ -110,6 +173,11 @@ namespace MerapiGolfLogistik
         private void sampaiTanggalTb_ValueChanged(object sender, EventArgs e)
         {
             RefreshView();
+        }
+
+        private void cetakLaporanBtn_Click(object sender, EventArgs e)
+        {
+            PrintToExcel();
         }
     }
 }
