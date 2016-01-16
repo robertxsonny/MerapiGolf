@@ -112,6 +112,24 @@
           <Property Name="role" Type="nvarchar" MaxLength="20" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'MerapiGolfDb.dbo.mg_laporan_gudang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="mg_laporan_gudang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="idkategori" Type="uniqueidentifier" />
+          <Property Name="nama_kategori" Type="nvarchar(max)" />
+          <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="nama_barang" Type="nvarchar(max)" />
+          <Property Name="stoksaldo" Type="float" />
+          <Property Name="stokmasuk" Type="float" />
+          <Property Name="stokkeluar" Type="float" />
+          <Property Name="jumlahhrgbeli" Type="float" />
+          <Property Name="jumlahhrgpakai" Type="float" />
+          <Property Name="saldo" Type="float" />
+          <Property Name="satuan" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'MerapiGolfDb.dbo.mg_nota_pembelian' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mg_nota_pembelian">
           <Key>
@@ -152,8 +170,8 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_nota_pengembalian' does not ha
 warning 6002: The table/view 'MerapiGolfDb.dbo.mg_pengambilan_per_barang' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="mg_pengambilan_per_barang">
           <Key>
-            <PropertyRef Name="id_barang" />
             <PropertyRef Name="no_nota" />
+            <PropertyRef Name="id_barang" />
           </Key>
           <Property Name="no_nota" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="nama_barang" Type="nvarchar(max)" />
@@ -242,6 +260,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengambilan' does not ha
           <Property Name="banyak_barang" Type="float" />
           <Property Name="total_harga" Type="float" />
           <Property Name="no_nota" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="id_pembelian_barang" Type="uniqueidentifier" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -403,6 +422,27 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="LaporanGudangFilter" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="tanggalmulai" Type="date" Mode="In" />
+          <Parameter Name="tanggalselesai" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="idkategori" Type="uniqueidentifier" />
+                <Property Name="nama_kategori" Type="nvarchar(max)" />
+                <Property Name="id" Type="uniqueidentifier" Nullable="false" />
+                <Property Name="nama_barang" Type="nvarchar(max)" />
+                <Property Name="stoksaldo" Type="float" />
+                <Property Name="stokmasuk" Type="float" />
+                <Property Name="stokkeluar" Type="float" />
+                <Property Name="jumlahhrgbeli" Type="float" />
+                <Property Name="jumlahhrgpakai" Type="float" />
+                <Property Name="saldo" Type="float" />
+                <Property Name="satuan" Type="nvarchar" MaxLength="10" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
+        </Function>
         <EntityContainer Name="MerapiGolfLogistikModelStoreContainer">
           <EntitySet Name="mg_aktiva" EntityType="Self.mg_aktiva" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mg_barang" EntityType="Self.mg_barang" Schema="dbo" store:Type="Tables" />
@@ -415,6 +455,21 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
           <EntitySet Name="mg_pengembalian_item" EntityType="Self.mg_pengembalian_item" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mg_supplier" EntityType="Self.mg_supplier" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="mg_user" EntityType="Self.mg_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mg_laporan_gudang" EntityType="Self.mg_laporan_gudang" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [mg_laporan_gudang].[idkategori] AS [idkategori], 
+    [mg_laporan_gudang].[nama_kategori] AS [nama_kategori], 
+    [mg_laporan_gudang].[id] AS [id], 
+    [mg_laporan_gudang].[nama_barang] AS [nama_barang], 
+    [mg_laporan_gudang].[stoksaldo] AS [stoksaldo], 
+    [mg_laporan_gudang].[stokmasuk] AS [stokmasuk], 
+    [mg_laporan_gudang].[stokkeluar] AS [stokkeluar], 
+    [mg_laporan_gudang].[jumlahhrgbeli] AS [jumlahhrgbeli], 
+    [mg_laporan_gudang].[jumlahhrgpakai] AS [jumlahhrgpakai], 
+    [mg_laporan_gudang].[saldo] AS [saldo], 
+    [mg_laporan_gudang].[satuan] AS [satuan]
+    FROM [dbo].[mg_laporan_gudang] AS [mg_laporan_gudang]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="mg_nota_pembelian" EntityType="Self.mg_nota_pembelian" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [mg_nota_pembelian].[no_nota] AS [no_nota], 
@@ -511,7 +566,8 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
     [mg_total_pengambilan].[nama_aktiva] AS [nama_aktiva], 
     [mg_total_pengambilan].[banyak_barang] AS [banyak_barang], 
     [mg_total_pengambilan].[total_harga] AS [total_harga], 
-    [mg_total_pengambilan].[no_nota] AS [no_nota]
+    [mg_total_pengambilan].[no_nota] AS [no_nota], 
+    [mg_total_pengambilan].[id_pembelian_barang] AS [id_pembelian_barang]
     FROM [dbo].[mg_total_pengambilan] AS [mg_total_pengambilan]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="mg_total_pengembalian" EntityType="Self.mg_total_pengembalian" store:Type="Views" store:Schema="dbo">
@@ -649,6 +705,11 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
           </AssociationSet>
           <EntitySet Name="mg_nota_pengembalian" EntityType="MerapiGolfLogistikModel.NotaPengembalian" />
           <EntitySet Name="mg_total_pengambilan" EntityType="MerapiGolfLogistikModel.TotalPengambilan" />
+          <EntitySet Name="mg_laporan_gudang" EntityType="MerapiGolfLogistikModel.mg_laporan_gudang" />
+          <FunctionImport Name="LaporanGudangFilter" IsComposable="true" ReturnType="Collection(MerapiGolfLogistikModel.LaporanGudangFilter_Result)">
+            <Parameter Name="tanggalmulai" Mode="In" Type="DateTime" />
+            <Parameter Name="tanggalselesai" Mode="In" Type="DateTime" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Aktiva">
           <Key>
@@ -1050,7 +1111,37 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
           <Property Name="banyak_barang" Type="Double" />
           <Property Name="total_harga" Type="Double" />
           <Property Name="tanggal_masuk" Type="DateTime" Precision="0" />
+          <Property Name="id_pembelian_barang" Type="Guid" />
         </EntityType>
+        <EntityType Name="mg_laporan_gudang">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="idkategori" Type="Guid" />
+          <Property Name="nama_kategori" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id" Type="Guid" Nullable="false" />
+          <Property Name="nama_barang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="stoksaldo" Type="Double" />
+          <Property Name="stokmasuk" Type="Double" />
+          <Property Name="stokkeluar" Type="Double" />
+          <Property Name="jumlahhrgbeli" Type="Double" />
+          <Property Name="jumlahhrgpakai" Type="Double" />
+          <Property Name="saldo" Type="Double" />
+          <Property Name="satuan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="LaporanGudangFilter_Result">
+          <Property Type="Guid" Name="idkategori" Nullable="true" />
+          <Property Type="String" Name="nama_kategori" Nullable="true" />
+          <Property Type="Guid" Name="id" Nullable="false" />
+          <Property Type="String" Name="nama_barang" Nullable="true" />
+          <Property Type="Double" Name="stoksaldo" Nullable="true" />
+          <Property Type="Double" Name="stokmasuk" Nullable="true" />
+          <Property Type="Double" Name="stokkeluar" Nullable="true" />
+          <Property Type="Double" Name="jumlahhrgbeli" Nullable="true" />
+          <Property Type="Double" Name="jumlahhrgpakai" Nullable="true" />
+          <Property Type="Double" Name="saldo" Nullable="true" />
+          <Property Type="String" Name="satuan" Nullable="true" MaxLength="10" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1291,6 +1382,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
           <EntitySetMapping Name="mg_total_pengambilan">
             <EntityTypeMapping TypeName="MerapiGolfLogistikModel.TotalPengambilan">
               <MappingFragment StoreEntitySet="mg_total_pengambilan">
+                <ScalarProperty Name="id_pembelian_barang" ColumnName="id_pembelian_barang" />
                 <ScalarProperty Name="tanggal_masuk" ColumnName="tanggal_masuk" />
                 <ScalarProperty Name="total_harga" ColumnName="total_harga" />
                 <ScalarProperty Name="banyak_barang" ColumnName="banyak_barang" />
@@ -1305,6 +1397,40 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="mg_laporan_gudang">
+            <EntityTypeMapping TypeName="MerapiGolfLogistikModel.mg_laporan_gudang">
+              <MappingFragment StoreEntitySet="mg_laporan_gudang">
+                <ScalarProperty Name="satuan" ColumnName="satuan" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="jumlahhrgpakai" ColumnName="jumlahhrgpakai" />
+                <ScalarProperty Name="jumlahhrgbeli" ColumnName="jumlahhrgbeli" />
+                <ScalarProperty Name="stokkeluar" ColumnName="stokkeluar" />
+                <ScalarProperty Name="stokmasuk" ColumnName="stokmasuk" />
+                <ScalarProperty Name="stoksaldo" ColumnName="stoksaldo" />
+                <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nama_kategori" ColumnName="nama_kategori" />
+                <ScalarProperty Name="idkategori" ColumnName="idkategori" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="LaporanGudangFilter" FunctionName="MerapiGolfLogistikModel.Store.LaporanGudangFilter">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="MerapiGolfLogistikModel.LaporanGudangFilter_Result">
+                <ScalarProperty Name="idkategori" ColumnName="idkategori" />
+                <ScalarProperty Name="nama_kategori" ColumnName="nama_kategori" />
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="nama_barang" ColumnName="nama_barang" />
+                <ScalarProperty Name="stoksaldo" ColumnName="stoksaldo" />
+                <ScalarProperty Name="stokmasuk" ColumnName="stokmasuk" />
+                <ScalarProperty Name="stokkeluar" ColumnName="stokkeluar" />
+                <ScalarProperty Name="jumlahhrgbeli" ColumnName="jumlahhrgbeli" />
+                <ScalarProperty Name="jumlahhrgpakai" ColumnName="jumlahhrgpakai" />
+                <ScalarProperty Name="saldo" ColumnName="saldo" />
+                <ScalarProperty Name="satuan" ColumnName="satuan" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -173,9 +173,10 @@ namespace MerapiGolfLogistik
             await SaveData();
         }
 
-        private async Task SaveData()
+        private async Task<bool> SaveData()
         {
-            if (Validation())
+            bool valid = Validation();
+            if (valid)
             {
                 pembelian = new Classes.PembelianBarang();
                 statusLabel.Text = "Menyimpan...";
@@ -197,6 +198,7 @@ namespace MerapiGolfLogistik
             }
             else
                 MessageBox.Show("Pastikan barang-barang sudah dimasukkan dan Anda sudah memilih supplier!");
+            return valid;
         }
 
         private void ClearField()
@@ -230,10 +232,16 @@ namespace MerapiGolfLogistik
             var msgbox = MessageBox.Show("Untuk dapat mencetak nota, Anda perlu menyimpan pembelian terlebih dahulu. Simpan sekarang?", "Konfirmasi Pengulangan", MessageBoxButtons.YesNo);
             if (msgbox == DialogResult.Yes)
             {
-                await SaveData();
-                NotaPembelianDetail nota = pembelian.GetNotaPembelian();
-                PrintNotaPembelian print = new PrintNotaPembelian(nota);
-                print.ShowDialog();
+                if (await SaveData())
+                {
+                    NotaPembelianDetail nota = pembelian.GetNotaPembelian();
+                    PrintNotaPembelian print = new PrintNotaPembelian(nota);
+                    print.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Pencetakan tidak dapat dilakukan karena data masih belum lengkap!");
+                }
             }
         }
 

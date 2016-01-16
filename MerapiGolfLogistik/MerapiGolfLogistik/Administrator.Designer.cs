@@ -114,6 +114,7 @@
             this.laporanGudangBtn.TabIndex = 7;
             this.laporanGudangBtn.Text = "Laporan Gudang (F5)";
             this.laporanGudangBtn.UseVisualStyleBackColor = true;
+            this.laporanGudangBtn.Click += new System.EventHandler(this.laporanGudangBtn_Click);
             // 
             // pengembalianBarangBtn
             // 

@@ -114,6 +114,15 @@
     <Compile Include="Kategori.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="LaporanGudang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaporanGudang.Designer.cs">
+      <DependentUpon>LaporanGudang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LaporanGudangFilter_Result.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,14 +144,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>MerapiGolfEntity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="mg_laporan_gudang.cs">
+      <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ItemView.cs" />
+    <Compile Include="Models\LaporanBarangExtended.cs" />
     <Compile Include="Models\NotaPembelianDetail.cs" />
     <Compile Include="Models\NotaPengambilanDetail.cs" />
     <Compile Include="Models\PembelianExtended.cs" />
     <Compile Include="Models\PengambilanItemExtended.cs" />
     <Compile Include="Models\NotaPengembalianDetail.cs" />
-    <Compile Include="Models\PengembalianItemExtended.cs" />
     <Compile Include="NotaPembelian.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
@@ -182,23 +194,11 @@
     <Compile Include="Pengembalian.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
-    <Compile Include="PengembalianBarang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PengembalianBarang.Designer.cs">
-      <DependentUpon>PengembalianBarang.cs</DependentUpon>
-    </Compile>
     <Compile Include="PengembalianItem.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="PengembalianPerBarang.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="PilihBarangDikembalikan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PilihBarangDikembalikan.Designer.cs">
-      <DependentUpon>PilihBarangDikembalikan.cs</DependentUpon>
     </Compile>
     <Compile Include="PilihBarangWithAktiva.cs">
       <SubType>Form</SubType>
@@ -229,12 +229,6 @@
     </Compile>
     <Compile Include="PilihBarang.Designer.cs">
       <DependentUpon>PilihBarang.cs</DependentUpon>
-    </Compile>
-    <Compile Include="PilihNota.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PilihNota.Designer.cs">
-      <DependentUpon>PilihNota.cs</DependentUpon>
     </Compile>
     <Compile Include="PilihSupplier.cs">
       <SubType>Form</SubType>
@@ -298,6 +292,9 @@
     <EmbeddedResource Include="InputBarang.resx">
       <DependentUpon>InputBarang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LaporanGudang.resx">
+      <DependentUpon>LaporanGudang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
     </EmbeddedResource>
@@ -306,12 +303,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PengambilanBarang.resx">
       <DependentUpon>PengambilanBarang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PengembalianBarang.resx">
-      <DependentUpon>PengembalianBarang.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PilihBarangDikembalikan.resx">
-      <DependentUpon>PilihBarangDikembalikan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PilihBarangWithAktiva.resx">
       <DependentUpon>PilihBarangWithAktiva.cs</DependentUpon>
@@ -324,9 +315,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="PilihKategori.resx">
       <DependentUpon>PilihKategori.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PilihNota.resx">
-      <DependentUpon>PilihNota.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PrintNotaPengembalian.resx">
       <DependentUpon>PrintNotaPengembalian.cs</DependentUpon>
@@ -372,6 +360,7 @@
     <None Include="Databases\MerapiGolfDb_15012016_1117.bak" />
     <None Include="Databases\MerapiGolfDb_15012016_1859.bak" />
     <None Include="Databases\MerapiGolfDb_16012016_0936.bak" />
+    <None Include="Databases\MerapiGolfDb_16012016_1713.bak" />
     <None Include="Databases\MerapiGolfDb_20160107_1818.bak" />
     <None Include="Databases\MerapiGolfLogistik_07012016.bak" />
     <None Include="Databases\MerapiGolfDb_07012016_1043.bak" />
@@ -380,18 +369,17 @@
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Aktiva.datasource" />
+    <None Include="Properties\DataSources\LaporanGudang.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.Category.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.ItemView.datasource" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Models.LaporanBarangExtended.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PembelianExtended.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PengambilanItemExtended.datasource" />
-    <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PengembalianItemExtended.datasource" />
-    <None Include="Properties\DataSources\NotaPengambilan.datasource" />
+    <None Include="Properties\DataSources\mg_laporan_gudang.datasource" />
     <None Include="Properties\DataSources\PembelianItem.datasource" />
-    <None Include="Properties\DataSources\PengambilanPerBarang.datasource" />
     <None Include="Properties\DataSources\StokBarangTotal.datasource" />
     <None Include="Properties\DataSources\Supplier.datasource" />
     <None Include="Properties\DataSources\TotalPembelian.datasource" />
-    <None Include="Properties\DataSources\TotalPengambilan.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -441,6 +429,7 @@
     <Content Include="Assets\pencil_16.png" />
     <Content Include="Assets\update_32.png" />
     <Content Include="Assets\update_64.png" />
+    <Content Include="Databases\laporan gudang.sql" />
     <Content Include="MerapiGolfEntity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>MerapiGolfEntity.edmx</DependentUpon>
