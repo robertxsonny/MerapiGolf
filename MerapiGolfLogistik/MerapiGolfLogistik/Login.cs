@@ -42,11 +42,16 @@ namespace MerapiGolfLogistik
                     ambilform.Show();
                     this.Hide();
                     break;
+                case ("admin"):
+                    Administrator adminform = new Administrator();
+                    adminform.Show();
+                    this.Hide();
+                    break;
                 default:
                     MessageBox.Show("Username atau password yang Anda masukkan salah!");
                     break;
             }
-            
+
         }
 
         private void usernameTb_KeyPress(object sender, KeyPressEventArgs e)

@@ -80,6 +80,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator.Designer.cs">
+      <DependentUpon>Administrator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Aktiva.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
@@ -264,6 +270,9 @@
     <Compile Include="User.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Administrator.resx">
+      <DependentUpon>Administrator.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="BukaPembelian.resx">
       <DependentUpon>BukaPembelian.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,6 +343,7 @@
     <None Include="Databases\MerapiGolfDb_14012016_2240.bak" />
     <None Include="Databases\MerapiGolfDb_15012016_1117.bak" />
     <None Include="Databases\MerapiGolfDb_15012016_1859.bak" />
+    <None Include="Databases\MerapiGolfDb_16012016_0936.bak" />
     <None Include="Databases\MerapiGolfDb_20160107_1818.bak" />
     <None Include="Databases\MerapiGolfLogistik_07012016.bak" />
     <None Include="Databases\MerapiGolfDb_07012016_1043.bak" />
@@ -386,6 +396,7 @@
     <Content Include="Assets\document_32.png" />
     <Content Include="Assets\aktiva_16.png" />
     <Content Include="Assets\logo.png" />
+    <Content Include="Assets\out_32.png" />
     <Content Include="Assets\ok_16.png" />
     <Content Include="Assets\logo.ico" />
     <Content Include="Assets\open_16.png" />
