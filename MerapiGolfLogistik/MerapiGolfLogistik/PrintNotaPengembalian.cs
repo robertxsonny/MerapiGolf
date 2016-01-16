@@ -81,6 +81,7 @@ namespace MerapiGolfLogistik
             Graphics myGraphics = mainLayoutPanel.CreateGraphics();
             Size s = mainLayoutPanel.Size;
             memoryImage = new Bitmap(s.Width, s.Height, myGraphics);
+
             Graphics memoryGraphics = Graphics.FromImage(memoryImage);
             Point location = PointToScreen(mainLayoutPanel.Location);
             memoryGraphics.CopyFromScreen(location.X, location.Y, 0, 0, s);
