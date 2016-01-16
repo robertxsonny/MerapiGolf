@@ -118,6 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="bukaBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAALNJREFUOE/N
+        j0sNAkEQRFsCEpCABCTgACTgACTgAGngYHEA/TbzNkNn98CBQCWV6m9NT/wF1slz8thUHpKCmL4zxuzG
+        JbklKKBJD46DM8AsnkkMdp3izqvkDKFeYQzYnQxccLk3wFQDHwAfGxjPGjhM05esaUyNHDPwHQPPh6um
+        vQG6aEBTdYh8kyT3KhS8GQAGK+hxiejzyWBoKm/Ja3KfPLWYWp1Bx38v8Z58lFrlTxHxAsBVT1GkYdaM
+        AAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="buatSupplierBtn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAANlJREFUOE+l

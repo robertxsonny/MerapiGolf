@@ -86,6 +86,12 @@
     <Compile Include="Barang.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="BukaPembelian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BukaPembelian.Designer.cs">
+      <DependentUpon>BukaPembelian.cs</DependentUpon>
+    </Compile>
     <Compile Include="Classes\FetchData.cs" />
     <Compile Include="Classes\InsertData.cs" />
     <Compile Include="Classes\Login.cs" />
@@ -127,6 +133,7 @@
     <Compile Include="Models\ItemView.cs" />
     <Compile Include="Models\NotaPembelianDetail.cs" />
     <Compile Include="Models\NotaPengambilanDetail.cs" />
+    <Compile Include="Models\PembelianExtended.cs" />
     <Compile Include="Models\PengambilanItemExtended.cs" />
     <Compile Include="Models\NotaPengembalianDetail.cs" />
     <Compile Include="NotaPembelian.cs">
@@ -257,6 +264,9 @@
     <Compile Include="User.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="BukaPembelian.resx">
+      <DependentUpon>BukaPembelian.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InputBarang.resx">
       <DependentUpon>InputBarang.cs</DependentUpon>
     </EmbeddedResource>
@@ -334,6 +344,7 @@
     <None Include="Properties\DataSources\Aktiva.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.Category.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.ItemView.datasource" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PembelianExtended.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PengambilanItemExtended.datasource" />
     <None Include="Properties\DataSources\PembelianItem.datasource" />
     <None Include="Properties\DataSources\StokBarangTotal.datasource" />
@@ -377,6 +388,7 @@
     <Content Include="Assets\logo.png" />
     <Content Include="Assets\ok_16.png" />
     <Content Include="Assets\logo.ico" />
+    <Content Include="Assets\open_16.png" />
     <Content Include="Assets\print_32.png" />
     <Content Include="Assets\reset_32.png" />
     <Content Include="Assets\save_32.png" />

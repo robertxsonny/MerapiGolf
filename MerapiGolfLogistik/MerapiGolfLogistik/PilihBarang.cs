@@ -26,6 +26,25 @@ namespace MerapiGolfLogistik
             barangList.KeyDown += barangList_KeyDown;
         }
 
+        public PilihBarang(Guid selectedId, int hargasatuan, int jumlah)
+        {
+            InitializeComponent();
+            this.selectedId = selectedId;
+            this.hargasatuan = hargasatuan;
+            this.jumlah = jumlah;
+            var barang = dbContent.mg_barang.Where(p => p.id == this.selectedId).Single();
+            namaBarangTb.Text = barang.nama_barang;
+            groupBox1.Visible = true;
+            tambahBarangBtn.Visible = true;
+            satuanLabel.Text = barang.satuan;
+            hargaSatuanTb.Text = this.hargasatuan.ToString();
+            jumlahTb.Text = jumlah.ToString();
+            barangList.DataSource = dbContent.mg_stok_barang_total.ToList();
+            barangList.KeyDown += barangList_KeyDown;
+           
+            CalculatePrice();
+        }
+
         private void barangList_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -45,14 +64,7 @@ namespace MerapiGolfLogistik
             }
             else if (e.KeyCode == Keys.F2)
                 queryTb.Focus();
-            else if (e.KeyCode == Keys.F5)
-            {
 
-                if (this.selectedId != Guid.Empty && this.jumlah != 0 && this.hargasatuan != 0)
-                    this.DialogResult = DialogResult.OK;
-                else
-                    MessageBox.Show("Lengkapi semua field: pilih barang, harga satuan, dan jumlah pembelian sebelum menambahkan barang!");
-            }
         }
 
         private void SearchSuppliers()
@@ -80,6 +92,9 @@ namespace MerapiGolfLogistik
                 queryTb.Focus();
             else if (e.KeyCode == Keys.Escape)
                 this.DialogResult = DialogResult.Cancel;
+            else if (e.KeyCode == Keys.F5)
+                AddItemToForm();
+            
         }
 
         private void barangList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -119,15 +134,12 @@ namespace MerapiGolfLogistik
             int harga;
             int total;
 
-            if (String.IsNullOrEmpty(jumlahTb.Text) ||
-                String.IsNullOrEmpty(hargaSatuanTb.Text) ||
-                !Int32.TryParse(jumlahTb.Text, out jumlah) ||
-                !Int32.TryParse(hargaSatuanTb.Text, out harga))
-            {
-                total = 0;
-                totalHargaLabel.Text = total.ToString("C", new CultureInfo("id-ID"));
-                return;
-            }
+            if (!Int32.TryParse(jumlahTb.Text, out jumlah))
+                jumlah = 0;
+            if (!Int32.TryParse(hargaSatuanTb.Text, out harga))
+                harga = 0;
+
+
             this.jumlah = jumlah;
             this.hargasatuan = harga;
             total = jumlah * harga;
@@ -138,8 +150,19 @@ namespace MerapiGolfLogistik
 
         private void tambahBarangBtn_Click(object sender, EventArgs e)
         {
+            AddItemToForm();
+        }
+
+        private void AddItemToForm()
+        {
             if (this.selectedId != Guid.Empty && this.jumlah != 0 && this.hargasatuan != 0)
                 this.DialogResult = DialogResult.OK;
+            else if (this.selectedId != Guid.Empty)
+            {
+                var dlgmsg = MessageBox.Show("Jumlah harga/harga satuan masih ada yang belum diisi! Yakin Anda akan mengisinya nanti?", "Peringatan", MessageBoxButtons.YesNo);
+                if (dlgmsg == DialogResult.Yes)
+                    this.DialogResult = DialogResult.OK;
+            }
             else
                 MessageBox.Show("Lengkapi semua field: pilih barang, harga satuan, dan jumlah pembelian sebelum menambahkan barang!");
         }
@@ -163,5 +186,7 @@ namespace MerapiGolfLogistik
         {
             CalculatePrice();
         }
+
+
     }
 }

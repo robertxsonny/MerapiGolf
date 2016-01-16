@@ -94,16 +94,26 @@ namespace MerapiGolfLogistik
                 var dialogresult = MessageBox.Show("Apakah yakin Anda akan menghapus barang " + namabarang + "?", "Konfirmasi Hapus Barang", MessageBoxButtons.YesNo);
                 if (dialogresult == DialogResult.Yes)
                 {
-                    this.progressBar.Visible = true;
-                    this.progressBar.Value = 50;
-                    this.tooltipStatus.Text = "Menghapus...";
-                    var id = Guid.Parse(itemsView.Rows[e.RowIndex].Cells[0].Value.ToString());
-                    using (dbContent = new MerapiGolfLogistikEntities())
+                    try
                     {
-                        var item = dbContent.mg_barang.Where(p => p.id == id).Single();
-                        dbContent.mg_barang.Remove(item);
-                        await dbContent.SaveChangesAsync();
-                        ReadItems();
+                        this.progressBar.Visible = true;
+                        this.progressBar.Value = 50;
+                        this.tooltipStatus.Text = "Menghapus...";
+                        var id = Guid.Parse(itemsView.Rows[e.RowIndex].Cells[0].Value.ToString());
+                        using (dbContent = new MerapiGolfLogistikEntities())
+                        {
+                            var item = dbContent.mg_barang.Where(p => p.id == id).Single();
+                            dbContent.mg_barang.Remove(item);
+                            await dbContent.SaveChangesAsync();
+                            ReadItems();
+                        }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Gagal menghapus barang. Barang mungkin sudah terkait dengan pembelian dan pengambilan.");
+                    }
+                    finally
+                    {
                         this.progressBar.Value = 100;
                         this.progressBar.Visible = false;
                         if (selectedCat != Guid.Empty)
