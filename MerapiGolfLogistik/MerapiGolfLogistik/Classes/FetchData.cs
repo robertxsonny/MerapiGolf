@@ -12,7 +12,7 @@ namespace MerapiGolfLogistik.Classes
         private MerapiGolfLogistikEntities dbContent;
         public IEnumerable<MerapiGolfLogistik.Models.CategoryView> GetCategory(string query)
         {
-            using(dbContent = new MerapiGolfLogistikEntities())
+            using (dbContent = new MerapiGolfLogistikEntities())
             {
                 var result = new List<MerapiGolfLogistik.Models.CategoryView>();
                 List<Kategori> categories = new List<Kategori>();
@@ -41,7 +41,7 @@ namespace MerapiGolfLogistik.Classes
 
         public IEnumerable<ItemView> GetItems(string query)
         {
-            using(dbContent = new MerapiGolfLogistikEntities())
+            using (dbContent = new MerapiGolfLogistikEntities())
             {
                 var res = new List<ItemView>();
                 List<Barang> items = new List<Barang>();
@@ -50,17 +50,24 @@ namespace MerapiGolfLogistik.Classes
                 else
                     items = dbContent.mg_barang.Where(p => p.nama_barang.Contains(query.ToLower())).ToList();
 
-                if(items.Count != 0)
+                if (items.Count != 0)
                 {
                     foreach (var item in items)
                     {
                         ItemView itemview = new ItemView();
                         itemview.id = item.id;
                         itemview.id_kategori = item.id_kategori;
-                        itemview.itemcount = item.pembelian_item.Count;
+
+                        var stoktotal = dbContent.mg_stok_barang_total.Where(p => p.id_barang == item.id).ToList();
+                        if (stoktotal.Count > 0)
+                        {
+                            var stok = stoktotal.FirstOrDefault();
+                            itemview.itemcount = stok.stok.HasValue ? stok.stok.Value : 0;
+                        }
+
                         if (itemview.itemcount != 0)
                         {
-                            if(item.pembelian_item.Count != 0)
+                            if (item.pembelian_item.Count != 0)
                             {
                                 var selectdates = item.pembelian_item.Select(p => p.pembelian.tanggal);
                                 var datesort = selectdates.OrderByDescending(p => p);
@@ -77,6 +84,39 @@ namespace MerapiGolfLogistik.Classes
 
                 return res;
 
+            }
+        }
+
+        public IEnumerable<PembelianExtended> GetPreviousPembelian(bool isFinished,
+            DateTime startDate, DateTime endDate, bool displayAll)
+        {
+            using (dbContent = new MerapiGolfLogistikEntities())
+            {
+                List<PembelianExtended> result = new List<PembelianExtended>();
+                var allpembelians = dbContent.mg_pembelian.ToList();
+                foreach (var item in allpembelians)
+                {
+                    PembelianExtended pembelian = new PembelianExtended();
+                    pembelian.id = item.id;
+                    pembelian.IsFinished = item.pembelian_item.Where(p => p.harga_satuan == 0 || p.banyak_barang == 0).ToList().
+                        Count == 0;
+                    pembelian.keterangan = item.keterangan;
+                    pembelian.supplier_id = item.supplier_id;
+                    pembelian.tanggal = item.tanggal;
+                    pembelian.username = item.user.nama_karyawan;
+                    result.Add(pembelian);
+                }
+
+                if (!isFinished)
+                    result = result.Where(p => !p.IsFinished).ToList();
+
+                if (!displayAll)
+                {
+                    result = result.Where(p => p.tanggal.HasValue).ToList();
+                    result = result.Where(p => p.tanggal.Value.Subtract(startDate).TotalDays >= 0 &&
+                    p.tanggal.Value.Subtract(endDate).TotalDays <= 0).ToList();
+                }
+                return result;
             }
         }
     }

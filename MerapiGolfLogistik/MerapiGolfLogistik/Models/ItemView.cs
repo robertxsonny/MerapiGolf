@@ -8,7 +8,7 @@ namespace MerapiGolfLogistik.Models
 {
     public class ItemView : MerapiGolfLogistik.Barang
     {
-        public int itemcount { get; set; }
+        public double itemcount { get; set; }
         public string lastcreateditemdate { get; set; }
         public string categoryname { get; set; }
     }

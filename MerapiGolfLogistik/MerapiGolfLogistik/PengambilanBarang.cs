@@ -15,10 +15,12 @@ namespace MerapiGolfLogistik
     {
         private List<PengambilanItemExtended> listBarang;
         private MerapiGolfLogistikEntities dbContent;
+        private Classes.PengambilanBarang pengambilan;
         public PengambilanBarang()
         {
             InitializeComponent();
             dbContent = new MerapiGolfLogistikEntities();
+            pengambilan = new Classes.PengambilanBarang();
             this.listBarang = new List<PengambilanItemExtended>();
             this.KeyPreview = true;
             this.StartPosition = FormStartPosition.CenterScreen;
@@ -27,6 +29,7 @@ namespace MerapiGolfLogistik
 
         private void GenerateNota()
         {
+            dbContent = new MerapiGolfLogistikEntities();
             var pengambilans = dbContent.mg_pengambilan.ToList();
             string nonota = "";
             if (pengambilans.Count > 0)
@@ -38,6 +41,14 @@ namespace MerapiGolfLogistik
             else
                 nonota = "A000001";
             noNotaTb.Text = nonota;
+        }
+
+        private void ClearField()
+        {
+            this.listBarang.Clear();
+            itemView.DataSource = null;
+            keteranganTb.Text = string.Empty;
+            GenerateNota();
         }
 
         private void AddItem()
@@ -70,15 +81,64 @@ namespace MerapiGolfLogistik
             }
         }
 
+        private bool Validation()
+        {
+            return this.listBarang.Count > 0;
+        }
+
+        private async Task SaveData()
+        {
+            if (Validation())
+            {
+                statusLabel.Text = "Menyimpan...";
+                progressBar.Visible = true;
+                progressBar.Value = 50;
+                pengambilan.AddPengambilan(noNotaTb.Text, DateTime.Now, keteranganTb.Text,
+               Classes.Login.currentUser);
+                foreach (var item in this.listBarang)
+                {
+                    pengambilan.AddItem(item.id, item.jumlah, item.id_aktiva);
+                }
+                await pengambilan.StorePengambilan();
+                ClearField();
+                statusLabel.Text = "Ready";
+                progressBar.Visible = false;
+            }
+            else
+                MessageBox.Show("Masukkan barang terlebih dahulu!");
+        }
+
+        private async void PrintData()
+        {
+            var dlgmsg = MessageBox.Show("Anda harus menyimpan pengambilan ini agar dapat dicetak. Menyimpan data?", "Konfirmasi Mencetak", MessageBoxButtons.YesNo);
+            if(dlgmsg == DialogResult.Yes)
+            {
+                await SaveData();
+                var nota = pengambilan.GetNotaPengambilan();
+                PrintNotaPengambilan printnota = new PrintNotaPengambilan(nota);
+                printnota.ShowDialog();
+            }
+        }
+
         private void tambahBarangBtn_Click(object sender, EventArgs e)
         {
             AddItem();
         }
 
-        private void PengambilanBarang_KeyDown(object sender, KeyEventArgs e)
+        private async void PengambilanBarang_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F2)
                 AddItem();
+            else if (e.KeyCode == Keys.F3)
+                await SaveData();
+            else if (e.KeyCode == Keys.F5)
+            {
+                var dlgmsg = MessageBox.Show("Yakin akan mengulangi pengambilan data? Semua barang yang dimasukkan akan terhapus.", "Konfirmasi Pengulangan", MessageBoxButtons.YesNo);
+                if (dlgmsg == DialogResult.Yes)
+                    ClearField();
+            }
+            else if (e.KeyCode == Keys.F4)
+                PrintData();
         }
 
         private void itemView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -94,6 +154,23 @@ namespace MerapiGolfLogistik
                     itemView.DataSource = this.listBarang;
                 }
             }
+        }
+
+        private async void simpanBtn_Click(object sender, EventArgs e)
+        {
+            await SaveData();
+        }
+
+        private void ulangiBtn_Click(object sender, EventArgs e)
+        {
+            var dlgmsg = MessageBox.Show("Yakin akan mengulangi pengambilan data? Semua barang yang dimasukkan akan terhapus.", "Konfirmasi Pengulangan", MessageBoxButtons.YesNo);
+            if (dlgmsg == DialogResult.Yes)
+                ClearField();
+        }
+
+        private void printBtn_Click(object sender, EventArgs e)
+        {
+            PrintData();
         }
     }
 }

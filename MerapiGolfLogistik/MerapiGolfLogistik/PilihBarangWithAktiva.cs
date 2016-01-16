@@ -94,6 +94,8 @@ namespace MerapiGolfLogistik
                 this.DialogResult = DialogResult.Cancel;
             else if (e.KeyCode == Keys.F3)
                 GetAktiva();
+            else if (e.KeyCode == Keys.F5)
+                AddBarangToForm();
         }
 
         private void barangList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -125,7 +127,12 @@ namespace MerapiGolfLogistik
 
         private void tambahBarangBtn_Click(object sender, EventArgs e)
         {
-            if (this.selectedId != Guid.Empty && this.jumlah != 0  &&
+            AddBarangToForm();
+        }
+
+        private void AddBarangToForm()
+        {
+            if (this.selectedId != Guid.Empty && this.jumlah != 0 &&
                 this.selectedAktiva != Guid.Empty)
                 this.DialogResult = DialogResult.OK;
             else

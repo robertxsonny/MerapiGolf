@@ -19,6 +19,7 @@ namespace MerapiGolfLogistik
         private Guid selectedSupplierId;
         private Classes.PembelianBarang pembelian = new Classes.PembelianBarang();
         private List<TotalPembelian> listitems = new List<TotalPembelian>();
+        private string selectedPembelianId = string.Empty;
         public PembelianBarang()
         {
             InitializeComponent();
@@ -65,7 +66,7 @@ namespace MerapiGolfLogistik
                 total.total_harga = total.banyak_barang * total.harga_satuan;
                 total.no_nota = noNotaTb.Text;
                 total.id = barang.id;
-                if(this.listitems.Where(p => p.id == total.id).ToList().Count > 0)
+                if (this.listitems.Where(p => p.id == total.id).ToList().Count > 0)
                 {
                     MessageBox.Show("Anda sudah menambah barang ini sebelumnya!");
                     return;
@@ -125,7 +126,7 @@ namespace MerapiGolfLogistik
             }
             else if (e.KeyCode == Keys.F3)
                 await SaveData();
-            else if(e.KeyCode == Keys.F4)
+            else if (e.KeyCode == Keys.F4)
                 await PrintData();
         }
 
@@ -176,6 +177,7 @@ namespace MerapiGolfLogistik
         {
             if (Validation())
             {
+                pembelian = new Classes.PembelianBarang();
                 statusLabel.Text = "Menyimpan...";
                 progressBar.Value = 50;
                 progressBar.Visible = true;
@@ -206,6 +208,8 @@ namespace MerapiGolfLogistik
             itemList.DataSource = null;
             statusLabel.Text = "Pilih supplier terlebih dahulu";
             progressBar.Visible = false;
+            selectedPembelianId = string.Empty;
+            ReadNota();
             CalculateTotalPrice();
         }
 
@@ -231,6 +235,86 @@ namespace MerapiGolfLogistik
                 PrintNotaPembelian print = new PrintNotaPembelian(nota);
                 print.ShowDialog();
             }
+        }
+
+        private void bukaBtn_Click(object sender, EventArgs e)
+        {
+            BukaPembelian buka = new BukaPembelian();
+            var res = buka.ShowDialog();
+            if (res == DialogResult.OK)
+            {
+                string pembelianId = buka.selectedId;
+                this.selectedPembelianId = pembelianId;
+                var pembelian = dbContent.mg_pembelian.Where(p => p.id == this.selectedPembelianId).Single();
+
+                this.selectedSupplierId = pembelian.supplier_id.Value;
+                selectedSupplierTb.Text = pembelian.supplier.nama_supplier;
+                noNotaTb.Text = pembelian.id;
+                keteranganTb.Text = pembelian.keterangan;
+                this.listitems = new List<TotalPembelian>();
+                foreach (var item in pembelian.pembelian_item)
+                {
+                    TotalPembelian totalpemb = new TotalPembelian();
+                    totalpemb.banyak_barang = Convert.ToInt32(item.banyak_barang);
+                    totalpemb.harga_satuan = Convert.ToInt32(item.harga_satuan);
+                    totalpemb.id = item.barang_id.Value;
+                    totalpemb.id_barang = item.barang_id.Value;
+                    totalpemb.nama_barang = item.barang.nama_barang;
+                    totalpemb.no_nota = item.no_nota;
+                    totalpemb.satuan = item.barang.satuan;
+                    totalpemb.total_harga = Convert.ToInt32(item.banyak_barang * item.harga_satuan);
+                    this.listitems.Add(totalpemb);
+                }
+                itemList.DataSource = null;
+                itemList.DataSource = this.listitems;
+                CalculateTotalPrice();
+            }
+        }
+
+        private void itemList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Guid selectedId = Guid.Parse(itemList.Rows[e.RowIndex].Cells[1].Value.ToString());
+            int hargasatuan = Convert.ToInt32(itemList.Rows[e.RowIndex].Cells[3].Value.ToString());
+            int jumlah = Convert.ToInt32(itemList.Rows[e.RowIndex].Cells[4].Value.ToString());
+            PilihBarang pilihform = new PilihBarang(selectedId, hargasatuan, jumlah);
+            var dlgresult = pilihform.ShowDialog();
+            if(dlgresult == DialogResult.OK)
+            {
+                //update list
+                var item = this.listitems.Where(p => p.id_barang == selectedId).Single();
+                item.harga_satuan = pilihform.hargasatuan;
+                item.banyak_barang = pilihform.jumlah;
+                item.total_harga = item.harga_satuan * item.banyak_barang;
+                itemList.DataSource = null;
+                itemList.DataSource = this.listitems;
+                CalculateTotalPrice();
+            }
+           
+        }
+
+        private void itemList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Enter)
+            {
+                int rowindex = itemList.SelectedCells[0].RowIndex;
+                Guid selectedId = Guid.Parse(itemList.Rows[rowindex].Cells[1].Value.ToString());
+                int hargasatuan = Convert.ToInt32(itemList.Rows[rowindex].Cells[3].Value.ToString());
+                int jumlah = Convert.ToInt32(itemList.Rows[rowindex].Cells[4].Value.ToString());
+                PilihBarang pilihform = new PilihBarang(selectedId, hargasatuan, jumlah);
+                var dlgresult = pilihform.ShowDialog();
+                if (dlgresult == DialogResult.OK)
+                {
+                    //update list
+                    var item = this.listitems.Where(p => p.id_barang == selectedId).Single();
+                    item.harga_satuan = pilihform.hargasatuan;
+                    item.banyak_barang = pilihform.jumlah;
+                    item.total_harga = item.harga_satuan * item.banyak_barang;
+                    itemList.DataSource = null;
+                    itemList.DataSource = this.listitems;
+                    CalculateTotalPrice();
+                }
+            }
+            
         }
     }
 }

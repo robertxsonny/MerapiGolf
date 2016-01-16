@@ -56,19 +56,19 @@
             // 
             // queryTb
             // 
-            this.queryTb.Location = new System.Drawing.Point(104, 10);
+            this.queryTb.Location = new System.Drawing.Point(117, 12);
             this.queryTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.queryTb.Name = "queryTb";
-            this.queryTb.Size = new System.Drawing.Size(284, 22);
+            this.queryTb.Size = new System.Drawing.Size(319, 26);
             this.queryTb.TabIndex = 0;
             this.queryTb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.queryTb_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 12);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 17);
+            this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 1;
             this.label1.Text = "Cari Barang";
             // 
@@ -76,10 +76,10 @@
             // 
             this.searchBtn.Image = ((System.Drawing.Image)(resources.GetObject("searchBtn.Image")));
             this.searchBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.searchBtn.Location = new System.Drawing.Point(393, 6);
+            this.searchBtn.Location = new System.Drawing.Point(442, 8);
             this.searchBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.searchBtn.Name = "searchBtn";
-            this.searchBtn.Size = new System.Drawing.Size(88, 27);
+            this.searchBtn.Size = new System.Drawing.Size(99, 34);
             this.searchBtn.TabIndex = 2;
             this.searchBtn.Text = "Cari (F2)";
             this.searchBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -96,11 +96,11 @@
             this.stokDataGridViewTextBoxColumn,
             this.stok});
             this.barangList.DataSource = this.stokBarangTotalBindingSource;
-            this.barangList.Location = new System.Drawing.Point(14, 46);
+            this.barangList.Location = new System.Drawing.Point(16, 58);
             this.barangList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barangList.Name = "barangList";
             this.barangList.RowTemplate.Height = 28;
-            this.barangList.Size = new System.Drawing.Size(467, 298);
+            this.barangList.Size = new System.Drawing.Size(525, 372);
             this.barangList.TabIndex = 3;
             this.barangList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.barangList_CellDoubleClick);
             // 
@@ -140,18 +140,18 @@
             // 
             this.satuanLabel.AutoSize = true;
             this.satuanLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.satuanLabel.Location = new System.Drawing.Point(398, 26);
+            this.satuanLabel.Location = new System.Drawing.Point(448, 32);
             this.satuanLabel.Name = "satuanLabel";
-            this.satuanLabel.Size = new System.Drawing.Size(69, 17);
+            this.satuanLabel.Size = new System.Drawing.Size(77, 20);
             this.satuanLabel.TabIndex = 7;
             this.satuanLabel.Text = "[Satuan]";
             // 
             // jumlahTb
             // 
-            this.jumlahTb.Location = new System.Drawing.Point(340, 24);
+            this.jumlahTb.Location = new System.Drawing.Point(382, 30);
             this.jumlahTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.jumlahTb.Name = "jumlahTb";
-            this.jumlahTb.Size = new System.Drawing.Size(47, 22);
+            this.jumlahTb.Size = new System.Drawing.Size(52, 26);
             this.jumlahTb.TabIndex = 6;
             this.jumlahTb.TextChanged += new System.EventHandler(this.jumlahTb_TextChanged);
             this.jumlahTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.jumlahTb_KeyPress);
@@ -160,18 +160,18 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(183, 54);
+            this.label4.Location = new System.Drawing.Point(206, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(113, 17);
+            this.label4.Size = new System.Drawing.Size(126, 20);
             this.label4.TabIndex = 9;
             this.label4.Text = "Harga Satuan:";
             // 
             // hargaSatuanTb
             // 
-            this.hargaSatuanTb.Location = new System.Drawing.Point(340, 51);
+            this.hargaSatuanTb.Location = new System.Drawing.Point(382, 64);
             this.hargaSatuanTb.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.hargaSatuanTb.Name = "hargaSatuanTb";
-            this.hargaSatuanTb.Size = new System.Drawing.Size(128, 22);
+            this.hargaSatuanTb.Size = new System.Drawing.Size(144, 26);
             this.hargaSatuanTb.TabIndex = 8;
             this.hargaSatuanTb.TextChanged += new System.EventHandler(this.hargaSatuanTb_TextChanged);
             this.hargaSatuanTb.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.hargaSatuanTb_KeyPress);
@@ -180,9 +180,9 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(183, 26);
+            this.label5.Location = new System.Drawing.Point(206, 32);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(64, 17);
+            this.label5.Size = new System.Drawing.Size(71, 20);
             this.label5.TabIndex = 10;
             this.label5.Text = "Jumlah:";
             // 
@@ -190,9 +190,9 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(183, 81);
+            this.label6.Location = new System.Drawing.Point(206, 101);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(99, 17);
+            this.label6.Size = new System.Drawing.Size(108, 20);
             this.label6.TabIndex = 11;
             this.label6.Text = "Total Harga:";
             // 
@@ -200,9 +200,9 @@
             // 
             this.namaBarangTb.AutoSize = true;
             this.namaBarangTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.namaBarangTb.Location = new System.Drawing.Point(5, 26);
+            this.namaBarangTb.Location = new System.Drawing.Point(6, 32);
             this.namaBarangTb.Name = "namaBarangTb";
-            this.namaBarangTb.Size = new System.Drawing.Size(162, 17);
+            this.namaBarangTb.Size = new System.Drawing.Size(177, 20);
             this.namaBarangTb.TabIndex = 5;
             this.namaBarangTb.Text = "[Pilih Barang Dahulu]";
             // 
@@ -216,11 +216,11 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.jumlahTb);
             this.groupBox1.Controls.Add(this.satuanLabel);
-            this.groupBox1.Location = new System.Drawing.Point(14, 358);
+            this.groupBox1.Location = new System.Drawing.Point(16, 448);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(474, 113);
+            this.groupBox1.Size = new System.Drawing.Size(533, 141);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Barang Terpilih";
@@ -230,9 +230,9 @@
             // 
             this.totalHargaLabel.AutoSize = true;
             this.totalHargaLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalHargaLabel.Location = new System.Drawing.Point(336, 81);
+            this.totalHargaLabel.Location = new System.Drawing.Point(378, 101);
             this.totalHargaLabel.Name = "totalHargaLabel";
-            this.totalHargaLabel.Size = new System.Drawing.Size(47, 17);
+            this.totalHargaLabel.Size = new System.Drawing.Size(52, 20);
             this.totalHargaLabel.TabIndex = 12;
             this.totalHargaLabel.Text = "Rp 0;";
             // 
@@ -240,10 +240,10 @@
             // 
             this.tambahBarangBtn.Image = ((System.Drawing.Image)(resources.GetObject("tambahBarangBtn.Image")));
             this.tambahBarangBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tambahBarangBtn.Location = new System.Drawing.Point(315, 479);
+            this.tambahBarangBtn.Location = new System.Drawing.Point(354, 599);
             this.tambahBarangBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tambahBarangBtn.Name = "tambahBarangBtn";
-            this.tambahBarangBtn.Size = new System.Drawing.Size(166, 32);
+            this.tambahBarangBtn.Size = new System.Drawing.Size(187, 40);
             this.tambahBarangBtn.TabIndex = 14;
             this.tambahBarangBtn.Text = "Tambah Barang (F5)";
             this.tambahBarangBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -253,9 +253,9 @@
             // 
             // PilihBarang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 518);
+            this.ClientSize = new System.Drawing.Size(554, 648);
             this.Controls.Add(this.tambahBarangBtn);
             this.Controls.Add(this.barangList);
             this.Controls.Add(this.searchBtn);

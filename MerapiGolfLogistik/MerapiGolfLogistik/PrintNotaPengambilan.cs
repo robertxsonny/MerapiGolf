@@ -18,11 +18,6 @@ namespace MerapiGolfLogistik
 
         Bitmap memoryImage;
 
-       
-        public PrintNotaPengambilan()
-        {
-            InitializeComponent();
-        }
 
         public PrintNotaPengambilan(NotaPengambilanDetail nota)
         {
@@ -82,10 +77,11 @@ namespace MerapiGolfLogistik
             (sender as Timer).Stop();
             PrintDocument printDocument = new PrintDocument();
             printDocument.PrintPage += PrintDocument_PrintPage;
-            PrintPreviewDialog printPreview = new PrintPreviewDialog();
-            printPreview.Document = printDocument;
+            //PrintPreviewDialog printPreview = new PrintPreviewDialog();
+            //printPreview.Document = printDocument;
             CaptureScreen();
-            printPreview.ShowDialog();
+            printDocument.Print();
+            //printPreview.ShowDialog();
         }
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)

@@ -80,11 +80,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator.Designer.cs">
+      <DependentUpon>Administrator.cs</DependentUpon>
+    </Compile>
     <Compile Include="Aktiva.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Barang.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BukaPembelian.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BukaPembelian.Designer.cs">
+      <DependentUpon>BukaPembelian.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\FetchData.cs" />
     <Compile Include="Classes\InsertData.cs" />
@@ -127,6 +139,7 @@
     <Compile Include="Models\ItemView.cs" />
     <Compile Include="Models\NotaPembelianDetail.cs" />
     <Compile Include="Models\NotaPengambilanDetail.cs" />
+    <Compile Include="Models\PembelianExtended.cs" />
     <Compile Include="Models\PengambilanItemExtended.cs" />
     <Compile Include="Models\NotaPengembalianDetail.cs" />
     <Compile Include="NotaPembelian.cs">
@@ -257,6 +270,12 @@
     <Compile Include="User.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Administrator.resx">
+      <DependentUpon>Administrator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BukaPembelian.resx">
+      <DependentUpon>BukaPembelian.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InputBarang.resx">
       <DependentUpon>InputBarang.cs</DependentUpon>
     </EmbeddedResource>
@@ -322,6 +341,9 @@
     <None Include="Databases\MerapiGolfDb_13012016_2245.bak" />
     <None Include="Databases\MerapiGolfDb_14012016_0009.bak" />
     <None Include="Databases\MerapiGolfDb_14012016_2240.bak" />
+    <None Include="Databases\MerapiGolfDb_15012016_1117.bak" />
+    <None Include="Databases\MerapiGolfDb_15012016_1859.bak" />
+    <None Include="Databases\MerapiGolfDb_16012016_0936.bak" />
     <None Include="Databases\MerapiGolfDb_20160107_1818.bak" />
     <None Include="Databases\MerapiGolfLogistik_07012016.bak" />
     <None Include="Databases\MerapiGolfDb_07012016_1043.bak" />
@@ -332,6 +354,7 @@
     <None Include="Properties\DataSources\Aktiva.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.Category.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.ItemView.datasource" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PembelianExtended.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PengambilanItemExtended.datasource" />
     <None Include="Properties\DataSources\PembelianItem.datasource" />
     <None Include="Properties\DataSources\StokBarangTotal.datasource" />
@@ -373,8 +396,10 @@
     <Content Include="Assets\document_32.png" />
     <Content Include="Assets\aktiva_16.png" />
     <Content Include="Assets\logo.png" />
+    <Content Include="Assets\out_32.png" />
     <Content Include="Assets\ok_16.png" />
     <Content Include="Assets\logo.ico" />
+    <Content Include="Assets\open_16.png" />
     <Content Include="Assets\print_32.png" />
     <Content Include="Assets\reset_32.png" />
     <Content Include="Assets\save_32.png" />

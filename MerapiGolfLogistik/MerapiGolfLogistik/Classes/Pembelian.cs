@@ -43,11 +43,33 @@ namespace MerapiGolfLogistik.Classes
         {
             using (dbContent = new MerapiGolfLogistikEntities())
             {
-                dbContent.mg_pembelian.Add(nota);
-                foreach (PembelianItem item in items)
+                //update
+                if(dbContent.mg_pembelian.Where(p => p.id == nota.id).ToList().Count > 0)
                 {
-                    item.no_nota = nota.id;
-                    dbContent.mg_pembelian_item.Add(item);
+                    var current = dbContent.mg_pembelian.Where(p => p.id == nota.id).Single();
+                    current.keterangan = nota.keterangan;
+                    current.supplier_id = nota.supplier_id;
+                    current.user_id = nota.user_id;
+                    foreach (PembelianItem item in items)
+                    {
+                        var pembelianitem = current.pembelian_item.Where(p => p.barang_id == item.barang_id).ToList();
+                        if (pembelianitem.Count > 0)
+                        {
+                            var currentitem = pembelianitem.Single();
+                            currentitem.banyak_barang = item.banyak_barang;
+                            currentitem.harga_satuan = item.harga_satuan;
+                            currentitem.barang_id = item.barang_id;
+                        }
+                    }
+                }
+                else //create new
+                {
+                    dbContent.mg_pembelian.Add(nota);
+                    foreach (PembelianItem item in items)
+                    {
+                        item.no_nota = nota.id;
+                        dbContent.mg_pembelian_item.Add(item);
+                    }
                 }
                 await dbContent.SaveChangesAsync();
             }
