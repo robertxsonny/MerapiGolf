@@ -15,7 +15,7 @@ namespace MerapiGolfLogistik.Classes
 
         public List<PembelianItem> items;
 
-        public void AddPembelian(string nomorNota, DateTime tanggal, string keterangan, Guid userId, Guid supplierId)
+        public void AddPembelian(string nomorNota, DateTime tanggal, string keterangan, Guid userId, Guid supplierId, string pembeli)
         {
             nota = new Pembelian();
             nota.id = nomorNota;
@@ -23,6 +23,7 @@ namespace MerapiGolfLogistik.Classes
             nota.keterangan = keterangan;
             nota.user_id = userId;
             nota.supplier_id = supplierId;
+            nota.nama_pembeli = pembeli;
             items = new List<PembelianItem>();
         }
 

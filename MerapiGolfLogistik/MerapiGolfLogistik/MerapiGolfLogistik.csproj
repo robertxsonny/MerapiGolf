@@ -104,6 +104,7 @@
     </Compile>
     <Compile Include="Classes\FetchData.cs" />
     <Compile Include="Classes\InsertData.cs" />
+    <Compile Include="Classes\LaporanGudang.cs" />
     <Compile Include="Classes\Login.cs" />
     <Compile Include="Classes\MD5.cs" />
     <Compile Include="Classes\Pembelian.cs" />
@@ -394,6 +395,7 @@
     <None Include="Databases\MerapiGolfDb_16012016_0936.bak" />
     <None Include="Databases\MerapiGolfDb_16012016_1713.bak" />
     <None Include="Databases\MerapiGolfDb_20160107_1818.bak" />
+    <None Include="Databases\MerapiGolfDb_22160107_1956.bak" />
     <None Include="Databases\MerapiGolfLogistik_07012016.bak" />
     <None Include="Databases\MerapiGolfDb_07012016_1043.bak" />
     <None Include="MerapiGolfEntity.edmx.diagram">
@@ -402,6 +404,8 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\Aktiva.datasource" />
     <None Include="Properties\DataSources\LaporanGudang.datasource" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Classes.LaporanGudang.datasource" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Classes.LaporanGudangItem.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.Category.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.ItemView.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.LaporanBarangExtended.datasource" />

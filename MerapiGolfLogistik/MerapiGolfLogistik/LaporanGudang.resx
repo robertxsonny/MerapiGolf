@@ -135,6 +135,9 @@
         IxHC06/rXMoXENuehN5/n3wAAAAASUVORK5CYII=
 </value>
   </data>
+  <metadata name="laporanGudangItemBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>493, 17</value>
+  </metadata>
   <metadata name="laporanBarangExtendedBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
@@ -156,4 +159,7 @@
         AAAAAElFTkSuQmCC
 </value>
   </data>
+  <metadata name="laporanGudangBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>278, 17</value>
+  </metadata>
 </root>

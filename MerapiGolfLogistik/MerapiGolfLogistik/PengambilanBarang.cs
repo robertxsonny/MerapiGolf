@@ -22,6 +22,7 @@ namespace MerapiGolfLogistik
             dbContent = new MerapiGolfLogistikEntities();
             pengambilan = new Classes.PengambilanBarang();
             this.listBarang = new List<PengambilanItemExtended>();
+            this.tanggalDt.Value = DateTime.Today;
             this.KeyPreview = true;
             this.StartPosition = FormStartPosition.CenterScreen;
             GenerateNota();
@@ -47,6 +48,8 @@ namespace MerapiGolfLogistik
         {
             this.listBarang.Clear();
             itemView.DataSource = null;
+            tanggalDt.Value = DateTime.Today;
+            namaTb.Text = string.Empty;
             keteranganTb.Text = string.Empty;
             GenerateNota();
         }
@@ -94,8 +97,8 @@ namespace MerapiGolfLogistik
                 statusLabel.Text = "Menyimpan...";
                 progressBar.Visible = true;
                 progressBar.Value = 50;
-                pengambilan.AddPengambilan(noNotaTb.Text, DateTime.Now, keteranganTb.Text,
-               Classes.Login.currentUser);
+                pengambilan.AddPengambilan(noNotaTb.Text, tanggalDt.Value, keteranganTb.Text,
+               Classes.Login.currentUser, namaTb.Text);
                 foreach (var item in this.listBarang)
                 {
                     pengambilan.AddItem(item.id, item.jumlah, item.id_aktiva);

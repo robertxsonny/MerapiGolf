@@ -15,13 +15,14 @@ namespace MerapiGolfLogistik.Classes
 
         private List<PengambilanItem> items;
 
-        public void AddPengambilan(string nomorNota, DateTime tanggal, string keterangan, Guid userId)
+        public void AddPengambilan(string nomorNota, DateTime tanggal, string keterangan, Guid userId, string pengambil)
         {
             nota = new Pengambilan();
             nota.id = nomorNota;
             nota.tanggal = tanggal;
             nota.keterangan = keterangan;
             nota.user_id = userId;
+            nota.nama_pengambil = pengambil;
             items = new List<PengambilanItem>();
         }
 

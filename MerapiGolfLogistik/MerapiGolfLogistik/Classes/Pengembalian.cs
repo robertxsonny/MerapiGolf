@@ -15,12 +15,13 @@ namespace MerapiGolfLogistik.Classes
 
         private List<PengembalianItem> items;
 
-        public void AddPengembalian(string no_nota, Guid userId, DateTime tanggal, string keterangan)
+        public void AddPengembalian(string no_nota, Guid userId, DateTime tanggal, string keterangan, string pengembali)
         {
             retur = new Pengembalian();
             retur.id = no_nota;
             retur.user_id = userId;
             retur.tanggal = tanggal;
+            retur.nama_pengembali = pengembali;
             retur.keterangan = keterangan;
         }
 

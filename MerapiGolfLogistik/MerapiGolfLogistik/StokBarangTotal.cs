@@ -18,5 +18,6 @@ namespace MerapiGolfLogistik
         public string nama_barang { get; set; }
         public Nullable<double> stok { get; set; }
         public string satuan { get; set; }
+        public string subsi { get; set; }
     }
 }

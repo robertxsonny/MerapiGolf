@@ -21,5 +21,6 @@ namespace MerapiGolfLogistik
         public Nullable<double> banyak_barang { get; set; }
         public string no_nota { get; set; }
         public System.Guid id_barang { get; set; }
+        public string subsi { get; set; }
     }
 }

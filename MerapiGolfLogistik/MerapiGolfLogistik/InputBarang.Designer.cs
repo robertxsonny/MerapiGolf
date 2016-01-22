@@ -58,6 +58,8 @@
             this.cariBtn = new System.Windows.Forms.Button();
             this.simpanBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.subsiTb = new System.Windows.Forms.TextBox();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemsView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.itemViewBindingSource)).BeginInit();
@@ -66,9 +68,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 19);
+            this.label1.Location = new System.Drawing.Point(8, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 20);
+            this.label1.Size = new System.Drawing.Size(68, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Pilih Kategori";
             // 
@@ -79,44 +82,47 @@
             this.statusLabel,
             this.tooltipStatus,
             this.progressBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 764);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 460);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(945, 30);
+            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 9, 0);
+            this.statusStrip1.Size = new System.Drawing.Size(630, 22);
             this.statusStrip1.TabIndex = 1;
             this.statusStrip1.Text = "Sistem Siap.";
             // 
             // statusLabel
             // 
             this.statusLabel.Name = "statusLabel";
-            this.statusLabel.Size = new System.Drawing.Size(0, 25);
+            this.statusLabel.Size = new System.Drawing.Size(0, 17);
             // 
             // tooltipStatus
             // 
             this.tooltipStatus.Name = "tooltipStatus";
-            this.tooltipStatus.Size = new System.Drawing.Size(60, 25);
+            this.tooltipStatus.Size = new System.Drawing.Size(39, 17);
             this.tooltipStatus.Text = "Ready";
             // 
             // progressBar
             // 
             this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(100, 24);
+            this.progressBar.Size = new System.Drawing.Size(67, 16);
             this.progressBar.Visible = false;
             // 
             // kategoriTb
             // 
             this.kategoriTb.Enabled = false;
-            this.kategoriTb.Location = new System.Drawing.Point(177, 16);
+            this.kategoriTb.Location = new System.Drawing.Point(118, 10);
+            this.kategoriTb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.kategoriTb.Name = "kategoriTb";
-            this.kategoriTb.Size = new System.Drawing.Size(550, 26);
+            this.kategoriTb.Size = new System.Drawing.Size(368, 20);
             this.kategoriTb.TabIndex = 2;
             // 
             // pilihKategoriBtn
             // 
             this.pilihKategoriBtn.Image = ((System.Drawing.Image)(resources.GetObject("pilihKategoriBtn.Image")));
             this.pilihKategoriBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.pilihKategoriBtn.Location = new System.Drawing.Point(753, 16);
+            this.pilihKategoriBtn.Location = new System.Drawing.Point(502, 10);
+            this.pilihKategoriBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pilihKategoriBtn.Name = "pilihKategoriBtn";
-            this.pilihKategoriBtn.Size = new System.Drawing.Size(180, 37);
+            this.pilihKategoriBtn.Size = new System.Drawing.Size(120, 24);
             this.pilihKategoriBtn.TabIndex = 9;
             this.pilihKategoriBtn.Text = "Pilih Kategori (F1)";
             this.pilihKategoriBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -125,50 +131,56 @@
             // 
             // namaBarangTb
             // 
-            this.namaBarangTb.Location = new System.Drawing.Point(177, 106);
+            this.namaBarangTb.Location = new System.Drawing.Point(118, 69);
+            this.namaBarangTb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.namaBarangTb.Name = "namaBarangTb";
-            this.namaBarangTb.Size = new System.Drawing.Size(550, 26);
+            this.namaBarangTb.Size = new System.Drawing.Size(368, 20);
             this.namaBarangTb.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 106);
+            this.label3.Location = new System.Drawing.Point(8, 69);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 20);
+            this.label3.Size = new System.Drawing.Size(76, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Nama Barang*";
             // 
             // satuanTb
             // 
-            this.satuanTb.Location = new System.Drawing.Point(177, 151);
+            this.satuanTb.Location = new System.Drawing.Point(118, 98);
+            this.satuanTb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.satuanTb.Name = "satuanTb";
-            this.satuanTb.Size = new System.Drawing.Size(550, 26);
+            this.satuanTb.Size = new System.Drawing.Size(368, 20);
             this.satuanTb.TabIndex = 6;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 151);
+            this.label4.Location = new System.Drawing.Point(8, 98);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(165, 20);
+            this.label4.Size = new System.Drawing.Size(113, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Satuan (cth: pcs/liter)*";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 61);
+            this.label5.Location = new System.Drawing.Point(8, 40);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(139, 20);
+            this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 10;
             this.label5.Text = "Tanggal Pengisian";
             // 
             // tanggalInputTb
             // 
-            this.tanggalInputTb.Location = new System.Drawing.Point(177, 61);
+            this.tanggalInputTb.Location = new System.Drawing.Point(118, 40);
+            this.tanggalInputTb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.tanggalInputTb.Name = "tanggalInputTb";
-            this.tanggalInputTb.Size = new System.Drawing.Size(550, 26);
+            this.tanggalInputTb.Size = new System.Drawing.Size(368, 20);
             this.tanggalInputTb.TabIndex = 3;
             // 
             // itemsView
@@ -187,10 +199,11 @@
             this.lastcreateditemdateDataGridViewTextBoxColumn,
             this.idkategoriDataGridViewTextBoxColumn});
             this.itemsView.DataSource = this.itemViewBindingSource;
-            this.itemsView.Location = new System.Drawing.Point(16, 282);
+            this.itemsView.Location = new System.Drawing.Point(11, 183);
+            this.itemsView.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.itemsView.Name = "itemsView";
             this.itemsView.RowTemplate.Height = 28;
-            this.itemsView.Size = new System.Drawing.Size(917, 468);
+            this.itemsView.Size = new System.Drawing.Size(611, 304);
             this.itemsView.TabIndex = 12;
             this.itemsView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.itemsView_CellContentClick);
             // 
@@ -256,17 +269,19 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 239);
+            this.label6.Location = new System.Drawing.Point(8, 155);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 20);
+            this.label6.Size = new System.Drawing.Size(65, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Cari Barang:";
             // 
             // searchTb
             // 
-            this.searchTb.Location = new System.Drawing.Point(177, 239);
+            this.searchTb.Location = new System.Drawing.Point(118, 155);
+            this.searchTb.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.searchTb.Name = "searchTb";
-            this.searchTb.Size = new System.Drawing.Size(550, 26);
+            this.searchTb.Size = new System.Drawing.Size(368, 20);
             this.searchTb.TabIndex = 10;
             this.searchTb.KeyDown += new System.Windows.Forms.KeyEventHandler(this.searchTb_KeyDown);
             // 
@@ -274,9 +289,10 @@
             // 
             this.cariBtn.Image = ((System.Drawing.Image)(resources.GetObject("cariBtn.Image")));
             this.cariBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cariBtn.Location = new System.Drawing.Point(753, 239);
+            this.cariBtn.Location = new System.Drawing.Point(502, 155);
+            this.cariBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cariBtn.Name = "cariBtn";
-            this.cariBtn.Size = new System.Drawing.Size(180, 37);
+            this.cariBtn.Size = new System.Drawing.Size(120, 24);
             this.cariBtn.TabIndex = 11;
             this.cariBtn.Text = "Cari (F2)";
             this.cariBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -287,9 +303,10 @@
             // 
             this.simpanBtn.Image = ((System.Drawing.Image)(resources.GetObject("simpanBtn.Image")));
             this.simpanBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.simpanBtn.Location = new System.Drawing.Point(341, 196);
+            this.simpanBtn.Location = new System.Drawing.Point(227, 127);
+            this.simpanBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.simpanBtn.Name = "simpanBtn";
-            this.simpanBtn.Size = new System.Drawing.Size(110, 30);
+            this.simpanBtn.Size = new System.Drawing.Size(73, 19);
             this.simpanBtn.TabIndex = 7;
             this.simpanBtn.Text = "Simpan";
             this.simpanBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -300,20 +317,42 @@
             // 
             this.cancelBtn.Image = ((System.Drawing.Image)(resources.GetObject("cancelBtn.Image")));
             this.cancelBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cancelBtn.Location = new System.Drawing.Point(457, 196);
+            this.cancelBtn.Location = new System.Drawing.Point(305, 127);
+            this.cancelBtn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(110, 30);
+            this.cancelBtn.Size = new System.Drawing.Size(73, 19);
             this.cancelBtn.TabIndex = 8;
             this.cancelBtn.Text = "Batal";
             this.cancelBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cancelBtn.UseVisualStyleBackColor = true;
             this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(499, 69);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(79, 13);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "Kode Barang* :";
+            // 
+            // subsiTb
+            // 
+            this.subsiTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.subsiTb.Location = new System.Drawing.Point(502, 93);
+            this.subsiTb.Margin = new System.Windows.Forms.Padding(2);
+            this.subsiTb.Name = "subsiTb";
+            this.subsiTb.Size = new System.Drawing.Size(120, 26);
+            this.subsiTb.TabIndex = 15;
+            // 
             // InputBarang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(945, 794);
+            this.ClientSize = new System.Drawing.Size(630, 482);
+            this.Controls.Add(this.subsiTb);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.simpanBtn);
             this.Controls.Add(this.cariBtn);
@@ -330,6 +369,7 @@
             this.Controls.Add(this.kategoriTb);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "InputBarang";
             this.ShowInTaskbar = false;
             this.Text = "Input Jenis Barang - Merapi Golf Inventory";
@@ -373,5 +413,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn idkategoriDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripStatusLabel tooltipStatus;
         private System.Windows.Forms.ToolStripProgressBar progressBar;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox subsiTb;
     }
 }

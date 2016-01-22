@@ -32,9 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PengambilanBarang));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.noNotaTb = new System.Windows.Forms.TextBox();
-            this.keteranganLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.keteranganTb = new System.Windows.Forms.TextBox();
             this.tambahBarangBtn = new System.Windows.Forms.Button();
             this.simpanBtn = new System.Windows.Forms.Button();
             this.printBtn = new System.Windows.Forms.Button();
@@ -53,6 +51,12 @@
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.ulangiBtn = new System.Windows.Forms.Button();
+            this.keteranganTb = new System.Windows.Forms.TextBox();
+            this.keteranganLabel = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.namaTb = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tanggalDt = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.itemView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pengambilanItemExtendedBindingSource)).BeginInit();
@@ -61,6 +65,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.tanggalDt);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.namaTb);
             this.groupBox1.Controls.Add(this.noNotaTb);
             this.groupBox1.Controls.Add(this.keteranganLabel);
             this.groupBox1.Controls.Add(this.label1);
@@ -69,7 +77,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.groupBox1.Size = new System.Drawing.Size(443, 62);
+            this.groupBox1.Size = new System.Drawing.Size(559, 107);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -84,16 +92,6 @@
             this.noNotaTb.TabIndex = 11;
             this.noNotaTb.Text = "B-001";
             // 
-            // keteranganLabel
-            // 
-            this.keteranganLabel.AutoSize = true;
-            this.keteranganLabel.Location = new System.Drawing.Point(222, 14);
-            this.keteranganLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.keteranganLabel.Name = "keteranganLabel";
-            this.keteranganLabel.Size = new System.Drawing.Size(62, 13);
-            this.keteranganLabel.TabIndex = 9;
-            this.keteranganLabel.Text = "Keterangan";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -104,19 +102,11 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "No. Nota";
             // 
-            // keteranganTb
-            // 
-            this.keteranganTb.Location = new System.Drawing.Point(288, 12);
-            this.keteranganTb.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.keteranganTb.Name = "keteranganTb";
-            this.keteranganTb.Size = new System.Drawing.Size(150, 20);
-            this.keteranganTb.TabIndex = 10;
-            // 
             // tambahBarangBtn
             // 
             this.tambahBarangBtn.Image = ((System.Drawing.Image)(resources.GetObject("tambahBarangBtn.Image")));
             this.tambahBarangBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.tambahBarangBtn.Location = new System.Drawing.Point(52, 69);
+            this.tambahBarangBtn.Location = new System.Drawing.Point(96, 114);
             this.tambahBarangBtn.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tambahBarangBtn.Name = "tambahBarangBtn";
             this.tambahBarangBtn.Size = new System.Drawing.Size(91, 58);
@@ -130,7 +120,7 @@
             // 
             this.simpanBtn.Image = ((System.Drawing.Image)(resources.GetObject("simpanBtn.Image")));
             this.simpanBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.simpanBtn.Location = new System.Drawing.Point(147, 70);
+            this.simpanBtn.Location = new System.Drawing.Point(191, 115);
             this.simpanBtn.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.simpanBtn.Name = "simpanBtn";
             this.simpanBtn.Size = new System.Drawing.Size(91, 58);
@@ -144,7 +134,7 @@
             // 
             this.printBtn.Image = ((System.Drawing.Image)(resources.GetObject("printBtn.Image")));
             this.printBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.printBtn.Location = new System.Drawing.Point(241, 69);
+            this.printBtn.Location = new System.Drawing.Point(285, 114);
             this.printBtn.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.printBtn.Name = "printBtn";
             this.printBtn.Size = new System.Drawing.Size(91, 58);
@@ -158,7 +148,7 @@
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button1.Location = new System.Drawing.Point(99, 130);
+            this.button1.Location = new System.Drawing.Point(143, 175);
             this.button1.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(139, 58);
@@ -172,7 +162,7 @@
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
             this.button2.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.button2.Location = new System.Drawing.Point(242, 130);
+            this.button2.Location = new System.Drawing.Point(286, 175);
             this.button2.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(138, 58);
@@ -194,11 +184,11 @@
             this.idaktivaDataGridViewTextBoxColumn,
             this.namaaktivaDataGridViewTextBoxColumn});
             this.itemView.DataSource = this.pengambilanItemExtendedBindingSource;
-            this.itemView.Location = new System.Drawing.Point(9, 192);
+            this.itemView.Location = new System.Drawing.Point(6, 249);
             this.itemView.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.itemView.Name = "itemView";
             this.itemView.RowTemplate.Height = 24;
-            this.itemView.Size = new System.Drawing.Size(443, 300);
+            this.itemView.Size = new System.Drawing.Size(562, 270);
             this.itemView.TabIndex = 12;
             this.itemView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.itemView_CellContentClick);
             // 
@@ -265,10 +255,10 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel,
             this.progressBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 454);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 522);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 11, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(460, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(577, 22);
             this.statusStrip1.TabIndex = 15;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -288,7 +278,7 @@
             // 
             this.ulangiBtn.Image = ((System.Drawing.Image)(resources.GetObject("ulangiBtn.Image")));
             this.ulangiBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.ulangiBtn.Location = new System.Drawing.Point(336, 70);
+            this.ulangiBtn.Location = new System.Drawing.Point(380, 115);
             this.ulangiBtn.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.ulangiBtn.Name = "ulangiBtn";
             this.ulangiBtn.Size = new System.Drawing.Size(91, 58);
@@ -298,11 +288,64 @@
             this.ulangiBtn.UseVisualStyleBackColor = true;
             this.ulangiBtn.Click += new System.EventHandler(this.ulangiBtn_Click);
             // 
+            // keteranganTb
+            // 
+            this.keteranganTb.Location = new System.Drawing.Point(87, 70);
+            this.keteranganTb.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.keteranganTb.Name = "keteranganTb";
+            this.keteranganTb.Size = new System.Drawing.Size(468, 20);
+            this.keteranganTb.TabIndex = 10;
+            // 
+            // keteranganLabel
+            // 
+            this.keteranganLabel.AutoSize = true;
+            this.keteranganLabel.Location = new System.Drawing.Point(5, 70);
+            this.keteranganLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.keteranganLabel.Name = "keteranganLabel";
+            this.keteranganLabel.Size = new System.Drawing.Size(62, 13);
+            this.keteranganLabel.TabIndex = 9;
+            this.keteranganLabel.Text = "Keterangan";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(235, 14);
+            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Nama";
+            // 
+            // namaTb
+            // 
+            this.namaTb.Location = new System.Drawing.Point(312, 14);
+            this.namaTb.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
+            this.namaTb.Name = "namaTb";
+            this.namaTb.Size = new System.Drawing.Size(243, 20);
+            this.namaTb.TabIndex = 13;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(235, 42);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Tanggal";
+            // 
+            // tanggalDt
+            // 
+            this.tanggalDt.Location = new System.Drawing.Point(312, 42);
+            this.tanggalDt.Name = "tanggalDt";
+            this.tanggalDt.Size = new System.Drawing.Size(242, 20);
+            this.tanggalDt.TabIndex = 15;
+            // 
             // PengambilanBarang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(460, 476);
+            this.ClientSize = new System.Drawing.Size(577, 544);
             this.Controls.Add(this.ulangiBtn);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.itemView);
@@ -331,8 +374,6 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label keteranganLabel;
-        private System.Windows.Forms.TextBox keteranganTb;
         private System.Windows.Forms.TextBox noNotaTb;
         private System.Windows.Forms.Button tambahBarangBtn;
         private System.Windows.Forms.Button simpanBtn;
@@ -352,5 +393,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn namaaktivaDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button ulangiBtn;
         private System.Windows.Forms.ToolStripProgressBar progressBar;
+        private System.Windows.Forms.DateTimePicker tanggalDt;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox namaTb;
+        private System.Windows.Forms.TextBox keteranganTb;
+        private System.Windows.Forms.Label keteranganLabel;
     }
 }

@@ -25,5 +25,6 @@ namespace MerapiGolfLogistik
         public Nullable<double> test { get; set; }
         public Nullable<double> test2 { get; set; }
         public Nullable<double> test3 { get; set; }
+        public string subsi { get; set; }
     }
 }

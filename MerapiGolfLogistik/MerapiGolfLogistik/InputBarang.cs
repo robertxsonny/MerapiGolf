@@ -135,7 +135,7 @@ namespace MerapiGolfLogistik
                 this.progressBar.Value = 50;
                 this.tooltipStatus.Text = "Menyimpan...";
                 InsertData insert = new InsertData();
-                await insert.InsertItem(selectedCat, namaBarangTb.Text, satuanTb.Text,
+                await insert.InsertItem(selectedCat, namaBarangTb.Text, subsiTb.Text, satuanTb.Text,
                     date);
                 ReadItems();
                 ClearField();

@@ -26,6 +26,7 @@ namespace MerapiGolfLogistik
             this.KeyPreview = true;
             this.ActiveControl = this.pilihSupplierBtn;
             statusLabel.Text = "Pilih supplier terlebih dahulu";
+            this.tanggalDt.Value = DateTime.Today;
             this.StartPosition = FormStartPosition.CenterScreen;
             this.itemList.Columns[6].DefaultCellStyle.Format = "C";
             this.itemList.Columns[6].DefaultCellStyle.FormatProvider = new CultureInfo("id-ID");
@@ -182,8 +183,8 @@ namespace MerapiGolfLogistik
                 statusLabel.Text = "Menyimpan...";
                 progressBar.Value = 50;
                 progressBar.Visible = true;
-                pembelian.AddPembelian(noNotaTb.Text, DateTime.Now, keteranganTb.Text, Classes.Login.currentUser,
-                    this.selectedSupplierId);
+                pembelian.AddPembelian(noNotaTb.Text, tanggalDt.Value, keteranganTb.Text, Classes.Login.currentUser,
+                    this.selectedSupplierId, namaTb.Text);
                 foreach (DataGridViewRow item in itemList.Rows)
                 {
                     Guid idbarang = Guid.Parse(item.Cells[1].Value.ToString());
@@ -205,6 +206,8 @@ namespace MerapiGolfLogistik
         {
             this.selectedSupplierId = Guid.Empty;
             selectedSupplierTb.Text = "[Belum ada supplier dipilih]";
+            namaTb.Text = string.Empty;
+            tanggalDt.Value = DateTime.Today;
             keteranganTb.Text = string.Empty;
             this.listitems.Clear();
             itemList.DataSource = null;
@@ -258,6 +261,8 @@ namespace MerapiGolfLogistik
                 this.selectedSupplierId = pembelian.supplier_id.Value;
                 selectedSupplierTb.Text = pembelian.supplier.nama_supplier;
                 noNotaTb.Text = pembelian.id;
+                namaTb.Text = pembelian.nama_pembeli;
+                tanggalDt.Value = pembelian.tanggal.HasValue ? pembelian.tanggal.Value : DateTime.Today;
                 keteranganTb.Text = pembelian.keterangan;
                 this.listitems = new List<TotalPembelian>();
                 foreach (var item in pembelian.pembelian_item)

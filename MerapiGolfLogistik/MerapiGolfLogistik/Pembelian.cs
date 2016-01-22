@@ -25,6 +25,7 @@ namespace MerapiGolfLogistik
         public Nullable<System.Guid> user_id { get; set; }
         public Nullable<System.DateTime> tanggal { get; set; }
         public string keterangan { get; set; }
+        public string nama_pembeli { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PembelianItem> pembelian_item { get; set; }
