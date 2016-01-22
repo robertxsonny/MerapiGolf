@@ -47,10 +47,9 @@
             // 
             this.searchNota.Image = ((System.Drawing.Image)(resources.GetObject("searchNota.Image")));
             this.searchNota.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.searchNota.Location = new System.Drawing.Point(415, 12);
-            this.searchNota.Margin = new System.Windows.Forms.Padding(2);
+            this.searchNota.Location = new System.Drawing.Point(622, 18);
             this.searchNota.Name = "searchNota";
-            this.searchNota.Size = new System.Drawing.Size(72, 25);
+            this.searchNota.Size = new System.Drawing.Size(108, 38);
             this.searchNota.TabIndex = 5;
             this.searchNota.Text = "Cari (F2)";
             this.searchNota.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -59,20 +58,18 @@
             // 
             // notaQuery
             // 
-            this.notaQuery.Location = new System.Drawing.Point(121, 15);
-            this.notaQuery.Margin = new System.Windows.Forms.Padding(2);
+            this.notaQuery.Location = new System.Drawing.Point(182, 23);
             this.notaQuery.Name = "notaQuery";
-            this.notaQuery.Size = new System.Drawing.Size(290, 20);
+            this.notaQuery.Size = new System.Drawing.Size(433, 26);
             this.notaQuery.TabIndex = 4;
             this.notaQuery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.notaQuery_KeyDown);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 18);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(16, 28);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.Size = new System.Drawing.Size(157, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Cari Nota Pembelian:";
             // 
@@ -89,12 +86,11 @@
             this.tanggalDataGridViewTextBoxColumn,
             this.keteranganDataGridViewTextBoxColumn});
             this.notaList.DataSource = this.notaPengambilanBindingSource;
-            this.notaList.Location = new System.Drawing.Point(14, 50);
-            this.notaList.Margin = new System.Windows.Forms.Padding(2);
+            this.notaList.Location = new System.Drawing.Point(21, 77);
             this.notaList.Name = "notaList";
             this.notaList.ReadOnly = true;
             this.notaList.RowTemplate.Height = 28;
-            this.notaList.Size = new System.Drawing.Size(473, 251);
+            this.notaList.Size = new System.Drawing.Size(710, 386);
             this.notaList.TabIndex = 6;
             this.notaList.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.notaList_CellDoubleClick);
             // 
@@ -132,13 +128,15 @@
             // 
             // PilihNota
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(498, 312);
+            this.ClientSize = new System.Drawing.Size(747, 480);
             this.Controls.Add(this.notaList);
             this.Controls.Add(this.searchNota);
             this.Controls.Add(this.notaQuery);
             this.Controls.Add(this.label1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "PilihNota";
             this.Text = "Pilih Nota - Merapi Golf Inventory";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PilihNota_KeyDown);

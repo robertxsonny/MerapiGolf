@@ -104,5 +104,6 @@ namespace MerapiGolfLogistik.Classes
         public double HargaKeluar { get { return StokKeluar * HargaSatuan; } }
 
         public double HargaSaldo { get { return Saldo * HargaSatuan; } }
+
     }
 }
