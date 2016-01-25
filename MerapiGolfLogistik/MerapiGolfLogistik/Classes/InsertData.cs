@@ -34,6 +34,7 @@ namespace MerapiGolfLogistik.Classes
                 Supplier supplier = new Supplier();
                 supplier.id = supplierId;
                 supplier.nama_supplier = name;
+                supplier.alamat_supplier = address;
                 supplier.telepon_supplier = phone;
                 supplier.email_supplier = email;
                 dbContent.mg_supplier.Add(supplier);

@@ -62,7 +62,7 @@ namespace MerapiGolfLogistik.Classes
                                     tanggalTransaksi.Add(pengembalian.tanggal.Value);
                             }
                         }
-                        if (item.StokMasuk > 0 && item.StokKeluar > 0)
+                        if (item.StokMasuk > 0 || item.StokKeluar > 0)
                         {
                             DateTime minDate = tanggalTransaksi.Min();
                             DateTime maxDate = tanggalTransaksi.Max();

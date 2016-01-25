@@ -30,7 +30,7 @@ namespace MerapiGolfLogistik
             nomorNotaLabel.Text = nota.no_nota;
             supplierLabel.Text = nota.nama_supplier.ToUpper();
             userLabel.Text = nota.nama_karyawan.ToUpper();
-            tanggalLabel.Text = (nota.tanggal.HasValue ? nota.tanggal.Value.ToString("dd MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")) : "-");
+            tanggalLabel.Text = (nota.tanggal.HasValue ? nota.tanggal.Value.ToString("dd MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")).ToUpper() : "-");
             keteranganLabel.Text = nota.keterangan.ToUpper();
 
             foreach (TotalPembelian item in nota.items)

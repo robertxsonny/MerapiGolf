@@ -57,6 +57,7 @@ namespace MerapiGolfLogistik.Classes
                         ItemView itemview = new ItemView();
                         itemview.id = item.id;
                         itemview.id_kategori = item.id_kategori;
+                        itemview.subsi = item.subsi;
 
                         var stoktotal = dbContent.mg_stok_barang_total.Where(p => p.id_barang == item.id).ToList();
                         if (stoktotal.Count > 0)

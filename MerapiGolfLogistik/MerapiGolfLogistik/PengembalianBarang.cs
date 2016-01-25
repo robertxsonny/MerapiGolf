@@ -108,7 +108,7 @@ namespace MerapiGolfLogistik
                 statusLabel.Text = "Menyimpan...";
                 progressBar.Value = 50;
                 progressBar.Visible = true;
-                pengembalian.AddPengembalian(noNotaTb.Text, Classes.Login.currentUser, tanggalTb.Value, keteranganTb.Text, namaTb.Text);
+                pengembalian.AddPengembalian(noNotaTb.Text, Classes.Login.currentUser, tanggalTb.Value, keteranganTb.Text, nameTb.Text);
                 foreach (DataGridViewRow item in itemView.Rows)
                 {
                     Guid idbarang = Guid.Parse(item.Cells[1].Value.ToString());
@@ -131,7 +131,7 @@ namespace MerapiGolfLogistik
             //this.pengembalian = new Classes.PengembalianBarang();
             selectedNotaTb.Text = "[Belum ada nota dipilih]";
             keteranganTb.Text = string.Empty;
-            namaTb.Text = string.Empty;
+            nameTb.Text = string.Empty;
             tanggalTb.Value = DateTime.Today;
             this.listBarang.Clear();
             itemView.DataSource = null;
