@@ -289,6 +289,18 @@
     <Compile Include="Supplier.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="TambahAktiva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TambahAktiva.Designer.cs">
+      <DependentUpon>TambahAktiva.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TambahKategori.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TambahKategori.Designer.cs">
+      <DependentUpon>TambahKategori.cs</DependentUpon>
+    </Compile>
     <Compile Include="TambahSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -374,6 +386,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="TambahAktiva.resx">
+      <DependentUpon>TambahAktiva.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TambahKategori.resx">
+      <DependentUpon>TambahKategori.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TambahSupplier.resx">
       <DependentUpon>TambahSupplier.cs</DependentUpon>
     </EmbeddedResource>
@@ -407,6 +425,7 @@
     <None Include="Properties\DataSources\MerapiGolfLogistik.Classes.LaporanGudang.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Classes.LaporanGudangItem.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.Category.datasource" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Models.CategoryView.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.ItemView.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.LaporanBarangExtended.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PembelianExtended.datasource" />

@@ -45,6 +45,7 @@
             this.inputdateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.barangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button2 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -63,7 +64,7 @@
             this.catQuery.Location = new System.Drawing.Point(122, 9);
             this.catQuery.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.catQuery.Name = "catQuery";
-            this.catQuery.Size = new System.Drawing.Size(322, 26);
+            this.catQuery.Size = new System.Drawing.Size(432, 26);
             this.catQuery.TabIndex = 1;
             this.catQuery.KeyDown += new System.Windows.Forms.KeyEventHandler(this.catQuery_KeyDown);
             // 
@@ -71,7 +72,7 @@
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
             this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(450, 9);
+            this.button1.Location = new System.Drawing.Point(122, 50);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(108, 39);
@@ -100,7 +101,7 @@
             this.inputdateDataGridViewTextBoxColumn,
             this.barangDataGridViewTextBoxColumn});
             this.categoriesView.DataSource = this.categoryBindingSource;
-            this.categoriesView.Location = new System.Drawing.Point(16, 54);
+            this.categoriesView.Location = new System.Drawing.Point(12, 106);
             this.categoriesView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.categoriesView.Name = "categoriesView";
             this.categoriesView.ReadOnly = true;
@@ -184,11 +185,26 @@
             // 
             this.categoryBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.CategoryView);
             // 
+            // button2
+            // 
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(236, 50);
+            this.button2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(131, 39);
+            this.button2.TabIndex = 4;
+            this.button2.Text = "Tambah (F3)";
+            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // PilihKategori
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(570, 452);
+            this.ClientSize = new System.Drawing.Size(570, 503);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.categoriesView);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.catQuery);
@@ -225,5 +241,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn namakategoriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn inputdateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn barangDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button button2;
     }
 }

@@ -342,13 +342,13 @@
 		<col def="S0">ISDotNetInstallerArgsCommit</col>
 		<col def="S0">ISDotNetInstallerArgsUninstall</col>
 		<col def="S0">ISDotNetInstallerArgsRollback</col>
-		<row><td>EPPlus.dll</td><td>{55805541-FFDF-456D-968A-F30DE77CAE3A}</td><td>INSTALLDIR</td><td>2</td><td/><td>epplus.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EntityFramework.SqlServer.dll</td><td>{AAE36A7D-B451-427F-8E84-A746F49D6B41}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.sqlserver.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>EntityFramework.dll</td><td>{9A92CDC3-D16A-44C6-BE7C-E2B5B11F8669}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EPPlus.dll</td><td>{A10321AA-528C-4514-9881-0AC259FFB237}</td><td>INSTALLDIR</td><td>2</td><td/><td>epplus.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.SqlServer.dll</td><td>{873EDEF4-AB93-49B8-8B19-FED88DDBFB42}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.sqlserver.dl</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>EntityFramework.dll</td><td>{C806151B-7C1D-480E-9272-D9F2D1C002A5}</td><td>INSTALLDIR</td><td>2</td><td/><td>entityframework.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td>{4253B532-4DF5-4EF4-B3BA-954C4D33BB58}</td><td>INSTALLDIR</td><td>2</td><td/><td/><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>MerapiGolfLogistik.exe</td><td>{5E4BCEA0-BC75-48C9-9602-9355383C93EC}</td><td>INSTALLDIR</td><td>2</td><td/><td>merapigolflogistik.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>MerapiGolfLogistik.vshost.exe</td><td>{40C9D401-7C1D-4D06-9587-030ED3D66796}</td><td>INSTALLDIR</td><td>2</td><td/><td>merapigolflogistik.vshost.ex</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
-		<row><td>ObjectListView.dll</td><td>{269AFFEA-0E29-469F-9A6C-521AF2B9DD99}</td><td>INSTALLDIR</td><td>2</td><td/><td>objectlistview.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>MerapiGolfLogistik.exe</td><td>{321B9834-841C-4EA2-A435-CC9936629187}</td><td>INSTALLDIR</td><td>2</td><td/><td>merapigolflogistik.exe</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>MerapiGolfLogistik.vshost.exe</td><td>{1154406A-C2E5-4800-8A0D-2B32E9501036}</td><td>INSTALLDIR</td><td>2</td><td/><td>merapigolflogistik.vshost.ex</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
+		<row><td>ObjectListView.dll</td><td>{4B3A83F6-1460-42A9-991C-45AFE943A9C1}</td><td>INSTALLDIR</td><td>2</td><td/><td>objectlistview.dll</td><td>17</td><td/><td/><td/><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td><td>/LogFile=</td></row>
 	</table>
 
 	<table name="Condition">
@@ -1155,13 +1155,14 @@
 		<row><td>FavoritesFolder</td><td>TARGETDIR</td><td>.:FAVORI~1|Favorites</td><td/><td>0</td><td/></row>
 		<row><td>FontsFolder</td><td>TARGETDIR</td><td>.:Fonts</td><td/><td>0</td><td/></row>
 		<row><td>GlobalAssemblyCache</td><td>TARGETDIR</td><td>.:Global~1|GlobalAssemblyCache</td><td/><td>0</td><td/></row>
-		<row><td>INSTALLDIR</td><td>MERAPI_GOLF_INVENTORY</td><td>.</td><td/><td>0</td><td/></row>
+		<row><td>INSTALLDIR</td><td>MERAPI_GOLF_INVENTORY1</td><td>.</td><td/><td>0</td><td/></row>
 		<row><td>ISCommonFilesFolder</td><td>CommonFilesFolder</td><td>Instal~1|InstallShield</td><td/><td>0</td><td/></row>
 		<row><td>ISMyCompanyDir</td><td>ProgramFilesFolder</td><td>MYCOMP~1|My Company Name</td><td/><td>0</td><td/></row>
 		<row><td>ISMyProductDir</td><td>ISMyCompanyDir</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>ISYourDataBaseDir</td><td>INSTALLDIR</td><td>Database</td><td/><td>0</td><td/></row>
 		<row><td>LocalAppDataFolder</td><td>TARGETDIR</td><td>.:LocalA~1|LocalAppData</td><td/><td>0</td><td/></row>
 		<row><td>MERAPI_GOLF_INVENTORY</td><td>T_S_DESIGN_AND_PROGRAM_TEAM</td><td>MERAPI~1|Merapi Golf Inventory</td><td/><td>0</td><td/></row>
+		<row><td>MERAPI_GOLF_INVENTORY1</td><td>TAMPILIN.COM</td><td>MERAPI~1|Merapi Golf Inventory</td><td/><td>0</td><td/></row>
 		<row><td>MY_PRODUCT_NAME</td><td>T_S_DESIGN_AND_PROGRAM_TEAM</td><td>MYPROD~1|My Product Name</td><td/><td>0</td><td/></row>
 		<row><td>MyPicturesFolder</td><td>TARGETDIR</td><td>.:MyPict~1|MyPictures</td><td/><td>0</td><td/></row>
 		<row><td>NetHoodFolder</td><td>TARGETDIR</td><td>.:NetHood</td><td/><td>0</td><td/></row>
@@ -1178,6 +1179,7 @@
 		<row><td>System16Folder</td><td>TARGETDIR</td><td>.:System</td><td/><td>0</td><td/></row>
 		<row><td>System64Folder</td><td>TARGETDIR</td><td>.:System64</td><td/><td>0</td><td/></row>
 		<row><td>SystemFolder</td><td>TARGETDIR</td><td>.:System32</td><td/><td>0</td><td/></row>
+		<row><td>TAMPILIN.COM</td><td>ProgramFilesFolder</td><td>TAMPIL~1|Tampilin.com</td><td/><td>0</td><td/></row>
 		<row><td>TARGETDIR</td><td/><td>SourceDir</td><td/><td>0</td><td/></row>
 		<row><td>T_S_DESIGN_AND_PROGRAM_TEAM</td><td>ProgramFilesFolder</td><td>T_SDES~1|T&amp;S Design and Program Team</td><td/><td>0</td><td/></row>
 		<row><td>TempFolder</td><td>TARGETDIR</td><td>.:Temp</td><td/><td>0</td><td/></row>
@@ -1186,7 +1188,9 @@
 		<row><td>WindowsFolder</td><td>TARGETDIR</td><td>.:Windows</td><td/><td>0</td><td/></row>
 		<row><td>WindowsVolume</td><td>TARGETDIR</td><td>.:WinRoot</td><td/><td>0</td><td/></row>
 		<row><td>merapi_1_merapi_golf_inventory</td><td>t_sdes_1_t_s_design_and_program_team</td><td>MERAPI~1|Merapi Golf Inventory</td><td/><td>1</td><td/></row>
+		<row><td>merapi_1_merapi_golf_inventory1</td><td>tampilin.com</td><td>MERAPI~1|Merapi Golf Inventory</td><td/><td>1</td><td/></row>
 		<row><td>t_sdes_1_t_s_design_and_program_team</td><td>ProgramMenuFolder</td><td>T&amp;SDES~1|T&amp;S Design and Program Team</td><td/><td>1</td><td/></row>
+		<row><td>tampilin.com</td><td>ProgramMenuFolder</td><td>Tampilin.com</td><td/><td>1</td><td/></row>
 	</table>
 
 	<table name="DrLocator">
@@ -1910,7 +1914,6 @@
 		<row><td>merapigolflogistik.pdb</td><td>ISX_DEFAULTCOMPONENT</td><td>MERAPI~1.PDB|MerapiGolfLogistik.pdb</td><td>0</td><td/><td/><td/><td>1</td><td>D:\External Projects\MerapiGolf\MerapiGolfLogistik\MerapiGolfLogistik\bin\Release\MerapiGolfLogistik.pdb</td><td>1</td><td/></row>
 		<row><td>merapigolflogistik.vshost.ex</td><td>MerapiGolfLogistik.vshost.exe</td><td>MERAPI~1.EXE|MerapiGolfLogistik.vshost.exe</td><td>0</td><td/><td/><td/><td>1</td><td>D:\External Projects\MerapiGolf\MerapiGolfLogistik\MerapiGolfLogistik\bin\Release\MerapiGolfLogistik.vshost.exe</td><td>1</td><td/></row>
 		<row><td>merapigolflogistik.vshost.ex1</td><td>ISX_DEFAULTCOMPONENT</td><td>MERAPI~1.CON|MerapiGolfLogistik.vshost.exe.config</td><td>0</td><td/><td/><td/><td>1</td><td>D:\External Projects\MerapiGolf\MerapiGolfLogistik\MerapiGolfLogistik\bin\Release\MerapiGolfLogistik.vshost.exe.config</td><td>1</td><td/></row>
-		<row><td>merapigolflogistik.vshost.ex2</td><td>ISX_DEFAULTCOMPONENT</td><td>MERAPI~1.MAN|MerapiGolfLogistik.vshost.exe.manifest</td><td>0</td><td/><td/><td/><td>1</td><td>D:\External Projects\MerapiGolf\MerapiGolfLogistik\MerapiGolfLogistik\bin\Release\MerapiGolfLogistik.vshost.exe.manifest</td><td>1</td><td/></row>
 		<row><td>objectlistview.dll</td><td>ObjectListView.dll</td><td>OBJECT~1.DLL|ObjectListView.dll</td><td>0</td><td/><td/><td/><td>1</td><td>D:\External Projects\MerapiGolf\MerapiGolfLogistik\MerapiGolfLogistik\bin\Release\ObjectListView.dll</td><td>1</td><td/></row>
 		<row><td>objectlistview.xml</td><td>ISX_DEFAULTCOMPONENT</td><td>OBJECT~1.XML|ObjectListView.xml</td><td>0</td><td/><td/><td/><td>1</td><td>D:\External Projects\MerapiGolf\MerapiGolfLogistik\MerapiGolfLogistik\bin\Release\ObjectListView.xml</td><td>1</td><td/></row>
 	</table>
@@ -2055,13 +2058,13 @@
 		<col def="S0">FTPLocation</col>
 		<col def="S0">HTTPLocation</col>
 		<col def="S0">Miscellaneous</col>
-		<row><td>EPPlus.dll</td><td/><td/><td>_9FD7D97B_24C4_4856_8F54_E4B3F725205C_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EntityFramework.SqlServer.dll</td><td/><td/><td>_06217AC2_95C2_47F7_9221_5435FA0085B3_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>EntityFramework.dll</td><td/><td/><td>_8E84281C_7D7C_489F_AC6D_2F3E5F620AC9_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EPPlus.dll</td><td/><td/><td>_BF2D5C0A_7246_4A30_8FC0_17F086F107D0_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.SqlServer.dll</td><td/><td/><td>_734681E2_64D8_4183_ACF1_5AF178478BE7_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>EntityFramework.dll</td><td/><td/><td>_05B86D70_5A6B_4F6C_B8EE_8C49DD423E38_FILTER</td><td/><td/><td/><td/></row>
 		<row><td>ISX_DEFAULTCOMPONENT</td><td/><td/><td>_0C6398EA_0C17_4020_900B_3C2241D23E4A_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>MerapiGolfLogistik.exe</td><td/><td/><td>_60FCF3A3_7FD1_4D88_82F6_63F8CB0DAFBA_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>MerapiGolfLogistik.vshost.exe</td><td/><td/><td>_544E1962_BDF0_4906_98DC_EA89D09BA793_FILTER</td><td/><td/><td/><td/></row>
-		<row><td>ObjectListView.dll</td><td/><td/><td>_4BF41931_385C_46E2_B154_2C1A6F9A39C0_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>MerapiGolfLogistik.exe</td><td/><td/><td>_C86C1146_DD04_45F8_9951_5E66EF8AA8C4_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>MerapiGolfLogistik.vshost.exe</td><td/><td/><td>_3FAC1AAB_1A04_4C02_B6DE_61C6CE42DCAA_FILTER</td><td/><td/><td/><td/></row>
+		<row><td>ObjectListView.dll</td><td/><td/><td>_A0333550_AC47_4039_A920_4E645794B2FB_FILTER</td><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="ISCustomActionReference">
@@ -2650,7 +2653,7 @@
 		<col def="I2">Encoded</col>
 		<col def="S0">Comment</col>
 		<col def="I4">TimeStamp</col>
-		<row><td>COMPANY_NAME</td><td>1033</td><td>T&amp;S Design and Program Team</td><td>0</td><td/><td>-2136679949</td></row>
+		<row><td>COMPANY_NAME</td><td>1033</td><td>Tampilin.com</td><td>0</td><td/><td>153363533</td></row>
 		<row><td>DN_AlwaysInstall</td><td>1033</td><td>Always Install</td><td>0</td><td/><td>144968439</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_COLOR</td><td>1033</td><td>The color settings of your system are not adequate for running [ProductName].</td><td>0</td><td/><td>144968439</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL</td><td>1033</td><td>Microsoft .NET Framework 4.5 Full package or greater needs to be installed for this installation to continue.</td><td>0</td><td/><td>144990999</td></row>
@@ -3468,6 +3471,10 @@
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME2</td><td>1033</td><td>LAUNCH~1.EXE|Launch MerapiGolfLogistik.vshost.exe</td><td>0</td><td/><td>144967319</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME3</td><td>1033</td><td>Merapi Golf Inventory</td><td>0</td><td/><td>-2136726925</td></row>
 		<row><td>IDS_SHORTCUT_DISPLAY_NAME4</td><td>1033</td><td>LAUNCH~1.EXE|Launch MerapiGolfLogistik.vshost.exe</td><td>0</td><td/><td>-2136702445</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME5</td><td>1033</td><td>Merapi Golf Inventory</td><td>0</td><td/><td>153396077</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME6</td><td>1033</td><td>LAUNCH~1.EXE|Launch MerapiGolfLogistik.vshost.exe</td><td>0</td><td/><td>153375597</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME7</td><td>1033</td><td>Merapi Golf Inventory</td><td>0</td><td/><td>153410605</td></row>
+		<row><td>IDS_SHORTCUT_DISPLAY_NAME8</td><td>1033</td><td>LAUNCH~1.EXE|Launch MerapiGolfLogistik.vshost.exe</td><td>0</td><td/><td>153396269</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO</td><td>1033</td><td>From the list of servers below, select the database server you would like to target.</td><td>0</td><td/><td>144968439</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_DB</td><td>1033</td><td>From the list of catalog names below, select the database catalog you would like to target.</td><td>0</td><td/><td>144968439</td></row>
 		<row><td>IDS_SQLBROWSE_INTRO_TEMPLATE</td><td>1033</td><td>[IS_SQLBROWSE_INTRO]</td><td>0</td><td/><td>144968439</td></row>
@@ -3757,10 +3764,12 @@
 		<row><td>IDS__TargetReq_DESC_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>144968439</td></row>
 		<row><td>IDS__TargetReq_DESC_RESOLUTION</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>144968439</td></row>
 		<row><td>ID_STRING1</td><td>1033</td><td/><td>0</td><td/><td>144968439</td></row>
-		<row><td>ID_STRING2</td><td>1033</td><td>http://www.T&amp;SDesignandProgramTeam.com</td><td>0</td><td/><td>-2136679949</td></row>
-		<row><td>ID_STRING3</td><td>1033</td><td>T&amp;S Design and Program Team</td><td>0</td><td/><td>-2136679949</td></row>
+		<row><td>ID_STRING2</td><td>1033</td><td>http://www.Tampilin.com.com</td><td>0</td><td/><td>153363533</td></row>
+		<row><td>ID_STRING3</td><td>1033</td><td>Tampilin.com</td><td>0</td><td/><td>153363533</td></row>
 		<row><td>ID_STRING4</td><td>1033</td><td>Merapi Golf Inventory.exe</td><td>0</td><td/><td>144989847</td></row>
 		<row><td>ID_STRING5</td><td>1033</td><td>Merapi Golf Inventory</td><td>0</td><td/><td>-2136714637</td></row>
+		<row><td>ID_STRING6</td><td>1033</td><td>Merapi Golf Inventory</td><td>0</td><td/><td>153398125</td></row>
+		<row><td>ID_STRING7</td><td>1033</td><td>Merapi Golf Inventory</td><td>0</td><td/><td>153365581</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>144968439</td></row>
 	</table>
 
@@ -3878,7 +3887,11 @@
 		<row><td>MerapiGolfLogistik_163002F6DF1A45C09A84415AB4D00C91.exe</td><td/><td>&lt;VSSolutionFolder&gt;\MerapiGolfLogistik\Assets\logo.ico</td><td>0</td></row>
 		<row><td>MerapiGolfLogistik_30B70174D32D40A48E5B152CCCE56DDB.exe</td><td/><td>&lt;VSSolutionFolder&gt;\MerapiGolfLogistik\Assets\logo.ico</td><td>0</td></row>
 		<row><td>MerapiGolfLogistik_401AD7A11D42446A83096014FD7D48F7.exe</td><td/><td>&lt;VSSolutionFolder&gt;\MerapiGolfLogistik\Assets\logo.ico</td><td>0</td></row>
+		<row><td>MerapiGolfLogistik_57785D9B600841BF95C3168B3125C94E.exe</td><td/><td>&lt;VSSolutionFolder&gt;\MerapiGolfLogistik\Assets\logo.ico</td><td>0</td></row>
+		<row><td>MerapiGolfLogistik_8AFB741A3491407C8817EE5859F1DCF1.exe</td><td/><td>&lt;VSSolutionFolder&gt;\MerapiGolfLogistik\Assets\logo.ico</td><td>0</td></row>
 		<row><td>MerapiGolfLogistik_9331A1C394624A7999FF89E7561F8822.exe</td><td/><td>&lt;VSSolutionFolder&gt;\MerapiGolfLogistik\Assets\logo.ico</td><td>0</td></row>
+		<row><td>MerapiGolfLogistik_A3D45A1FBE1E4FD085E015A12580879C.exe</td><td/><td>&lt;VSSolutionFolder&gt;\MerapiGolfLogistik\Assets\logo.ico</td><td>0</td></row>
+		<row><td>MerapiGolfLogistik_CA82817A7AF648769D4A0BFFCCD5820F.exe</td><td/><td>&lt;VSSolutionFolder&gt;\MerapiGolfLogistik\Assets\logo.ico</td><td>0</td></row>
 	</table>
 
 	<table name="IniFile">
@@ -4391,7 +4404,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>PROGRAMFILETOLAUNCHATEND</td><td>[INSTALLDIR]MerapiGolfLogistik.exe</td><td/></row>
 		<row><td>ProductCode</td><td>{26267AD4-7B72-43CA-A59D-6FDC87E28FE4}</td><td/></row>
 		<row><td>ProductName</td><td>Merapi Golf Inventory</td><td/></row>
-		<row><td>ProductVersion</td><td>1.10.0000</td><td/></row>
+		<row><td>ProductVersion</td><td>1.20.0000</td><td/></row>
 		<row><td>ProgressType0</td><td>install</td><td/></row>
 		<row><td>ProgressType1</td><td>Installing</td><td/></row>
 		<row><td>ProgressType2</td><td>installed</td><td/></row>
@@ -4469,7 +4482,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="L255">FileName</col>
 		<col def="s72">DirProperty</col>
 		<col def="i2">InstallMode</col>
-		<row><td>MerapiGolfLogistik.exe</td><td>MerapiGolfLogistik.exe</td><td/><td>merapi_1_merapi_golf_inventory</td><td>2</td></row>
+		<row><td>MerapiGolfLogistik.exe</td><td>MerapiGolfLogistik.exe</td><td/><td>merapi_1_merapi_golf_inventory1</td><td>2</td></row>
 	</table>
 
 	<table name="RemoveIniFile">
@@ -4555,8 +4568,8 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="S255">ISComments</col>
 		<col def="S255">ISShortcutName</col>
 		<col def="I4">ISAttributes</col>
-		<row><td>MerapiGolfLogistik.exe</td><td>merapi_1_merapi_golf_inventory</td><td>##IDS_SHORTCUT_DISPLAY_NAME3##</td><td>MerapiGolfLogistik.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>MerapiGolfLogistik_30B70174D32D40A48E5B152CCCE56DDB.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
-		<row><td>MerapiGolfLogistik.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME3##</td><td>MerapiGolfLogistik.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>MerapiGolfLogistik_9331A1C394624A7999FF89E7561F8822.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>MerapiGolfLogistik.exe</td><td>merapi_1_merapi_golf_inventory1</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>MerapiGolfLogistik.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>MerapiGolfLogistik_CA82817A7AF648769D4A0BFFCCD5820F.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
+		<row><td>MerapiGolfLogistik.exe1</td><td>DesktopFolder</td><td>##IDS_SHORTCUT_DISPLAY_NAME7##</td><td>MerapiGolfLogistik.exe</td><td>AlwaysInstall</td><td/><td/><td/><td>MerapiGolfLogistik_8AFB741A3491407C8817EE5859F1DCF1.exe</td><td>0</td><td>1</td><td>INSTALLDIR</td><td/><td/><td/><td/><td/><td/><td/></row>
 	</table>
 
 	<table name="Signature">

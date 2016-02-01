@@ -59,7 +59,7 @@ namespace MerapiGolfLogistik
                     MessageBox.Show("Ubah data gagal. Coba ulangi lagi atau hubungi administrator.");
             }
             this.selectedId = Guid.Empty;
-            statusLabel.Text = "Ready";
+            statusLabel.Text = "Ready. Tekan [Enter] untuk mengubah data pada tabel.";
             progressBar.Visible = false;
             groupBox1.Text = "Tambah Supplier";
             RefreshSuppliers();
@@ -133,9 +133,25 @@ namespace MerapiGolfLogistik
                     finally
                     {
                         progressBar.Visible = false;
-                        statusLabel.Text = "Ready";
+                        statusLabel.Text = "Ready. Tekan [Enter] untuk mengubah data pada tabel.";
                     }
                 }
+            }
+        }
+
+        private void supplierList_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                var guidstr = supplierList.Rows[supplierList.SelectedCells[0].RowIndex].Cells[0].Value.ToString();
+                this.selectedId = Guid.Parse(guidstr);
+                var supplier = dbContent.mg_supplier.Where(p => p.id == this.selectedId).Single();
+                groupBox1.Text = "Ubah Supplier: " + supplier.nama_supplier;
+                namaTb.Text = supplier.nama_supplier;
+                alamatTb.Text = supplier.alamat_supplier;
+                teleponTb.Text = supplier.telepon_supplier;
+                emailTb.Text = supplier.email_supplier;
+                namaTb.Focus();
             }
         }
     }

@@ -17,6 +17,8 @@ namespace MerapiGolfLogistik
         public PilihKategori()
         {
             InitializeComponent();
+            if (Classes.Login.role != "admin")
+                button2.Visible = false;
             this.categoriesView.KeyDown += CategoriesView_KeyDown;
         }
 
@@ -29,7 +31,17 @@ namespace MerapiGolfLogistik
             }
             else if (e.KeyCode == Keys.F2)
                 catQuery.Focus();
-
+            else if (e.KeyCode == Keys.F3)
+                AddCategory();
+        }
+        
+        private void AddCategory()
+        {
+            TambahKategori tambahkatform = new TambahKategori();
+            tambahkatform.ShowDialog();
+            FetchData data = new FetchData();
+            categoriesView.DataSource = data.GetCategory(catQuery.Text);
+            this.ActiveControl = this.categoriesView;
         }
 
         private void PilihKategori_Load(object sender, EventArgs e)
@@ -70,6 +82,11 @@ namespace MerapiGolfLogistik
         {
             if (e.KeyCode == Keys.Escape)
                 this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddCategory();
         }
     }
 }

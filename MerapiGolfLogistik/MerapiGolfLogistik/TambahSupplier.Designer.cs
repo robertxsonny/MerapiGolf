@@ -183,6 +183,7 @@
             this.supplierList.TabIndex = 4;
             this.supplierList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierList_CellContentClick);
             this.supplierList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierList_CellContentDoubleClick);
+            this.supplierList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.supplierList_KeyDown);
             // 
             // idDataGridViewTextBoxColumn
             // 

@@ -23,6 +23,8 @@ namespace MerapiGolfLogistik
         public PembelianBarang()
         {
             InitializeComponent();
+            if (Classes.Login.role != "admin")
+                buatSupplierBtn.Visible = false;
             this.KeyPreview = true;
             this.ActiveControl = this.pilihSupplierBtn;
             statusLabel.Text = "Pilih supplier terlebih dahulu";

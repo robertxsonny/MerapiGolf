@@ -62,5 +62,72 @@ namespace MerapiGolfLogistik.Classes
                 else return false;
             }
         }
+
+        public async Task<Aktiva> InsertAktiva(Guid aktivaId,
+           string name, string description)
+        {
+            using (dbContent = new MerapiGolfLogistikEntities())
+            {
+                Aktiva aktiva = new Aktiva();
+                aktiva.id = aktivaId;
+                aktiva.nama_aktiva = name;
+                aktiva.keterangan_aktiva = description;
+                dbContent.mg_aktiva.Add(aktiva);
+                await dbContent.SaveChangesAsync();
+                return aktiva;
+            }
+        }
+
+        public async Task<bool> UpdateAktiva(Guid aktivaId,
+           string name, string description)
+        {
+            using (dbContent = new MerapiGolfLogistikEntities())
+            {
+                var aktivas = dbContent.mg_aktiva.Where(p => p.id == aktivaId);
+                if (aktivas.Count() != 0)
+                {
+                    var aktiva = aktivas.FirstOrDefault();
+                    aktiva.id = aktivaId;
+                    aktiva.nama_aktiva = name;
+                    aktiva.keterangan_aktiva = description;
+                    await dbContent.SaveChangesAsync();
+                    return true;
+                }
+                else return false;
+            }
+        }
+
+        public async Task<Kategori> InsertCategory(Guid categoryId,
+          string name)
+        {
+            using (dbContent = new MerapiGolfLogistikEntities())
+            {
+                Kategori kategori = new Kategori();
+                kategori.id = categoryId;
+                kategori.nama_kategori = name;
+                kategori.inputdate = DateTime.Now;
+                dbContent.mg_kategori.Add(kategori);
+                await dbContent.SaveChangesAsync();
+                return kategori;
+            }
+        }
+
+        public async Task<bool> UpdateKategori(Guid categoryId,
+           string name)
+        {
+            using (dbContent = new MerapiGolfLogistikEntities())
+            {
+                var categories = dbContent.mg_kategori.Where(p => p.id == categoryId);
+                if (categories.Count() != 0)
+                {
+                    var category = categories.FirstOrDefault();
+                    category.id = categoryId;
+                    category.nama_kategori = name;
+                    await dbContent.SaveChangesAsync();
+                    return true;
+                }
+                else return false;
+            }
+        }
     }
 }

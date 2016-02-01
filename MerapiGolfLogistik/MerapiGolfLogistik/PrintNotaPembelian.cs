@@ -73,6 +73,7 @@ namespace MerapiGolfLogistik
             (sender as Timer).Stop();
             PrintDocument printDocument = new PrintDocument();
             printDocument.PrintPage += PrintDocument_PrintPage;
+            //printDocument.ori
             //PrintPreviewDialog printPreview = new PrintPreviewDialog();
             //printPreview.Document = printDocument;
             CaptureScreen();
@@ -83,6 +84,22 @@ namespace MerapiGolfLogistik
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(memoryImage, 0, 0);
+
+            //Font titlefont = new Font("Courier New", 14);
+            //Font subtitlefont = new Font("Courier New", 10);
+            //Font sectiontitlefont = new Font("Courier New", 12);
+            //Font contentfont = new Font("Courier New", 8);
+           
+            //int startX = 50;
+            //int startY = 50;
+            //int offset = 40;
+            //e.Graphics.DrawString(label16.Text, titlefont, Brushes.Black, startX, startY + offset);
+            //offset += 20;
+            //e.Graphics.DrawString(label17.Text, subtitlefont, Brushes.Black, startX, startY + offset);
+            //offset += 20;
+            //e.Graphics.DrawString(label2.Text, titlefont, Brushes.Black, startX, startY + offset);
+            //offset += 20;
+            //e.Graphics.DrawString(label1.Text, sectiontitlefont, Brushes.Black, startX, startY + offset);
         }
         
         private void CaptureScreen()

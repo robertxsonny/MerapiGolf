@@ -21,6 +21,8 @@ namespace MerapiGolfLogistik
         public PilihBarangWithAktiva()
         {
             InitializeComponent();
+            if (Classes.Login.role != "admin")
+                daftarAktivaBtn.Visible = false;
             this.KeyPreview = true;
             this.ActiveControl = this.barangList;
             barangList.DataSource = dbContent.mg_stok_barang_total.ToList();
@@ -174,6 +176,12 @@ namespace MerapiGolfLogistik
                 groupBox2.Visible = true;
             }
             else groupBox2.Visible = false;
+        }
+
+        private void daftarAktivaBtn_Click(object sender, EventArgs e)
+        {
+            TambahAktiva tambahaktivaform = new TambahAktiva();
+            tambahaktivaform.ShowDialog();
         }
     }
 }

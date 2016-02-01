@@ -142,6 +142,31 @@
   <metadata name="categoryBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <metadata name="id.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="index.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="nama_kategori.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="stock.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="categoryBindingSource.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="button2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAADZSURBVDhPpdL9EQExEAXwK0UJStEBndABHdEBndAB+4vkhFv3B2/mzST7vS8ZEiyC++A5eK90
+        ZuObxSEo4RLcBVeVzmx8CqUQcAtK+AY+MSZ6g84cy3J7wT2ziZVTYC+jZZ1PlZ8QK6doopLxM3wrAHLK
+        FE2wDHMF5BQt+vHtd+x4rextTZNNUO6kQOuKxMLeNinwzwpFO0JM3rVirsAo4i/P2MYfv7ZKxGr7Nbhn
+        NrGlew8jcWSTNOgspuyeQVWj0WQbXFc6s/FNOn/CXoJ0kYBNsHHnJ4bhAbnyUvexMu9QAAAAAElFTkSu
+        QmCC
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAmmQAAAEAIACY+AAAFgAAACgAAACaAAAAyAAAAAEAIAAAAAAAoPAAAAAAAAAAAAAAAAAAAAAA

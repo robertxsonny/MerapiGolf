@@ -47,7 +47,7 @@
             this.tambahBarangBtn = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.aktivaTb = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
+            this.daftarAktivaBtn = new System.Windows.Forms.Button();
             this.pilihAktivaBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.barangList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.stokBarangTotalBindingSource)).BeginInit();
@@ -211,7 +211,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.aktivaTb);
-            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.daftarAktivaBtn);
             this.groupBox2.Controls.Add(this.pilihAktivaBtn);
             this.groupBox2.Location = new System.Drawing.Point(16, 524);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -233,18 +233,19 @@
             this.aktivaTb.TabIndex = 13;
             this.aktivaTb.Text = "[Pilih Aktiva Dahulu]";
             // 
-            // button2
+            // daftarAktivaBtn
             // 
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(385, 21);
-            this.button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(140, 40);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Daftar Aktiva";
-            this.button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button2.UseVisualStyleBackColor = true;
+            this.daftarAktivaBtn.Image = ((System.Drawing.Image)(resources.GetObject("daftarAktivaBtn.Image")));
+            this.daftarAktivaBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.daftarAktivaBtn.Location = new System.Drawing.Point(385, 21);
+            this.daftarAktivaBtn.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.daftarAktivaBtn.Name = "daftarAktivaBtn";
+            this.daftarAktivaBtn.Size = new System.Drawing.Size(140, 40);
+            this.daftarAktivaBtn.TabIndex = 1;
+            this.daftarAktivaBtn.Text = "Daftar Aktiva";
+            this.daftarAktivaBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.daftarAktivaBtn.UseVisualStyleBackColor = true;
+            this.daftarAktivaBtn.Click += new System.EventHandler(this.daftarAktivaBtn_Click);
             // 
             // pilihAktivaBtn
             // 
@@ -306,7 +307,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button tambahBarangBtn;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button daftarAktivaBtn;
         private System.Windows.Forms.Button pilihAktivaBtn;
         private System.Windows.Forms.Label aktivaTb;
     }
