@@ -225,8 +225,6 @@
 	<table name="AppSearch">
 		<col key="yes" def="s72">Property</col>
 		<col key="yes" def="s72">Signature_</col>
-		<row><td>DOTNETVERSION45FULL</td><td>DotNet45Full</td></row>
-		<row><td>SQLEXP2008SP1FOUND</td><td>NewRegSignature</td></row>
 	</table>
 
 	<table name="BBControl">
@@ -2661,7 +2659,7 @@
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_PROCESSOR</td><td>1033</td><td>The processor is not adequate for running [ProductName].</td><td>0</td><td/><td>144968439</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_RAM</td><td>1033</td><td>The amount of RAM is not adequate for running [ProductName].</td><td>0</td><td/><td>144968439</td></row>
 		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_SCREEN</td><td>1033</td><td>The screen resolution is not adequate for running [ProductName].</td><td>0</td><td/><td>144968439</td></row>
-		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_SQLEXP2008SP1FOUND</td><td>1033</td><td>SQL Server 2008 Express SP1 needs to be installed for this installation to continue.</td><td>0</td><td/><td>144999191</td></row>
+		<row><td>IDPROP_EXPRESS_LAUNCH_CONDITION_SQLEXP2008SP1FOUND</td><td>1033</td><td>SQL Server 2008 Express SP1 needs to be installed for this installation to continue.</td><td>0</td><td/><td>153354704</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPACT</td><td>1033</td><td>Compact</td><td>0</td><td/><td>144968439</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPACT_DESC</td><td>1033</td><td>Compact Description</td><td>0</td><td/><td>144968439</td></row>
 		<row><td>IDPROP_SETUPTYPE_COMPLETE</td><td>1033</td><td>Complete</td><td>0</td><td/><td>144968439</td></row>
@@ -3770,6 +3768,7 @@
 		<row><td>ID_STRING5</td><td>1033</td><td>Merapi Golf Inventory</td><td>0</td><td/><td>-2136714637</td></row>
 		<row><td>ID_STRING6</td><td>1033</td><td>Merapi Golf Inventory</td><td>0</td><td/><td>153398125</td></row>
 		<row><td>ID_STRING7</td><td>1033</td><td>Merapi Golf Inventory</td><td>0</td><td/><td>153365581</td></row>
+		<row><td>ID_STRING8</td><td>1033</td><td/><td>0</td><td/><td>153354704</td></row>
 		<row><td>IIDS_UITEXT_FeatureUninstalled</td><td>1033</td><td>This feature will remain uninstalled.</td><td>0</td><td/><td>144968439</td></row>
 	</table>
 
@@ -4083,8 +4082,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col key="yes" def="s255">Condition</col>
 		<col def="l255">Description</col>
 		<row><td>(Not Version9X) And (Not ((VersionNT&gt;=400 And VersionNT&lt;=600) Or (VersionNT&gt;=601 And VersionNT&lt;=603 And MsiNTProductType&gt;1)))</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_OS##</td></row>
-		<row><td>DOTNETVERSION45FULL&gt;="#1"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_DOTNETVERSION45FULL##</td></row>
-		<row><td>SQLEXP2008SP1FOUND&gt;="10.0.2531.00"</td><td>##IDPROP_EXPRESS_LAUNCH_CONDITION_SQLEXP2008SP1FOUND##</td></row>
 	</table>
 
 	<table name="ListBox">
@@ -4417,7 +4414,7 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<row><td>SERIALNUMBER</td><td/><td/></row>
 		<row><td>SERIALNUMVALSUCCESSRETVAL</td><td>1</td><td/></row>
 		<row><td>SHOWLAUNCHPROGRAM</td><td>-1</td><td/></row>
-		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR;DOTNETVERSION45FULL;SQLEXP2008SP1FOUND</td><td/></row>
+		<row><td>SecureCustomProperties</td><td>ISFOUNDNEWERPRODUCTVERSION;USERNAME;COMPANYNAME;ISX_SERIALNUM;SUPPORTDIR</td><td/></row>
 		<row><td>SelectedSetupType</td><td>##IDS__DisplayName_Typical##</td><td/></row>
 		<row><td>SetupType</td><td>Typical</td><td/></row>
 		<row><td>UpgradeCode</td><td>{BDC986FD-E37D-47B4-851A-BAC840A24BFF}</td><td/></row>
@@ -4462,8 +4459,6 @@ UwBpAG4AZwBsAGUASQBtAGEAZwBlAAEARQB4AHAAcgBlAHMAcwA=
 		<col def="s255">Key</col>
 		<col def="S255">Name</col>
 		<col def="I2">Type</col>
-		<row><td>DotNet45Full</td><td>2</td><td>SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full</td><td>Version</td><td>2</td></row>
-		<row><td>NewRegSignature</td><td>2</td><td>SOFTWARE\Microsoft\Microsoft SQL Server\SQLEXPRESS\MSSQLServer\CurrentVersion</td><td>CurrentVersion</td><td>2</td></row>
 	</table>
 
 	<table name="Registry">

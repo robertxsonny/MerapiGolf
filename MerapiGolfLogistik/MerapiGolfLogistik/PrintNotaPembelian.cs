@@ -17,7 +17,7 @@ namespace MerapiGolfLogistik
     {
 
         Bitmap memoryImage;
-
+        private NotaPembelianDetail nota;
        
         public PrintNotaPembelian()
         {
@@ -27,6 +27,7 @@ namespace MerapiGolfLogistik
         public PrintNotaPembelian(NotaPembelianDetail nota)
         {
             InitializeComponent();
+            this.nota = nota;
             nomorNotaLabel.Text = nota.no_nota;
             supplierLabel.Text = nota.nama_supplier.ToUpper();
             userLabel.Text = nota.nama_karyawan.ToUpper();
@@ -72,34 +73,61 @@ namespace MerapiGolfLogistik
         {
             (sender as Timer).Stop();
             PrintDocument printDocument = new PrintDocument();
+            PaperSize psize = new PaperSize("Custom size 1", 350, 450 + (200*20));
             printDocument.PrintPage += PrintDocument_PrintPage;
+            printDocument.DefaultPageSettings.PaperSize = psize;
             //printDocument.ori
-            //PrintPreviewDialog printPreview = new PrintPreviewDialog();
-            //printPreview.Document = printDocument;
-            CaptureScreen();
-            //printPreview.ShowDialog();
-            printDocument.Print();
+            PrintPreviewDialog printPreview = new PrintPreviewDialog();
+            printPreview.Document = printDocument;
+            //CaptureScreen();
+            printPreview.ShowDialog();
+            //printDocument.Print();
         }
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            e.Graphics.DrawImage(memoryImage, 0, 0);
+            //e.Graphics.DrawImage(memoryImage, 0, 0);
 
-            //Font titlefont = new Font("Courier New", 14);
-            //Font subtitlefont = new Font("Courier New", 10);
-            //Font sectiontitlefont = new Font("Courier New", 12);
-            //Font contentfont = new Font("Courier New", 8);
-           
-            //int startX = 50;
-            //int startY = 50;
-            //int offset = 40;
-            //e.Graphics.DrawString(label16.Text, titlefont, Brushes.Black, startX, startY + offset);
-            //offset += 20;
-            //e.Graphics.DrawString(label17.Text, subtitlefont, Brushes.Black, startX, startY + offset);
-            //offset += 20;
-            //e.Graphics.DrawString(label2.Text, titlefont, Brushes.Black, startX, startY + offset);
-            //offset += 20;
-            //e.Graphics.DrawString(label1.Text, sectiontitlefont, Brushes.Black, startX, startY + offset);
+            Font titlefont = new Font("Courier New", 12);
+            Font subtitlefont = new Font("Courier New", 10);
+            Font sectiontitlefont = new Font("Courier New", 10);
+            Font contentfont = new Font("Courier New", 8);
+
+            int startX = 50;
+            int startY = 50;
+            int offset = 0;
+            int line = 0;
+            e.Graphics.DrawString("      MERAPI GOLF     ", titlefont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("JALAN GOLF NO. 1 KEPUH HARJO", subtitlefont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("  CANGKRINGAN, SLEMAN  ", titlefont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("----------------------------", sectiontitlefont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("      BUKTI PEMBELIAN      ", subtitlefont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("Nomor         : " + this.nota.no_nota, contentfont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("Supplier      : " + this.nota.nama_supplier, contentfont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("Pembeli       : ", contentfont, Brushes.Black, startX, startY + offset);
+            e.Graphics.DrawString(this.nota.nama_karyawan, contentfont, Brushes.Black, new RectangleF(startX + 110, startY + offset, 150, 300));
+            offset += 20 * (1 + (this.nota.nama_karyawan.Length / 20));
+            e.Graphics.DrawString("Tanggal       : " + this.nota.tanggal.Value.ToString("dd MMMM yyyy"), contentfont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("Keterangan    : ", contentfont, Brushes.Black, startX, startY + offset);
+            e.Graphics.DrawString(this.nota.keterangan, contentfont, Brushes.Black, new RectangleF(startX + 110, startY + offset, 150, 300));
+            offset += 20 * (1 + (this.nota.keterangan.Length / 20));
+            e.Graphics.DrawString("----------------------------", sectiontitlefont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("        DAFTAR BARANG        ", subtitlefont, Brushes.Black, startX, startY + offset);
+            for (int i = 0; i < 200; i++)
+            {
+                offset += 20;
+                e.Graphics.DrawString("ini contoh barang ke-" + (i+1), contentfont, Brushes.Black, startX, startY + offset);
+            }
+            
         }
         
         private void CaptureScreen()
