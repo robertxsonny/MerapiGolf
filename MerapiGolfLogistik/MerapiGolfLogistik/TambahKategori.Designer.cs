@@ -32,11 +32,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TambahKategori));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.categoryList = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.namakategoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.categoryViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.statusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.progressBar = new System.Windows.Forms.ToolStripProgressBar();
@@ -44,12 +39,18 @@
             this.namaTb = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.subsiTb = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.categoryViewBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.deleteColumn = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.subsi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.namakategoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stockDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.categoryList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryViewBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryViewBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -68,6 +69,7 @@
             this.categoryList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.deleteColumn,
+            this.subsi,
             this.namakategoriDataGridViewTextBoxColumn,
             this.stockDataGridViewTextBoxColumn});
             this.categoryList.DataSource = this.categoryViewBindingSource;
@@ -79,41 +81,6 @@
             this.categoryList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierList_CellContentClick);
             this.categoryList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierList_CellContentDoubleClick);
             this.categoryList.KeyDown += new System.Windows.Forms.KeyEventHandler(this.categoryList_KeyDown);
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // deleteColumn
-            // 
-            this.deleteColumn.HeaderText = "";
-            this.deleteColumn.Name = "deleteColumn";
-            this.deleteColumn.ReadOnly = true;
-            this.deleteColumn.Text = "X";
-            this.deleteColumn.UseColumnTextForButtonValue = true;
-            this.deleteColumn.Width = 50;
-            // 
-            // namakategoriDataGridViewTextBoxColumn
-            // 
-            this.namakategoriDataGridViewTextBoxColumn.DataPropertyName = "nama_kategori";
-            this.namakategoriDataGridViewTextBoxColumn.HeaderText = "Nama Kategori";
-            this.namakategoriDataGridViewTextBoxColumn.Name = "namakategoriDataGridViewTextBoxColumn";
-            this.namakategoriDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // stockDataGridViewTextBoxColumn
-            // 
-            this.stockDataGridViewTextBoxColumn.DataPropertyName = "stock";
-            this.stockDataGridViewTextBoxColumn.HeaderText = "Jumlah Barang di Kategori";
-            this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
-            this.stockDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // categoryViewBindingSource
-            // 
-            this.categoryViewBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.CategoryView);
             // 
             // statusStrip1
             // 
@@ -170,7 +137,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.subsiTb);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.saveBtn);
             this.groupBox1.Controls.Add(this.namaTb);
@@ -182,12 +149,12 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tambah Kategori";
             // 
-            // textBox1
+            // subsiTb
             // 
-            this.textBox1.Location = new System.Drawing.Point(160, 34);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(478, 26);
-            this.textBox1.TabIndex = 10;
+            this.subsiTb.Location = new System.Drawing.Point(160, 34);
+            this.subsiTb.Name = "subsiTb";
+            this.subsiTb.Size = new System.Drawing.Size(478, 26);
+            this.subsiTb.TabIndex = 10;
             // 
             // label2
             // 
@@ -197,6 +164,48 @@
             this.label2.Size = new System.Drawing.Size(109, 20);
             this.label2.TabIndex = 9;
             this.label2.Text = "Kode Kategori";
+            // 
+            // categoryViewBindingSource
+            // 
+            this.categoryViewBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.CategoryView);
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // deleteColumn
+            // 
+            this.deleteColumn.HeaderText = "";
+            this.deleteColumn.Name = "deleteColumn";
+            this.deleteColumn.ReadOnly = true;
+            this.deleteColumn.Text = "X";
+            this.deleteColumn.UseColumnTextForButtonValue = true;
+            this.deleteColumn.Width = 50;
+            // 
+            // subsi
+            // 
+            this.subsi.DataPropertyName = "subsi";
+            this.subsi.HeaderText = "Subsi";
+            this.subsi.Name = "subsi";
+            this.subsi.ReadOnly = true;
+            // 
+            // namakategoriDataGridViewTextBoxColumn
+            // 
+            this.namakategoriDataGridViewTextBoxColumn.DataPropertyName = "nama_kategori";
+            this.namakategoriDataGridViewTextBoxColumn.HeaderText = "Nama Kategori";
+            this.namakategoriDataGridViewTextBoxColumn.Name = "namakategoriDataGridViewTextBoxColumn";
+            this.namakategoriDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // stockDataGridViewTextBoxColumn
+            // 
+            this.stockDataGridViewTextBoxColumn.DataPropertyName = "stock";
+            this.stockDataGridViewTextBoxColumn.HeaderText = "Jumlah Barang di Kategori";
+            this.stockDataGridViewTextBoxColumn.Name = "stockDataGridViewTextBoxColumn";
+            this.stockDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // TambahKategori
             // 
@@ -212,11 +221,11 @@
             this.Text = "Tambah/Ubah Kategori - Merapi Golf Inventory";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TambahSupplier_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.categoryList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.categoryViewBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.categoryViewBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,12 +241,13 @@
         private System.Windows.Forms.TextBox namaTb;
         private System.Windows.Forms.Button saveBtn;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.BindingSource categoryViewBindingSource;
+        private System.Windows.Forms.TextBox subsiTb;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewButtonColumn deleteColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subsi;
         private System.Windows.Forms.DataGridViewTextBoxColumn namakategoriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
-        private System.Windows.Forms.BindingSource categoryViewBindingSource;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label2;
     }
 }

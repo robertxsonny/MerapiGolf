@@ -98,12 +98,13 @@ namespace MerapiGolfLogistik.Classes
         }
 
         public async Task<Kategori> InsertCategory(Guid categoryId,
-          string name)
+          string name, string subsi)
         {
             using (dbContent = new MerapiGolfLogistikEntities())
             {
                 Kategori kategori = new Kategori();
                 kategori.id = categoryId;
+                kategori.subsi = subsi;
                 kategori.nama_kategori = name;
                 kategori.inputdate = DateTime.Now;
                 dbContent.mg_kategori.Add(kategori);
@@ -113,7 +114,7 @@ namespace MerapiGolfLogistik.Classes
         }
 
         public async Task<bool> UpdateKategori(Guid categoryId,
-           string name)
+           string name, string subsi)
         {
             using (dbContent = new MerapiGolfLogistikEntities())
             {
@@ -123,6 +124,7 @@ namespace MerapiGolfLogistik.Classes
                     var category = categories.FirstOrDefault();
                     category.id = categoryId;
                     category.nama_kategori = name;
+                    category.subsi = subsi;
                     await dbContent.SaveChangesAsync();
                     return true;
                 }

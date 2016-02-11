@@ -52,7 +52,8 @@ namespace MerapiGolfLogistik
             DateTime.TryParse(dariTanggalTb.Text, out start);
             DateTime.TryParse(sampaiTanggalTb.Text, out end);
             report = Classes.LaporanGudang.GenerateLaporanGudang(start, end);
-
+            if (this.selectedCategory != Guid.Empty)
+                report.Items = report.Items.Where(p => p.KategoriId == this.selectedCategory).ToList();
             //var reports = dbContent.LaporanGudangFilter(start, end).ToList().OrderBy(p => p.nama_kategori).ToList();
             //if (this.selectedCategory != Guid.Empty)
             //    reports = reports.Where(p => p.idkategori == this.selectedCategory).ToList();

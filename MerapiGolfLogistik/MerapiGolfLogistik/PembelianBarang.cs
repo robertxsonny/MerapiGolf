@@ -33,10 +33,10 @@ namespace MerapiGolfLogistik
             this.itemList.Columns[6].DefaultCellStyle.Format = "C";
             this.itemList.Columns[6].DefaultCellStyle.FormatProvider = new CultureInfo("id-ID");
             CalculateTotalPrice();
-            ReadNota();
+            noNotaTb.Text = ReadNota();
         }
 
-        private void ReadNota()
+        private string ReadNota()
         {
             dbContent = new MerapiGolfLogistikEntities();
             var pembelians = dbContent.mg_pembelian.OrderByDescending(p => p.id).ToList();
@@ -44,11 +44,11 @@ namespace MerapiGolfLogistik
             {
                 string lastnota = pembelians.First().id;
                 string notanow = pembelian.GenerateNoNota(lastnota);
-                noNotaTb.Text = notanow;
+                return notanow;
             }
             else
             {
-                noNotaTb.Text = "A000001";
+                return "A000001";
             }
         }
 
@@ -140,7 +140,7 @@ namespace MerapiGolfLogistik
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 0)
+            if (e.ColumnIndex == 0) //delete item
             {
                 var dialog = MessageBox.Show("Yakin akan menghapus barang ini?", "Konfirmasi", MessageBoxButtons.YesNo);
                 if (dialog == DialogResult.Yes)
@@ -185,7 +185,7 @@ namespace MerapiGolfLogistik
                 statusLabel.Text = "Menyimpan...";
                 progressBar.Value = 50;
                 progressBar.Visible = true;
-                pembelian.AddPembelian(noNotaTb.Text, tanggalDt.Value, keteranganTb.Text, Classes.Login.currentUser,
+                pembelian.AddPembelian(ReadNota(), tanggalDt.Value, keteranganTb.Text, Classes.Login.currentUser,
                     this.selectedSupplierId, namaTb.Text);
                 foreach (DataGridViewRow item in itemList.Rows)
                 {
@@ -197,7 +197,7 @@ namespace MerapiGolfLogistik
                 }
                 await pembelian.StorePembelian();
                 ClearField();
-                ReadNota();
+               
             }
             else
                 MessageBox.Show("Pastikan barang-barang sudah dimasukkan dan Anda sudah memilih supplier!");
@@ -216,7 +216,7 @@ namespace MerapiGolfLogistik
             statusLabel.Text = "Pilih supplier terlebih dahulu";
             progressBar.Visible = false;
             selectedPembelianId = string.Empty;
-            ReadNota();
+            noNotaTb.Text = ReadNota();
             CalculateTotalPrice();
         }
 

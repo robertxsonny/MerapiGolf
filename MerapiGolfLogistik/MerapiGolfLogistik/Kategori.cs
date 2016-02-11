@@ -23,6 +23,7 @@ namespace MerapiGolfLogistik
         public System.Guid id { get; set; }
         public string nama_kategori { get; set; }
         public Nullable<System.DateTime> inputdate { get; set; }
+        public string subsi { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Barang> barang { get; set; }

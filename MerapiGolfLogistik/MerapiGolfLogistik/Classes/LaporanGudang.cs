@@ -31,6 +31,7 @@ namespace MerapiGolfLogistik.Classes
                         LaporanGudangItem item = new LaporanGudangItem();
                         item.NamaBarang = pembelian.nama_barang;
                         item.Kategori = pembelian.nama_kategori;
+                        item.KategoriId = pembelian.id_kategori;
                         item.HargaSatuan = (pembelian.harga_satuan.HasValue ? pembelian.harga_satuan.Value : 0);
                         item.Subsi = pembelian.subsi;
                         item.Stok = (pembelian.tanggal < from ? (pembelian.banyak_barang.HasValue ? pembelian.banyak_barang.Value : 0) : 0);
@@ -62,11 +63,11 @@ namespace MerapiGolfLogistik.Classes
                                     tanggalTransaksi.Add(pengembalian.tanggal.Value);
                             }
                         }
-                        if (item.StokMasuk > 0 || item.StokKeluar > 0)
+                        if ((item.StokMasuk > 0 || item.StokKeluar > 0) && tanggalTransaksi.Count > 0)
                         {
                             DateTime minDate = tanggalTransaksi.Min();
                             DateTime maxDate = tanggalTransaksi.Max();
-                            item.TanggalKeluar = minDate.Day + (minDate == maxDate ? "" : "-" + maxDate.Day);
+                            item.TanggalKeluar = minDate.ToString("dd/MM/yyyy") + (minDate == maxDate ? "" : "-" + maxDate.ToString("dd/MM/yyyy"));
                             laporan.Items.Add(item);
                         }
                     }
@@ -82,7 +83,7 @@ namespace MerapiGolfLogistik.Classes
         public string Subsi { get; set; }
 
         public string NamaBarang { get; set; }
-
+        public Guid KategoriId { get; set; }
         public string Kategori { get; set; }
 
         public string TanggalKeluar { get; set; }

@@ -21,7 +21,7 @@ namespace MerapiGolfLogistik
             InitializeComponent();
             this.KeyPreview = true;
             this.StartPosition = FormStartPosition.CenterScreen;
-            this.ActiveControl = this.namaTb;
+            this.ActiveControl = this.subsiTb;
             RefreshKategori();
         }
 
@@ -46,12 +46,13 @@ namespace MerapiGolfLogistik
             if (selectedId == Guid.Empty) //create new
             {
                 statusLabel.Text = "Menyimpan...";
-                await insert.InsertCategory(Guid.NewGuid(), namaTb.Text);
+                await insert.InsertCategory(Guid.NewGuid(), namaTb.Text, subsiTb.Text);
             }
             else //update
             {
                 statusLabel.Text = "Mengubah...";
-                var updateresult = await insert.UpdateKategori(this.selectedId, namaTb.Text);
+                var updateresult = await insert.UpdateKategori(this.selectedId, namaTb.Text,
+                    subsiTb.Text);
                 if (!updateresult)
                     MessageBox.Show("Ubah data gagal. Coba ulangi lagi atau hubungi administrator.");
             }
@@ -67,6 +68,7 @@ namespace MerapiGolfLogistik
         {
             this.selectedId = Guid.Empty;
             namaTb.Text = String.Empty;
+            subsiTb.Text = String.Empty;
         }
 
         private void saveBtn_Click(object sender, EventArgs e)
@@ -84,6 +86,7 @@ namespace MerapiGolfLogistik
             var kategori = dbContent.mg_kategori.Where(p => p.id == this.selectedId).Single();
             groupBox1.Text = "Ubah Kategori: " + kategori.nama_kategori;
             namaTb.Text = kategori.nama_kategori;
+            subsiTb.Text = kategori.subsi;
             namaTb.Focus();
         }
 
@@ -139,6 +142,7 @@ namespace MerapiGolfLogistik
                 var kategori = dbContent.mg_kategori.Where(p => p.id == this.selectedId).Single();
                 groupBox1.Text = "Ubah Kategori: " + kategori.nama_kategori;
                 namaTb.Text = kategori.nama_kategori;
+                subsiTb.Text = kategori.subsi;
                 namaTb.Focus();
             }
         }

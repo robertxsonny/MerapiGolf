@@ -25,10 +25,10 @@ namespace MerapiGolfLogistik
             this.tanggalDt.Value = DateTime.Today;
             this.KeyPreview = true;
             this.StartPosition = FormStartPosition.CenterScreen;
-            GenerateNota();
+            noNotaTb.Text = GenerateNota();
         }
 
-        private void GenerateNota()
+        private string GenerateNota()
         {
             dbContent = new MerapiGolfLogistikEntities();
             var pengambilans = dbContent.mg_pengambilan.ToList();
@@ -41,7 +41,7 @@ namespace MerapiGolfLogistik
             }
             else
                 nonota = "A000001";
-            noNotaTb.Text = nonota;
+            return nonota;
         }
 
         private void ClearField()
@@ -51,7 +51,7 @@ namespace MerapiGolfLogistik
             tanggalDt.Value = DateTime.Today;
             namaTb.Text = string.Empty;
             keteranganTb.Text = string.Empty;
-            GenerateNota();
+            noNotaTb.Text = GenerateNota();
         }
 
         private void AddItem()
@@ -97,7 +97,7 @@ namespace MerapiGolfLogistik
                 statusLabel.Text = "Menyimpan...";
                 progressBar.Visible = true;
                 progressBar.Value = 50;
-                pengambilan.AddPengambilan(noNotaTb.Text, tanggalDt.Value, keteranganTb.Text,
+                pengambilan.AddPengambilan(GenerateNota(), tanggalDt.Value, keteranganTb.Text,
                Classes.Login.currentUser, namaTb.Text);
                 foreach (var item in this.listBarang)
                 {
@@ -116,9 +116,9 @@ namespace MerapiGolfLogistik
         private async void PrintData()
         {
             var dlgmsg = MessageBox.Show("Anda harus menyimpan pengambilan ini agar dapat dicetak. Menyimpan data?", "Konfirmasi Mencetak", MessageBoxButtons.YesNo);
-            if(dlgmsg == DialogResult.Yes)
+            if (dlgmsg == DialogResult.Yes)
             {
-                if(await SaveData())
+                if (await SaveData())
                 {
                     var nota = pengambilan.GetNotaPengambilan();
                     PrintNotaPengambilan printnota = new PrintNotaPengambilan(nota);

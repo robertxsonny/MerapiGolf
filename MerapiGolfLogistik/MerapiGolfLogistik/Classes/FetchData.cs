@@ -31,6 +31,7 @@ namespace MerapiGolfLogistik.Classes
                     cat.id = Kategori.id;
                     cat.index = index.ToString().PadLeft(7, '0');
                     cat.nama_kategori = Kategori.nama_kategori;
+                    cat.subsi = Kategori.subsi;
                     cat.stock = Kategori.barang.Count;
                     result.Add(cat);
                     index++;

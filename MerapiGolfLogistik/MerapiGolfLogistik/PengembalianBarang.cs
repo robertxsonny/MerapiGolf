@@ -29,7 +29,7 @@ namespace MerapiGolfLogistik
             statusLabel.Text = "Pilih nota terlebih dahulu";
             this.tanggalTb.Value = DateTime.Today;
             this.StartPosition = FormStartPosition.CenterScreen;
-            GenerateNota();
+            noNotaTb.Text = GenerateNota();
         }
 
         private void pilihNotaBtn_Click(object sender, EventArgs e)
@@ -51,7 +51,7 @@ namespace MerapiGolfLogistik
             }
         }
 
-        private void GenerateNota()
+        private string GenerateNota()
         {
             dbContent = new MerapiGolfLogistikEntities();
             var pengembalians = dbContent.mg_pengembalian.ToList();
@@ -64,7 +64,7 @@ namespace MerapiGolfLogistik
             }
             else
                 nonota = "A000001";
-            noNotaTb.Text = nonota;
+            return nonota;
         }
 
         private void AddItem()
@@ -108,7 +108,7 @@ namespace MerapiGolfLogistik
                 statusLabel.Text = "Menyimpan...";
                 progressBar.Value = 50;
                 progressBar.Visible = true;
-                pengembalian.AddPengembalian(noNotaTb.Text, Classes.Login.currentUser, tanggalTb.Value, keteranganTb.Text, nameTb.Text);
+                pengembalian.AddPengembalian(GenerateNota(), Classes.Login.currentUser, tanggalTb.Value, keteranganTb.Text, nameTb.Text);
                 foreach (DataGridViewRow item in itemView.Rows)
                 {
                     Guid idbarang = Guid.Parse(item.Cells[1].Value.ToString());
@@ -137,7 +137,7 @@ namespace MerapiGolfLogistik
             itemView.DataSource = null;
             statusLabel.Text = "Pilih nota terlebih dahulu";
             progressBar.Visible = false;
-            GenerateNota();
+            noNotaTb.Text = GenerateNota();
         }
 
         private async void PrintData()
