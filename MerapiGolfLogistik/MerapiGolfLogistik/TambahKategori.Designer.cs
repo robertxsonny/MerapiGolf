@@ -44,7 +44,8 @@
             this.namaTb = new System.Windows.Forms.TextBox();
             this.saveBtn = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox3.SuspendLayout();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.categoryList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryViewBindingSource)).BeginInit();
             this.statusStrip1.SuspendLayout();
@@ -53,10 +54,9 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.categoryList);
-            this.groupBox3.Location = new System.Drawing.Point(12, 144);
+            this.groupBox3.Location = new System.Drawing.Point(12, 170);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(659, 303);
+            this.groupBox3.Size = new System.Drawing.Size(659, 277);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Daftar Kategori";
@@ -71,10 +71,10 @@
             this.namakategoriDataGridViewTextBoxColumn,
             this.stockDataGridViewTextBoxColumn});
             this.categoryList.DataSource = this.categoryViewBindingSource;
-            this.categoryList.Location = new System.Drawing.Point(8, 28);
+            this.categoryList.Location = new System.Drawing.Point(20, 195);
             this.categoryList.Name = "categoryList";
             this.categoryList.RowTemplate.Height = 28;
-            this.categoryList.Size = new System.Drawing.Size(645, 263);
+            this.categoryList.Size = new System.Drawing.Size(645, 319);
             this.categoryList.TabIndex = 4;
             this.categoryList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierList_CellContentClick);
             this.categoryList.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.supplierList_CellContentDoubleClick);
@@ -121,7 +121,7 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.statusLabel,
             this.progressBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 463);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 528);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(683, 30);
             this.statusStrip1.TabIndex = 5;
@@ -142,7 +142,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 38);
+            this.label1.Location = new System.Drawing.Point(6, 74);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(120, 20);
             this.label1.TabIndex = 0;
@@ -150,7 +150,7 @@
             // 
             // namaTb
             // 
-            this.namaTb.Location = new System.Drawing.Point(160, 35);
+            this.namaTb.Location = new System.Drawing.Point(160, 71);
             this.namaTb.Name = "namaTb";
             this.namaTb.Size = new System.Drawing.Size(478, 26);
             this.namaTb.TabIndex = 1;
@@ -159,7 +159,7 @@
             // 
             this.saveBtn.Image = ((System.Drawing.Image)(resources.GetObject("saveBtn.Image")));
             this.saveBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.saveBtn.Location = new System.Drawing.Point(509, 78);
+            this.saveBtn.Location = new System.Drawing.Point(509, 112);
             this.saveBtn.Name = "saveBtn";
             this.saveBtn.Size = new System.Drawing.Size(129, 34);
             this.saveBtn.TabIndex = 8;
@@ -170,21 +170,40 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.saveBtn);
             this.groupBox1.Controls.Add(this.namaTb);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 9);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(653, 129);
+            this.groupBox1.Size = new System.Drawing.Size(653, 155);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tambah Kategori";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(160, 34);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(478, 26);
+            this.textBox1.TabIndex = 10;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(109, 20);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "Kode Kategori";
             // 
             // TambahKategori
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(683, 493);
+            this.ClientSize = new System.Drawing.Size(683, 558);
+            this.Controls.Add(this.categoryList);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox1);
@@ -192,7 +211,6 @@
             this.Name = "TambahKategori";
             this.Text = "Tambah/Ubah Kategori - Merapi Golf Inventory";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TambahSupplier_KeyDown);
-            this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.categoryList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.categoryViewBindingSource)).EndInit();
             this.statusStrip1.ResumeLayout(false);
@@ -219,5 +237,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn namakategoriDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource categoryViewBindingSource;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
     }
 }

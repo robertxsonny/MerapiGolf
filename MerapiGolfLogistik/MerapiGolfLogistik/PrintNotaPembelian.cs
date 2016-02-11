@@ -73,30 +73,29 @@ namespace MerapiGolfLogistik
         {
             (sender as Timer).Stop();
             PrintDocument printDocument = new PrintDocument();
-            PaperSize psize = new PaperSize("Custom size 1", 350, 450 + (200*20));
+            PaperSize psize = new PaperSize("Custom size 1", 350, 450 + (this.nota.items.Count*40));
             printDocument.PrintPage += PrintDocument_PrintPage;
             printDocument.DefaultPageSettings.PaperSize = psize;
             //printDocument.ori
-            PrintPreviewDialog printPreview = new PrintPreviewDialog();
-            printPreview.Document = printDocument;
+            //PrintPreviewDialog printPreview = new PrintPreviewDialog();
+            //printPreview.Document = printDocument;
             //CaptureScreen();
-            printPreview.ShowDialog();
-            //printDocument.Print();
+            //printPreview.ShowDialog();
+            printDocument.Print();
         }
 
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
             //e.Graphics.DrawImage(memoryImage, 0, 0);
 
-            Font titlefont = new Font("Courier New", 12);
-            Font subtitlefont = new Font("Courier New", 10);
-            Font sectiontitlefont = new Font("Courier New", 10);
-            Font contentfont = new Font("Courier New", 8);
+            Font titlefont = new Font("Courier New", 12, FontStyle.Bold);
+            Font subtitlefont = new Font("Courier New", 10, FontStyle.Bold);
+            Font sectiontitlefont = new Font("Courier New", 10, FontStyle.Bold);
+            Font contentfont = new Font("Courier New", 8, FontStyle.Bold);
 
-            int startX = 50;
-            int startY = 50;
+            int startX = 0;
+            int startY = 0;
             int offset = 0;
-            int line = 0;
             e.Graphics.DrawString("      MERAPI GOLF     ", titlefont, Brushes.Black, startX, startY + offset);
             offset += 20;
             e.Graphics.DrawString("JALAN GOLF NO. 1 KEPUH HARJO", subtitlefont, Brushes.Black, startX, startY + offset);
@@ -112,22 +111,35 @@ namespace MerapiGolfLogistik
             e.Graphics.DrawString("Supplier      : " + this.nota.nama_supplier, contentfont, Brushes.Black, startX, startY + offset);
             offset += 20;
             e.Graphics.DrawString("Pembeli       : ", contentfont, Brushes.Black, startX, startY + offset);
-            e.Graphics.DrawString(this.nota.nama_karyawan, contentfont, Brushes.Black, new RectangleF(startX + 110, startY + offset, 150, 300));
+            e.Graphics.DrawString(this.nota.nama_karyawan, contentfont, Brushes.Black, new RectangleF(startX + 110, startY + offset, 150, 1000));
             offset += 20 * (1 + (this.nota.nama_karyawan.Length / 20));
             e.Graphics.DrawString("Tanggal       : " + this.nota.tanggal.Value.ToString("dd MMMM yyyy"), contentfont, Brushes.Black, startX, startY + offset);
             offset += 20;
             e.Graphics.DrawString("Keterangan    : ", contentfont, Brushes.Black, startX, startY + offset);
-            e.Graphics.DrawString(this.nota.keterangan, contentfont, Brushes.Black, new RectangleF(startX + 110, startY + offset, 150, 300));
+            e.Graphics.DrawString(this.nota.keterangan, contentfont, Brushes.Black, new RectangleF(startX + 110, startY + offset, 150, 1000));
             offset += 20 * (1 + (this.nota.keterangan.Length / 20));
             e.Graphics.DrawString("----------------------------", sectiontitlefont, Brushes.Black, startX, startY + offset);
             offset += 20;
             e.Graphics.DrawString("        DAFTAR BARANG        ", subtitlefont, Brushes.Black, startX, startY + offset);
-            for (int i = 0; i < 200; i++)
+            int subtotal = 0;
+            foreach (var item in this.nota.items)
             {
+                subtotal += item.total_harga.HasValue ? item.total_harga.Value : 0;
                 offset += 20;
-                e.Graphics.DrawString("ini contoh barang ke-" + (i+1), contentfont, Brushes.Black, startX, startY + offset);
+                e.Graphics.DrawString(item.nama_barang, contentfont, Brushes.Black, startX, startY + offset);
+                e.Graphics.DrawString((item.total_harga.HasValue ? item.total_harga.Value : 0).ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat), contentfont, Brushes.Black, startX + 150, startY + offset);
+                offset += 20;
+                e.Graphics.DrawString(item.banyak_barang.ToString() + " " + item.satuan + " x " + (item.harga_satuan.HasValue ? item.harga_satuan.Value : 0).ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat), contentfont, Brushes.Black, startX + 20, startY + offset);
             }
-            
+            offset += 20;
+            e.Graphics.DrawString("----------------------------", sectiontitlefont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("Total pembelian", contentfont, Brushes.Black, startX, startY + offset);
+            e.Graphics.DrawString(subtotal.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat), contentfont, Brushes.Black, startX + 150, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("----------------------------", sectiontitlefont, Brushes.Black, startX, startY + offset);
+            offset += 20;
+            e.Graphics.DrawString("        TERIMA KASIH        ", sectiontitlefont, Brushes.Black, startX, startY + offset);
         }
         
         private void CaptureScreen()
