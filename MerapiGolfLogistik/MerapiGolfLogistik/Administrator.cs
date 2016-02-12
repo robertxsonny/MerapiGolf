@@ -31,6 +31,8 @@ namespace MerapiGolfLogistik
                 OpenReturnItems();
             else if (e.KeyCode == Keys.F5)
                 OpenInventoryReport();
+            else if (e.KeyCode == Keys.F7)
+                OpenAktivaReport();
         }
 
         private static void OpenAddItems()
@@ -62,7 +64,12 @@ namespace MerapiGolfLogistik
             LaporanGudang laporanform = new LaporanGudang();
             laporanform.ShowDialog();
         }
-        
+
+        private static void OpenAktivaReport()
+        {
+            LaporanAktiva laporanform = new LaporanAktiva();
+            laporanform.ShowDialog();
+        }
 
         private void tambahBarangBtn_Click(object sender, EventArgs e)
         {
@@ -88,5 +95,11 @@ namespace MerapiGolfLogistik
         {
             OpenInventoryReport();
         }
+
+        private void laporanPerAktivaBtn_Click(object sender, EventArgs e)
+        {
+            OpenAktivaReport();
+        }
+
     }
 }

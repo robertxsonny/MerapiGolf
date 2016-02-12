@@ -36,6 +36,9 @@
             this.pengambilanBarangBtn = new System.Windows.Forms.Button();
             this.laporanGudangBtn = new System.Windows.Forms.Button();
             this.pengembalianBarangBtn = new System.Windows.Forms.Button();
+            this.laporanPerAktivaBtn = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // tambahBarangBtn
@@ -43,9 +46,9 @@
             this.tambahBarangBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tambahBarangBtn.Image = ((System.Drawing.Image)(resources.GetObject("tambahBarangBtn.Image")));
             this.tambahBarangBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tambahBarangBtn.Location = new System.Drawing.Point(12, 69);
+            this.tambahBarangBtn.Location = new System.Drawing.Point(12, 63);
             this.tambahBarangBtn.Name = "tambahBarangBtn";
-            this.tambahBarangBtn.Size = new System.Drawing.Size(424, 57);
+            this.tambahBarangBtn.Size = new System.Drawing.Size(457, 57);
             this.tambahBarangBtn.TabIndex = 2;
             this.tambahBarangBtn.Text = "Tambah Jenis Barang Baru (F1)";
             this.tambahBarangBtn.UseVisualStyleBackColor = true;
@@ -76,9 +79,9 @@
             this.tambahStokBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tambahStokBtn.Image = ((System.Drawing.Image)(resources.GetObject("tambahStokBtn.Image")));
             this.tambahStokBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.tambahStokBtn.Location = new System.Drawing.Point(12, 132);
+            this.tambahStokBtn.Location = new System.Drawing.Point(12, 126);
             this.tambahStokBtn.Name = "tambahStokBtn";
-            this.tambahStokBtn.Size = new System.Drawing.Size(424, 54);
+            this.tambahStokBtn.Size = new System.Drawing.Size(457, 54);
             this.tambahStokBtn.TabIndex = 5;
             this.tambahStokBtn.Text = "Tambah Stok Barang (F2)";
             this.tambahStokBtn.UseVisualStyleBackColor = true;
@@ -89,9 +92,9 @@
             this.pengambilanBarangBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pengambilanBarangBtn.Image = ((System.Drawing.Image)(resources.GetObject("pengambilanBarangBtn.Image")));
             this.pengambilanBarangBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.pengambilanBarangBtn.Location = new System.Drawing.Point(12, 192);
+            this.pengambilanBarangBtn.Location = new System.Drawing.Point(12, 186);
             this.pengambilanBarangBtn.Name = "pengambilanBarangBtn";
-            this.pengambilanBarangBtn.Size = new System.Drawing.Size(424, 54);
+            this.pengambilanBarangBtn.Size = new System.Drawing.Size(457, 54);
             this.pengambilanBarangBtn.TabIndex = 6;
             this.pengambilanBarangBtn.Text = "Pengambilan Barang (F3)";
             this.pengambilanBarangBtn.UseVisualStyleBackColor = true;
@@ -102,11 +105,11 @@
             this.laporanGudangBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.laporanGudangBtn.Image = ((System.Drawing.Image)(resources.GetObject("laporanGudangBtn.Image")));
             this.laporanGudangBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.laporanGudangBtn.Location = new System.Drawing.Point(8, 312);
+            this.laporanGudangBtn.Location = new System.Drawing.Point(12, 306);
             this.laporanGudangBtn.Name = "laporanGudangBtn";
-            this.laporanGudangBtn.Size = new System.Drawing.Size(424, 54);
+            this.laporanGudangBtn.Size = new System.Drawing.Size(457, 54);
             this.laporanGudangBtn.TabIndex = 7;
-            this.laporanGudangBtn.Text = "Laporan Gudang (F5)";
+            this.laporanGudangBtn.Text = "Laporan Pemakaian Barang Gudang (F5)";
             this.laporanGudangBtn.UseVisualStyleBackColor = true;
             this.laporanGudangBtn.Click += new System.EventHandler(this.laporanGudangBtn_Click);
             // 
@@ -115,19 +118,59 @@
             this.pengembalianBarangBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pengembalianBarangBtn.Image = ((System.Drawing.Image)(resources.GetObject("pengembalianBarangBtn.Image")));
             this.pengembalianBarangBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.pengembalianBarangBtn.Location = new System.Drawing.Point(12, 252);
+            this.pengembalianBarangBtn.Location = new System.Drawing.Point(12, 246);
             this.pengembalianBarangBtn.Name = "pengembalianBarangBtn";
-            this.pengembalianBarangBtn.Size = new System.Drawing.Size(424, 54);
+            this.pengembalianBarangBtn.Size = new System.Drawing.Size(457, 54);
             this.pengembalianBarangBtn.TabIndex = 8;
             this.pengembalianBarangBtn.Text = "Pengembalian Barang (F4)";
             this.pengembalianBarangBtn.UseVisualStyleBackColor = true;
             this.pengembalianBarangBtn.Click += new System.EventHandler(this.pengembalianBarangBtn_Click);
             // 
+            // laporanPerAktivaBtn
+            // 
+            this.laporanPerAktivaBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.laporanPerAktivaBtn.Image = ((System.Drawing.Image)(resources.GetObject("laporanPerAktivaBtn.Image")));
+            this.laporanPerAktivaBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.laporanPerAktivaBtn.Location = new System.Drawing.Point(12, 426);
+            this.laporanPerAktivaBtn.Name = "laporanPerAktivaBtn";
+            this.laporanPerAktivaBtn.Size = new System.Drawing.Size(457, 54);
+            this.laporanPerAktivaBtn.TabIndex = 9;
+            this.laporanPerAktivaBtn.Text = "Laporan Pengeluaran per Aktiva (F7)";
+            this.laporanPerAktivaBtn.UseVisualStyleBackColor = true;
+            this.laporanPerAktivaBtn.Click += new System.EventHandler(this.laporanPerAktivaBtn_Click);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
+            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button2.Location = new System.Drawing.Point(12, 486);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(457, 54);
+            this.button2.TabIndex = 10;
+            this.button2.Text = "Laporan Pergerakan Barang (F8)";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Image = ((System.Drawing.Image)(resources.GetObject("button3.Image")));
+            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button3.Location = new System.Drawing.Point(12, 366);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(457, 54);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Laporan Barang per Kategori (F6)";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // Administrator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(448, 386);
+            this.ClientSize = new System.Drawing.Size(481, 554);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.laporanPerAktivaBtn);
             this.Controls.Add(this.pengembalianBarangBtn);
             this.Controls.Add(this.laporanGudangBtn);
             this.Controls.Add(this.pengambilanBarangBtn);
@@ -153,5 +196,8 @@
         private System.Windows.Forms.Button pengambilanBarangBtn;
         private System.Windows.Forms.Button laporanGudangBtn;
         private System.Windows.Forms.Button pengembalianBarangBtn;
+        private System.Windows.Forms.Button laporanPerAktivaBtn;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

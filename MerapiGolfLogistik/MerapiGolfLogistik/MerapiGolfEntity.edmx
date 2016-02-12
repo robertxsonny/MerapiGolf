@@ -246,6 +246,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pembelian' does not have
           <Property Name="no_nota" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="nama_barang" Type="nvarchar(max)" />
           <Property Name="nama_kategori" Type="nvarchar(max)" />
+          <Property Name="subsikategori" Type="varchar" MaxLength="100" />
           <Property Name="id_kategori" Type="uniqueidentifier" Nullable="false" />
           <Property Name="banyak_barang" Type="float" />
           <Property Name="harga_satuan" Type="float" />
@@ -575,6 +576,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
     [mg_total_pembelian].[no_nota] AS [no_nota], 
     [mg_total_pembelian].[nama_barang] AS [nama_barang], 
     [mg_total_pembelian].[nama_kategori] AS [nama_kategori], 
+    [mg_total_pembelian].[subsikategori] AS [subsikategori], 
     [mg_total_pembelian].[id_kategori] AS [id_kategori], 
     [mg_total_pembelian].[banyak_barang] AS [banyak_barang], 
     [mg_total_pembelian].[harga_satuan] AS [harga_satuan], 
@@ -939,6 +941,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
           <Property Name="tanggal" Type="DateTime" Precision="0" />
           <Property Name="subsi" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="id_kategori" Type="Guid" Nullable="false" />
+          <Property Name="subsikategori" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_mg_pengambilan_item_mg_aktiva">
           <End Type="MerapiGolfLogistikModel.Aktiva" Role="mg_aktiva" Multiplicity="0..1" />
@@ -1375,6 +1378,7 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
           <EntitySetMapping Name="mg_total_pembelian">
             <EntityTypeMapping TypeName="MerapiGolfLogistikModel.TotalPembelian">
               <MappingFragment StoreEntitySet="mg_total_pembelian">
+                <ScalarProperty Name="subsikategori" ColumnName="subsikategori" />
                 <ScalarProperty Name="id_kategori" ColumnName="id_kategori" />
                 <ScalarProperty Name="subsi" ColumnName="subsi" />
                 <ScalarProperty Name="tanggal" ColumnName="tanggal" />

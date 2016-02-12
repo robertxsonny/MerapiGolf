@@ -121,5 +121,70 @@ namespace MerapiGolfLogistik.Classes
                 return result;
             }
         }
+
+        public IEnumerable<LaporanAktivaModel> GetReportByAktiva(Guid aktivaId,
+            DateTime from, DateTime to)
+        {
+            using (dbContent = new MerapiGolfLogistikEntities())
+            {
+                List<LaporanAktivaModel> result = new List<LaporanAktivaModel>();
+                var pengambilan_items = dbContent.mg_pengambilan_item.Where(p => p.pengambilan.tanggal.HasValue).ToList();
+                //for calculation
+                var pembelian_items = dbContent.mg_pembelian_item.Where(p => p.pembelian.tanggal.HasValue).ToList();
+                var pengambilan_all = dbContent.mg_pengambilan_item.Where(p => p.pengambilan.tanggal.HasValue).ToList();
+                var pengembalian_items = dbContent.mg_pengembalian_item.Where(p => p.pengembalian.tanggal.HasValue).ToList();
+                if (aktivaId != Guid.Empty)
+                    pengambilan_items = pengambilan_items.Where(p => p.id_aktiva == aktivaId).ToList();
+                pengambilan_items = pengambilan_items.Where(p => p.pengambilan.tanggal.Value.Subtract(from).TotalDays >= 0 &&
+                p.pengambilan.tanggal.Value.Subtract(to).TotalDays <= 0).ToList();
+                var pengambilan_per_aktiva = pengambilan_items.GroupBy(p => p.id_aktiva);
+                //iterasi per grup aktiva
+                foreach (var per_aktiva in pengambilan_per_aktiva)
+                {
+                    var list_pengambilan_per_aktiva = per_aktiva.ToList();
+                    var pengambilan_per_barang = list_pengambilan_per_aktiva.GroupBy(p => p.pembelian_item.barang_id);
+                    //iterasi per grup pengambilan per ID barang
+                    foreach (var pengambilan_per_id in pengambilan_per_barang)
+                    {
+                        if (pengambilan_per_id.Count() > 0)
+                        {
+                            LaporanAktivaModel single = new LaporanAktivaModel();
+                            var pengambilan_pertama = pengambilan_per_id.FirstOrDefault();
+                            single.id_aktiva = per_aktiva.Key.Value;
+                            single.nama_aktiva = pengambilan_pertama.aktiva.nama_aktiva;
+                            single.nama_barang = pengambilan_pertama.pembelian_item.barang.nama_barang;
+                            single.id_barang = pengambilan_pertama.pembelian_item.barang.id;
+                            single.subsi_barang = pengambilan_pertama.pembelian_item.barang.subsi;
+                            single.keterangan_aktiva = pengambilan_pertama.aktiva.keterangan_aktiva;
+                            single.stokawal = pembelian_items.Where(p => p.pembelian.tanggal.Value.Subtract(from).TotalDays < 0 && p.barang_id == single.id_barang).Sum(p => p.banyak_barang.Value) -
+                                pengambilan_all.Where(p => p.pengambilan.tanggal.Value.Subtract(from).TotalDays < 0 && p.pembelian_item.barang_id == single.id_barang).Sum(p => p.banyak_barang.Value) +
+                                pengembalian_items.Where(p => p.pengembalian.tanggal.Value.Subtract(from).TotalDays < 0 && p.pengambilan_item.pembelian_item.barang_id == single.id_barang).Sum(p => p.banyak_dikembalikan.Value);
+                            single.stokakhir = pembelian_items.Where(p => p.pembelian.tanggal.Value.Subtract(to).TotalDays <= 0 && p.barang_id == single.id_barang).Sum(p => p.banyak_barang.Value) -
+                             pengambilan_all.Where(p => p.pengambilan.tanggal.Value.Subtract(to).TotalDays <= 0 && p.pembelian_item.barang_id == single.id_barang).Sum(p => p.banyak_barang.Value) +
+                              pengembalian_items.Where(p => p.pengembalian.tanggal.Value.Subtract(to).TotalDays <= 0 && p.pengambilan_item.pembelian_item.barang_id == single.id_barang).Sum(p => p.banyak_dikembalikan.Value);
+                            single.saldoawal = pembelian_items.Where(p => p.pembelian.tanggal.Value.Subtract(from).TotalDays < 0 && p.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
+                                pengambilan_all.Where(p => p.pengambilan.tanggal.Value.Subtract(from).TotalDays < 0 && p.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value* p.pembelian_item.harga_satuan.Value)) +
+                                pengembalian_items.Where(p => p.pengembalian.tanggal.Value.Subtract(from).TotalDays < 0 && p.pengambilan_item.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
+                           single.saldoakhir = pembelian_items.Where(p => p.pembelian.tanggal.Value.Subtract(to).TotalDays <= 0 && p.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
+                             pengambilan_all.Where(p => p.pengambilan.tanggal.Value.Subtract(to).TotalDays <= 0 && p.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
+                              pengembalian_items.Where(p => p.pengembalian.tanggal.Value.Subtract(to).TotalDays <= 0 && p.pengambilan_item.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
+                            //iterasi pengambilan per ID barang
+                            double jumlah_diambil = 0;
+                            double harga_pembelian = 0;
+                            foreach (var item in pengambilan_per_id)
+                            {
+                                jumlah_diambil += item.banyak_barang.Value;
+                                harga_pembelian += (item.banyak_barang.Value * item.pembelian_item.harga_satuan.Value);
+                            }
+                            single.jumlah_diambil = jumlah_diambil;
+                            single.harga_pembelian = harga_pembelian;
+                            result.Add(single);
+                        }
+
+                    }
+                }
+                return result;
+            }
+        }
     }
 }

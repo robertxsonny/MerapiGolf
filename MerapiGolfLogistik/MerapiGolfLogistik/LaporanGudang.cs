@@ -188,6 +188,7 @@ namespace MerapiGolfLogistik
                             if (item.Kategori != categoryName)
                             {
                                 categoryName = item.Kategori;
+                                sheet1.Cells[rowNo, 2].Value = item.SubsiKategori;
                                 sheet1.Cells[rowNo, 4].Value = categoryName;
                                 sheet1.Cells[rowNo, 4].Style.Font.Bold = true;
                                 sheet1.Cells[rowNo, 4, rowNo, 12].Merge = true;

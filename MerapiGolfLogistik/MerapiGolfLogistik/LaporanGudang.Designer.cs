@@ -39,11 +39,6 @@
             this.pilihKategoriBtn = new System.Windows.Forms.Button();
             this.hapusFilterBtn = new System.Windows.Forms.Button();
             this.reportView = new System.Windows.Forms.DataGridView();
-            this.laporanBarangExtendedBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.cetakLaporanBtn = new System.Windows.Forms.Button();
-            this.cetakLaporanPerKategoriBtn = new System.Windows.Forms.Button();
-            this.laporanGudangBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.laporanGudangItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.subsiDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.kategoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,57 +51,56 @@
             this.hargaKeluarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.hargaSaldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.laporanGudangItemBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.laporanBarangExtendedBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.cetakLaporanBtn = new System.Windows.Forms.Button();
+            this.laporanGudangBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.reportView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.laporanGudangItemBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.laporanBarangExtendedBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.laporanGudangBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.laporanGudangItemBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 6);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.Size = new System.Drawing.Size(99, 20);
             this.label1.TabIndex = 0;
             this.label1.Text = "Dari Tanggal";
             // 
             // dariTanggalTb
             // 
-            this.dariTanggalTb.Location = new System.Drawing.Point(86, 3);
-            this.dariTanggalTb.Margin = new System.Windows.Forms.Padding(2);
+            this.dariTanggalTb.Location = new System.Drawing.Point(129, 5);
             this.dariTanggalTb.Name = "dariTanggalTb";
-            this.dariTanggalTb.Size = new System.Drawing.Size(222, 20);
+            this.dariTanggalTb.Size = new System.Drawing.Size(331, 26);
             this.dariTanggalTb.TabIndex = 1;
             this.dariTanggalTb.ValueChanged += new System.EventHandler(this.dariTanggalTb_ValueChanged);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(313, 5);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(470, 8);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 13);
+            this.label2.Size = new System.Drawing.Size(124, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Sampai Tanggal";
             // 
             // sampaiTanggalTb
             // 
-            this.sampaiTanggalTb.Location = new System.Drawing.Point(412, 3);
-            this.sampaiTanggalTb.Margin = new System.Windows.Forms.Padding(2);
+            this.sampaiTanggalTb.Location = new System.Drawing.Point(618, 5);
             this.sampaiTanggalTb.Name = "sampaiTanggalTb";
-            this.sampaiTanggalTb.Size = new System.Drawing.Size(222, 20);
+            this.sampaiTanggalTb.Size = new System.Drawing.Size(331, 26);
             this.sampaiTanggalTb.TabIndex = 4;
             this.sampaiTanggalTb.ValueChanged += new System.EventHandler(this.sampaiTanggalTb_ValueChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(8, 31);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(12, 48);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.Size = new System.Drawing.Size(100, 20);
             this.label3.TabIndex = 5;
             this.label3.Text = "Pilih Kategori";
             // 
@@ -114,10 +108,9 @@
             // 
             this.kategoriTb.AutoSize = true;
             this.kategoriTb.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.kategoriTb.Location = new System.Drawing.Point(83, 31);
-            this.kategoriTb.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.kategoriTb.Location = new System.Drawing.Point(124, 48);
             this.kategoriTb.Name = "kategoriTb";
-            this.kategoriTb.Size = new System.Drawing.Size(161, 13);
+            this.kategoriTb.Size = new System.Drawing.Size(225, 20);
             this.kategoriTb.TabIndex = 6;
             this.kategoriTb.Text = "[Belum ada kategori dipilih]";
             // 
@@ -125,10 +118,9 @@
             // 
             this.pilihKategoriBtn.Image = ((System.Drawing.Image)(resources.GetObject("pilihKategoriBtn.Image")));
             this.pilihKategoriBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.pilihKategoriBtn.Location = new System.Drawing.Point(86, 55);
-            this.pilihKategoriBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.pilihKategoriBtn.Location = new System.Drawing.Point(245, 84);
             this.pilihKategoriBtn.Name = "pilihKategoriBtn";
-            this.pilihKategoriBtn.Size = new System.Drawing.Size(117, 27);
+            this.pilihKategoriBtn.Size = new System.Drawing.Size(176, 42);
             this.pilihKategoriBtn.TabIndex = 7;
             this.pilihKategoriBtn.Text = "Pilih Kategori (F1)";
             this.pilihKategoriBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -139,10 +131,9 @@
             // 
             this.hapusFilterBtn.Image = ((System.Drawing.Image)(resources.GetObject("hapusFilterBtn.Image")));
             this.hapusFilterBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.hapusFilterBtn.Location = new System.Drawing.Point(207, 55);
-            this.hapusFilterBtn.Margin = new System.Windows.Forms.Padding(2);
+            this.hapusFilterBtn.Location = new System.Drawing.Point(426, 84);
             this.hapusFilterBtn.Name = "hapusFilterBtn";
-            this.hapusFilterBtn.Size = new System.Drawing.Size(99, 27);
+            this.hapusFilterBtn.Size = new System.Drawing.Size(148, 42);
             this.hapusFilterBtn.TabIndex = 8;
             this.hapusFilterBtn.Text = "Hapus Filter";
             this.hapusFilterBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -167,47 +158,11 @@
             this.dataGridViewTextBoxColumn5,
             this.hargaSaldoDataGridViewTextBoxColumn});
             this.reportView.DataSource = this.laporanGudangItemBindingSource;
-            this.reportView.Location = new System.Drawing.Point(11, 86);
-            this.reportView.Margin = new System.Windows.Forms.Padding(2);
+            this.reportView.Location = new System.Drawing.Point(16, 132);
             this.reportView.Name = "reportView";
             this.reportView.RowTemplate.Height = 28;
-            this.reportView.Size = new System.Drawing.Size(622, 257);
+            this.reportView.Size = new System.Drawing.Size(933, 395);
             this.reportView.TabIndex = 9;
-            // 
-            // cetakLaporanBtn
-            // 
-            this.cetakLaporanBtn.Image = ((System.Drawing.Image)(resources.GetObject("cetakLaporanBtn.Image")));
-            this.cetakLaporanBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cetakLaporanBtn.Location = new System.Drawing.Point(316, 55);
-            this.cetakLaporanBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.cetakLaporanBtn.Name = "cetakLaporanBtn";
-            this.cetakLaporanBtn.Size = new System.Drawing.Size(96, 27);
-            this.cetakLaporanBtn.TabIndex = 10;
-            this.cetakLaporanBtn.Text = "Cetak Laporan";
-            this.cetakLaporanBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cetakLaporanBtn.UseVisualStyleBackColor = true;
-            this.cetakLaporanBtn.Click += new System.EventHandler(this.cetakLaporanBtn_Click);
-            // 
-            // cetakLaporanPerKategoriBtn
-            // 
-            this.cetakLaporanPerKategoriBtn.Image = ((System.Drawing.Image)(resources.GetObject("cetakLaporanPerKategoriBtn.Image")));
-            this.cetakLaporanPerKategoriBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cetakLaporanPerKategoriBtn.Location = new System.Drawing.Point(416, 55);
-            this.cetakLaporanPerKategoriBtn.Margin = new System.Windows.Forms.Padding(2);
-            this.cetakLaporanPerKategoriBtn.Name = "cetakLaporanPerKategoriBtn";
-            this.cetakLaporanPerKategoriBtn.Size = new System.Drawing.Size(160, 27);
-            this.cetakLaporanPerKategoriBtn.TabIndex = 11;
-            this.cetakLaporanPerKategoriBtn.Text = "Cetak Laporan per Kategori";
-            this.cetakLaporanPerKategoriBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cetakLaporanPerKategoriBtn.UseVisualStyleBackColor = true;
-            // 
-            // laporanGudangBindingSource
-            // 
-            this.laporanGudangBindingSource.DataSource = typeof(MerapiGolfLogistik.Classes.LaporanGudang);
-            // 
-            // laporanGudangItemBindingSource
-            // 
-            this.laporanGudangItemBindingSource.DataSource = typeof(MerapiGolfLogistik.Classes.LaporanGudangItem);
             // 
             // subsiDataGridViewTextBoxColumn
             // 
@@ -285,12 +240,32 @@
             this.hargaSaldoDataGridViewTextBoxColumn.Name = "hargaSaldoDataGridViewTextBoxColumn";
             this.hargaSaldoDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // laporanGudangItemBindingSource
+            // 
+            this.laporanGudangItemBindingSource.DataSource = typeof(MerapiGolfLogistik.Classes.LaporanGudangItem);
+            // 
+            // cetakLaporanBtn
+            // 
+            this.cetakLaporanBtn.Image = ((System.Drawing.Image)(resources.GetObject("cetakLaporanBtn.Image")));
+            this.cetakLaporanBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cetakLaporanBtn.Location = new System.Drawing.Point(590, 84);
+            this.cetakLaporanBtn.Name = "cetakLaporanBtn";
+            this.cetakLaporanBtn.Size = new System.Drawing.Size(144, 42);
+            this.cetakLaporanBtn.TabIndex = 10;
+            this.cetakLaporanBtn.Text = "Cetak Laporan";
+            this.cetakLaporanBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cetakLaporanBtn.UseVisualStyleBackColor = true;
+            this.cetakLaporanBtn.Click += new System.EventHandler(this.cetakLaporanBtn_Click);
+            // 
+            // laporanGudangBindingSource
+            // 
+            this.laporanGudangBindingSource.DataSource = typeof(MerapiGolfLogistik.Classes.LaporanGudang);
+            // 
             // LaporanGudang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(646, 351);
-            this.Controls.Add(this.cetakLaporanPerKategoriBtn);
+            this.ClientSize = new System.Drawing.Size(969, 540);
             this.Controls.Add(this.cetakLaporanBtn);
             this.Controls.Add(this.reportView);
             this.Controls.Add(this.hapusFilterBtn);
@@ -301,14 +276,13 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dariTanggalTb);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LaporanGudang";
             this.Text = "Laporan Gudang - Merapi Golf Inventory";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.LaporanGudang_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.reportView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.laporanGudangItemBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.laporanBarangExtendedBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.laporanGudangBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.laporanGudangItemBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,7 +301,6 @@
         private System.Windows.Forms.DataGridView reportView;
         private System.Windows.Forms.Button cetakLaporanBtn;
         private System.Windows.Forms.BindingSource laporanBarangExtendedBindingSource;
-        private System.Windows.Forms.Button cetakLaporanPerKategoriBtn;
         //private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         //private System.Windows.Forms.DataGridViewTextBoxColumn idkategoriDataGridViewTextBoxColumn;
         //private System.Windows.Forms.DataGridViewTextBoxColumn namakategoriDataGridViewTextBoxColumn;

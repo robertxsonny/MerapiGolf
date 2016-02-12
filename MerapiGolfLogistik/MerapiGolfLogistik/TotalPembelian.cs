@@ -26,5 +26,6 @@ namespace MerapiGolfLogistik
         public Nullable<System.DateTime> tanggal { get; set; }
         public string subsi { get; set; }
         public System.Guid id_kategori { get; set; }
+        public string subsikategori { get; set; }
     }
 }

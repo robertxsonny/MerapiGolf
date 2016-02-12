@@ -119,6 +119,12 @@
     <Compile Include="Kategori.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <Compile Include="LaporanAktiva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaporanAktiva.Designer.cs">
+      <DependentUpon>LaporanAktiva.cs</DependentUpon>
+    </Compile>
     <Compile Include="LaporanGudang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -154,6 +160,7 @@
     </Compile>
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ItemView.cs" />
+    <Compile Include="Models\LaporanAktivaModel.cs" />
     <Compile Include="Models\LaporanBarangExtended.cs" />
     <Compile Include="Models\NotaPembelianDetail.cs" />
     <Compile Include="Models\NotaPengambilanDetail.cs" />
@@ -328,6 +335,9 @@
     <EmbeddedResource Include="InputBarang.resx">
       <DependentUpon>InputBarang.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LaporanAktiva.resx">
+      <DependentUpon>LaporanAktiva.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LaporanGudang.resx">
       <DependentUpon>LaporanGudang.cs</DependentUpon>
     </EmbeddedResource>
@@ -405,6 +415,7 @@
     <None Include="Databases\MerapiGolfDb_09012016_1223.bak" />
     <None Include="Databases\MerapiGolfDb_11012016_2123.bak" />
     <None Include="Databases\MerapiGolfDb_12012016_1729.bak" />
+    <None Include="Databases\MerapiGolfDb_12022016_2308.bak" />
     <None Include="Databases\MerapiGolfDb_13012016_2245.bak" />
     <None Include="Databases\MerapiGolfDb_14012016_0009.bak" />
     <None Include="Databases\MerapiGolfDb_14012016_2240.bak" />
@@ -427,6 +438,7 @@
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.Category.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.CategoryView.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.ItemView.datasource" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Models.LaporanAktivaModel.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.LaporanBarangExtended.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PembelianExtended.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PengambilanItemExtended.datasource" />

@@ -32,6 +32,7 @@ namespace MerapiGolfLogistik.Classes
                         item.NamaBarang = pembelian.nama_barang;
                         item.Kategori = pembelian.nama_kategori;
                         item.KategoriId = pembelian.id_kategori;
+                        item.SubsiKategori = pembelian.subsikategori;
                         item.HargaSatuan = (pembelian.harga_satuan.HasValue ? pembelian.harga_satuan.Value : 0);
                         item.Subsi = pembelian.subsi;
                         item.Stok = (pembelian.tanggal < from ? (pembelian.banyak_barang.HasValue ? pembelian.banyak_barang.Value : 0) : 0);
@@ -83,6 +84,7 @@ namespace MerapiGolfLogistik.Classes
         public string Subsi { get; set; }
 
         public string NamaBarang { get; set; }
+        public string SubsiKategori { get; set; }
         public Guid KategoriId { get; set; }
         public string Kategori { get; set; }
 
