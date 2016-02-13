@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MerapiGolfLogistik.Models;
+using System.Windows.Forms;
 
 namespace MerapiGolfLogistik.Classes
 {
-    public class FetchData
+    public class FetchData : Form
     {
         private MerapiGolfLogistikEntities dbContent;
         public IEnumerable<MerapiGolfLogistik.Models.CategoryView> GetCategory(string query)
@@ -163,11 +164,11 @@ namespace MerapiGolfLogistik.Classes
                              pengambilan_all.Where(p => p.pengambilan.tanggal.Value.Subtract(to).TotalDays <= 0 && p.pembelian_item.barang_id == single.id_barang).Sum(p => p.banyak_barang.Value) +
                               pengembalian_items.Where(p => p.pengembalian.tanggal.Value.Subtract(to).TotalDays <= 0 && p.pengambilan_item.pembelian_item.barang_id == single.id_barang).Sum(p => p.banyak_dikembalikan.Value);
                             single.saldoawal = pembelian_items.Where(p => p.pembelian.tanggal.Value.Subtract(from).TotalDays < 0 && p.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
-                                pengambilan_all.Where(p => p.pengambilan.tanggal.Value.Subtract(from).TotalDays < 0 && p.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value* p.pembelian_item.harga_satuan.Value)) +
+                                pengambilan_all.Where(p => p.pengambilan.tanggal.Value.Subtract(from).TotalDays < 0 && p.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
                                 pengembalian_items.Where(p => p.pengembalian.tanggal.Value.Subtract(from).TotalDays < 0 && p.pengambilan_item.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
-                           single.saldoakhir = pembelian_items.Where(p => p.pembelian.tanggal.Value.Subtract(to).TotalDays <= 0 && p.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
-                             pengambilan_all.Where(p => p.pengambilan.tanggal.Value.Subtract(to).TotalDays <= 0 && p.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
-                              pengembalian_items.Where(p => p.pengembalian.tanggal.Value.Subtract(to).TotalDays <= 0 && p.pengambilan_item.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
+                            single.saldoakhir = pembelian_items.Where(p => p.pembelian.tanggal.Value.Subtract(to).TotalDays <= 0 && p.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
+                              pengambilan_all.Where(p => p.pengambilan.tanggal.Value.Subtract(to).TotalDays <= 0 && p.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
+                               pengembalian_items.Where(p => p.pengembalian.tanggal.Value.Subtract(to).TotalDays <= 0 && p.pengambilan_item.pembelian_item.barang_id == single.id_barang).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
                             //iterasi pengambilan per ID barang
                             double jumlah_diambil = 0;
                             double harga_pembelian = 0;
@@ -183,6 +184,99 @@ namespace MerapiGolfLogistik.Classes
 
                     }
                 }
+                return result;
+            }
+        }
+
+        public IEnumerable<LaporanKategoriModel> GetProductDetailsByCategory(DateTime from,
+            DateTime to, Guid selectedCategory)
+        {
+            using (dbContent = new MerapiGolfLogistikEntities())
+            {
+                var result = new List<LaporanKategoriModel>();
+                var barangs = dbContent.mg_barang.ToList();
+                if (selectedCategory != Guid.Empty)
+                    barangs = barangs.Where(p => p.id_kategori == selectedCategory).ToList();
+                var pembelian_items = dbContent.mg_pembelian_item.Where(p => p.pembelian.tanggal.HasValue).ToList();
+                //pembelian_items = pembelian_items.Where(p => p.pembelian.tanggal.Value.Subtract(from).TotalDays >= 0 &&
+                //p.pembelian.tanggal.Value.Subtract(to).TotalDays <= 0).ToList();
+                var pengambilan_items = dbContent.mg_pengambilan_item.Where(p => p.pengambilan.tanggal.HasValue).ToList();
+                //pengambilan_items = pengambilan_items.Where(p => p.pengambilan.tanggal.Value.Subtract(from).TotalDays >= 0 &&
+                //p.pengambilan.tanggal.Value.Subtract(to).TotalDays <= 0).ToList();
+                var pengembalian_items = dbContent.mg_pengembalian_item.Where(p => p.pengembalian.tanggal.HasValue).ToList();
+                //pengembalian_items = pengembalian_items.Where(p => p.pengembalian.tanggal.Value.Subtract(from).TotalDays >= 0 &&
+                //p.pengembalian.tanggal.Value.Subtract(from).TotalDays <= 0).ToList();
+
+                //group by category
+                var barangs_group = barangs.GroupBy(p => p.id_kategori);
+                //iterate group
+                foreach (var barang_group in barangs_group)
+                {
+                    foreach (var barang in barang_group)
+                    {
+                        Guid id_barang = barang.id;
+                        LaporanKategoriModel item = new LaporanKategoriModel();
+                        item.id_kategori = barang_group.Key.Value;
+                        item.nama_kategori = barang.kategori.nama_kategori;
+                        item.subsi_kategori = barang.kategori.subsi;
+                        item.id_barang = barang.id;
+                        item.subsi_barang = barang.subsi;
+                        item.nama_barang = barang.nama_barang;
+                        //STOCK SECTION
+                        //saldo stok
+                        var saldostok = pembelian_items.Where(p => p.barang_id == id_barang &&
+                        p.pembelian.tanggal.Value.Subtract(from).TotalDays < 0).Sum(p => p.banyak_barang.Value) -
+                        pengambilan_items.Where(p => p.pembelian_item.barang_id == id_barang && p.pengambilan.tanggal.Value.Subtract(from).TotalDays < 0).Sum(p => p.banyak_barang.Value) +
+                        pengembalian_items.Where(p => p.pengambilan_item.pembelian_item.barang_id == id_barang &&
+                        p.pengembalian.tanggal.Value.Subtract(from).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
+                        //stok masuk, keluar, kembali
+                        var stokmasuk =
+                              (pembelian_items.Where(p => p.barang_id == id_barang &&
+                        p.pembelian.tanggal.Value.Subtract(to).TotalDays <= 0).ToList().Sum(p => p.banyak_barang.Value)
+                        - pembelian_items.Where(p => p.barang_id == id_barang &&
+                     p.pembelian.tanggal.Value.Subtract(from).TotalDays < 0).ToList().Sum(p => p.banyak_barang.Value));
+                        var stokkeluar = (pengambilan_items.Where(p => p.pembelian_item.barang_id == id_barang &&
+                        p.pengambilan.tanggal.Value.Subtract(to).TotalDays <= 0).ToList().Sum(p => p.banyak_barang.Value) -
+                        pengambilan_items.Where(p => p.pembelian_item.barang_id == id_barang &&
+                        p.pengambilan.tanggal.Value.Subtract(from).TotalDays < 0).ToList().Sum(p => p.banyak_barang.Value));
+                        var stokkembali = (pengembalian_items.Where(p => p.pengambilan_item.pembelian_item.barang_id == id_barang &&
+                         p.pengembalian.tanggal.Value.Subtract(to).TotalDays <= 0).ToList().Sum(p => p.banyak_dikembalikan.Value) -
+                        pengembalian_items.Where(p => p.pengambilan_item.pembelian_item.barang_id == id_barang &&
+                         p.pengembalian.tanggal.Value.Subtract(from).TotalDays < 0).ToList().Sum(p => p.banyak_dikembalikan.Value));
+                        var sisa = (saldostok + (stokmasuk + stokkembali)) - stokkeluar;
+
+                        //PRICE SECTION
+                        var saldo = pembelian_items.Where(p => p.barang_id == id_barang &&
+                       p.pembelian.tanggal.Value.Subtract(from).TotalDays < 0).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
+                       pengambilan_items.Where(p => p.pembelian_item.barang_id == id_barang && p.pengambilan.tanggal.Value.Subtract(from).TotalDays < 0).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
+                       pengembalian_items.Where(p => p.pengambilan_item.pembelian_item.barang_id == id_barang &&
+                       p.pengembalian.tanggal.Value.Subtract(from).TotalDays < 0).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
+                        var saldomasuk =
+                             (pembelian_items.Where(p => p.barang_id == id_barang &&
+                       p.pembelian.tanggal.Value.Subtract(to).TotalDays <= 0).ToList().Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value))
+                       - pembelian_items.Where(p => p.barang_id == id_barang &&
+                    p.pembelian.tanggal.Value.Subtract(from).TotalDays < 0).ToList().Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)));
+                        var saldokeluar = (pengambilan_items.Where(p => p.pembelian_item.barang_id == id_barang &&
+                        p.pengambilan.tanggal.Value.Subtract(to).TotalDays <= 0).ToList().Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) -
+                        pengambilan_items.Where(p => p.pembelian_item.barang_id == id_barang &&
+                        p.pengambilan.tanggal.Value.Subtract(from).TotalDays < 0).ToList().Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)));
+                        var saldokembali = (pengembalian_items.Where(p => p.pengambilan_item.pembelian_item.barang_id == id_barang &&
+                         p.pengembalian.tanggal.Value.Subtract(to).TotalDays <= 0).ToList().Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value)) -
+                        pengembalian_items.Where(p => p.pengambilan_item.pembelian_item.barang_id == id_barang &&
+                         p.pengembalian.tanggal.Value.Subtract(from).TotalDays < 0).ToList().Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value)));
+                        //MessageBox.Show(item.nama_barang + ", saldo: " + saldostok.ToString()
+                        //    + ", masuk: " + stokmasuk.ToString() + ", keluar: " + stokkeluar.ToString() + ", kembali: " + stokkembali.ToString() + ", sisa: " + sisa.ToString());
+                        item.stok = saldostok;
+                        item.stokmasuk = stokmasuk;
+                        item.stokkeluar = stokkeluar - stokkembali;
+                        item.saldo = saldo;
+                        item.saldomasuk = saldomasuk;
+                        item.saldokeluar = saldokeluar;
+                        result.Add(item);
+                    }
+                }
+
+
                 return result;
             }
         }

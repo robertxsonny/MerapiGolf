@@ -131,6 +131,9 @@ namespace MerapiGolfLogistik
                         var grouped = this.report.GroupBy(p => p.nama_aktiva);
                         int index = 1;
                         int row = 11; //start from row 12
+                        double totalharga = 0;
+                        double totalsaldoawal = 0;
+                        double totalsaldoakhir = 0;
                         foreach (var group in grouped)
                         {
                             row++;
@@ -141,6 +144,11 @@ namespace MerapiGolfLogistik
                             foreach (var item in group)
                             {
                                 row++;
+                                //jumlah harga
+                                totalharga += item.harga_pembelian;
+                                totalsaldoawal += item.saldoawal;
+                                totalsaldoakhir += item.saldoakhir;
+
                                 sheet1.Cells[row, 1].Value = index.ToString();
                                 sheet1.Cells[row, 2].Value = item.subsi_barang;
                                 sheet1.Cells[row, 3].Value = item.nama_barang;
@@ -151,10 +159,33 @@ namespace MerapiGolfLogistik
                                 sheet1.Cells[row, 8].Value = item.harga_pembelian.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
                                 sheet1.Cells[row, 9].Value = item.saldoawal.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
                                 sheet1.Cells[row, 10].Value = item.saldoakhir.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                                sheet1.Cells[row, 6, row, 10].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+                                row++;
                                 index++;
                             }
-                            
                         }
+
+                        //set subtotal
+                        row++;
+                        sheet1.Cells[row, 1].Value = "JUMLAH";
+                        sheet1.Cells[row, 1, row, 7].Merge = true;
+                        sheet1.Cells[row, 8].Value = totalharga.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                        sheet1.Cells[row, 9].Value = totalsaldoawal.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                        sheet1.Cells[row, 10].Value = totalsaldoakhir.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                        sheet1.Cells[row, 1, row, 10].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+                        sheet1.Cells[row, 1, row, 10].Style.Font.Bold = true;
+
+                        //set border
+                        for (int i = 8; i <= row; i++)
+                        {
+                            for (int j = 1; j <= 10; j++)
+                            {
+                                sheet1.Cells[i, j].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin, Color.Black);
+                            }
+                        }
+
+                        //autofit
+                        sheet1.Cells[1, 8, row, 10].AutoFitColumns();
 
                         excelFile.SaveAs(file);
 
