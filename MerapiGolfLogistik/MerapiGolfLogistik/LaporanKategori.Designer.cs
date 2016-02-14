@@ -43,8 +43,8 @@
             this.pilihKategoriBtn = new System.Windows.Forms.Button();
             this.hapusFilterBtn = new System.Windows.Forms.Button();
             this.reportView = new System.Windows.Forms.DataGridView();
-            this.laporanKategoriModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.cetakLaporanBtn = new System.Windows.Forms.Button();
+            this.laporanKategoriModelBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.subsikategoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namakategoriDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subsibarangDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,10 +52,12 @@
             this.stokDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stokmasukDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.stokkeluarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.stokkembali = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sisastokDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldomasukDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.saldokeluarDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saldokembali = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sisasaldoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.reportView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.laporanKategoriModelBindingSource)).BeginInit();
@@ -152,10 +154,12 @@
             this.stokDataGridViewTextBoxColumn,
             this.stokmasukDataGridViewTextBoxColumn,
             this.stokkeluarDataGridViewTextBoxColumn,
+            this.stokkembali,
             this.sisastokDataGridViewTextBoxColumn,
             this.saldoDataGridViewTextBoxColumn,
             this.saldomasukDataGridViewTextBoxColumn,
             this.saldokeluarDataGridViewTextBoxColumn,
+            this.saldokembali,
             this.sisasaldoDataGridViewTextBoxColumn});
             this.reportView.DataSource = this.laporanKategoriModelBindingSource;
             this.reportView.Location = new System.Drawing.Point(16, 132);
@@ -163,10 +167,6 @@
             this.reportView.RowTemplate.Height = 28;
             this.reportView.Size = new System.Drawing.Size(933, 395);
             this.reportView.TabIndex = 9;
-            // 
-            // laporanKategoriModelBindingSource
-            // 
-            this.laporanKategoriModelBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.LaporanKategoriModel);
             // 
             // cetakLaporanBtn
             // 
@@ -180,6 +180,10 @@
             this.cetakLaporanBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cetakLaporanBtn.UseVisualStyleBackColor = true;
             this.cetakLaporanBtn.Click += new System.EventHandler(this.cetakLaporanBtn_Click);
+            // 
+            // laporanKategoriModelBindingSource
+            // 
+            this.laporanKategoriModelBindingSource.DataSource = typeof(MerapiGolfLogistik.Models.LaporanKategoriModel);
             // 
             // subsikategoriDataGridViewTextBoxColumn
             // 
@@ -230,6 +234,13 @@
             this.stokkeluarDataGridViewTextBoxColumn.Name = "stokkeluarDataGridViewTextBoxColumn";
             this.stokkeluarDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // stokkembali
+            // 
+            this.stokkembali.DataPropertyName = "stokkembali";
+            this.stokkembali.HeaderText = "Stok Kembali";
+            this.stokkembali.Name = "stokkembali";
+            this.stokkembali.ReadOnly = true;
+            // 
             // sisastokDataGridViewTextBoxColumn
             // 
             this.sisastokDataGridViewTextBoxColumn.DataPropertyName = "sisastok";
@@ -266,6 +277,13 @@
             this.saldokeluarDataGridViewTextBoxColumn.HeaderText = "Saldo -";
             this.saldokeluarDataGridViewTextBoxColumn.Name = "saldokeluarDataGridViewTextBoxColumn";
             this.saldokeluarDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // saldokembali
+            // 
+            this.saldokembali.DataPropertyName = "saldokembali";
+            this.saldokembali.HeaderText = "Saldo Kembali";
+            this.saldokembali.Name = "saldokembali";
+            this.saldokembali.ReadOnly = true;
             // 
             // sisasaldoDataGridViewTextBoxColumn
             // 
@@ -322,10 +340,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stokDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stokmasukDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn stokkeluarDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn stokkembali;
         private System.Windows.Forms.DataGridViewTextBoxColumn sisastokDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn saldoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn saldomasukDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn saldokeluarDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saldokembali;
         private System.Windows.Forms.DataGridViewTextBoxColumn sisasaldoDataGridViewTextBoxColumn;
     }
 }

@@ -52,170 +52,169 @@ namespace MerapiGolfLogistik
             DateTime.TryParse(dariTanggalTb.Text, out start);
             DateTime.TryParse(sampaiTanggalTb.Text, out end);
             report = new Classes.FetchData().GetProductDetailsByCategory(start, end, this.selectedCategory).ToList();
-            
+
             reportView.DataSource = null;
             //reportView.DataSource = result;
             reportView.DataSource = report;
             reportView.DefaultCellStyle.FormatProvider = new CultureInfo("id-ID");
         }
 
-        //private void PrintToExcel()
-        //{
-        //    SaveFileDialog sfd = new SaveFileDialog();
-        //    sfd.Filter = "Excel File (*.xlsx)|*.xlsx";
-        //    sfd.FileName = "Laporan Gudang " + dariTanggalTb.Value.ToString("ddMMyyyy", new CultureInfo("id-ID")) + " - " + sampaiTanggalTb.Value.ToString("ddMMyyyy", new CultureInfo("id-ID")) + ".xlsx";
-        //    sfd.FilterIndex = 1;
-        //    var result = sfd.ShowDialog();
-        //    if (result == DialogResult.OK)
-        //    {
-        //        try
-        //        {
-        //            FileInfo file = new FileInfo(sfd.FileName);
-        //            if (file.Exists)
-        //            {
-        //                file.Delete();
-        //            }
+        private void PrintToExcel()
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.Filter = "Excel File (*.xlsx)|*.xlsx";
+            sfd.FileName = "Laporan Barang per Kategori " + dariTanggalTb.Value.ToString("ddMMyyyy", new CultureInfo("id-ID")) + " - " + sampaiTanggalTb.Value.ToString("ddMMyyyy", new CultureInfo("id-ID")) + ".xlsx";
+            sfd.FilterIndex = 1;
+            var result = sfd.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                try
+                {
+                    FileInfo file = new FileInfo(sfd.FileName);
+                    if (file.Exists)
+                    {
+                        file.Delete();
+                    }
 
-        //            using (ExcelPackage excelFile = new ExcelPackage())
-        //            {
-        //                ExcelWorksheet sheet1 = excelFile.Workbook.Worksheets.Add("Laporan Gudang");
-                        
-        //                sheet1.Cells["B1"].Value = "PT MERAPI GOLF";
-        //                sheet1.Cells["B1:H1"].Merge = true;
-        //                sheet1.Cells["B2"].Value = "YOGYAKARTA";
-        //                sheet1.Cells["B2:H2"].Merge = true;
+                    using (ExcelPackage excelFile = new ExcelPackage())
+                    {
+                        ExcelWorksheet sheet1 = excelFile.Workbook.Worksheets.Add("Laporan Gudang");
+                        sheet1.Cells[1, 1].Value = "LAPORAN BARANG PER KATEGORI";
+                        sheet1.Cells[2, 1].Value = "PT. MERAPI GOLF YOGYAKARTA";
+                        sheet1.Cells[3, 1].Value = "Periode: " + dariTanggalTb.Value.ToString("dd MMMM yyyy", CultureInfo.GetCultureInfo("id-ID")) +
+                            " - " + sampaiTanggalTb.Value.ToString("dd MMMM yyyy", CultureInfo.GetCultureInfo("id-ID"));
+                        for (int i = 1; i <= 3; i++)
+                        {
+                            sheet1.Cells[i, 1, i, 10].Merge = true;
+                            sheet1.Cells[i, 1, i, 10].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                            sheet1.Cells[i, 1, i, 10].Style.Font.Bold = true;
+                        }
+
+                        sheet1.Cells[5, 1].Value = "CATEGORY";
+                        sheet1.Cells[5, 1].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                        sheet1.Cells[5, 1].Style.Font.Bold = true;
+                        sheet1.Cells[6, 1].Value = "PRODUCT (UNIT)";
+                        sheet1.Cells[6, 4].Value = "B/Fwd";
+                        sheet1.Cells[6, 5].Value = "(+) Receive";
+                        sheet1.Cells[6, 6].Value = "(+/-) Issue";
+                        sheet1.Cells[6, 7].Value = "(+/-) Adjustment";
+                        sheet1.Cells[6, 8].Value = "(-) Sales";
+                        sheet1.Cells[6, 9].Value = "Return";
+                        sheet1.Cells[6, 10].Value = "Balance";
+                        sheet1.Cells[6, 1, 6, 10].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                        for (int i = 1; i <= 10; i++)
+                        {
+                            sheet1.Cells[6, i].Style.Font.Bold = true;
+                            sheet1.Cells[6, i].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+                        }
+                        sheet1.Cells[7, 1].Value = "BAGIAN UMUM";
+                        sheet1.Cells[7, 1].Style.Font.Bold = true;
+                        sheet1.Cells[7, 1].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
+
+                        var itemsgrp = this.report.GroupBy(p => p.id_kategori);
+                        int row = 8;
+                        double saldo = 0;
+                        double saldomasuk = 0;
+                        double saldokeluar = 0;
+                        double saldokembali = 0;
+                        double sisasaldo = 0;
+                        foreach (var itemgrp in itemsgrp)
+                        {
+                            row++;
+                            double saldocat = 0;
+                            double saldomasukcat = 0;
+                            double saldokeluarcat = 0;
+                            double saldokembalicat = 0;
+                            double sisasaldocat = 0;
+                            sheet1.Cells[row, 1].Value = itemgrp.First().nama_kategori;
+                            sheet1.Cells[row, 1].Style.Font.Bold = true;
+                            row++;
+                            foreach (var item in itemgrp)
+                            {
+                                //row quantity
+                                sheet1.Cells[row, 1].Value = item.subsi_kategori;
+                                sheet1.Cells[row, 2].Value = item.subsi_barang + " (EACH)";
+                                sheet1.Cells[row, 3].Value = "Qty.";
+                                sheet1.Cells[row, 4].Value = item.stok;
+                                sheet1.Cells[row, 5].Value = item.stokmasuk;
+                                sheet1.Cells[row, 6].Value = item.stokkeluar;
+                                sheet1.Cells[row, 7].Value = "0,00";
+                                sheet1.Cells[row, 8].Value = "0,00";
+                                sheet1.Cells[row, 9].Value = item.stokkembali;
+                                sheet1.Cells[row, 10].Value = item.sisastok;
+                                row++;
+                                sheet1.Cells[row, 1].Value = item.nama_barang + " (EACH)";
+                                sheet1.Cells[row, 1, row, 2].Merge = true;
+                                sheet1.Cells[row, 3].Value = "Amt.";
+                                sheet1.Cells[row, 4].Value = item.saldo.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                                sheet1.Cells[row, 5].Value = item.saldomasuk.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                                sheet1.Cells[row, 6].Value = item.saldokeluar.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                                sheet1.Cells[row, 7].Value = "0,00";
+                                sheet1.Cells[row, 8].Value = "0,00";
+                                sheet1.Cells[row, 9].Value = item.saldokembali.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                                sheet1.Cells[row, 10].Value = item.sisasaldo.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                                //border bottom
+                                sheet1.Cells[(row - 1), 1, row, 10].Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thick);
+                                row++;
+
+                                //add to category subtotal
+                                saldocat += item.saldo;
+                                saldomasukcat += item.saldomasuk;
+                                saldokeluarcat += item.saldokeluar;
+                                saldokembalicat += item.saldokembali;
+                                sisasaldocat += item.sisasaldo;
+                                //add to location subtotal
+                                saldo += item.saldo;
+                                saldomasuk += item.saldomasuk;
+                                saldokeluar += item.saldokeluar;
+                                saldokembali += item.saldokembali;
+                                sisasaldo += item.sisasaldo;
+                            }
+                            
+                            sheet1.Cells[row, 1].Value = "Category Subtotal";
+                            sheet1.Cells[row, 1, row, 3].Merge = true;
+                            sheet1.Cells[row, 4].Value = saldocat.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                            sheet1.Cells[row, 5].Value = saldomasukcat.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                            sheet1.Cells[row, 6].Value = saldokeluarcat.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                            sheet1.Cells[row, 7].Value = "0,00";
+                            sheet1.Cells[row, 8].Value = "0,00";
+                            sheet1.Cells[row, 9].Value = saldokembalicat.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                            sheet1.Cells[row, 10].Value = sisasaldocat.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+
+                            //autofit
+                            sheet1.Cells[5, 1, row, 10].AutoFitColumns();
+                            //fit alignment right for numbers
+                            sheet1.Cells[9, 4, row, 10].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
+
+                        }
+
+                        //location total
+                        row++;
+                        sheet1.Cells[row, 1].Value = "Location Subtotal";
+                        sheet1.Cells[row, 1, row, 3].Merge = true;
+                        sheet1.Cells[row, 4].Value = saldo.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                        sheet1.Cells[row, 5].Value = saldomasuk.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                        sheet1.Cells[row, 6].Value = saldokeluar.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                        sheet1.Cells[row, 7].Value = "0,00";
+                        sheet1.Cells[row, 8].Value = "0,00";
+                        sheet1.Cells[row, 9].Value = saldokembali.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
+                        sheet1.Cells[row, 10].Value = sisasaldo.ToString("N", CultureInfo.GetCultureInfo("id-ID").NumberFormat);
 
 
-        //                sheet1.Cells["B4"].Value = "LAPORAN PEMAKAIAN BARANG GUDANG";
-        //                sheet1.Cells["B4:H4"].Merge = true;
-        //                sheet1.Cells["B5"].Value = "PERIODE";
-        //                sheet1.Cells["B5:C5"].Merge = true;
-        //                sheet1.Cells["D5"].Value = ": " + report.Periode.ToUpper();
-        //                sheet1.Cells["D5:H5"].Merge = true;
-        //                sheet1.Cells["B6"].Value = "BAGIAN";
-        //                sheet1.Cells["B6:C6"].Merge = true;
-        //                sheet1.Cells["D6"].Value = ": PERAWATAN";
-        //                sheet1.Cells["D6:H6"].Merge = true;
+                        excelFile.SaveAs(file);
+                        //excelFile.File.Open(FileMode.Open);
 
-        //                ExcelRange range1 = sheet1.Cells["B1:H6"];
-        //                range1.Style.Font.Bold = true;
-
-        //                //sheet1.Cells["A4"].LoadFromCollection((List<LaporanBarangExtended>)reportView.DataSource, true);
-
-        //                sheet1.Cells["A8"].Value = "NO";
-        //                sheet1.Cells["A8:A9"].Merge = true;
-        //                sheet1.Cells["B8"].Value = "SUBSI";
-        //                sheet1.Cells["B8:B9"].Merge = true;
-        //                sheet1.Cells["C8"].Value = "TGL" + Environment.NewLine + "KELUAR";
-        //                sheet1.Cells["C8:C9"].Merge = true;
-        //                sheet1.Cells["D8"].Value = "URAIAN";
-        //                sheet1.Cells["D8:D9"].Merge = true;
-        //                sheet1.Cells["E8"].Value = "STOCK";
-        //                sheet1.Cells["E8:E9"].Merge = true;
-        //                sheet1.Cells["F8"].Value = "IN";
-        //                sheet1.Cells["F8:F9"].Merge = true;
-        //                sheet1.Cells["G8"].Value = "OUT";
-        //                sheet1.Cells["G8:G9"].Merge = true;
-        //                sheet1.Cells["H8"].Value = "HARGA";
-        //                sheet1.Cells["H9"].Value = "PER UNIT";
-        //                sheet1.Cells["I8"].Value = "JML HARGA";
-        //                sheet1.Cells["I8:J8"].Merge = true;
-        //                sheet1.Cells["I9"].Value = "BELI";
-        //                sheet1.Cells["J9"].Value = "PAKAI";
-        //                sheet1.Cells["K8"].Value = "SALDO";
-        //                sheet1.Cells["K8:L8"].Merge = true;
-        //                sheet1.Cells["K9"].Value = "UNIT";
-        //                sheet1.Cells["L9"].Value = "HARGA";
-
-        //                ExcelRange range2 = sheet1.Cells["A8:L9"];
-        //                range2.Style.Font.Bold = true;
-        //                range2.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
-        //                range2.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
-
-        //                //for (int j = 2; j < reportView.ColumnCount; j++)
-        //                //{
-        //                //    sheet1.Cells[4, j - 1].Value = reportView.Columns[j].HeaderText;
-        //                //    for (int i = 0; i < reportView.RowCount; i++)
-        //                //    {
-        //                //        sheet1.Cells[i + 5, j - 1].Value = reportView[j, i].Value;
-        //                //    }
-        //                //    sheet1.Column(j - 1).AutoFit();
-        //                //}      
-
-        //                int no = 1;
-        //                int categoryCount = 0;
-        //                string categoryName = "";
-        //                double totalMasuk = 0;
-        //                double totalKeluar = 0;
-        //                foreach (Classes.LaporanGudangItem item in report.Items)
-        //                {
-        //                    int rowNo = 11 + ((report.Items.IndexOf(item)*3) + 1) + categoryCount;
-        //                    if (item.Kategori != categoryName)
-        //                    {
-        //                        categoryName = item.Kategori;
-        //                        sheet1.Cells[rowNo, 2].Value = item.SubsiKategori;
-        //                        sheet1.Cells[rowNo, 4].Value = categoryName;
-        //                        sheet1.Cells[rowNo, 4].Style.Font.Bold = true;
-        //                        sheet1.Cells[rowNo, 4, rowNo, 12].Merge = true;
-        //                        categoryCount++;
-        //                        rowNo++;
-        //                        no = 1;
-        //                    }
-
-        //                    sheet1.Cells[rowNo, 1].Value = no;
-        //                    sheet1.Cells[rowNo, 2].Value = item.Subsi;
-        //                    sheet1.Cells[rowNo, 4].Value = item.NamaBarang;
-        //                    sheet1.Cells[rowNo, 5].Value = item.Stok.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo, 8].Value = item.HargaSatuan.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo, 11].Value = item.Stok.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo, 12].Value = item.HargaStok.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo + 1, 2].Value = item.Subsi;
-        //                    sheet1.Cells[rowNo + 1, 3].Value = item.TanggalKeluar;
-        //                    sheet1.Cells[rowNo + 1, 4].Value = item.NamaBarang;
-        //                    sheet1.Cells[rowNo + 1, 5].Value = item.Stok.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo + 1, 6].Value = item.StokMasuk.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo + 1, 7].Value = item.StokKeluar.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo + 1, 8].Value = item.HargaSatuan.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo + 1, 9].Value = item.HargaMasuk.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo + 1, 10].Value = item.HargaKeluar.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo + 1, 11].Value = item.Saldo.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo + 1, 12].Value = item.HargaSaldo.ToString("N", new CultureInfo("id-ID"));
-        //                    sheet1.Cells[rowNo, 5, rowNo + 1, 12].Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
-        //                    totalMasuk += item.HargaMasuk;
-        //                    totalKeluar += item.HargaKeluar;
-        //                    no++;
-        //                }
-
-        //                for (int i = 1; i <= 12; i++)
-        //                    sheet1.Column(i).AutoFit(5);
-
-        //                sheet1.Cells[((report.Items.Count) * 3) + categoryCount + 12, 4].Value = "JUMLAH";
-        //                sheet1.Cells[((report.Items.Count) * 3) + categoryCount + 12, 9].Value = totalMasuk.ToString("N", new CultureInfo("id-ID"));
-        //                sheet1.Cells[((report.Items.Count) * 3) + categoryCount + 12, 10].Value = totalKeluar.ToString("N", new CultureInfo("id-ID"));
-
-        //                ExcelRange range3 = sheet1.Cells[((report.Items.Count) * 3) + categoryCount + 12, 1, ((report.Items.Count) * 3) + categoryCount + 12, 11];
-        //                range3.Style.Font.Bold = true;
-        //                range3.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Right;
-
-        //                sheet1.Cells[8, 1, ((report.Items.Count) * 3) + categoryCount + 12, 12].Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-        //                sheet1.Cells[8, 1, ((report.Items.Count) * 3) + categoryCount + 12, 12].Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-        //                sheet1.Cells[8, 1, ((report.Items.Count) * 3) + categoryCount + 12, 12].Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-        //                sheet1.Cells[8, 1, ((report.Items.Count) * 3) + categoryCount + 12, 12].Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
-
-        //                excelFile.SaveAs(file);
-        //                //excelFile.File.Open(FileMode.Open);
-
-        //                MessageBox.Show("Berhasil menyimpan laporan ke dalam format Excel. Silakan lakukan pencetakan dari file Excel tersebut.");
-        //            }
-        //        }
-        //        catch (Exception)
-        //        {
-        //            MessageBox.Show("Gagal melakukan penyimpanan dan pencetakan. Silakan ulangi lagi.");
-        //        }
-        //    }
-        //    else
-        //        MessageBox.Show("Gagal melakukan penyimpanan dan pencetakan. Silakan ulangi lagi.");
-        //}
+                        MessageBox.Show("Berhasil menyimpan laporan ke dalam format Excel. Silakan lakukan pencetakan dari file Excel tersebut.");
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Gagal melakukan penyimpanan dan pencetakan. Silakan ulangi lagi.");
+                }
+            }
+            else
+                MessageBox.Show("Gagal melakukan penyimpanan dan pencetakan. Silakan ulangi lagi.");
+        }
 
         private void pilihKategoriBtn_Click(object sender, EventArgs e)
         {
@@ -247,7 +246,7 @@ namespace MerapiGolfLogistik
 
         private void cetakLaporanBtn_Click(object sender, EventArgs e)
         {
-            //PrintToExcel();
+            PrintToExcel();
         }
     }
 }

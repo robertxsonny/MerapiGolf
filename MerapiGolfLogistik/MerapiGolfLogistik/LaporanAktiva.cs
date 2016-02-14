@@ -128,7 +128,7 @@ namespace MerapiGolfLogistik
                         range2.Style.HorizontalAlignment = OfficeOpenXml.Style.ExcelHorizontalAlignment.Center;
                         range2.Style.VerticalAlignment = OfficeOpenXml.Style.ExcelVerticalAlignment.Center;
 
-                        var grouped = this.report.GroupBy(p => p.nama_aktiva);
+                        var grouped = this.report.GroupBy(p => p.id_aktiva);
                         int index = 1;
                         int row = 11; //start from row 12
                         double totalharga = 0;
@@ -137,7 +137,7 @@ namespace MerapiGolfLogistik
                         foreach (var group in grouped)
                         {
                             row++;
-                            sheet1.Cells[row, 3].Value = group.Key;
+                            sheet1.Cells[row, 3].Value = group.First().nama_aktiva;
                             sheet1.Cells[row, 3, row, 10].Merge = true;
                             sheet1.Cells[row, 3, row, 10].Style.Font.Bold = true;
                             //iterate the items

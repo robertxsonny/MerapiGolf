@@ -268,10 +268,12 @@ namespace MerapiGolfLogistik.Classes
                         //    + ", masuk: " + stokmasuk.ToString() + ", keluar: " + stokkeluar.ToString() + ", kembali: " + stokkembali.ToString() + ", sisa: " + sisa.ToString());
                         item.stok = saldostok;
                         item.stokmasuk = stokmasuk;
-                        item.stokkeluar = stokkeluar - stokkembali;
+                        item.stokkeluar = stokkeluar;
+                        item.stokkembali = stokkembali;
                         item.saldo = saldo;
                         item.saldomasuk = saldomasuk;
                         item.saldokeluar = saldokeluar;
+                        item.saldokembali = saldokembali;
                         result.Add(item);
                     }
                 }

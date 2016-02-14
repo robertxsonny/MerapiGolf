@@ -17,21 +17,23 @@ namespace MerapiGolfLogistik.Models
         public double stok { get; set; }
         public double stokmasuk { get; set; }
         public double stokkeluar { get; set; }
+        public double stokkembali { get; set; }
         public double sisastok
         {
             get
             {
-                return (stok + stokmasuk) - stokkeluar;
+                return (stok + stokmasuk) - (stokkeluar - stokkembali);
             }
         }
         public double saldo { get; set; }
         public double saldomasuk { get; set; }
         public double saldokeluar { get; set; }
+        public double saldokembali { get; set; }
         public double sisasaldo
         {
             get
             {
-                return (saldo + saldomasuk) - saldokeluar;
+                return (saldo + saldomasuk) - (saldokeluar - stokkembali);
             }
         }
     }
