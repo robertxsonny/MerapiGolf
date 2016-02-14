@@ -171,6 +171,7 @@
     <Compile Include="Models\LaporanAktivaModel.cs" />
     <Compile Include="Models\LaporanBarangExtended.cs" />
     <Compile Include="Models\LaporanKategoriModel.cs" />
+    <Compile Include="Models\LaporanPergerakanModel.cs" />
     <Compile Include="Models\NotaPembelianDetail.cs" />
     <Compile Include="Models\NotaPengambilanDetail.cs" />
     <Compile Include="Models\PembelianExtended.cs" />
