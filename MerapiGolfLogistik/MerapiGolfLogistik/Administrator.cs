@@ -35,6 +35,8 @@ namespace MerapiGolfLogistik
                 OpenPerCategoryReport();
             else if (e.KeyCode == Keys.F7)
                 OpenAktivaReport();
+            else if (e.KeyCode == Keys.F8)
+                OpenMovementReport();
         }
 
         private static void OpenAddItems()
@@ -79,6 +81,12 @@ namespace MerapiGolfLogistik
             laporanform.ShowDialog();
         }
 
+        private static void OpenMovementReport()
+        {
+            LaporanPergerakan laporanform = new LaporanPergerakan();
+            laporanform.ShowDialog();
+        }
+
         private void tambahBarangBtn_Click(object sender, EventArgs e)
         {
             OpenAddItems();
@@ -112,6 +120,11 @@ namespace MerapiGolfLogistik
         private void laporanPerKategoriBtn_Click(object sender, EventArgs e)
         {
             OpenPerCategoryReport();
+        }
+
+        private void reportMovementBtn_Click(object sender, EventArgs e)
+        {
+            OpenMovementReport();
         }
     }
 }

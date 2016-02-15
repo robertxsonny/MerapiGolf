@@ -282,5 +282,206 @@ namespace MerapiGolfLogistik.Classes
                 return result;
             }
         }
+
+        public IEnumerable<LaporanPergerakanModel> GetMovementReport(Guid categoryId,
+            DateTime from, DateTime to)
+        {
+            using (dbContent = new MerapiGolfLogistikEntities())
+            {
+                List<LaporanPergerakanModel> result = new List<LaporanPergerakanModel>();
+                var pembelians = dbContent.mg_pembelian.Where(p => p.tanggal.HasValue).ToList();
+                pembelians = pembelians.Where(p => p.tanggal.Value.Subtract(from).TotalDays >= 0 &&
+                p.tanggal.Value.Subtract(to).TotalDays <= 0).ToList();
+                var pengambilans = dbContent.mg_pengambilan.Where(p => p.tanggal.HasValue).ToList();
+                pengambilans = pengambilans.Where(p => p.tanggal.Value.Subtract(from).TotalDays >= 0 &&
+               p.tanggal.Value.Subtract(to).TotalDays <= 0).ToList();
+                var pengembalians = dbContent.mg_pengembalian.Where(p => p.tanggal.HasValue).ToList();
+                pengembalians = pengembalians.Where(p => p.tanggal.Value.Subtract(from).TotalDays >= 0 &&
+            p.tanggal.Value.Subtract(to).TotalDays <= 0).ToList();
+                //all tables
+                var pembelian_items = dbContent.mg_pembelian_item.Where(p => p.pembelian.tanggal.HasValue).ToList();
+                var pengambilan_items = dbContent.mg_pengambilan_item.Where(p => p.pengambilan.tanggal.HasValue).ToList();
+                var pengembalian_items = dbContent.mg_pengembalian_item.Where(p => p.pengembalian.tanggal.HasValue).ToList();
+                var barangs = dbContent.mg_barang.ToList();
+                if (categoryId != Guid.Empty)
+                    barangs = barangs.Where(p => p.id_kategori == categoryId).ToList();
+
+                var barangs_grp = barangs.GroupBy(p => p.id_kategori);
+                //iterate on categories
+                foreach (var barang_grp in barangs_grp)
+                {
+                    //iterate on items
+                    foreach (var barang in barang_grp)
+                    {
+                        //select all parent tables
+                        var pembelians_parent = pembelians.Where(p => p.pembelian_item.Where(q => q.barang_id == barang.id).Count() > 0).ToList();
+                        var pengambilans_parent = pengambilans.Where(p => p.pengambilan_item.Where(q => q.pembelian_item.barang_id == barang.id).Count() > 0).ToList();
+                        var pengembalians_parent = pengembalians.Where(p => p.pengembalian_item.Where(q => q.pengambilan_item.pembelian_item.barang_id == barang.id).Count() > 0).ToList();
+
+
+
+                        //iterate per pembelian
+                        foreach (var pembelian in pembelians_parent)
+                        {
+                            var item = AddToMovementItem(barang);
+                            item.tipe_pergerakan = TipePergerakan.Pembelian;
+                            item.tanggal_trx = pembelian.tanggal.Value;
+
+                            var selectCurrent = result.FirstOrDefault(p => p.tipe_pergerakan == TipePergerakan.Pembelian &&
+                             p.id_barang == barang.id && p.tanggal_trx == item.tanggal_trx);
+                            bool exists = selectCurrent != null;
+
+                            if (exists)
+                                item = selectCurrent;
+
+                            double quantity = item.quantity;
+                            double totalprice = item.totalprice;
+                            if (pembelian.pembelian_item.Count > 0)
+                            {
+                                var pembs = pembelian.pembelian_item.Where(p => p.barang_id == barang.id).ToList();
+                                foreach (var pembelian_item in pembs)
+                                {
+                                    quantity += pembelian_item.banyak_barang.Value;
+                                    totalprice += (pembelian_item.banyak_barang.Value *
+                                        pembelian_item.harga_satuan.Value);
+                                }
+                            }
+
+                            item.quantity = quantity;
+                            item.totalprice = totalprice;
+                            var pembelian_items_filtered = pembelian_items.Where(p => p.barang_id == barang.id).ToList();
+                            var pengambilan_items_filtered = pengambilan_items.Where(p => p.pembelian_item.barang_id == barang.id).ToList();
+                            var pengembalian_items_filtered = pengembalian_items.Where(p => p.pengambilan_item.pembelian_item.barang_id == barang.id).ToList();
+                            if (!exists)
+                            {
+                                item.quantity_awal =
+                               pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_barang.Value) -
+                               pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_barang.Value) +
+                               pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
+                                item.quantity_balance = pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) -
+                                    pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_barang.Value) +
+                                    pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
+                                item.balance = pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
+                                    pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
+                                    pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
+                                result.Add(item);
+                            }
+                        }
+
+                        //iterate per pengambilan
+                        foreach (var pengambilan in pengambilans_parent)
+                        {
+                            var item = AddToMovementItem(barang);
+                            item.tipe_pergerakan = TipePergerakan.Pengambilan;
+                            item.tanggal_trx = pengambilan.tanggal.Value;
+
+                            var selectCurrent = result.FirstOrDefault(p => p.tipe_pergerakan == TipePergerakan.Pengambilan &&
+                              p.id_barang == barang.id && p.tanggal_trx == item.tanggal_trx);
+                            bool exists = selectCurrent != null;
+
+                            if (exists)
+                                item = selectCurrent;
+
+                            double quantity = item.quantity;
+                            double totalprice = item.totalprice;
+                            if (pengambilan.pengambilan_item.Count > 0)
+                            {
+                                var pengs = pengambilan.pengambilan_item.Where(p => p.pembelian_item.barang_id == barang.id).ToList();
+                                foreach (var pengambilan_item in pengs)
+                                {
+                                    quantity += pengambilan_item.banyak_barang.Value;
+                                    totalprice += (pengambilan_item.banyak_barang.Value *
+                                        pengambilan_item.pembelian_item.harga_satuan.Value);
+                                }
+                            }
+
+                            item.quantity = quantity;
+                            item.totalprice = totalprice;
+                            var pembelian_items_filtered = pembelian_items.Where(p => p.barang_id == barang.id).ToList();
+                            var pengambilan_items_filtered = pengambilan_items.Where(p => p.pembelian_item.barang_id == barang.id).ToList();
+                            var pengembalian_items_filtered = pengembalian_items.Where(p => p.pengambilan_item.pembelian_item.barang_id == barang.id).ToList();
+                            if (!exists)
+                            {
+                                item.quantity_awal =
+                                   pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) -
+                               pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_barang.Value) +
+                               pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
+                                item.quantity_balance = pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) -
+                                    pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) +
+                                    pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
+                                item.balance = pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
+                                    pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
+                                    pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
+                                result.Add(item);
+                            }
+                        }
+
+                        //iterate per pengembalian
+                        foreach (var pengembalian in pengembalians_parent)
+                        {
+                            var item = AddToMovementItem(barang);
+                            item.tipe_pergerakan = TipePergerakan.Pengembalian;
+                            item.tanggal_trx = pengembalian.tanggal.Value;
+
+                            var selectCurrent = result.FirstOrDefault(p => p.tipe_pergerakan == TipePergerakan.Pengembalian &&
+                             p.id_barang == barang.id && p.tanggal_trx == item.tanggal_trx);
+                            bool exists = selectCurrent != null;
+
+                            if (exists)
+                                item = selectCurrent;
+
+                            double quantity = item.quantity;
+                            double totalprice = item.totalprice;
+                            if (pengembalian.pengembalian_item.Count > 0)
+                            {
+                                var pengembs = pengembalian.pengembalian_item.Where(p => p.pengambilan_item.pembelian_item.barang_id == barang.id).ToList();
+                                foreach (var pengembalian_item in pengembs)
+                                {
+                                    quantity += pengembalian_item.banyak_dikembalikan.Value;
+                                    totalprice += (pengembalian_item.banyak_dikembalikan.Value *
+                                        pengembalian_item.pengambilan_item.pembelian_item.harga_satuan.Value);
+                                }
+                            }
+
+                            item.quantity = quantity;
+                            item.totalprice = totalprice;
+                            var pembelian_items_filtered = pembelian_items.Where(p => p.barang_id == barang.id).ToList();
+                            var pengambilan_items_filtered = pengambilan_items.Where(p => p.pembelian_item.barang_id == barang.id).ToList();
+                            var pengembalian_items_filtered = pengembalian_items.Where(p => p.pengambilan_item.pembelian_item.barang_id == barang.id).ToList();
+
+                            if (!exists)
+                            {
+                                item.quantity_awal =
+                               pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) -
+                               pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) +
+                               pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
+                                item.quantity_balance = pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) -
+                                    pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) +
+                                    pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_dikembalikan.Value);
+                                item.balance = pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
+                                    pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
+                                    pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
+                                result.Add(item);
+                        }
+
+                    }
+                    }
+                }
+
+                return result.OrderBy(p => p.tanggal_trx).OrderBy(p => p.id_barang).ToList();
+            }
+        }
+
+        private static LaporanPergerakanModel AddToMovementItem(Barang barang)
+        {
+            LaporanPergerakanModel item = new LaporanPergerakanModel();
+            item.id_kategori = barang.id_kategori.Value;
+            item.subsi_kategori = barang.kategori.subsi;
+            item.nama_kategori = barang.kategori.nama_kategori;
+            item.id_barang = barang.id;
+            item.subsi_barang = barang.subsi;
+            item.nama_barang = barang.nama_barang;
+            return item;
+        }
     }
 }

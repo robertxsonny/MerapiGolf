@@ -37,7 +37,7 @@
             this.laporanGudangBtn = new System.Windows.Forms.Button();
             this.pengembalianBarangBtn = new System.Windows.Forms.Button();
             this.laporanPerAktivaBtn = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.reportMovementBtn = new System.Windows.Forms.Button();
             this.laporanPerKategoriBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -139,17 +139,18 @@
             this.laporanPerAktivaBtn.UseVisualStyleBackColor = true;
             this.laporanPerAktivaBtn.Click += new System.EventHandler(this.laporanPerAktivaBtn_Click);
             // 
-            // button2
+            // reportMovementBtn
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(12, 486);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(457, 54);
-            this.button2.TabIndex = 10;
-            this.button2.Text = "Laporan Pergerakan Barang (F8)";
-            this.button2.UseVisualStyleBackColor = true;
+            this.reportMovementBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.reportMovementBtn.Image = ((System.Drawing.Image)(resources.GetObject("reportMovementBtn.Image")));
+            this.reportMovementBtn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.reportMovementBtn.Location = new System.Drawing.Point(12, 486);
+            this.reportMovementBtn.Name = "reportMovementBtn";
+            this.reportMovementBtn.Size = new System.Drawing.Size(457, 54);
+            this.reportMovementBtn.TabIndex = 10;
+            this.reportMovementBtn.Text = "Laporan Pergerakan Barang (F8)";
+            this.reportMovementBtn.UseVisualStyleBackColor = true;
+            this.reportMovementBtn.Click += new System.EventHandler(this.reportMovementBtn_Click);
             // 
             // laporanPerKategoriBtn
             // 
@@ -170,7 +171,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(481, 554);
             this.Controls.Add(this.laporanPerKategoriBtn);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.reportMovementBtn);
             this.Controls.Add(this.laporanPerAktivaBtn);
             this.Controls.Add(this.pengembalianBarangBtn);
             this.Controls.Add(this.laporanGudangBtn);
@@ -198,7 +199,7 @@
         private System.Windows.Forms.Button laporanGudangBtn;
         private System.Windows.Forms.Button pengembalianBarangBtn;
         private System.Windows.Forms.Button laporanPerAktivaBtn;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button reportMovementBtn;
         private System.Windows.Forms.Button laporanPerKategoriBtn;
     }
 }

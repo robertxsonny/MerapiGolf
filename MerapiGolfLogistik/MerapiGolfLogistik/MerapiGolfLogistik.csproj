@@ -127,6 +127,12 @@
     <Compile Include="LaporanAktiva.Designer.cs">
       <DependentUpon>LaporanAktiva.cs</DependentUpon>
     </Compile>
+    <Compile Include="LaporanPergerakan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LaporanPergerakan.Designer.cs">
+      <DependentUpon>LaporanPergerakan.cs</DependentUpon>
+    </Compile>
     <Compile Include="LaporanKategori.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -348,6 +354,9 @@
     <EmbeddedResource Include="LaporanAktiva.resx">
       <DependentUpon>LaporanAktiva.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LaporanPergerakan.resx">
+      <DependentUpon>LaporanPergerakan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LaporanKategori.resx">
       <DependentUpon>LaporanKategori.cs</DependentUpon>
     </EmbeddedResource>
@@ -454,6 +463,7 @@
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.LaporanAktivaModel.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.LaporanBarangExtended.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.LaporanKategoriModel.datasource" />
+    <None Include="Properties\DataSources\MerapiGolfLogistik.Models.LaporanPergerakanModel.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PembelianExtended.datasource" />
     <None Include="Properties\DataSources\MerapiGolfLogistik.Models.PengambilanItemExtended.datasource" />
     <None Include="Properties\DataSources\mg_laporan_gudang.datasource" />
