@@ -358,6 +358,10 @@ namespace MerapiGolfLogistik.Classes
                                pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_barang.Value) -
                                pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_barang.Value) +
                                pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
+                                item.balance_awal =
+                              pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
+                              pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
+                              pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
                                 item.quantity_balance = pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) -
                                     pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_barang.Value) +
                                     pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
@@ -406,6 +410,10 @@ namespace MerapiGolfLogistik.Classes
                                    pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) -
                                pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_barang.Value) +
                                pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
+                                item.balance_awal =
+                              pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
+                              pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
+                              pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
                                 item.quantity_balance = pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) -
                                     pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) +
                                     pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
@@ -455,6 +463,10 @@ namespace MerapiGolfLogistik.Classes
                                pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) -
                                pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) +
                                pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => p.banyak_dikembalikan.Value);
+                                item.balance_awal =
+                              pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_barang.Value * p.harga_satuan.Value)) -
+                              pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
+                              pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays < 0).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
                                 item.quantity_balance = pembelian_items_filtered.Where(p => p.pembelian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) -
                                     pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_barang.Value) +
                                     pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => p.banyak_dikembalikan.Value);
@@ -462,9 +474,9 @@ namespace MerapiGolfLogistik.Classes
                                     pengambilan_items_filtered.Where(p => p.pengambilan.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_barang.Value * p.pembelian_item.harga_satuan.Value)) +
                                     pengembalian_items_filtered.Where(p => p.pengembalian.tanggal.Value.Subtract(item.tanggal_trx).TotalDays <= 0).Sum(p => (p.banyak_dikembalikan.Value * p.pengambilan_item.pembelian_item.harga_satuan.Value));
                                 result.Add(item);
-                        }
+                            }
 
-                    }
+                        }
                     }
                 }
 

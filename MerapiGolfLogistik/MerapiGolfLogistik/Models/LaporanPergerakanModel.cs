@@ -44,6 +44,7 @@ namespace MerapiGolfLogistik.Models
             }
         }
         public double quantity_awal { get; set; }
+        public double balance_awal { get; set; }
         public double quantity_balance { get; set; }
         public double balance { get; set; }
     }
