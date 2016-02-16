@@ -121,7 +121,7 @@ namespace MerapiGolfLogistik
             e.Graphics.DrawString("----------------------------", sectiontitlefont, Brushes.Black, startX, startY + offset);
             offset += 20;
             e.Graphics.DrawString("        DAFTAR BARANG        ", subtitlefont, Brushes.Black, startX, startY + offset);
-            int subtotal = 0;
+            double subtotal = 0;
             foreach (var item in this.nota.items)
             {
                 subtotal += item.total_harga.HasValue ? item.total_harga.Value : 0;

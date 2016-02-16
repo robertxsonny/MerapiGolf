@@ -61,7 +61,7 @@ namespace MerapiGolfLogistik
             if (dialogres == DialogResult.OK)
             {
                 var barang = dbContent.mg_barang.Where(p => p.id == pilihform.selectedId).Single();
-                int jumlah = pilihform.jumlah;
+                double jumlah = pilihform.jumlah;
                 Guid aktivaId = pilihform.selectedAktiva;
                 var aktiva = dbContent.mg_aktiva.Where(p => p.id == pilihform.selectedAktiva).Single();
 

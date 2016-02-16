@@ -38,13 +38,18 @@ namespace MerapiGolfLogistik
                     this.Hide();
                     break;
                 case ("pengambilan"):
-                    PengambilanBarang ambilform = new PengambilanBarang();
+                    AdministratorAmbil ambilform = new AdministratorAmbil();
                     ambilform.Show();
                     this.Hide();
                     break;
                 case ("admin"):
                     Administrator adminform = new Administrator();
                     adminform.Show();
+                    this.Hide();
+                    break;
+                case ("laporan"):
+                    AdministratorReport reportform = new AdministratorReport();
+                    reportform.Show();
                     this.Hide();
                     break;
                 default:
@@ -83,9 +88,9 @@ namespace MerapiGolfLogistik
         //    }
         //}
 
-        //private void button1_Click_1(object sender, EventArgs e)
+        //private void loginBtn_Click(object sender, EventArgs e)
         //{
-        //    if (login.InsertLoginRole("admininput", "admin", "input"))
+        //    if (login.InsertLoginRole("adminreport", "report", "laporan"))
         //        MessageBox.Show("Sukses buat user baru!");
         //}
     }

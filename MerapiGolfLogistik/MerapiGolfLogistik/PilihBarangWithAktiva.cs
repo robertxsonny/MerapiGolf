@@ -14,8 +14,8 @@ namespace MerapiGolfLogistik
     public partial class PilihBarangWithAktiva : Form
     {
         public Guid selectedId = Guid.Empty;
-        public int jumlah;
-        private int jumlahlimit;
+        public double jumlah;
+        private double jumlahlimit;
         public Guid selectedAktiva = Guid.Empty;
         private MerapiGolfLogistikEntities dbContent = new MerapiGolfLogistikEntities();
         public PilihBarangWithAktiva()
@@ -42,7 +42,7 @@ namespace MerapiGolfLogistik
                 var barang = dbContent.mg_barang.Where(p => p.id == this.selectedId).Single();
                 namaBarangTb.Text = barang.nama_barang;
                 satuanLabel.Text = barang.satuan;
-                this.jumlahlimit = Convert.ToInt32
+                this.jumlahlimit = Convert.ToDouble
                     (dbContent.mg_stok_barang_total.Where(p => p.id_barang == barang.id).Single().stok.Value);
                 jumlahTb.Focus();
             }
@@ -113,7 +113,7 @@ namespace MerapiGolfLogistik
             var barang = dbContent.mg_barang.Where(p => p.id == this.selectedId).Single();
             namaBarangTb.Text = barang.nama_barang;
             satuanLabel.Text = barang.satuan;
-            this.jumlahlimit = Convert.ToInt32
+            this.jumlahlimit = Convert.ToDouble
                      (dbContent.mg_stok_barang_total.Where(p => p.id_barang == barang.id).Single().stok.Value);
             jumlahTb.Focus();
         }
@@ -121,12 +121,13 @@ namespace MerapiGolfLogistik
         private void RestrictInputs(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
+        (e.KeyChar != '.') &&(e.KeyChar != ','))
             {
                 e.Handled = true;
             }
 
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if (((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1)) ||
+                 ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1)))
             {
                 e.Handled = true;
             }
@@ -172,7 +173,7 @@ namespace MerapiGolfLogistik
         {
             if (!String.IsNullOrEmpty(jumlahTb.Text))
             {
-                this.jumlah = Convert.ToInt32(jumlahTb.Text);
+                this.jumlah = Convert.ToDouble(jumlahTb.Text);
                 groupBox2.Visible = true;
             }
             else groupBox2.Visible = false;

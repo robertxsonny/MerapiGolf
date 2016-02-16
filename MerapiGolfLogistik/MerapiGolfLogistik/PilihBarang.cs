@@ -14,8 +14,8 @@ namespace MerapiGolfLogistik
     public partial class PilihBarang : Form
     {
         public Guid selectedId = Guid.Empty;
-        public int hargasatuan;
-        public int jumlah;
+        public double hargasatuan;
+        public double jumlah;
         private MerapiGolfLogistikEntities dbContent = new MerapiGolfLogistikEntities();
         public PilihBarang()
         {
@@ -26,7 +26,7 @@ namespace MerapiGolfLogistik
             barangList.KeyDown += barangList_KeyDown;
         }
 
-        public PilihBarang(Guid selectedId, int hargasatuan, int jumlah)
+        public PilihBarang(Guid selectedId, double hargasatuan, double jumlah)
         {
             InitializeComponent();
             this.selectedId = selectedId;
@@ -115,12 +115,13 @@ namespace MerapiGolfLogistik
         private void RestrictInputs(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-        (e.KeyChar != '.'))
+        (e.KeyChar != '.') && (e.KeyChar != ',')) 
             {
                 e.Handled = true;
             }
 
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            if (((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1)) ||
+                ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1)))
             {
                 e.Handled = true;
             }
@@ -130,13 +131,13 @@ namespace MerapiGolfLogistik
         {
 
             //calculate
-            int jumlah;
-            int harga;
-            int total;
+            double jumlah;
+            double harga;
+            double total;
 
-            if (!Int32.TryParse(jumlahTb.Text, out jumlah))
+            if (!double.TryParse(jumlahTb.Text, out jumlah))
                 jumlah = 0;
-            if (!Int32.TryParse(hargaSatuanTb.Text, out harga))
+            if (!Double.TryParse(hargaSatuanTb.Text, out harga))
                 harga = 0;
 
 

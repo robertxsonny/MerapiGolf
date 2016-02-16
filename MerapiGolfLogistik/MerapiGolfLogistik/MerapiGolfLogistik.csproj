@@ -84,6 +84,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministratorAmbil.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministratorAmbil.Designer.cs">
+      <DependentUpon>AdministratorAmbil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdministratorReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdministratorReport.Designer.cs">
+      <DependentUpon>AdministratorReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="Administrator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -342,6 +354,12 @@
     <Compile Include="User.cs">
       <DependentUpon>MerapiGolfEntity.tt</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdministratorAmbil.resx">
+      <DependentUpon>AdministratorAmbil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdministratorReport.resx">
+      <DependentUpon>AdministratorReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Administrator.resx">
       <DependentUpon>Administrator.cs</DependentUpon>
     </EmbeddedResource>

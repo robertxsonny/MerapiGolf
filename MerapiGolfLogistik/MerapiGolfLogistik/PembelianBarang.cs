@@ -107,7 +107,7 @@ namespace MerapiGolfLogistik
 
         private void CalculateTotalPrice()
         {
-            int totalprice = 0;
+            double totalprice = 0;
             foreach (var item in listitems)
             {
                 totalprice += item.total_harga.Value;
@@ -191,8 +191,8 @@ namespace MerapiGolfLogistik
                 {
                     Guid idbarang = Guid.Parse(item.Cells[1].Value.ToString());
                     string namabarang = item.Cells[2].Value.ToString();
-                    int hargasatuan = Convert.ToInt32(item.Cells[3].Value.ToString(), new CultureInfo("id-ID"));
-                    int jumlah = Convert.ToInt32(item.Cells[4].Value.ToString(), new CultureInfo("id-ID"));
+                    double hargasatuan = Convert.ToDouble(item.Cells[3].Value.ToString(), new CultureInfo("id-ID"));
+                    double jumlah = Convert.ToDouble(item.Cells[4].Value.ToString(), new CultureInfo("id-ID"));
                     pembelian.AddBarang(idbarang, hargasatuan, jumlah);
                 }
                 await pembelian.StorePembelian();
@@ -289,8 +289,8 @@ namespace MerapiGolfLogistik
         private void itemList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Guid selectedId = Guid.Parse(itemList.Rows[e.RowIndex].Cells[1].Value.ToString());
-            int hargasatuan = Convert.ToInt32(itemList.Rows[e.RowIndex].Cells[3].Value.ToString());
-            int jumlah = Convert.ToInt32(itemList.Rows[e.RowIndex].Cells[4].Value.ToString());
+            double hargasatuan = Convert.ToInt32(itemList.Rows[e.RowIndex].Cells[3].Value.ToString());
+            double jumlah = Convert.ToInt32(itemList.Rows[e.RowIndex].Cells[4].Value.ToString());
             PilihBarang pilihform = new PilihBarang(selectedId, hargasatuan, jumlah);
             var dlgresult = pilihform.ShowDialog();
             if(dlgresult == DialogResult.OK)
@@ -313,8 +313,8 @@ namespace MerapiGolfLogistik
             {
                 int rowindex = itemList.SelectedCells[0].RowIndex;
                 Guid selectedId = Guid.Parse(itemList.Rows[rowindex].Cells[1].Value.ToString());
-                int hargasatuan = Convert.ToInt32(itemList.Rows[rowindex].Cells[3].Value.ToString());
-                int jumlah = Convert.ToInt32(itemList.Rows[rowindex].Cells[4].Value.ToString());
+                double hargasatuan = Convert.ToInt32(itemList.Rows[rowindex].Cells[3].Value.ToString());
+                double jumlah = Convert.ToInt32(itemList.Rows[rowindex].Cells[4].Value.ToString());
                 PilihBarang pilihform = new PilihBarang(selectedId, hargasatuan, jumlah);
                 var dlgresult = pilihform.ShowDialog();
                 if (dlgresult == DialogResult.OK)

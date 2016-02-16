@@ -933,9 +933,9 @@ warning 6002: The table/view 'MerapiGolfDb.dbo.mg_total_pengembalian' does not h
           <Property Name="no_nota" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="nama_barang" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="nama_kategori" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="banyak_barang" Type="Int32" />
-          <Property Name="harga_satuan" Type="Int32" />
-          <Property Name="total_harga" Type="Int32" />
+          <Property Name="banyak_barang" Type="Double" />
+          <Property Name="harga_satuan" Type="Double" />
+          <Property Name="total_harga" Type="Double" />
           <Property Name="satuan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="id_barang" Type="Guid" Nullable="false" />
           <Property Name="tanggal" Type="DateTime" Precision="0" />
